@@ -1,0 +1,31 @@
+#search-page .hoidap-item .hoidap-txt {
+  font-size: 14px;
+  color: #4c4c4c;
+}
+#search-page .raovat-item {
+  border-bottom: none;
+}
+#search-page .raovat-item .raovat-url {
+  height: 150px;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+#search-page .raovat-item .raovat-img {
+  display: block;
+  background-color: #ccc;
+  width: 100%;
+  min-height: 100%;
+}
+#search-page .raovat-item .raovat-txt {
+  display: block;
+  margin-top: 10px;
+  height: 50px;
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  #search-page #form-sort .control-bound {
+    padding-right: 0px;
+  }
+}

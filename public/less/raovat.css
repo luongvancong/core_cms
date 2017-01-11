@@ -1,0 +1,83 @@
+#raovat-page .heading {
+  font-size: 20px;
+}
+#raovat-page .sub-heading {
+  font-size: 14px;
+}
+#raovat-page .classifield-item .image .crop {
+  height: 100px;
+  overflow: hidden;
+}
+#raovat-page .classifield-item .image img {
+  height: 100%;
+  width: auto;
+}
+#raovat-page .classifield-item .title {
+  font-size: 14px;
+}
+#raovat-page .classifield-item .title a {
+  font-size: 14px;
+  color: #383838;
+}
+#raovat-page .classifield-item .teaser {
+  font-size: 12px;
+  overflow: hidden;
+}
+#raovat-page .classifield-item .price {
+  color: #F44F00;
+}
+#raovat-page .product-block .product-item a.link-wrapper {
+  display: block;
+  overflow: hidden;
+}
+#raovat-page .product-block .product-item .img {
+  display: block;
+  float: left;
+  max-width: 35px;
+}
+#raovat-page .product-block .product-item .info {
+  float: left;
+  width: 80%;
+  padding-left: 5px;
+}
+#raovat-page .product-block .product-item .info .name {
+  font-size: 14px;
+  color: #404040;
+}
+#raovat-page .product-block .product-item .info .info-something {
+  font-size: 12px;
+  color: #757272;
+  padding-top: 8px;
+}
+#raovat-page .product-block .product-item .price span {
+  color: #F44F00;
+}
+#raovat-page #right-column.fixed {
+  position: fixed;
+  right: 0;
+  top: 10px;
+}
+#raovat-page .post-item {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+#raovat-page .post-item .link {
+  display: block;
+  overflow: hidden;
+}
+#raovat-page .post-item .image {
+  float: left;
+  max-width: 70px;
+  margin-right: 10px;
+}
+#raovat-page .post-item .info .title {
+  color: #383838;
+}
+#raovat-page .post-item .info .sapa {
+  color: #585858;
+  font-size: 12px;
+}
+#raovat-detail-page .classifield-product-related .product-name {
+  font-size: 14px;
+  display: inline;
+}

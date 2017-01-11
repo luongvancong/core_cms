@@ -1,0 +1,32 @@
+<?php
+
+namespace Nht\Hocs\Users;
+
+/**
+ * Interface description.
+ *
+ * @author	AlvinTran
+ */
+interface UserRepository
+{
+	public function getByEmail($email);
+	public function getActivedUser($pageSize);
+	public function getCurrentUser();
+	public function isLogged();
+	public function isAdmin();
+
+    /**
+     * Create user from socialite
+     * @param  Socialite $user
+     * @return User
+     */
+    public function createUserFromSocialite($user);
+
+
+    /**
+     * Count all user
+     * @return int
+     */
+    public function countAllUsers();
+
+}

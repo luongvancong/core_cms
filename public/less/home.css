@@ -1,0 +1,171 @@
+#home-navtab {
+  position: relative;
+}
+#home-navtab .nav-tabs {
+  border-bottom: transparent;
+}
+#home-navtab .tab-content {
+  /* border-top: 2px solid #00a99d; */
+}
+#home-navtab .nav.nav-tabs .active .navtab-head,
+#home-navtab .nav.nav-tabs .active .navtab-head h2 {
+  background: #00a99d;
+  color: #fff !important;
+  /* border: 1px solid #00a99d !important; */
+}
+#home-navtab .navtab-head {
+  border-radius: 0 !important;
+  border: 1px solid #ccc !important;
+}
+#home-navtab .navtab-head h2 {
+  text-transform: uppercase;
+  color: #6f6f6e;
+  font-size: 16px;
+  padding: 5px 0 0px 0;
+  text-align: center;
+}
+#home-navtab .custom-control-slider-product {
+  border: 1px solid #ccc;
+  display: block;
+  padding-top: 9px;
+  padding-bottom: 5px;
+  text-align: center;
+  font-size: 20px;
+  background: #fff;
+}
+#home-navtab .product-item .top-container {
+  display: inline-block;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+#home-navtab .product-item .top-container i.fa {
+  font-size: 15px;
+  color: #f44f00;
+}
+#video-slider-flex .video-item {
+  position: relative;
+}
+#video-slider-flex .video-item .caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 8px;
+}
+#video-slider-flex .video-item .icon-play {
+  font-size: 55px;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+.hp-slider-controls {
+  position: static !important;
+}
+.hp-slider-controls .custom-control-slider-product {
+  position: absolute;
+  top: 40%;
+  z-index: 2;
+}
+.hp-slider-controls .custom-control-slider-product.prev {
+  left: 20px;
+}
+.hp-slider-controls .custom-control-slider-product.next {
+  right: 20px;
+}
+.product-device-tab li a {
+  border-radius: 0!important;
+  border: 1px solid #ccc!important;
+  color: #4c4c4c;
+}
+.product-device-tab li.active a {
+  background: #00a99d;
+  color: #fff!important;
+}
+.product-device-tab li.active a:hover {
+  background: #00a99d;
+  color: #fff!important;
+}
+.product-device-tab li.active a:focus {
+  background: #00a99d;
+  color: #fff!important;
+}
+.product-device-tab .main-tab.phone,
+.product-device-tab .main-tab.phone:hover,
+.product-device-tab .main-tab.phone:active,
+.product-device-tab .main-tab.phone:focus {
+  background: #ff4e3c;
+  border: 1px solid transparent !important;
+  color: #fff;
+}
+.product-device-tab .main-tab.tablet,
+.product-device-tab .main-tab.tablet:hover,
+.product-device-tab .main-tab.tablet:active,
+.product-device-tab .main-tab.tablet:focus {
+  background: #f0ad4e;
+  border: 1px solid transparent !important;
+  color: #fff;
+}
+.product-device-tab .main-tab.laptop,
+.product-device-tab .main-tab.laptop:hover,
+.product-device-tab .main-tab.laptop:active,
+.product-device-tab .main-tab.laptop:focus {
+  background: #428bca;
+  border: 1px solid transparent !important;
+  color: #fff;
+}
+.product-device-tab .main-tab.camera,
+.product-device-tab .main-tab.camera:hover,
+.product-device-tab .main-tab.camera:active,
+.product-device-tab .main-tab.camera:focus {
+  background: #d9534f;
+  border: 1px solid transparent !important;
+  color: #fff;
+}
+.product-device-tab.nav-tabs {
+  border-bottom: 1px transparent;
+}
+.home-device-block .custom-control-slider-product {
+  position: absolute;
+  top: 40%;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  background: #fff;
+  z-index: 10;
+  width: 30px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+}
+.home-device-block .custom-control-slider-product.prev {
+  left: 20px;
+}
+.home-device-block .custom-control-slider-product.next {
+  right: 20px;
+}
+#home-exchange-rate .heading {
+  font-size: 14px;
+  padding-bottom: 5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #4CAF50;
+  margin: 0;
+  padding: 11px 9px 6px 9px;
+  text-align: center;
+  border-bottom: 1px solid #795548;
+  color: #fff;
+  margin-bottom: 10px;
+}
+#home-exchange-rate .block .line {
+  overflow: hidden;
+}
+#home-exchange-rate .block .base {
+  font-weight: bold;
+  display: inline-block;
+  padding-right: 15px;
+}
+#home-exchange-rate .block .rate {
+  color: #ff4e3c;
+  display: inline-block;
+  padding-left: 15px;
+}
