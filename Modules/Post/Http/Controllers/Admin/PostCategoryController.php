@@ -3,14 +3,14 @@
 namespace Modules\Post\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
-use Nht\Http\Requests;
-
+use Modules\Post\Http\Requests\AdminPostCategoryFormRequest;
+use Modules\Post\Repositories\Category\PostCategoryRepository;
 use Nht\Http\Controllers\Admin\AdminController;
+use Nht\Http\Requests;
 
 class PostCategoryController extends AdminController
 {
-	public function __construct(CategoryRepository $category)
+	public function __construct(PostCategoryRepository $category)
 	{
 		parent::__construct();
 		$this->category = $category;
@@ -24,14 +24,14 @@ class PostCategoryController extends AdminController
 	public function getIndex(Request $request)
 	{
 		$categories = $this->category->getAllCategories();
-		return view('admin/post_categories/index', compact('categories'));
+		return view('post::admin/category/index', compact('categories'));
 	}
 
 
 	public function getCreate() {
 		$category = $this->category->getInstance();
 		$categories = $this->category->getAllCategories();
-		return view('admin/post_categories/create', compact('category', 'categories'));
+		return view('post::admin/category/create', compact('category', 'categories'));
 	}
 
 	public function postCreate(AdminPostCategoryFormRequest $request) {
@@ -47,7 +47,7 @@ class PostCategoryController extends AdminController
 	public function getEdit($id) {
 		$category = $this->category->getById($id);
 		$categories = $this->category->getAllCategories();
-		return view('admin/post_categories/edit', compact('category', 'categories'));
+		return view('post::admin/category/edit', compact('category', 'categories'));
 	}
 
 	public function postEdit($id, AdminPostCategoryFormRequest $request) {

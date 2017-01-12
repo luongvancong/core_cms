@@ -35,7 +35,7 @@ function makeActiveButton($link, $currentActiveValue) {
 
 
 /**
- * Convert ngÃ y thÃ¡ng sang unixtimestamp
+ * Convert date sang unixtimestamp
  *
  * @param  string $dateStr  Chuá»—i Ä‘á»‹nh dáº¡ng ngÃ y thÃ¡ng
  * @param  string $hour     Chuá»—i Ä‘á»‹nh dáº¡ng giá»::phÃºt::giÃ¢y ná»‘i vÃ o Ä‘á»ƒ láº¥y time chÃ­nh xÃ¡c
@@ -116,7 +116,7 @@ function removeAccent($string) {
 
 
 /**
- * Táº¡o link sort
+ * Tao link sort
  *
  * @param  url $url
  * @param  array  $sortArray
@@ -161,55 +161,6 @@ function createLinkSort($field, $url = null) {
  */
 function isUrl($url) {
 	return filter_var($url, FILTER_VALIDATE_URL);
-}
-
-if ( ! function_exists('str_remove_accent')) {
-	/**
-	 * @param $str
-	 * @param string $separator
-	 * @return mixed
-	 */
-	function str_remove_accent($str, $separator = ' ')
-	{
-		$str = trim($str);
-		$str = stripslashes($str);
-		$str = str_replace(array("&quot;", ":", ".", "'", ",", ";", ")", "(", "?", "@", "%", "*", "&", "^", "!", "=", "{", "}", "\\", '"', '-', 'â€˜', 'â€™', 'â€¢', "&nbsp;"), " ", $str);
-		$str = preg_replace("/(Ã |Ã¡|áº¡|áº£|Ã£|Ã¢|áº§|áº¥|áº­|áº©|áº«|Äƒ|áº±|áº¯|áº·|áº³|áºµ)/", 'a', $str);
-		$str = preg_replace("/(Ã¨|Ã©|áº¹|áº»|áº½|Ãª|á»|áº¿|á»‡|á»ƒ|á»…)/", 'e', $str);
-		$str = preg_replace("/(Ã¬|Ã­|á»‹|á»‰|Ä©)/", 'i', $str);
-		$str = preg_replace("/(Ã²|Ã³|á»|á»|Ãµ|Ã´|á»“|á»‘|á»™|á»•|á»—|Æ¡|á»|á»›|á»£|á»Ÿ|á»¡)/", 'o', $str);
-		$str = preg_replace("/(Ã¹|Ãº|á»¥|á»§|Å©|Æ°|á»«|á»©|á»±|á»­|á»¯)/", 'u', $str);
-		$str = preg_replace("/(á»³|Ã½|á»µ|á»·|á»¹)/", 'y', $str);
-		$str = preg_replace("/(Ä‘)/", 'd', $str);
-		$str = preg_replace("/(Ã€|Ã|áº |áº¢|Ãƒ|Ã‚|áº¦|áº¤|áº¬|áº¨|áºª|Ä‚|áº°|áº®|áº¶|áº²|áº´)/", 'A', $str);
-		$str = preg_replace("/(Ãˆ|Ã‰|áº¸|áºº|áº¼|ÃŠ|á»€|áº¾|á»†|á»‚|á»„)/", 'E', $str);
-		$str = preg_replace("/(ÃŒ|Ã|á»Š|á»ˆ|Ä¨)/", 'I', $str);
-		$str = preg_replace("/(Ã’|Ã“|á»Œ|á»Ž|Ã•|Ã”|á»’|á»|á»˜|á»”|á»–|Æ |á»œ|á»š|á»¢|á»ž|á» )/", 'O', $str);
-		$str = preg_replace("/(Ã™|Ãš|á»¤|á»¦|Å¨|Æ¯|á»ª|á»¨|á»°|á»¬|á»®)/", 'U', $str);
-		$str = preg_replace("/(á»²|Ã|á»´|á»¶|á»¸)/", 'Y', $str);
-		$str = preg_replace("/(Ä)/", 'D', $str);
-		$str = str_replace(array(' ', '--', '|', "/", '_', "[", "]", "+"), $separator, $str);
-		$str = strtolower($str);
-		return $str;
-	}
-}
-
-if ( ! function_exists('str_slug_uft8')) {
-	/**
-	 * @param $title
-	 * @param string $separator
-	 * @return string
-	 */
-	function str_slug_uft8($title, $separator = '-')
-	{
-		$title = str_remove_accent($title);
-		$flip = $separator == '-' ? '_' : '-';
-		$title = preg_replace('![' . preg_quote($flip) . ']+!u', $separator, $title);
-		$title = preg_replace('![^' . preg_quote($separator) . '\pL\pN\s]+!u', '', mb_strtolower($title));
-		$title = preg_replace('![' . preg_quote($separator) . '\s]+!u', $separator, $title);
-
-		return trim($title, $separator);
-	}
 }
 
 
@@ -258,9 +209,9 @@ function format_number($number, $sufix = ''){
 	   if(intval(substr($return, -2, 2)) == 0) $return = number_format($number, 0, ".", ".");
 	   elseif(intval(substr($return, -1, 1)) == 0) $return = number_format($number, 1, ".", ".");
 
-	   if ($sufix == 'đ') {
-	   	$return = $return . '<sup>' . $sufix . '</sup>';
-	   }
+	   	if ($sufix == 'đ') {
+	   		$return = $return . '<sup>' . $sufix . '</sup>';
+	   	}
 
 	   return $return;
 	}
@@ -455,21 +406,6 @@ function getServerName() {
 	return Request::server('SERVER_NAME');
 }
 
-
-function getTagPositions() {
-	return [
-		\Nht\Hocs\Tags\Tag::POSITION_HEADER => 'Header',
-		\Nht\Hocs\Tags\Tag::POSITION_FOOTER => 'Footer'
-	];
-}
-
-function getPositionByKey($key) {
-	if(array_key_exists($key, getTagPositions())) {
-		return array_get(getTagPositions(), $key);
-	}
-}
-
-
 function cutString($string, $length = 150, $ext = '...') {
 	if(!$string) return $string;
 	$str = mb_substr($string, 0, $length);
@@ -587,18 +523,6 @@ if ( !function_exists('change_date') ) {
 	}
 }
 
-if ( !function_exists('position_ads')) {
-	function position_ads() {
-		return [
-			TOP_PAGE => 'Đầu trang',
-			CENTER_PAGE_1 => 'Thân trang 1',
-			CENTER_PAGE_2 => 'Thân trang 2',
-			END_PAGE => 'Cuối trang'
-		];
-	}
-}
-
-
 if ( !function_exists('getRealIp') ) {
 	function getRealIp() {
 		return $_SERVER['HTTP_X_REAL_IP'];
@@ -648,41 +572,6 @@ function uploadFileToGoogleBucket($filePath, $pathBucket) {
         ));
 }
 
-
-/**
- * Get data rating from vietcombank
- * @return html
- */
-function getExchangeRateData() {
-	$exchangeRateData = '';
-
-	$fileToDay = public_path() . '/exchange_rate_cache/files/'. date('Ymd') .'.html';
-
-	if(!file_exists($fileToDay)) {
-		$html = new \simple_html_dom();
-		$html->load_file('https://www.vietcombank.com.vn/');
-
-		$data = $html->find('#exchangerate');
-
-		foreach($data as $el) {
-			$exchangeRateData = $el->children(1)->innerText();
-			break;
-		}
-
-		file_put_contents($fileToDay, $exchangeRateData, 777);
-	}
-
-	return file_get_contents($fileToDay);
-}
-
-
-if( ! function_exists('getTemplateHighLight') ) {
-	function getTemplateHighLight($text) {
-		return '<span class="text-highlight">'. $text .'</span>';
-	}
-}
-
-
 if ( ! function_exists('combinations') ) {
 	function combinations($arrays, $i = 0) {
 	    if (!isset($arrays[$i])) {
@@ -719,6 +608,12 @@ if( ! function_exists('is_json') ) {
 
 
 if ( ! function_exists('get_option') ) {
+	/**
+	 * Get an option from options
+	 * @param  mixed  $key
+	 * @param  mixed $default
+	 * @return mixed
+	 */
 	function get_option($key, $default = false) {
 		$option = DB::table('options')->where('key', $key)->first();
 

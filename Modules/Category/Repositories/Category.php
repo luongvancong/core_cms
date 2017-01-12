@@ -15,9 +15,9 @@ class Category extends Model
 	const DEACTIVE   = 2;
 	const DELETE     = 3;
 
-	const NORMAL   = 0; // Bình thường, sản phẩm
-	const DESIGN   = 1; // Thiết kế
-	const ADVISORY = 2; // Tư vấn
+	const TYPE_PRODUCT = 1;
+	const TYPE_POST    = 2;
+	const TYPE_STATIC  = 3;
 
    	/**
 	 * The database table used by the model.

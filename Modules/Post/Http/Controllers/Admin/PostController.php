@@ -6,6 +6,7 @@ use App, Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Modules\Post\Http\Requests\AdminPostFormRequest;
+use Modules\Post\Repositories\Category\PostCategoryRepository;
 use Modules\Post\Repositories\DbPostRepository;
 use Modules\Post\Repositories\PostRepository;
 use Nht\Hocs\Categories\CategoryRepository;
@@ -14,7 +15,7 @@ use Nht\Http\Requests;
 
 class PostController extends AdminController
 {
-    public function __construct(PostRepository $post, CategoryRepository $category)
+    public function __construct(PostRepository $post, PostCategoryRepository $category)
     {
         parent::__construct();
         $this->post = $post;
@@ -46,7 +47,7 @@ class PostController extends AdminController
     public function getCreate()
     {
         $post = $this->post->getInstance();
-        $categories = new Collection;
+        $categories = $this->category->getAllCategories();
         return view('post::admin/create', compact('post', 'categories'));
     }
 

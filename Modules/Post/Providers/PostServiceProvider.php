@@ -33,6 +33,7 @@ class PostServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('Modules\Post\Repositories\PostRepository', 'Modules\Post\Repositories\DbPostRepository');
+        $this->app->bind('Modules\Post\Repositories\Category\PostCategoryRepository', 'Modules\Post\Repositories\Category\DbPostCategoryRepository');
     }
 
     /**

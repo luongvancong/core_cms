@@ -20,7 +20,7 @@
 				<option value="{{ $cat->getId() }}" {{ $cat->getId() == Request::get('category_id') ? 'selected="selected"' : '' }}><?php for($i = 1; $i < $cat->level; $i ++) echo '--'; ?>{{ $cat->getName() }}</option>
 				@endforeach
 			</select>
-			<button type="submit" class="btn btn-default btn-sm"><i class="fa fa-search"></i> {{ trans('form.btn.search') }}</button>
+			<button type="submit" class="btn btn-default btn-xs"><i class="fa fa-search"></i> {{ trans('form.btn.search') }}</button>
 		</form>
 		<table class="table table-bordered table-striped table-hover">
 			<thead>

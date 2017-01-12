@@ -19,7 +19,7 @@ a:hover {
     font-weight: 400;
     background: #fafafa;
     text-transform: uppercase;
-    padding: 15px;
+    padding: 5px 15px;
 }
 
 .panel-title {
@@ -143,6 +143,9 @@ textarea.form-control {
 
 input, textarea, select, button {
     outline: none !important;
+}
+select.form-control {
+    height: 25px;
 }
 
 /*list*/

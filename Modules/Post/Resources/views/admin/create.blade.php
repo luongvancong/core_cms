@@ -9,7 +9,7 @@
 	   </h3>
 	</div>
 	<div class="panel-body">
-		@include('admin/posts/form')
+		@include('post::admin/form')
 	</div>
 </div>
 

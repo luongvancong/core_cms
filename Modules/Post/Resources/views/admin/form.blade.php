@@ -22,7 +22,7 @@
             <select class="form-control" name="category_id">
             <option value="">Chọn một danh mục</option>
             @foreach($categories as $item)
-                <option value="{{ $item->getId() }}" {{ $item->getId() == $post->getCategoryId() ? 'selected="selected"' : '' }}>{{ $item->getName() }}</option>
+                <option value="{{ $item->getId() }}" {{ $item->getId() == $post->getCategoryId() ? 'selected="selected"' : '' }}><?php for($i = 1; $i < $item->level; $i ++) echo '--'; ?>{{ $item->getName() }}</option>
             @endforeach
             </select>
             {!! alertError('category_id') !!}
