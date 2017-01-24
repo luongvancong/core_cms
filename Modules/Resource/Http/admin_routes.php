@@ -13,4 +13,7 @@ Route::group(['prefix' => 'admin/resource', 'middleware' => ['web', 'admin', 'ac
 
     // delete
     Route::get('/{id}/delete', ['as' => 'admin.resource.delete', 'permissions' => 'resource.delete', 'uses' => 'ResourceController@getDelete']);
+
+    // Editable
+    Route::post('/ajax/editable', ['as' => 'admin.resource.ajax.editable', 'permissions' => 'resource.edit', 'uses' => 'ResourceController@ajaxEditable']);
 });

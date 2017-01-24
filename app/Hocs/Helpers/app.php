@@ -24,3 +24,14 @@ if( ! function_exists('setting') ) {
         return resolve('Setting');
     }
 }
+
+if( ! function_exists('get_image_folder') ) {
+    function get_image_folder($image) {
+        $explode = explode('___', $image);
+        if(isset($explode[1])) {
+            return date('Y/m/d', $explode[1]);
+        }
+
+        return '';
+    }
+}
