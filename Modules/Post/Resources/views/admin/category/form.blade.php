@@ -1,4 +1,4 @@
-<form class="form-horizontal bucket-form" method="post" action enctype="multipart/form-data">
+<form class="form-horizontal" method="post" action enctype="multipart/form-data">
     <div class="form-group">
         <label for="email" class="col-sm-3 control-label">Danh mục cha</label>
         <div class="col-sm-6">

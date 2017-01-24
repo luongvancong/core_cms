@@ -1,8 +1,12 @@
 @extends('admin/layouts/master')
 
 @section('main-content')
-   <h3>Thêm trang</h3>
-   <div class="panel-body">
-      @include('page::admin/form')
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Thêm trang</h3>
+    </div>
+    <div class="panel-body">
+        @include('page::admin/form')
    </div>
+</div>
 @stop

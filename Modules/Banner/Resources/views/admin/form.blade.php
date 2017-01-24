@@ -1,4 +1,4 @@
-<form class="form-horizontal bucket-form" method="post" action enctype="multipart/form-data">
+<form class="form-horizontal" method="post" action enctype="multipart/form-data">
     <div class="form-group">
         <div class="col-sm-6 col-sm-offset-3">
             <img src="{{ $banner->getImage('sm') }}" height="90" onerror="this.src='/images/grey.gif'">

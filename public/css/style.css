@@ -210,7 +210,7 @@ ul.sidebar-menu,ul.sidebar-menu li ul.sub {
     padding:0;
 }
 ul.sidebar-menu {
-    padding-top: 87px;
+    padding-top: 60px;
 }
 #sidebar>ul>li>ul.sub {
     display:none;
@@ -328,23 +328,22 @@ ul.sidebar-menu li a.active i {
 }
 .wrapper {
     display:inline-block;
-    margin-top:80px;
+    margin-top: 55px;
     padding:15px;
     width:100%;
-
 }
 .brand {
     background:#1fb5ad;
     float:left;
     width:240px;
-    height:80px;
+    height: 55px;
     position:relative;
 }
 a.logo {
     font-size:21px;
     color:#2e2e2e;
     float:left;
-    margin:20px 0 0 25px;
+    margin: 14px 0 0 25px;
     text-transform:uppercase;
 }
 a.logo:hover,a.logo:focus {
@@ -365,7 +364,7 @@ a.logo span {
 }
 ul.top-menu {
     margin-right:15px;
-    margin-top: 0;
+    margin-top: -10px;
 }
 ul.top-menu > li > a {
     color:#666666;
@@ -671,7 +670,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 /*--sidebar toggle---*/
 .sidebar-toggle-box {
     float:left;
-    margin-top:23px;
+    margin-top: 11px;
     margin-left:-15px;
     background:#32d2c9;
     border-radius:50%;
