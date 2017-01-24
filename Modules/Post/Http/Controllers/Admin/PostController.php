@@ -9,7 +9,6 @@ use Modules\Post\Http\Requests\AdminPostFormRequest;
 use Modules\Post\Repositories\Category\PostCategoryRepository;
 use Modules\Post\Repositories\DbPostRepository;
 use Modules\Post\Repositories\PostRepository;
-use Nht\Hocs\Categories\CategoryRepository;
 use Nht\Http\Controllers\Admin\AdminController;
 use Nht\Http\Requests;
 
@@ -148,5 +147,22 @@ class PostController extends AdminController
         }
 
         return $data;
+    }
+
+
+    public function ajaxEditable(Request $request)
+    {
+        $id    = $request->get('pk');
+        $field = $request->get('name');
+        $value = clean($request->get('value'));
+
+        $item = $this->post->getById($id);
+        $item->$field = $value;
+
+        if($item->save()) {
+            return response()->json(['code' => 1]);
+        }
+
+        return response()->json(['code' => 0]);
     }
 }

@@ -37,11 +37,15 @@
 			<tbody>
 				@foreach ($posts as $post)
 					<tr>
-						<td>{{ $post->getId() }}</td>
-						<td>{{ $post->getTitle() }}</td>
-						<td>{{ $post->getSlug() }}</td>
+						<td width="30">{{ $post->getId() }}</td>
+						<td>
+							<a href="" class="editable" data-name="title" data-pk="{{ $post->getId() }}" data-type="text">{{ $post->getTitle() }}</a>
+						</td>
+						<td>
+							<a href="" class="editable" data-name="slug" data-pk="{{ $post->getId() }}" data-type="text">{{ $post->getSlug() }}</a>
+						</td>
 						<td width="100">
-							<div class="pos-images" style="background: url({{ $post->getImage('md_') }}) center center; background-size: cover; height: 80px; width: 80px; display: block;"></div>
+							<img src="{{ $post->getImage('md_') }}" height="50">
 						</td>
 						<td class="text-center">{!! makeActiveButton(route('admin.post.active', [$post->getId()]), $post->active) !!}</td>
 						<td class="text-center">{!! makeEditButton(route('admin.post.edit', [$post->getId()])) !!}</td>
@@ -57,4 +61,18 @@
 	</div>
 </div>
 
+@stop
+
+@section('scripts')
+<script>
+    $(function() {
+        $('.editable').editable({
+            showbuttons : true,
+            url : '{{ route('admin.post.ajax.editable') }}',
+            params : {
+               _token : '{{ csrf_token() }}'
+            }
+        });
+    });
+</script>
 @stop

@@ -19,6 +19,9 @@ Route::group(['prefix' => 'admin/post', 'middleware' => ['web', 'admin', 'acl'],
     Route::post('/{postId}/tag/create', ['permissions' => 'post.edit', 'uses' => 'PostController@tagCreateStore']);
 
     Route::get('/{postId}/tag/{tagId}/delete', ['as' => 'admin.post.tag.delete', 'permissions' => 'post.edit' ,'uses' => 'PostController@tagDelete']);
+
+    Route::post('/ajax/editable', ['as' => 'admin.post.ajax.editable', 'permissions' => 'post.edit', 'uses' => 'PostController@ajaxEditAble']);
+
 });
 
 // Post category

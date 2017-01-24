@@ -51,8 +51,10 @@ class PostCategoryController extends AdminController
 	}
 
 	public function postEdit($id, AdminPostCategoryFormRequest $request) {
+		$id = (int) $id;
 		$category = $this->category->getById($id);
 		$data = $request->except('_token');
+
 		if( $this->category->update($data, ['id' => $id]) ) {
 			return redirect()->route('admin.post_category.index')->with('success', trans('general.messages.update_success'));
 		}

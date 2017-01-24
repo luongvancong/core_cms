@@ -7,10 +7,7 @@ if( ! function_exists('page_get_all_types') ) {
      */
     function page_get_all_types() {
         return [
-            Nht\Hocs\Pages\Page::PAGE_TYPE_NORMAL      => 'Trang tĩnh',
-            Nht\Hocs\Pages\Page::PAGE_TYPE_SERVICE     => 'Dịch vụ',
-            Nht\Hocs\Pages\Page::PAGE_TYPE_POLICY      => 'Chính sách',
-            Nht\Hocs\Pages\Page::PAGE_TYPE_PRICE_BOARD => 'Bảng giá'
+
         ];
     }
 }
@@ -36,7 +33,7 @@ if ( ! function_exists('page_repository') ) {
      * @return PageRepository
      */
     function page_repository() {
-        return App::make('Nht\Hocs\Pages\PageRepository');
+        return App::make('Modules\Page\Repositories\PageRepository');
     }
 }
 

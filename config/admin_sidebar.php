@@ -26,23 +26,23 @@ return [
         ]
     ],
 
-    [
-        'title' => 'Category',
-        'url' => '/admin/categories',
-        'icon' => 'fa fa-folder',
-        'pattern_active' => 'admin/categories/*',
-        'permission' => ['category.view'],
-        'role' => []
-    ],
-
     // [
-    //     'title' => 'Banner',
-    //     'url' => '/admin/banners',
-    //     'icon' => 'fa fa-file-image-o',
-    //     'pattern_active' => 'admin/banners',
-    //     'permission' => ['banner.view'],
+    //     'title' => 'Category',
+    //     'url' => '/admin/categories',
+    //     'icon' => 'fa fa-folder',
+    //     'pattern_active' => 'admin/categories/*',
+    //     'permission' => ['category.view'],
     //     'role' => []
     // ],
+
+    [
+        'title' => 'Banner',
+        'url' => '/admin/banners',
+        'icon' => 'fa fa-file-image-o',
+        'pattern_active' => 'admin/banners',
+        'permission' => ['banner.view'],
+        'role' => []
+    ],
 
     [
         'title' => 'Tin tức',
@@ -70,13 +70,5 @@ return [
         'pattern_active' => 'admin/page*',
         'icon' => 'fa fa-newspaper-o',
         'permission' => ['page.view']
-    ],
-
-    [
-        'title' => 'Quản lý đơn hàng',
-        'url' => '/admin/trip-order/index',
-        'pattern_active' => 'admin/trip-order*',
-        'icon' => 'fa fa-database',
-        'permission' => ['trip_order.view']
     ]
 ];

@@ -19,7 +19,7 @@
                             <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
                         </select>
-                        <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-search"></i> {{ trans('form.btn.search') }}</button>
+                        <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-search"></i> {{ trans('form.btn.search') }}</button>
                     </form>
                     <table class="display table table-bordered table-striped">
                         <thead>

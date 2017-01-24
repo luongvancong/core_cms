@@ -3,7 +3,7 @@
         <label for="email" class="col-sm-3 control-label">Danh mục cha</label>
         <div class="col-sm-6">
             <select name="parent_id" class="form-control">
-                <option value="">Chọn danh mục cha</option>
+                <option value="0">Chọn danh mục cha</option>
                 @foreach($categories as $c)
                 <option value="{{ $c->getId() }}" {{ $category->getParentId() == $c->getId() ? 'selected="selected"' : '' }}><?php for($i = 1; $i < $c->level; $i ++) echo '--'; ?>{{ $c->getName() }}</option>
                 @endforeach

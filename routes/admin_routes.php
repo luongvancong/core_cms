@@ -161,43 +161,43 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 		/**
 		 * Settings Moduler
 		 */
-		Route::group(['prefix' => 'settings'], function() {
-			Route::get('website', [
-				'as'          => 'website.edit',
-				'uses'        => 'SettingController@edit',
-				'permissions' => 'setting.view',
-			]);
+		// Route::group(['prefix' => 'settings'], function() {
+		// 	Route::get('website', [
+		// 		'as'          => 'website.edit',
+		// 		'uses'        => 'SettingController@edit',
+		// 		'permissions' => 'setting.view',
+		// 	]);
 
-			Route::post('website', [
-				'as'          => 'website.update',
-				'uses'        => 'SettingController@update',
-				'permissions' => 'setting.edit',
-			]);
+		// 	Route::post('website', [
+		// 		'as'          => 'website.update',
+		// 		'uses'        => 'SettingController@update',
+		// 		'permissions' => 'setting.edit',
+		// 	]);
 
-			Route::get('metadata', [
-				'as'   => 'metadata.show',
-				'uses' => 'SettingController@metadata',
-				'permissions' => 'setting.view',
-			]);
+		// 	Route::get('metadata', [
+		// 		'as'   => 'metadata.show',
+		// 		'uses' => 'SettingController@metadata',
+		// 		'permissions' => 'setting.view',
+		// 	]);
 
-			Route::post('metadata', [
-				'as'   => 'metadata.post.edit',
-				'uses' => 'SettingController@postMetadata',
-				'permissions' => 'setting.edit',
-			]);
+		// 	Route::post('metadata', [
+		// 		'as'   => 'metadata.post.edit',
+		// 		'uses' => 'SettingController@postMetadata',
+		// 		'permissions' => 'setting.edit',
+		// 	]);
 
-			Route::get('social', [
-				'as'   => 'social.show',
-				'uses' => 'SettingController@social',
-				'permissions' => 'setting.view',
-			]);
+		// 	Route::get('social', [
+		// 		'as'   => 'social.show',
+		// 		'uses' => 'SettingController@social',
+		// 		'permissions' => 'setting.view',
+		// 	]);
 
-			Route::post('social', [
-				'as'   => 'social.post.edit',
-				'uses' => 'SettingController@postSocial',
-				'permissions' => 'setting.edit',
-			]);
-		});
+		// 	Route::post('social', [
+		// 		'as'   => 'social.post.edit',
+		// 		'uses' => 'SettingController@postSocial',
+		// 		'permissions' => 'setting.edit',
+		// 	]);
+		// });
 
 
 		// Route::group(['prefix' => 'categories'], function() {
@@ -360,54 +360,54 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 
 
 		// Banners
-		Route::group(['prefix' => 'banners'], function() {
+		// Route::group(['prefix' => 'banners'], function() {
 
-			Route::get('/', [
-				'as'          => 'admin.banner.index',
-				'uses'        => 'BannerController@index',
-				'permissions' => 'banner.view'
-			]);
+		// 	Route::get('/', [
+		// 		'as'          => 'admin.banner.index',
+		// 		'uses'        => 'BannerController@index',
+		// 		'permissions' => 'banner.view'
+		// 	]);
 
-			Route::get('/create',  [
-				'as'          => 'admin.banner.create',
-				'uses'        => 'BannerController@create',
-				'permissions' => 'banner.create'
-			]);
+		// 	Route::get('/create',  [
+		// 		'as'          => 'admin.banner.create',
+		// 		'uses'        => 'BannerController@create',
+		// 		'permissions' => 'banner.create'
+		// 	]);
 
-			Route::post('/create', [
-				'as'          => 'admin.banner.store',
-				'uses'        =>'BannerController@store',
-				'permissions' => 'banner.create'
-			]);
+		// 	Route::post('/create', [
+		// 		'as'          => 'admin.banner.store',
+		// 		'uses'        =>'BannerController@store',
+		// 		'permissions' => 'banner.create'
+		// 	]);
 
-			Route::get('{id}/edit',  [
-				'as'          => 'admin.banner.edit',
-				'uses'        => 'BannerController@edit',
-				'permissions' => 'banner.edit'
-			]);
+		// 	Route::get('{id}/edit',  [
+		// 		'as'          => 'admin.banner.edit',
+		// 		'uses'        => 'BannerController@edit',
+		// 		'permissions' => 'banner.edit'
+		// 	]);
 
-			Route::post('{id}/edit', [
-				'as'          => 'admin.banner.update',
-				'uses'        =>'BannerController@update',
-				'permissions' => 'banner.edit'
-			]);
+		// 	Route::post('{id}/edit', [
+		// 		'as'          => 'admin.banner.update',
+		// 		'uses'        =>'BannerController@update',
+		// 		'permissions' => 'banner.edit'
+		// 	]);
 
-			Route::get('{id}/active', [
-				'as'          => 'admin.banner.active',
-				'uses'        => 'BannerController@active',
-				'permissions' => 'banner.edit'
-			]);
+		// 	Route::get('{id}/active', [
+		// 		'as'          => 'admin.banner.active',
+		// 		'uses'        => 'BannerController@active',
+		// 		'permissions' => 'banner.edit'
+		// 	]);
 
-			Route::get('{id}/delete', [
-				'as'          => 'admin.banner.destroy',
-				'uses'        => 'BannerController@destroy',
-				'permissions' => 'banner.destroy'
-			]);
+		// 	Route::get('{id}/delete', [
+		// 		'as'          => 'admin.banner.destroy',
+		// 		'uses'        => 'BannerController@destroy',
+		// 		'permissions' => 'banner.destroy'
+		// 	]);
 
 
-			// Ajax editable
-			Route::post('/ajax/editable', ['as' => 'admin.banner.ajax.editable', 'uses' => 'BannerController@ajaxEditAble']);
-		});
+		// 	// Ajax editable
+		// 	Route::post('/ajax/editable', ['as' => 'admin.banner.ajax.editable', 'uses' => 'BannerController@ajaxEditAble']);
+		// });
 
 
 
@@ -425,20 +425,20 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 
 
 		// Page
-		Route::group(['prefix' => 'page'], function() {
-			Route::get('/', ['as' => 'admin.page.index', 'permissions' => 'page.view', 'uses' => 'PageController@getIndex']);
-			// Page Create
-			Route::get('/create', ['as' => 'admin.page.create', 'permissions' => 'page.create', 'uses' => 'PageController@getCreate']);
-			Route::post('/create', ['permissions' => 'page.create', 'uses' => 'PageController@postCreate']);
-			// Page edit
-			Route::get('/{id}/edit', ['as' => 'admin.page.edit', 'permissions' => 'page.edit', 'uses' => 'PageController@getEdit']);
-			Route::post('/{id}/edit', ['permissions' => 'page.edit', 'uses' => 'PageController@postEdit']);
-			// Page delete
-			Route::get('/{id}/delete', ['as' => 'admin.page.delete', 'permissions' => 'page.delete', 'uses' => 'PageController@getDelete']);
+		// Route::group(['prefix' => 'page'], function() {
+		// 	Route::get('/', ['as' => 'admin.page.index', 'permissions' => 'page.view', 'uses' => 'PageController@getIndex']);
+		// 	// Page Create
+		// 	Route::get('/create', ['as' => 'admin.page.create', 'permissions' => 'page.create', 'uses' => 'PageController@getCreate']);
+		// 	Route::post('/create', ['permissions' => 'page.create', 'uses' => 'PageController@postCreate']);
+		// 	// Page edit
+		// 	Route::get('/{id}/edit', ['as' => 'admin.page.edit', 'permissions' => 'page.edit', 'uses' => 'PageController@getEdit']);
+		// 	Route::post('/{id}/edit', ['permissions' => 'page.edit', 'uses' => 'PageController@postEdit']);
+		// 	// Page delete
+		// 	Route::get('/{id}/delete', ['as' => 'admin.page.delete', 'permissions' => 'page.delete', 'uses' => 'PageController@getDelete']);
 
-			// Page active
-			Route::get('/{id}/active', ['as' => 'admin.page.active', 'permissions' => 'page.active', 'uses' => 'PageController@getActive']);
-		});
+		// 	// Page active
+		// 	Route::get('/{id}/active', ['as' => 'admin.page.active', 'permissions' => 'page.active', 'uses' => 'PageController@getActive']);
+		// });
 
 
 		// Car

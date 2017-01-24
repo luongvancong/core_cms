@@ -2,10 +2,6 @@
 
 @section('main-content')
 	<h1>{{ trans('admin/general.modules.dashboard') }}</h1>
-	<script type="text/javascript">
-		window.location.href = "/admin/trip/index";
-	</script>
-
 	<!--mini statistics start-->
 	{{-- <div class="row">
 		<div class="col-md-3">
