@@ -70,5 +70,13 @@ return [
         'pattern_active' => 'admin/page*',
         'icon' => 'fa fa-newspaper-o',
         'permission' => ['page.view']
+    ],
+
+    [
+        'title' => 'Tài nguyên',
+        'url' => '/admin/resource',
+        'pattern_active' => 'admin/resource*',
+        'icon' => 'fa fa-database',
+        'permission' => ['resource.view']
     ]
 ];
