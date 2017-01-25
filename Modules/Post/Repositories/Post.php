@@ -151,11 +151,11 @@ class Post extends Model
 
 	public function author()
 	{
-		return $this->belongsTo('Nht\Hocs\Users\User', 'user_id');
+		return $this->belongsTo('Modules\User\Repositories\User', 'user_id');
 	}
 
 	public function category()
 	{
-		return $this->belongsTo('Nht\Hocs\PostCategories\PostCategory', 'category_id');
+		return $this->belongsTo('Modules\Post\Repositories\Category\PostCategory', 'category_id');
 	}
 }
