@@ -1,36 +1,31 @@
 @extends('admin/layouts/master')
 
 @section('main-content')
-	<h1>{{ trans('admin/general.modules.dashboard') }}</h1>
-	<!--mini statistics start-->
-	{{-- <div class="row">
-		<div class="col-md-3">
-			<a class="mini-stat clearfix block" href="{{ route('admin.post.index') }}">
-				<span class="mini-stat-icon orange"><i class="fa fa-newspaper-o"></i></span>
-				<div class="mini-stat-info">
-					<span>{{ postRepository()->countAllPosts() }}</span>
-					Tin tức
-				</div>
-			</a>
+	<div class="panel">
+		<div class="panel-heading">
+			<h1>{{ trans('admin/general.modules.dashboard') }}</h1>
 		</div>
-		<div class="col-md-3">
-			<a class="mini-stat clearfix block" href="{{ route('admin.product.index') }}">
-				<span class="mini-stat-icon tar"><i class="fa fa-cubes"></i></span>
-				<div class="mini-stat-info">
-					<span>{{ productRepository()->countAllProducts() }}</span>
-					Sản phẩm
-				</div>
-			</a>
+		<div class="panel-body">
+			<h5>Welcome to admin dashboard</h5>
+			<div class="row">
+			<?php
+				$btnClassArray = ['btn-primary', 'btn-success', 'btn-info', 'btn-danger', 'btn-warning', 'btn-default'];
+			?>
+			@foreach(admin_sidebar() as $item)
+                @if(isset($item['permission']) && Entrust::can($item['permission']) || Entrust::hasRole('root'))
+                <?php
+					$btnClass = $btnClassArray[array_rand($btnClassArray)];
+				?>
+                <div class="col-sm-2">
+                    <a style="display: block;" class="btn {{ $btnClass }} {{ isset($item['pattern_active']) ? (Request::is($item['pattern_active']) ? 'active': '') : '' }}" href="{{ array_get($item, 'url') }}">
+                        <i class="{{ array_get($item, 'icon') }} fa-3x pull-left"></i>
+                        <span>{{ array_get($item, 'title') }}</span>
+                        <span class="clearfix"></span>
+                    </a>
+                </div>
+                @endif
+            @endforeach
+            </div>
 		</div>
-		<div class="col-md-3">
-			<a class="mini-stat clearfix block" href="javascript:;">
-				<span class="mini-stat-icon pink"><i class="fa fa-user"></i></span>
-				<div class="mini-stat-info">
-					<span>{{ userRepository()->countAllUsers() }}</span>
-					Users
-				</div>
-			</a>
-		 </div>
-	</div> --}}
-	<!--mini statistics end-->
+	</div>
 @stop

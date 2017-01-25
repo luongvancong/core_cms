@@ -3,7 +3,7 @@
 namespace Nht\Http\Middleware;
 
 use Closure;
-use Nht\Hocs\Users\UserRepository;
+use Modules\User\Repositories\UserRepository;
 
 class AdminAuthentication
 {

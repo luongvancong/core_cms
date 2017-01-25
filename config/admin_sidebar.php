@@ -26,14 +26,32 @@ return [
         ]
     ],
 
-    // [
-    //     'title' => 'Category',
-    //     'url' => '/admin/categories',
-    //     'icon' => 'fa fa-folder',
-    //     'pattern_active' => 'admin/categories/*',
-    //     'permission' => ['category.view'],
-    //     'role' => []
-    // ],
+    [
+        'title' => 'User',
+        'url' => '/admin/users',
+        'icon' => 'fa fa-users',
+        'pattern_active' => 'admin/users*',
+        'permission' => ['user.view'],
+        'role' => [],
+        'items' => [
+            [
+                'title' => 'Users',
+                'url' => '/admin/users',
+                'pattern_active' => 'admin/users'
+
+            ],
+            [
+                'title' => 'Role',
+                'url' => '/admin/users/roles',
+                'pattern_active' => 'admin/users/roles*'
+            ],
+            [
+                'title' => 'Permission',
+                'url' => '/admin/users/permissions',
+                'pattern_active' => 'admin/users/permissions*'
+            ]
+        ]
+    ],
 
     [
         'title' => 'Banner',

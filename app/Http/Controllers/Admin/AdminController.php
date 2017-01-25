@@ -3,7 +3,7 @@
 namespace Nht\Http\Controllers\Admin;
 
 use Illuminate\Contracts\Auth\Guard as Auth;
-use Nht\Hocs\Users\UserRepository;
+use Modules\User\Repositories\UserRepository;
 use Nht\Http\Controllers\BackendController;
 
 class AdminController extends BackendController {

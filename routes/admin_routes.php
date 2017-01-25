@@ -35,128 +35,128 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 			'permissions' => 'dashboard.view'
 		]);
 
-		/**
-		 * Users module
-		 */
-		Route::group(['prefix' => 'users'], function() {
-			Route::get('/', [
-				'as' => 'user.index',
-				'uses' => 'UserController@index',
-				'permissions' => 'user.view',
-			]);
+		// /**
+		//  * Users module
+		//  */
+		// Route::group(['prefix' => 'users'], function() {
+		// 	Route::get('/', [
+		// 		'as' => 'user.index',
+		// 		'uses' => 'UserController@index',
+		// 		'permissions' => 'user.view',
+		// 	]);
 
-			Route::get('create', [
-				'as' => 'user.create',
-				'uses' => 'UserController@create',
-				'permissions' => 'user.create',
-			]);
+		// 	Route::get('create', [
+		// 		'as' => 'user.create',
+		// 		'uses' => 'UserController@create',
+		// 		'permissions' => 'user.create',
+		// 	]);
 
-			Route::post('/', [
-				'as' => 'user.store',
-				'uses' => 'UserController@store',
-				'permissions' => 'user.store',
-			]);
+		// 	Route::post('/', [
+		// 		'as' => 'user.store',
+		// 		'uses' => 'UserController@store',
+		// 		'permissions' => 'user.store',
+		// 	]);
 
-			Route::get('{users}/edit', [
-				'as' => 'user.edit',
-				'uses' => 'UserController@edit',
-				'permissions' => 'user.edit',
-			]);
+		// 	Route::get('{users}/edit', [
+		// 		'as' => 'user.edit',
+		// 		'uses' => 'UserController@edit',
+		// 		'permissions' => 'user.edit',
+		// 	]);
 
-			Route::post('{user}/edit', [
-				'as' => 'user.update',
-				'uses' => 'UserController@update',
-				'permissions' => 'user.update',
-			]);
+		// 	Route::post('{user}/edit', [
+		// 		'as' => 'user.update',
+		// 		'uses' => 'UserController@update',
+		// 		'permissions' => 'user.update',
+		// 	]);
 
-			Route::get('{user}/delete', [
-				'as' => 'user.destroy',
-				'uses' => 'UserController@destroy',
-				'permissions' => 'user.destroy',
-			]);
-		});
+		// 	Route::get('{user}/delete', [
+		// 		'as' => 'user.destroy',
+		// 		'uses' => 'UserController@destroy',
+		// 		'permissions' => 'user.destroy',
+		// 	]);
+		// });
 
-		/**
-		 * Roles module
-		 */
-		Route::group(['prefix' => 'roles'], function() {
-			Route::get('/', [
-				'as'          => 'role.index',
-				'uses'        => 'RoleController@index',
-				'permissions' => 'role.view',
-			]);
+		// /**
+		//  * Roles module
+		//  */
+		// Route::group(['prefix' => 'roles'], function() {
+		// 	Route::get('/', [
+		// 		'as'          => 'role.index',
+		// 		'uses'        => 'RoleController@index',
+		// 		'permissions' => 'role.view',
+		// 	]);
 
-			Route::get('create', [
-				'as'          => 'role.create',
-				'uses'        => 'RoleController@create',
-				'permissions' => 'role.create',
-			]);
+		// 	Route::get('create', [
+		// 		'as'          => 'role.create',
+		// 		'uses'        => 'RoleController@create',
+		// 		'permissions' => 'role.create',
+		// 	]);
 
-			Route::post('/', [
-				'as'          => 'role.store',
-				'uses'        => 'RoleController@store',
-				'permissions' => 'role.store',
-			]);
+		// 	Route::post('/', [
+		// 		'as'          => 'role.store',
+		// 		'uses'        => 'RoleController@store',
+		// 		'permissions' => 'role.store',
+		// 	]);
 
-			Route::get('{role}/edit', [
-				'as'          => 'role.edit',
-				'uses'        => 'RoleController@edit',
-				'permissions' => 'role.edit',
-			]);
+		// 	Route::get('{role}/edit', [
+		// 		'as'          => 'role.edit',
+		// 		'uses'        => 'RoleController@edit',
+		// 		'permissions' => 'role.edit',
+		// 	]);
 
-			Route::post('{role}/edit', [
-				'as'          => 'role.update',
-				'uses'        => 'RoleController@update',
-				'permissions' => 'role.update',
-			]);
+		// 	Route::post('{role}/edit', [
+		// 		'as'          => 'role.update',
+		// 		'uses'        => 'RoleController@update',
+		// 		'permissions' => 'role.update',
+		// 	]);
 
-			Route::get('{role}/delete', [
-				'as'          => 'role.destroy',
-				'uses'        => 'RoleController@destroy',
-				'permissions' => 'role.destroy',
-			]);
-		});
+		// 	Route::get('{role}/delete', [
+		// 		'as'          => 'role.destroy',
+		// 		'uses'        => 'RoleController@destroy',
+		// 		'permissions' => 'role.destroy',
+		// 	]);
+		// });
 
-		/**
-		 * Permissions module
-		 */
-		Route::group(['prefix' => 'permissions'], function() {
-			Route::get('/', [
-				'as'          => 'permission.index',
-				'uses'        => 'PermissionController@index',
-				'permissions' => 'permission.view',
-			]);
+		// /**
+		//  * Permissions module
+		//  */
+		// Route::group(['prefix' => 'permissions'], function() {
+		// 	Route::get('/', [
+		// 		'as'          => 'permission.index',
+		// 		'uses'        => 'PermissionController@index',
+		// 		'permissions' => 'permission.view',
+		// 	]);
 
-			Route::get('create', [
-				'as'          => 'permission.create',
-				'uses'        => 'PermissionController@create',
-				'permissions' => 'permission.create',
-			]);
+		// 	Route::get('create', [
+		// 		'as'          => 'permission.create',
+		// 		'uses'        => 'PermissionController@create',
+		// 		'permissions' => 'permission.create',
+		// 	]);
 
-			Route::post('/', [
-				'as'          => 'permission.store',
-				'uses'        => 'PermissionController@store',
-				'permissions' => 'permission.store',
-			]);
+		// 	Route::post('/', [
+		// 		'as'          => 'permission.store',
+		// 		'uses'        => 'PermissionController@store',
+		// 		'permissions' => 'permission.store',
+		// 	]);
 
-			Route::get('{permission}/edit', [
-				'as'          => 'permission.edit',
-				'uses'        => 'PermissionController@edit',
-				'permissions' => 'permission.edit',
-			]);
+		// 	Route::get('{permission}/edit', [
+		// 		'as'          => 'permission.edit',
+		// 		'uses'        => 'PermissionController@edit',
+		// 		'permissions' => 'permission.edit',
+		// 	]);
 
-			Route::post('{permission}/edit', [
-				'as'          => 'permission.update',
-				'uses'        => 'PermissionController@update',
-				'permissions' => 'permission.update',
-			]);
+		// 	Route::post('{permission}/edit', [
+		// 		'as'          => 'permission.update',
+		// 		'uses'        => 'PermissionController@update',
+		// 		'permissions' => 'permission.update',
+		// 	]);
 
-			Route::get('{permission}/delete', [
-				'as'          => 'permission.destroy',
-				'uses'        => 'PermissionController@destroy',
-				'permissions' => 'permission.destroy',
-			]);
-		});
+		// 	Route::get('{permission}/delete', [
+		// 		'as'          => 'permission.destroy',
+		// 		'uses'        => 'PermissionController@destroy',
+		// 		'permissions' => 'permission.destroy',
+		// 	]);
+		// });
 
 		/**
 		 * Settings Moduler
@@ -219,22 +219,22 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 		// });
 
 		// QUAN LY THIET KE
-		Route::group(['prefix' => 'advisory-design'], function() {
-			Route::group(['prefix' => 'categories'], function() {
-				Route::get('/', ['as' => 'admin.advisory_design.categories', 'uses' => 'AdvisoryDesignController@categories']);
-				Route::get('/create', ['as' => 'admin.advisory_design.categories.create', 'uses' => 'AdvisoryDesignController@createCategory']);
-				Route::post('/create', 'AdvisoryDesignController@storeCategory');
+		// Route::group(['prefix' => 'advisory-design'], function() {
+		// 	Route::group(['prefix' => 'categories'], function() {
+		// 		Route::get('/', ['as' => 'admin.advisory_design.categories', 'uses' => 'AdvisoryDesignController@categories']);
+		// 		Route::get('/create', ['as' => 'admin.advisory_design.categories.create', 'uses' => 'AdvisoryDesignController@createCategory']);
+		// 		Route::post('/create', 'AdvisoryDesignController@storeCategory');
 
-				Route::get('/{id}/edit', ['as' => 'admin.advisory_design.categories.edit', 'uses' => 'AdvisoryDesignController@editCategory']);
-				Route::post('/{id}/edit', 'AdvisoryDesignController@updateCategory');
+		// 		Route::get('/{id}/edit', ['as' => 'admin.advisory_design.categories.edit', 'uses' => 'AdvisoryDesignController@editCategory']);
+		// 		Route::post('/{id}/edit', 'AdvisoryDesignController@updateCategory');
 
-				Route::get('/{id}/destroy', ['as' => 'admin.advisory_design.categories.destroy', 'uses' => 'AdvisoryDesignController@destroyCategory']);
+		// 		Route::get('/{id}/destroy', ['as' => 'admin.advisory_design.categories.destroy', 'uses' => 'AdvisoryDesignController@destroyCategory']);
 
-				Route::get('/{id}/toggleActive', ['as' => 'admin.advisory_design.categories.toggleActive', 'uses' => 'AdvisoryDesignController@toggleActiveCategory']);
-			});
+		// 		Route::get('/{id}/toggleActive', ['as' => 'admin.advisory_design.categories.toggleActive', 'uses' => 'AdvisoryDesignController@toggleActiveCategory']);
+		// 	});
 
-			Route::get('/products', ['as' => 'admin.advisory_design.products', 'uses' => 'AdvisoryDesignController@products']);
-		});
+		// 	Route::get('/products', ['as' => 'admin.advisory_design.products', 'uses' => 'AdvisoryDesignController@products']);
+		// });
 
 		/**
 		 * Products Moduler
@@ -442,89 +442,89 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 
 
 		// Car
-		Route::group(['prefix' => 'car'], function() {
-			Route::get('/index', ['as' => 'admin.car.index', 'permissions' => 'car.view', 'uses' => 'CarController@getIndex']);
+		// Route::group(['prefix' => 'car'], function() {
+		// 	Route::get('/index', ['as' => 'admin.car.index', 'permissions' => 'car.view', 'uses' => 'CarController@getIndex']);
 
-			Route::get('/create', ['as' => 'admin.car.create', 'permissions' => 'car.create', 'uses' => 'CarController@getCreate']);
-			Route::post('/create', 'CarController@postCreate');
+		// 	Route::get('/create', ['as' => 'admin.car.create', 'permissions' => 'car.create', 'uses' => 'CarController@getCreate']);
+		// 	Route::post('/create', 'CarController@postCreate');
 
-			Route::get('/{id}/edit', ['as' => 'admin.car.edit', 'permissions' => 'car.edit', 'uses' => 'CarController@getEdit']);
-			Route::post('/{id}/edit', 'CarController@postEdit');
+		// 	Route::get('/{id}/edit', ['as' => 'admin.car.edit', 'permissions' => 'car.edit', 'uses' => 'CarController@getEdit']);
+		// 	Route::post('/{id}/edit', 'CarController@postEdit');
 
-			Route::get('/{id}/delete', ['as' => 'admin.car.delete', 'permissions' => 'car.delete', 'uses' => 'CarController@getDelete']);
+		// 	Route::get('/{id}/delete', ['as' => 'admin.car.delete', 'permissions' => 'car.delete', 'uses' => 'CarController@getDelete']);
 
-			Route::get('/{id}/position-seat', ['as' => 'admin.car.position_seat.index', 'permissions' => 'car.edit', 'uses' => 'CarController@getPositionSeat']);
-			Route::post('/{id}/position-seat', ['as' => 'admin.car.position_seat.update', 'permissions' => 'car.edit', 'uses' => 'CarController@postPositionSeat']);
-		});
+		// 	Route::get('/{id}/position-seat', ['as' => 'admin.car.position_seat.index', 'permissions' => 'car.edit', 'uses' => 'CarController@getPositionSeat']);
+		// 	Route::post('/{id}/position-seat', ['as' => 'admin.car.position_seat.update', 'permissions' => 'car.edit', 'uses' => 'CarController@postPositionSeat']);
+		// });
 
 
 		// Transporters
-		Route::group(['prefix' => 'transporter'], function() {
-			Route::get('/index', ['as' => 'admin.transporter.index', 'permissions' => 'transporter.view', 'uses' => 'TransporterController@getIndex']);
+		// Route::group(['prefix' => 'transporter'], function() {
+		// 	Route::get('/index', ['as' => 'admin.transporter.index', 'permissions' => 'transporter.view', 'uses' => 'TransporterController@getIndex']);
 
-			Route::get('/create', ['as' => 'admin.transporter.create', 'permissions' => 'transporter.create', 'uses' => 'TransporterController@getCreate']);
-			Route::post('/create', 'TransporterController@postCreate');
+		// 	Route::get('/create', ['as' => 'admin.transporter.create', 'permissions' => 'transporter.create', 'uses' => 'TransporterController@getCreate']);
+		// 	Route::post('/create', 'TransporterController@postCreate');
 
-			Route::get('/{id}/edit', ['as' => 'admin.transporter.edit', 'permissions' => 'transporter.edit', 'uses' => 'TransporterController@getEdit']);
-			Route::post('/{id}/edit', 'TransporterController@postEdit');
+		// 	Route::get('/{id}/edit', ['as' => 'admin.transporter.edit', 'permissions' => 'transporter.edit', 'uses' => 'TransporterController@getEdit']);
+		// 	Route::post('/{id}/edit', 'TransporterController@postEdit');
 
-			Route::get('/{id}/delete', ['as' => 'admin.transporter.delete', 'permissions' => 'transporter.delete', 'uses' => 'TransporterController@getDelete']);
+		// 	Route::get('/{id}/delete', ['as' => 'admin.transporter.delete', 'permissions' => 'transporter.delete', 'uses' => 'TransporterController@getDelete']);
 
-			Route::get('/{id}/active', ['as' => 'admin.transporter.active', 'permissions' => 'transporter.active', 'uses' => 'TransporterController@getActive']);
+		// 	Route::get('/{id}/active', ['as' => 'admin.transporter.active', 'permissions' => 'transporter.active', 'uses' => 'TransporterController@getActive']);
 
-			// Images
-			Route::get('/{id}/images', ['as' => 'admin.transporter.images', 'permissions' => 'transporter.edit', 'uses' => 'TransporterController@getImages']);
-			Route::get('/{id}/images/create', ['as' => 'admin.transporter.images.create', 'permissions' => 'transporter.edit', 'uses' => 'TransporterController@getCreateImages']);
-			Route::post('/{id}/images/create', 'TransporterController@postCreateImages');
-			Route::get('{id}/images/{imgId}/delete', ['as' => 'admin.transporter.images.delete', 'permissions' => 'transporter.edit', 'uses' => 'TransporterController@deleteImage']);
+		// 	// Images
+		// 	Route::get('/{id}/images', ['as' => 'admin.transporter.images', 'permissions' => 'transporter.edit', 'uses' => 'TransporterController@getImages']);
+		// 	Route::get('/{id}/images/create', ['as' => 'admin.transporter.images.create', 'permissions' => 'transporter.edit', 'uses' => 'TransporterController@getCreateImages']);
+		// 	Route::post('/{id}/images/create', 'TransporterController@postCreateImages');
+		// 	Route::get('{id}/images/{imgId}/delete', ['as' => 'admin.transporter.images.delete', 'permissions' => 'transporter.edit', 'uses' => 'TransporterController@deleteImage']);
 
-			// Address
-			Route::get('/{id}/address', ['as' => 'admin.transporter.address', 'permissions' => 'transporter.edit', 'uses' => 'TransporterAddressController@getIndex']);
-			Route::get('/{id}/address/create', ['as' => 'admin.transporter.address.create', 'permissions' => 'transporter.edit', 'uses' => 'TransporterAddressController@getCreate']);
-			Route::post('/{id}/address/create', 'TransporterAddressController@postCreate');
+		// 	// Address
+		// 	Route::get('/{id}/address', ['as' => 'admin.transporter.address', 'permissions' => 'transporter.edit', 'uses' => 'TransporterAddressController@getIndex']);
+		// 	Route::get('/{id}/address/create', ['as' => 'admin.transporter.address.create', 'permissions' => 'transporter.edit', 'uses' => 'TransporterAddressController@getCreate']);
+		// 	Route::post('/{id}/address/create', 'TransporterAddressController@postCreate');
 
-			Route::get('/{id}/address/{addrId}/edit', ['as' => 'admin.transporter.address.edit', 'permissions' => 'transporter.edit', 'uses' => 'TransporterAddressController@getEdit']);
-			Route::post('/{id}/address/{addrId}/edit', 'TransporterAddressController@postEdit');
+		// 	Route::get('/{id}/address/{addrId}/edit', ['as' => 'admin.transporter.address.edit', 'permissions' => 'transporter.edit', 'uses' => 'TransporterAddressController@getEdit']);
+		// 	Route::post('/{id}/address/{addrId}/edit', 'TransporterAddressController@postEdit');
 
-			Route::get('/{id}/address/delete', ['as' => 'admin.transporter.address.delete', 'permissions' => 'transporter.delete', 'uses' => 'TransporterAddressController@getDelete']);
-		});
+		// 	Route::get('/{id}/address/delete', ['as' => 'admin.transporter.address.delete', 'permissions' => 'transporter.delete', 'uses' => 'TransporterAddressController@getDelete']);
+		// });
 
 
 		// Trip
-		Route::group(['prefix' => 'trip'], function() {
-			Route::get('/index', ['as' => 'admin.trip.index', 'permissions' => 'trip.view', 'uses' => 'TripController@getIndex']);
-			Route::get('/create', ['as' => 'admin.trip.create', 'permissions' => 'trip.create', 'uses' => 'TripController@getCreate']);
-			Route::post('/create', 'TripController@postCreate');
+		// Route::group(['prefix' => 'trip'], function() {
+		// 	Route::get('/index', ['as' => 'admin.trip.index', 'permissions' => 'trip.view', 'uses' => 'TripController@getIndex']);
+		// 	Route::get('/create', ['as' => 'admin.trip.create', 'permissions' => 'trip.create', 'uses' => 'TripController@getCreate']);
+		// 	Route::post('/create', 'TripController@postCreate');
 
-			Route::get('/{id}/edit', ['as' => 'admin.trip.edit', 'permissions' => 'trip.edit', 'uses' => 'TripController@getEdit']);
-			Route::post('/{id}/edit', 'TripController@postEdit');
+		// 	Route::get('/{id}/edit', ['as' => 'admin.trip.edit', 'permissions' => 'trip.edit', 'uses' => 'TripController@getEdit']);
+		// 	Route::post('/{id}/edit', 'TripController@postEdit');
 
-			Route::get('/{id}/active', ['as' => 'admin.trip.active', 'permissions' => 'trip.active', 'uses' => 'TripController@getActive']);
+		// 	Route::get('/{id}/active', ['as' => 'admin.trip.active', 'permissions' => 'trip.active', 'uses' => 'TripController@getActive']);
 
-			Route::get('/{id}/delete', ['as' => 'admin.trip.delete', 'permissions' => 'trip.delete', 'uses' => 'TripController@getDelete']);
+		// 	Route::get('/{id}/delete', ['as' => 'admin.trip.delete', 'permissions' => 'trip.delete', 'uses' => 'TripController@getDelete']);
 
-			// Schedule
-			Route::get('/{id}/schedule', ['as' => 'admin.trip.schedule', 'permissions' => 'trip.schedule', 'uses' => 'TripScheduleController@getIndex']);
-			Route::get('/{id}/schedule/create', ['as' => 'admin.trip.schedule.create', 'permissions' => 'trip.schedule.create', 'uses' => 'TripScheduleController@getCreate']);
-			Route::post('/{id}/schedule/create', 'TripScheduleController@postCreate');
-			Route::get('/{id}/schedule/{sId}/edit', ['as' => 'admin.trip.schedule.edit', 'permissions' => 'trip.schedule.edit', 'uses' => 'TripScheduleController@getEdit']);
-			Route::post('/{id}/schedule/{sId}/edit', 'TripScheduleController@postEdit');
-			Route::get('/{id}/schedule/{sid}/delete', ['as' => 'admin.trip.schedule.delete', 'permissions' => 'trip.schedule.delete', 'uses' => 'TripScheduleController@getDelete']);
+		// 	// Schedule
+		// 	Route::get('/{id}/schedule', ['as' => 'admin.trip.schedule', 'permissions' => 'trip.schedule', 'uses' => 'TripScheduleController@getIndex']);
+		// 	Route::get('/{id}/schedule/create', ['as' => 'admin.trip.schedule.create', 'permissions' => 'trip.schedule.create', 'uses' => 'TripScheduleController@getCreate']);
+		// 	Route::post('/{id}/schedule/create', 'TripScheduleController@postCreate');
+		// 	Route::get('/{id}/schedule/{sId}/edit', ['as' => 'admin.trip.schedule.edit', 'permissions' => 'trip.schedule.edit', 'uses' => 'TripScheduleController@getEdit']);
+		// 	Route::post('/{id}/schedule/{sId}/edit', 'TripScheduleController@postEdit');
+		// 	Route::get('/{id}/schedule/{sid}/delete', ['as' => 'admin.trip.schedule.delete', 'permissions' => 'trip.schedule.delete', 'uses' => 'TripScheduleController@getDelete']);
 
-			// Images
-			Route::get('/{id}/images', ['as' => 'admin.trip.images', 'permissions' => 'trip.images', 'uses' => 'TripImageController@getIndex']);
-			Route::get('/{id}/images/create', ['as' => 'admin.trip.images.create', 'permissions' => 'trip.images.create', 'uses' => 'TripImageController@getCreate']);
-			Route::post('/{id}/images/create', 'TripImageController@postCreate');
-			Route::get('/{id}/images/{imgId}/edit', ['as' => 'admin.trip.images.edit', 'permissions' => 'trip.images.edit', 'uses' => 'TripImageController@getEdit']);
-			Route::post('/{id}/images/{imgId}/edit', 'TripImageController@postEdit');
-			Route::get('/{id}/images/{imgId}/delete', ['as' => 'admin.trip.images.delete', 'permissions' => 'trip.images.delete', 'uses' => 'TripImageController@getDelete']);
-		});
+		// 	// Images
+		// 	Route::get('/{id}/images', ['as' => 'admin.trip.images', 'permissions' => 'trip.images', 'uses' => 'TripImageController@getIndex']);
+		// 	Route::get('/{id}/images/create', ['as' => 'admin.trip.images.create', 'permissions' => 'trip.images.create', 'uses' => 'TripImageController@getCreate']);
+		// 	Route::post('/{id}/images/create', 'TripImageController@postCreate');
+		// 	Route::get('/{id}/images/{imgId}/edit', ['as' => 'admin.trip.images.edit', 'permissions' => 'trip.images.edit', 'uses' => 'TripImageController@getEdit']);
+		// 	Route::post('/{id}/images/{imgId}/edit', 'TripImageController@postEdit');
+		// 	Route::get('/{id}/images/{imgId}/delete', ['as' => 'admin.trip.images.delete', 'permissions' => 'trip.images.delete', 'uses' => 'TripImageController@getDelete']);
+		// });
 
 		// Trip order
-		Route::group(['prefix' => 'trip-order'], function() {
-			Route::get('/index', ['as' => 'admin.tripOrder.index', 'permissions' => 'tripOrder.view', 'uses' => 'TripOrderController@getIndex']);
-			Route::get('/{id}/detail', ['as' => 'admin.tripOrder.detail', 'permissions' => 'tripOrder.view', 'uses' => 'TripOrderController@getDetail']);
-		});
+		// Route::group(['prefix' => 'trip-order'], function() {
+		// 	Route::get('/index', ['as' => 'admin.tripOrder.index', 'permissions' => 'tripOrder.view', 'uses' => 'TripOrderController@getIndex']);
+		// 	Route::get('/{id}/detail', ['as' => 'admin.tripOrder.detail', 'permissions' => 'tripOrder.view', 'uses' => 'TripOrderController@getDetail']);
+		// });
 
 	});
 });

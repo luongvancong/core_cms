@@ -19,7 +19,7 @@ return [
     | the role if it is in a different namespace.
     |
     */
-    'role' => 'Nht\Hocs\Entrusts\Role',
+    'role' => 'Modules\User\Repositories\Chmod\Role',
 
     /*
     |--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ return [
     | Update the permission if it is in a different namespace.
     |
     */
-    'permission' => 'Nht\Hocs\Entrusts\Permission',
+    'permission' => 'Modules\User\Repositories\Chmod\Permission',
 
     /*
     |--------------------------------------------------------------------------

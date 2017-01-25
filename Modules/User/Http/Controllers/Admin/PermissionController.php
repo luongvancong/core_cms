@@ -1,10 +1,10 @@
 <?php
 
-namespace Nht\Http\Controllers\Admin;
+namespace Modules\User\Http\Controllers\Admin;
 
-use Nht\Hocs\Entrusts\RoleRepository;
-use Nht\Http\Requests\AdminPermissionFormRequest;
-use Nht\Hocs\Entrusts\PermissionRepository;
+use Modules\User\Http\Requests\AdminPermissionFormRequest;
+use Modules\User\Repositories\Chmod\PermissionRepository;
+use Modules\User\Repositories\Chmod\RoleRepository;
 use Nht\Http\Controllers\Admin\AdminController;
 
 class PermissionController extends AdminController
@@ -28,7 +28,7 @@ class PermissionController extends AdminController
     public function index()
     {
         $permissions = $this->perm->getAllWithPaginate();
-        return view('admin/permissions/index', compact('permissions'));
+        return view('user::admin/permissions/index', compact('permissions'));
     }
 
     /**
@@ -38,7 +38,7 @@ class PermissionController extends AdminController
      */
     public function create()
     {
-        return view('admin/permissions/create');
+        return view('user::admin/permissions/create');
     }
 
     /**
@@ -64,7 +64,7 @@ class PermissionController extends AdminController
     public function edit($id)
     {
         $permission = $this->perm->getById($id);
-      return view('admin/permissions/edit', compact('permission'));
+      return view('user::admin/permissions/edit', compact('permission'));
     }
 
     /**
@@ -76,10 +76,10 @@ class PermissionController extends AdminController
     public function update($id, AdminPermissionFormRequest $request)
     {
         if ($this->perm->update($request->except('_token'), ['id' => $id]))
-        {
-            return redirect()->route('permission.index')->with('success', trans('general.messages.update_success'));
-        }
-        return redirect()->back()->withInputs()->with('error', trans('general.messages.update_fail'));
+      {
+         return redirect()->route('permission.index')->with('success', trans('general.messages.update_success'));
+      }
+      return redirect()->back()->withInputs()->with('error', trans('general.messages.update_fail'));
     }
 
     /**

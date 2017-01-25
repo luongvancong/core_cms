@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Nht\Hocs\Users\User::class,
+            'model' => Modules\User\Repositories\User::class,
         ],
 
         // 'users' => [
