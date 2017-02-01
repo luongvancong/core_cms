@@ -25,10 +25,14 @@
 
    <div class="form-group">
       <label for="email" class="col-sm-3 control-label">Ảnh đại diện <b class="text-danger">*</b></label>
-      <div class="col-sm-6 text-center">
+      <div class="col-sm-6">
+
          <div class="row">
-            <div class="col-sm-6">
+            {{-- <div class="col-sm-6">
                <input type="file" class="form-control" name="image">
+            </div> --}}
+            <div class="col-sm-6">
+               {!! gallery_init('image', 'image') !!}
             </div>
             <div class="col-sm-6">
                <input type="text" name="image_alt" class="form-control" placeholder="Alt">

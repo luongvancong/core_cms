@@ -41,10 +41,12 @@ class PageController extends AdminController {
 
 	public function postCreate(AdminPageFormRequest $request) {
 		$data = $request->except(['_token']);
-		$resultUpload = $this->imageUploader->upload('image');
 
-		if($resultUpload['status'] > 0) {
-			$data['image'] = $resultUpload['filename'];
+		if($request->hasFile('image')) {
+			$resultUpload = $this->imageUploader->upload('image');
+			if($resultUpload['status'] > 0) {
+				$data['image'] = $resultUpload['filename'];
+			}
 		}
 
 		if($this->page->create($data)) {
@@ -63,10 +65,12 @@ class PageController extends AdminController {
 		$page = $this->page->getById($id);
 		$data = $request->except(['_token']);
 
-		$resultUpload = $this->imageUploader->upload('image');
+		if($request->hasFile('image')) {
+			$resultUpload = $this->imageUploader->upload('image');
 
-		if($resultUpload['status'] > 0) {
-			$data['image'] = $resultUpload['filename'];
+			if($resultUpload['status'] > 0) {
+				$data['image'] = $resultUpload['filename'];
+			}
 		}
 
 		if($this->page->update($data, ['id' => $id])) {

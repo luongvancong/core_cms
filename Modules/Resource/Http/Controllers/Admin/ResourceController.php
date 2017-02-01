@@ -41,12 +41,12 @@ class ResourceController extends AdminController {
     public function getIndex(Request $request)
     {
         $resources = $this->resource->getResources(20);
-        return view('resource::admin/index', compact('resources'));
+        return view('resource::admin/resource/index', compact('resources'));
     }
 
     public function getCreate(Request $request)
     {
-        return view('resource::admin/create', compact('resource'));
+        return view('resource::admin/resource/create', compact('resource'));
     }
 
     public function postCreate(Request $request)
@@ -85,7 +85,7 @@ class ResourceController extends AdminController {
 
         if($resource->delete()) {
             // Xóa luôn cả file
-            $uploadPath = public_path() . '/uploads/';
+            $uploadPath = public_path() . '/'. config('upload.upload_folder') .'/';
             $arrayResizeImage = config('image.array_resize_image');
             $targetFolder = get_image_folder($imageName);
             @unlink($uploadPath . $targetFolder . '/'. $imageName);

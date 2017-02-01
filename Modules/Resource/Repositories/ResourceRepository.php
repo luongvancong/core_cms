@@ -14,10 +14,22 @@ class ResourceRepository extends BaseRepository {
     {
         $query = $this->model->whereRaw(1);
 
+        $extensions = (array) array_get($filter, 'extensions');
+
+        if($extensions) {
+            $query->whereIn('extension', $extensions);
+        }
+
         if($paginate) {
             return $query->paginate($perPage);
         }
 
         return $query->take($perPage)->get();
+    }
+
+
+    public function getByName($name)
+    {
+        return $this->model->where('name', '=', $name)->first();
     }
 }

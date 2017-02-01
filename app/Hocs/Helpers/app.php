@@ -9,7 +9,7 @@ if( ! function_exists('parse_image_url') ) {
     function parse_image_url($image) {
         $explode = explode('___', $image);
         if(isset($explode[1])) {
-            return '/uploads/' . date('Y/m/d', $explode[1]) . '/' . $image;
+            return '/'. config('upload.upload_folder') .'/' . date('Y/m/d', $explode[1]) . '/' . $image;
         }
     }
 }
@@ -26,6 +26,11 @@ if( ! function_exists('setting') ) {
 }
 
 if( ! function_exists('get_image_folder') ) {
+    /**
+     * Lấy tên folder chứa ảnh theo tên ảnh
+     * @param  str $image
+     * @return str
+     */
     function get_image_folder($image) {
         $explode = explode('___', $image);
         if(isset($explode[1])) {
@@ -33,5 +38,20 @@ if( ! function_exists('get_image_folder') ) {
         }
 
         return '';
+    }
+}
+
+if( ! function_exists('gallery_init') ) {
+    /**
+     * Tạo control chọn ảnh gallery
+     * @param  str $imgId
+     * @param  str $controlName
+     * @return str
+     */
+    function gallery_init($imgId, $controlName) {
+        return view('resource::admin/gallery/control', [
+            'imgId'       => $imgId,
+            'controlName' => $controlName
+        ]);
     }
 }

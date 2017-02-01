@@ -67,6 +67,11 @@
 	<script src="/js/moment/min/moment-with-locales.min.js"></script>
 	<script src="/js/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 
+	<link rel="stylesheet" type="text/css" href="/js/fancybox-2.15/source/jquery.fancybox.css">
+    <script type="text/javascript" src="/js/fancybox-2.15/source/jquery.fancybox.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/gallery.css">
+
 </head>
 <body>
 <section id="container">

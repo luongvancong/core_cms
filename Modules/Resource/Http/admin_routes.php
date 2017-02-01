@@ -16,4 +16,11 @@ Route::group(['prefix' => 'admin/resource', 'middleware' => ['web', 'admin', 'ac
 
     // Editable
     Route::post('/ajax/editable', ['as' => 'admin.resource.ajax.editable', 'permissions' => 'resource.edit', 'uses' => 'ResourceController@ajaxEditable']);
+
+
+    // Gallery
+    Route::group(['prefix' => 'gallery'], function() {
+        Route::get('index', ['as' => 'admin.gallery.index', 'uses' => 'GalleryController@getIndex']);
+        Route::post('delete', ['as' => 'admin.gallery.delete', 'uses' => 'GalleryController@getDelete']);
+    });
 });

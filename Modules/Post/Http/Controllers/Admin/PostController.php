@@ -70,7 +70,7 @@ class PostController extends AdminController
     }
 
     public function getEdit($postId) {
-        $categories = new Collection;
+        $categories = $this->category->getAllCategories();
         $post = $this->post->getById($postId);
         return view('post::admin/edit', compact('post', 'categories'));
     }

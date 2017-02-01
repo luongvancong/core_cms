@@ -109,9 +109,10 @@ class Upload {
 		$ipClient = Request::server('REMOTE_ADDR');
 		if(!$ipClient) $ipClient = time() . rand(111111,999999) . rand(111111,999999);
 
-		$frefix = date("Y-m-d").'___'.time().'___';
+		$frefix = date("Y_m_d").'___'.time().'___';
 		$nFilename = str_replace('.', '--', $filename);
-		$filenameMd5 = $frefix . removeTitle($nFilename) . md5($ipClient);
+		$nFilename = removeTitle($nFilename);
+		$filenameMd5 = $frefix . md5($nFilename . $ipClient);
 		return $filenameMd5 . '.' . $this->getExtension($filename);
 	}
 

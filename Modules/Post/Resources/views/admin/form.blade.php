@@ -41,7 +41,8 @@
     <div class="form-group">
         <label class="control-label col-sm-3">Ảnh minh họa</label>
         <div class="col-sm-6">
-            <input type="file" name="image" class="form-control btn-flat">
+            {{-- <input type="file" name="image" class="form-control btn-flat"> --}}
+            {!! gallery_init('post-image', 'image') !!}
             <input type="text" name="image_alt" class="form-control" placeholder="Alt">
         </div>
     </div>
