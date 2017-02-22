@@ -1,0 +1,48 @@
+/* Header */
+$header-main-bg               : transparent !default;
+$header-color                 : $white !default;
+$header-padding               : 18px 0 !default;
+$header-margin                : 10px !default;
+/* Header-end */
+
+/* Section-heading */
+$section-heading-border       : 3px solid $border-color !default;
+$section-heading-color        : $theme-color !default;
+$section-heading-font-size    : 24px !default;
+$section-heading-padding      : 15px !default;
+$section-heading-font-weight  : 700 !default;
+$section-heading-align        : center !default;
+/* Section-end */
+
+/* Footer */
+$footer-bg                    : #2c251d !default;
+$footer-border-color          : #585151 !default;
+$footer-color                 : #8c8c8c !default;
+$footer-padding               : 25px 0;
+$footer-margin                : 0 0 30px 0;
+
+$footer-link-color            : #8c8c8c;
+$footer-link-display          : inline-block;
+$footer-link-hover-color      : #ffcc5d !default;
+$footer-link-padding          : 10px 0; 
+
+$footer-heading-color         : $white !default;
+$footer-heading-display       : inline-block !default;
+$footer-heading-font-size     : 16px !default;
+$footer-heading-font-weight   : 700 !default;
+$footer-heading-letter-spacing: 1 !default;
+$footer-heading-margin        : 15px 0 !default;
+$footer-heading-padding       : 10px !default;
+$footer-heading-transform     : uppercase !default;
+
+/* Footer-end */
+
+// Copyright
+$copyright-bg                 : #191919 !default;
+$copyright-color              : #686868 !default;
+$copyright-link-color         : $theme-color !default;
+$copyright-padding            : 25px 0 !default;
+$copyright-font-size          : 14px !default;
+$copyright-font-weight        : 300 !default;
+$copyright-align              : center !default;
+// Copyright-end
