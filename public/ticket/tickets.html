@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> SapaLimousine :: Đặt vé xe trực tuyến </title>
+<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+ 
+<div class="nav">
+    <a href="index.html">
+        <div class="logo"></div>
+    </a>
+    <ul class="menu">
+        <li class="btMenu">
+           <a class="navbar-minimalize minimalize-styl-2 btn btn-primary tool-mobile" href="#"><i class="fa fa-bars"></i> </a>
+        </li>
+        <li class="menuItem">
+            <a>
+                <span class="header-blue-tel" style="cursor:pointer;" id="header-hotline-link">
+                    <i class="fa fa-phone rotate-phone"></i>Hotline: 01678481197
+                </span>
+            </a>
+        </li>
+        <li class="menuItem">
+            <a href="check_ticket.html">
+                <span class="check_ticket"><i class="fa fa-check-square-o"></i> Kiểm tra vé</span>
+            </a>
+        </li>
+        <li class="menuItem"><a href="#">Tin tức</a></li>
+        <li class="menuItem"><a href="#contact">Liên hệ</a></li>
+        <li class="menuItem">
+            <a class="menuLogin" href="#">
+                <span class="text-primary"><i class="fa fa-user"></i> Pham Hung</span>
+            </a>
+            <a>
+                <i class="fa fa-sign-out"></i> Log out
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--BODY-->
+  
+<div class="wrapper-content">
+    <div class="container">
+        <div class="content-inner">
+
+            <!--CONTENT HERE-->
+
+            <ol class="breadcrumb">
+                <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+                <li class="active">Đặt vé chuyến: <b>Hà Nội → Lào cai</b> </li>   
+            </ol>
+
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="sec-content">
+                        <div class="sec-content-main">
+
+                            <div class="title_box">
+                                <span style="font-size: 13px;" class="label label-primary"><i class="fa fa-exchange"></i> Chiều đi</span>    
+                            </div>
+                            
+                            <table class="table table-striped ticket_listing">
+                                <thead>
+                                    <tr style="background: #e6e6e6;">
+                                        <form method="GET" action="" accept-charset="UTF-8"></form>
+                                        <td class="hasinput">
+                                            
+                                        </td>
+                                        <td class="hasinput">
+                                            <div style="padding:0!important">
+                                                <select class="form-control m-b">
+                                                    <option>Các chuyến</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td class="hasinput">
+                                            <div class="input-group date" style="padding:0!important">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                                <input id="date_filter" type="text" class="form-control" value="" placeholder="Ngày xuất phát">
+                                            </div>
+                                        </td>
+                                        <td class="hasinput">
+                                            <div style="padding:0!important">
+                                                <select class="form-control m-b">
+                                                    <option>Điểm xuất phát</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td class="hasinput">
+                                            
+                                        </td>     
+                                        <td class="hasinput">
+                                            
+                                        </td>                                       
+                                    </tr>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Chuyến đi</th>
+                                        <th> Ngày / Giờ khởi hành</th>
+                                        <th> Điểm lên xe</th>
+                                        <th> Giá vé</th>
+                                        <th class="text-right">Đặt vé</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tr_ticket_active">
+                                        <td>
+                                           1
+                                        </td>
+                                        <td>
+                                            
+                                            <span style="font-size: 13px;" class="label label-primary">Hà nội</span> <i class="fa fa-road "></i> 
+                                            <span style="font-size: 13px;" class="label label-primary">Lào cai</span>
+                                        </td>
+                                        <td>
+                                             20/10/2016  
+                                            <span style="font-size: 13px;" class="label label-primary"><i class="fa fa-clock-o "></i> 07:00:00</span>
+                                        </td>
+                                        <td>
+
+                                            Bán đảo Linh Đàm
+                                        </td>
+                                        <td>
+                            
+                                            150.000 đ
+                                        </td>
+                                        <td class="text-right">
+                                            <span style="font-size: 13px;" class="label label-primary">
+                                            <i class="fa fa-hand-o-up "></i> Đặt vé / Chọn chỗ</span>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr class="ticket-booking-details ticket-booking-detail-seat-selection">
+                                        <td colspan="6" class="pl0 pr0 pt0 pb0" style="padding:0">
+                                            <div class="booking-expand  clearfix">
+                                                <table class="table seat-template-table table-noborder mb0">
+                                                    <thead class="bg-title-tbl">
+                                                        <tr>
+                                                            <th class="hidden-xs">Bấm ghế trống để chọn, bấm lần nữa để huỷ</th>
+                                                            <th class="hidden-xs hidden-sm">Thông tin vé xe</th>
+                                                            <th class="hidden-xs">Thông tin khách hàng </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="col-md-5 pr30 seat-template-col">
+                                                                <table class="color-seat table table-noborder mb0">
+                                                                    <tbody>
+                                                                        <tr class="seat-guid-row">
+                                                                            <td>
+                                                                                <div class="ml5" style="display: inline-block;border-radius: 50%;width: 11px;height: 11px;border: 1px solid #919191;"></div> Ghế trống
+                                                                            </td>
+                                                                            <td>
+                                                                                <p class="mb0">
+                                                                                    <i class="fa fa-circle ml5" style="color: #D4D4D4;"></i> Ghế đã đặt
+                                                                                </p>
+                                                                            </td>
+                                                                            <td>
+                                                                                <p class="mb0">
+                                                                                    <i class="fa fa-circle ml5" style="color: #BADF41;"> </i> Đang chọn
+                                                                                </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                    <div class="cd-sodoghe mt10">
+                                                                        <table class="table-layout-sodoghe table mb0" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td width="40"></td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="1" col-num="5" row-num="1" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 1">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="5" col-num="5" row-num="2" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 5">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="9" col-num="5" row-num="3" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 9">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-available" seat-number="0" seat-code="13" col-num="5" row-num="4" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 13">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-white.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="17" col-num="5" row-num="5" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 17">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="21" col-num="5" row-num="6" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 21">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="25" col-num="5" row-num="7" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 25">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-available" seat-number="0" seat-code="29" col-num="5" row-num="8" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 29">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-white.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="33" col-num="5" row-num="9" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 33">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="37" col-num="5" row-num="10" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 37">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="41" col-num="5" row-num="11" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 41">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td width="40"></td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="2" col-num="4" row-num="1" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 2">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="6" col-num="4" row-num="2" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 6">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="10" col-num="4" row-num="3" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 10">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-available" seat-number="0" seat-code="14" col-num="4" row-num="4" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 14">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-white.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="18" col-num="4" row-num="5" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 18">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="22" col-num="4" row-num="6" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 22">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="26" col-num="4" row-num="7" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 26">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-available" seat-number="0" seat-code="30" col-num="4" row-num="8" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 30">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-white.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="34" col-num="4" row-num="9" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 34">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="38" col-num="4" row-num="10" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 38">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="42" col-num="4" row-num="11" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 42">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td width="40"></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td></td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="43" col-num="3" row-num="11" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 43">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td width="40"></td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="3" col-num="2" row-num="1" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 3">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-available" seat-number="0" seat-code="7" col-num="2" row-num="2" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 7">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-white.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="11" col-num="2" row-num="3" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 11">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="15" col-num="2" row-num="4" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 15">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="19" col-num="2" row-num="5" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 19">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-available" seat-number="0" seat-code="23" col-num="2" row-num="6" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 23">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-white.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="27" col-num="2" row-num="7" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 27">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="31" col-num="2" row-num="8" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 31">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="35" col-num="2" row-num="9" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 35">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-available" seat-number="0" seat-code="39" col-num="2" row-num="10" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 39">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-white.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="44" col-num="2" row-num="11" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 44">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="vm">
+                                                                                        <img width="20" class="img-responsive wheel-img" src="img/steering-wheel.svg">
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="4" col-num="1" row-num="1" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 4">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-available" seat-number="0" seat-code="8" col-num="1" row-num="2" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 8">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-white.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="12" col-num="1" row-num="3" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 12">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="16" col-num="1" row-num="4" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 16">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="20" col-num="1" row-num="5" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 20">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-available" seat-number="0" seat-code="24" col-num="1" row-num="6" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 24">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-white.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="28" col-num="1" row-num="7" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 28">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="32" col-num="1" row-num="8" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 32">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="36" col-num="1" row-num="9" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 36">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-available" seat-number="0" seat-code="40" col-num="1" row-num="10" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 40">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-white.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="cd-ghe  seat-lock" seat-number="0" seat-code="45" col-num="1" row-num="11" floor-num="1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Số ghế: 45">
+                                                                                            <a href="javascript:;"><span class="cd-so-ghe"><img class="img-responsive seat-img" src="img/seat-gray.svg"></span></a>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                <div class="ticket-info-mobile visible-xs">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-4">
+                                                                            <span>Số ghế: </span>
+                                                                        </div>
+                                                                        <div class="col-xs-7">
+                                                                            <span class="seat-template-seat-code">Vui lòng chọn ít nhất 1 chỗ ngồi</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mt5">
+                                                                        <div class="col-xs-4">
+                                                                            <span>Tổng tiền: </span>
+                                                                        </div>
+                                                                        <div class="col-xs-7">
+                                                                            <span class="seat-template-old-total-fare" style="font-size: 14px; text-decoration: line-through; margin-right: 10px;"></span><h4 class="seat-template-total-fare">0</h4><span> đ</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+
+                                                            <td class="pl0 hidden-xs hidden-sm">
+                                                                <table class="table table-info" style="min-width:285px; background: #f7f6f6;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Tuyến đường:</td>
+                                                                            <td><b>Hà Nội → Lào cai</b></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Ngày khởi hành:</td>
+                                                                            <td><b><span class="departure-date">18-12-2016</span></b></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Giờ xuất phát:</td>
+                                                                            <td><b><span class="departure-time">07:00</span></b></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Địa chỉ xuất phát:</td>
+                                                                            <td><b><span>Số 9, đường Ngô Gia Khảm - Long Biên - Hà Nội</span></b></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Địa chỉ điểm đến:</td>
+                                                                            <td><b><span>275 Trần Nguyên Hãn - Lê Chân - Hải Phòng</span></b></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Số ghế:</td>
+                                                                            <td><span class="seat-template-seat-code">Vui lòng chọn ít nhất 1 chỗ ngồi</span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Giá vé:</td>
+                                                                            <td>85.000 đ/người</td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <h4>Tổng tiền:</h4>
+                                                                            </td>
+                                                                            <td>
+                                                                                <hr class="mt0 mb0">
+                                                                                <h4 class="seat-template-total-fare">0</h4><span> đ</span>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                    </tbody>
+
+                                                                </table>
+                                                            </td>
+                                                            <td class="customer-info-col">
+                                                                <form action="order_details.html" method="POST" class="frmSeatSelection form-horizontal" style="min-width: 300px;font-size:13px;">
+                                                                    <div class="container-fluid customer-info-title visible-xs">
+                                                                        <h4>THÔNG TIN KHÁCH HÀNG</h4>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 pl0 pr0 col-sm-3 control-label text-left hidden-xs">Họ tên:</label>
+                                                                        <div class="col-md-8 col-sm-8 pl0 pr0">
+                                                                            <input id="cfn" tabindex="1" name="CustomerFullName" type="text" class="form-control input-vxr" value="" placeholder="Họ tên" data-toggle="popover" data-content="Họ tên không hợp lệ" data-placement="top">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 pl0 pr0 control-label text-left hidden-xs">SĐT:</label>
+
+                                                                        <div class="col-md-8 col-sm-8 pl0 pr0">
+                                                                            <input id="cp" tabindex="2" name="CustomerPhone" type="tel" class="form-control input-vxr" value="" placeholder="VD: 0912345678" data-toggle="popover" data-content="Vui lòng nhập đúng định dạng (VD: 091 234 56 78)" data-placement="left" onkeypress="return isNumberByEventCode(event)">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="inputEmail3" tabindex="3" class="col-md-3 pl0 pr0 col-sm-3 control-label text-left hidden-xs">Email:</label>
+                                                                        <div class="col-md-8 col-sm-8 pl0 pr0">
+                                                                            <input id="ce" name="CustomerEmail" type="text" class="form-control input-vxr" value="" placeholder="Email" data-toggle="popover" data-content="Email không hợp lệ" data-placement="left">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group mb0">
+                                                                        <div class="col-md-offset-3 col-md-8 col-sm-11 pl0 pr0 cont-container text-left">
+                                                                            <button class="btn btn-primary label-primary" type="submit">Tiếp tục</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                                <div class="clearfix"></div>
+
+                                                                <div class="text-right pull-right col-md-offset-4 col-md-7 pl0">
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <h6 class="text-wblue thin200 pull-left pl5 selfie">SapaLimousine</h6>
+                                                <img class="logo-sm" src="img/logo-sm.svg" alt="">
+                                                <h6 class="text-wblue thin200 pull-right pr5">Mọi thắc mắc vui lòng gọi hotline:  <b><a class="hotline-link" href="tel:1900 969681">00000000</a></b></h6>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                           2
+                                        </td>
+                                        <td>
+                                           
+                                            <span style="font-size: 13px;" class="label label-primary">Hà nội</span>  <i class="fa fa-road "></i> 
+                                            <span style="font-size: 13px;" class="label label-primary">Lào cai</span>
+                                        </td>
+                                        <td>
+                                             20/10/2016  
+                                            <span style="font-size: 13px;" class="label label-primary"><i class="fa fa-clock-o "></i> 09:00:00</span>
+                                        </td>
+                                        <td>
+                                            
+                                            Công viên thống nhất
+                                        </td>
+                                        <td>
+                                            
+                                            150.000 đ
+                                        </td>
+                                        <td class="text-right">
+                                            <span style="font-size: 13px;" class="label label-primary">
+                                            <i class="fa fa-hand-o-up "></i> Đặt vé / Chọn chỗ</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                           3
+                                        </td>
+                                        <td>
+                                            
+                                            <span style="font-size: 13px;" class="label label-primary">Hà nội</span> <i class="fa fa-road "></i> 
+                                            <span style="font-size: 13px;" class="label label-primary">Lào cai</span>
+                                        </td>
+                                        <td>
+                                             20/10/2016  
+                                            <span style="font-size: 13px;" class="label label-primary"><i class="fa fa-clock-o "></i> 14:00:00</span>
+                                        </td>
+                                        <td>
+
+                                            Công viên thống nhất
+                                        </td>
+                                        <td>
+                            
+                                            150.000 đ
+                                        </td>
+                                        <td class="text-right">
+                                            <span style="font-size: 13px;" class="label label-primary">
+                                            <i class="fa fa-hand-o-up "></i> Đặt vé / Chọn chỗ</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                           4
+                                        </td>
+                                        <td>
+                                            
+                                            <span style="font-size: 13px;" class="label label-primary">Hà nội</span> <i class="fa fa-road "></i> 
+                                            <span style="font-size: 13px;" class="label label-primary">Lào cai</span>
+                                        </td>
+                                        <td>
+                                             20/10/2016  
+                                            <span style="font-size: 13px;" class="label label-primary"><i class="fa fa-clock-o "></i> 21:00:00</span>
+                                        </td>
+                                        <td>
+
+                                            Bến xe nước ngầm
+                                        </td>
+                                        <td>
+                            
+                                            120.000 đ
+                                        </td>
+                                        <td class="text-right">
+                                            <span style="font-size: 13px;" class="label label-primary">
+                                            <i class="fa fa-hand-o-up "></i> Đặt vé / Chọn chỗ</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="7">
+                                            <ul class="pagination pull-right"></ul>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="contact" class="gray-section contact">
+    <div class="container">
+        <div class="row m-b-lg">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Liên hệ </h1>
+                <p>Liên hệ với chúng tôi để được chăm sóc một cách tốt nhất</p>
+            </div>
+        </div>
+        <div class="row m-b-lg">
+            <div class="col-lg-4 col-lg-offset-2">
+                <address>
+                    <strong><span class="navy">Sapa Limousine, Inc.</span></strong><br>
+                    735A - Nguyễn Tuân - Thanh Xuân Trung<br>
+                    Hà Nội<br>
+                    <abbr title="Phone">P:</abbr> (043) 0167 848 1197
+                </address>
+            </div>
+            <div class="col-lg-4 col-lg-offset-0">
+                <p class="text-color">
+                    Trường hợp bạn đi du lịch Sapa theo nhóm hoặc gia đình, có thể chọn thuê cả xe Limousine để đi Sapa. Xe sẽ đón trả tận nơi, đi theo giờ của mình mà không phụ thuộc nhà xe.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <p class="m-t-sm">
+                    Chúng tôi trên mạng xã hội
+                </p>
+                <ul class="list-inline social-icon">
+                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
+                <p><strong>© 2016 SapaLimousine</strong><br> Trường hợp bạn đi du lịch Sapa theo nhóm hoặc gia đình, có thể chọn thuê cả xe Limousine để đi Sapa. Xe sẽ đón trả tận nơi, đi theo giờ của mình mà không phụ thuộc nhà xe.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script type='text/javascript' src='js/jquery.js'></script>
+<script type='text/javascript' src='js/bootstrap.min.js'></script>
+<script type='text/javascript' src='js/scrollReveal.js'></script>
+<script type='text/javascript' src="js/footable.all.min.js"></script>
+
+<script src="js/bootstrap-datepicker.js"></script>
+
+<link href="css/awesome-bootstrap-checkbox.css" rel="stylesheet">
+<link href="css/datepicker3.css" rel="stylesheet">
+<script type='text/javascript'>
+
+jQuery(document).ready(function(){  
+    $('.footable').footable();
+
+    $(".top").click(function(){
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+    });
+
+    $(".btMenu").click(function(){
+        if($(".menu").children(".menuItem").css("display") == "none"){
+            $(".menu").children(".menuItem").slideDown();
+        }
+        else{
+            $(".menu").children(".menuItem").slideUp();
+        }
+    });
+
+    $(window).resize(function(){
+        if($(window).innerWidth() > 900){
+            $(".menu").children(".menuItem").css("display", "block");
+        }
+        else{
+            $(".menu").children(".menuItem").css("display", "none");
+        }
+    });
+
+    $(".menu").children("li:nth-child(3)").click(function(){
+        $("body").scrollTo("#about", 600);          
+    });
+
+    $(".menu").children("li:nth-child(4)").click(function(){
+        $("body").scrollTo("#mission", 600);
+    });
+
+    $(".menu").children("li:nth-child(5)").click(function(){
+        $("body").scrollTo("#whyus", 600);
+    });
+
+    $(".menu").children("li:nth-child(6)").click(function(){
+        $("body").scrollTo("#whychose", 600);
+    });
+
+
+    $('#date_filter').datepicker({
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
+    });
+    
+    (function($) {
+        window.scrollReveal = new scrollReveal();
+    })();
+
+});
+            
+</script>
+
+
+</body>
+</html>
