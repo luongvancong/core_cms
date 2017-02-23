@@ -11,6 +11,7 @@ class TestController extends BaseController
 {
     public function index()
     {
+        print_r(config('admin.nav'));die;
         $now = time();
         $after = time() + (30*60);
         var_dump(date('Y-m-d H:i:s', $now));

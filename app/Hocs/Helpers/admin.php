@@ -7,6 +7,6 @@ if(! function_exists('admin_sidebar')) {
      * @return array
      */
     function admin_sidebar() {
-        return Config::get('admin_sidebar');
+        return config('admin.nav');
     }
 }

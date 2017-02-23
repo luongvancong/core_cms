@@ -23,7 +23,10 @@
                         </li>
                     @endif
                 @else
-                    @if(isset($item['permission']) && Entrust::can($item['permission']) || Entrust::hasRole('root'))
+                    @if(isset($item['permission'])
+                        && Entrust::can($item['permission'])
+                        && array_get($item, 'active') == 1
+                        || Entrust::hasRole('root') && array_get($item, 'active') == 1)
                     <li>
                         <a class="{{ isset($item['pattern_active']) ? (Request::is($item['pattern_active']) ? 'active': '') : '' }}" href="{{ array_get($item, 'url') }}">
                             <i class="{{ array_get($item, 'icon') }}"></i>
