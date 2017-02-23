@@ -12,7 +12,7 @@ use App;
 /**
  * Class description.
  *
- * @author  AlvinTran
+ * @author  Justin
  */
 class UserController extends AdminController
 {

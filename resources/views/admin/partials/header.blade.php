@@ -23,7 +23,7 @@
 					<b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu extended logout">
-					<li><a href="{{ url('/admin/users/' . Auth::user()->id . '/edit') }}"><i class=" fa fa-suitcase"></i>{{ trans('general.profile') }}</a></li>
+					<li><a href="{{ route('admin.user.profile') }}"><i class=" fa fa-suitcase"></i>{{ trans('general.profile') }}</a></li>
 					<li><a href="{{ route('admin.logout') }}"><i class="fa fa-key"></i> {{ trans('general.logout') }}</a></li>
 				</ul>
 			</li>

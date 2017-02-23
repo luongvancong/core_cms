@@ -39,6 +39,14 @@ Route::group(['prefix' => 'admin/users', 'middleware' => ['web', 'admin', 'acl']
         'uses' => 'UserController@destroy',
         'permissions' => 'user.destroy',
     ]);
+
+    // Change profile
+    Route::get('/profile', ['as' => 'admin.user.profile', 'uses' => 'ProfileController@getProfile']);
+    Route::post('/profile', 'ProfileController@postProfile');
+
+    // Change password
+    Route::get('/profile/change-password', ['as' => 'admin.user.profile.changePassword', 'uses' => 'ProfileController@getChangePassword']);
+    Route::post('/profile/change-password', 'ProfileController@postChangePassword');
 });
 
 /**
