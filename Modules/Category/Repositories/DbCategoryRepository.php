@@ -4,11 +4,15 @@ namespace Modules\Category\Repositories;
 
 use Illuminate\Database\DatabaseManager as DBM;
 use Illuminate\Support\Collection;
+use Modules\Category\Exceptions\CategoryCanNotBeParentItSelftException;
+use Modules\Category\Exceptions\SafeUpdateException;
 use Nht\Hocs\Core\BaseRepository;
 
 class DbCategoryRepository extends BaseRepository implements CategoryRepository
 {
 	protected $model;
+
+	protected $childRecursive;
 
 	public function __construct(Category $model, DBM $db) {
 		$this->model    = $model;
@@ -72,7 +76,6 @@ class DbCategoryRepository extends BaseRepository implements CategoryRepository
 				}
 			}
 		}
-
 
 		$this->sort($data, 0);
 
@@ -149,4 +152,50 @@ class DbCategoryRepository extends BaseRepository implements CategoryRepository
 							->take($take)
 							->get();
 	}
+
+
+	public function safeUpdate(array $data, $id, Collection $categories) {
+		// Lấy tất cả các con, cháu, chắt, chút, chít... của nó
+		$childIds = $this->getChildRecursive($id, $categories)->keys()->toArray();
+
+		// Nếu id cha mà trong list id con thì ko cho update
+		$parentId = (int) array_get($data, 'parent_id');
+
+		_debug($parentId == $id);
+
+		// Không thể chọn nó làm cha của chính nó
+		if($parentId == $id) {
+			throw new CategoryCanNotBeParentItSelftException("It can't be parent of it self", 1);
+		}
+
+		if(in_array($parentId, $childIds)) {
+			throw new SafeUpdateException("Child of category can't be the parent of category", 1);
+		}
+
+		return parent::update($data, ['id' => $id]);
+	}
+
+
+	public function getChildRecursive($parentId, Collection $categories) {
+		$this->childRecursive = new Collection;
+		$this->_getChildRecursive($parentId, $categories);
+		return $this->childRecursive;
+	}
+
+
+	/**
+	 *  Đệ quy tim các con của một danh mục
+	 * @param  integer     $parentId
+	 * @param  \Illuminate\Support\Collection $categories
+	 * @return \Illuminate\Support\Collection
+	 */
+	private function _getChildRecursive($parentId, Collection $categories) {
+		foreach($categories as $category) {
+            if($category->parent_id == $parentId) {
+                $this->childRecursive->put($category->getId(), $category);
+                $this->_getChildRecursive($category->getId(), $categories);
+            }
+        }
+	}
+
 }

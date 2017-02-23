@@ -87,6 +87,7 @@ if( ! function_exists('category_get_all_childs') ) {
         foreach($categories as $category) {
             if($category->parent_id == $parentId) {
                 $childs[] = $category->getId();
+                _debug($parentId . '::' .$category->parent_id);
                 category_get_all_childs($category->getId(), $categories);
             }
         }

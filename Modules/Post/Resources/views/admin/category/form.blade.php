@@ -5,7 +5,7 @@
             <select name="parent_id" class="form-control">
                 <option value="0">Chọn danh mục cha</option>
                 @foreach($categories as $c)
-                <option value="{{ $c->getId() }}" {{ $category->getParentId() == $c->getId() ? 'selected="selected"' : '' }}><?php for($i = 1; $i < $c->level; $i ++) echo '--'; ?>{{ $c->getName() }}</option>
+                <option value="{{ $c->getId() }}" {{ $category->getParentId() == $c->getId() ? 'selected="selected"' : '' }} {{ old('parent_id', $category->getId()) == $c->getId() ? 'disabled' : '' }}><?php for($i = 1; $i < $c->level; $i ++) echo '--'; ?>{{ $c->getName() }}</option>
                 @endforeach
             </select>
         </div>

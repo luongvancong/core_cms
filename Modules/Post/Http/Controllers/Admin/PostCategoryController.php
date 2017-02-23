@@ -53,10 +53,19 @@ class PostCategoryController extends AdminController
 	public function postEdit($id, AdminPostCategoryFormRequest $request) {
 		$id = (int) $id;
 		$category = $this->category->getById($id);
+		$categories = $this->category->getAllCategories();
 		$data = $request->except('_token');
 
-		if( $this->category->update($data, ['id' => $id]) ) {
-			return redirect()->route('admin.post_category.index')->with('success', trans('general.messages.update_success'));
+		try {
+			if( $this->category->safeUpdate($data, $id, $categories) ) {
+				return redirect()->route('admin.post_category.index')->with('success', trans('general.messages.update_success'));
+			}
+		}
+		catch (\Modules\Category\Exceptions\CategoryCanNotBeParentItSelftException $e) {
+			return redirect()->route('admin.post_category.index')->with('error', $e->getMessage());
+		}
+		catch (\Modules\Category\Exceptions\SafeUpdateException $e) {
+			return redirect()->route('admin.post_category.index')->with('error', $e->getMessage());
 		}
 
 		return redirect()->route('admin.post_category.index')->with('error', trans('general.messages.update_fail'));
