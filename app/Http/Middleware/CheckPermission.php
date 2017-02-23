@@ -20,7 +20,7 @@ class CheckPermission
             view()->share('currentUser', $request->user());
             return $next($request);
         }
-        return view('errors/403');
+        return response()->view('errors/403');
     }
 
     public function userHasAccessTo($request)
