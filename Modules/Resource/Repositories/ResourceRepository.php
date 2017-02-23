@@ -20,6 +20,12 @@ class ResourceRepository extends BaseRepository {
             $query->whereIn('extension', $extensions);
         }
 
+        if(!$sort) $sort = ['created_at' => 'DESC'];
+
+        foreach($sort as $key => $value) {
+            $query->orderBy($key, $value);
+        }
+
         if($paginate) {
             return $query->paginate($perPage);
         }

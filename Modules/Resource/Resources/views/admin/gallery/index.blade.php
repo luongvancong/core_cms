@@ -8,10 +8,15 @@
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/gallery.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/js/fancybox-2.15/source/jquery.fancybox.css">
+
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/js/fancybox-2.15/source/jquery.fancybox.js"></script>
     <script type="text/javascript" src="/js/jquery-lazyload/jquery.lazyload.min.js"></script>
     <script type="text/javascript" src="/js/functions.js"></script>
+    <script type="text/javascript" src="/bs3/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/js/dropzone/dropzone.min.css">
+    <script type="text/javascript" src="/js/dropzone/dropzone.min.js"></script>
 </head>
 <body>
     <div class="panel">
@@ -33,6 +38,22 @@
                     <div class="col-xs-12">
                         <div class="pull-right">{!! $images->links() !!}</div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" data-toggle="modal" data-target="#modal-upload" class="btn btn-primary btn-sm btn-upload">Upload</button>
+    </div>
+
+    <div id="modal-upload" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Upload image</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="my-awesome-dropzone" class="dropzone"></div>
                 </div>
             </div>
         </div>
@@ -79,6 +100,27 @@ $(function() {
             });
         }
     });
+
+    Dropzone.autoDiscover = false;
+    var myAwesomeDropzone = new Dropzone("#my-awesome-dropzone", {
+        url: "{{ route('admin.gallery.upload') }}?_token={{ csrf_token() }}",
+        maxFilesize: 1,
+        maxFiles: 1,
+        addRemoveLinks: true,
+        uploadMultiple: false,
+        acceptedFiles: "image/*",
+        dictDefaultMessage: "Choose a image file from computer",
+        dictInvalidFileType: "Allow file *.jpg, *.jpeg",
+        dictFileTooBig : "Max upload file size is 1MB, this file very big",
+        dictRemoveFile: "Remove this file",
+        dictMaxFilesExceeded: "You can not upload anymore file",
+        success: function(e, response) {
+            if(response.code === 1) {
+                window.location.reload();
+            }
+        }
+    });
+
 });
 </script>
 </body>

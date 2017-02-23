@@ -5,6 +5,7 @@ namespace Modules\Resource\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Modules\Resource\Repositories\ResourceRepository;
 use Nht\Http\Controllers\Admin\AdminController;
+use App;
 
 class GalleryController extends AdminController {
 
@@ -18,6 +19,8 @@ class GalleryController extends AdminController {
     {
         parent::__construct();
         $this->resource = $resource;
+        $this->uploader = App::make('Uploader');
+        $this->imageUploader = App::make('ImageFactory');
     }
 
     public function getIndex(Request $request)
@@ -49,5 +52,35 @@ class GalleryController extends AdminController {
                 }
             }
         }
+    }
+
+
+    public function ajaxUploadImage(Request $request)
+    {
+        $extension = $request->file('file')->getClientOriginalExtension();
+        $data = [];
+        if(in_array($extension, array('gif', 'png', 'jpg', 'bmp', 'jpeg'))) {
+            $resultUpload = $this->imageUploader->upload('file', config('image.array_resize_image'), 'resize');
+            if($resultUpload['status'] > 0) {
+                $data['name'] = $resultUpload['filename'];
+                $data['extension'] = $extension;
+                $data['size'] = $resultUpload['size'];
+                list($width, $height) = getimagesize($resultUpload['path']);
+                $data['width'] = $width;
+                $data['height'] = $height;
+            }
+        } else {
+            $resultUpload = $this->uploader->upload('file');
+            $data['name'] = $resultUpload;
+            $data['extension'] = $extension;
+            $data['size'] = filesize($this->uploader->getUploadFolderPathToDay() . '/' . $resultUpload);
+        }
+
+        if($data) {
+            $this->resource->create($data);
+            return response()->json(['code' => 1]);
+        }
+
+        return response()->json(['code' => 0]);
     }
 }

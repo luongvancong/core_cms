@@ -2,7 +2,7 @@
 
 return [
     'title' => 'Tài nguyên',
-    'active' => 0,
+    'active' => 1,
     'url' => '/admin/resource',
     'pattern_active' => 'admin/resource*',
     'icon' => 'fa fa-database',

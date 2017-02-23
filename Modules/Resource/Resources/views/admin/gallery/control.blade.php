@@ -4,12 +4,24 @@
     </div>
     <input type="hidden" name="{{ $controlName }}" value="{{ old($controlName) }}">
     <span class="act-show-gallery btn btn-xs btn-danger">Chọn ảnh từ gallery</span>
-</div>
-<script type="text/javascript">
-    $(function() {
-        $('.act-show-gallery').fancybox({
-            type: 'iframe',
-            href: '/admin/resource/gallery/index?control_name={{ $controlName }}&srcSelectorId={{ $imgId }}'
+
+    <script type="text/javascript">
+        $(function() {
+            $('.act-show-gallery').fancybox({
+                type: 'iframe',
+                href: '/admin/resource/gallery/index?control_name={{ $controlName }}&srcSelectorId={{ $imgId }}',
+                afterShow : function() {
+                    $('.fancybox-type-iframe').css({top: 55});
+                }
+            });
         });
-    });
-</script>
+    </script>
+    <style type="text/css">
+        .fancybox-type-iframe {
+            top: 55px !important;
+        }
+        .fancybox-inner {
+            min-height: 500px !important;
+        }
+    </style>
+</div>
