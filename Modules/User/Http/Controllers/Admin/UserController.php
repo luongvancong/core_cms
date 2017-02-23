@@ -7,6 +7,7 @@ use Modules\User\Http\Requests\AdminUserFormRequest;
 use Modules\User\Repositories\Chmod\RoleRepository;
 use Modules\User\Repositories\UserRepository;
 use Nht\Http\Controllers\Admin\AdminController;
+use App;
 
 /**
  * Class description.
@@ -22,6 +23,7 @@ class UserController extends AdminController
     {
         $this->user = $user;
         $this->role = $role;
+        $this->imageUploader = App::make('ImageFactory');
         parent::__construct();
     }
 
@@ -56,14 +58,21 @@ class UserController extends AdminController
      */
     public function store(AdminUserFormRequest $request)
     {
-        $formData             = $request->except(['_token', 'roles']);
+        $formData             = $request->except(['_token', 'roles', 'avatar']);
         $formData['password'] = bcrypt($formData['password']);
+
+        if($request->hasFile('avatar')) {
+            $resultUpload = $this->imageUploader->upload('avatar');
+            if($resultUpload['status'] > 0) {
+                $formData['avatar'] = $resultUpload['filename'];
+            }
+        }
 
         if ($newUser = $this->user->create($formData))
         {
             $roles = (array) $request->get('roles');
             $newUser->roles()->sync($roles);
-            return redirect()->route('user.create')->with('success', trans('general.messages.create_success'));
+            return redirect()->route('user.index')->with('success', trans('general.messages.create_success'));
         }
         return redirect()->back()->withInputs()->with('error', trans('general.messages.create_fail'));
     }
@@ -90,7 +99,16 @@ class UserController extends AdminController
      */
     public function update($id, AdminUserFormRequest $request)
     {
-        if ($this->user->update($request->except('_token', 'roles'), ['id' => $id]))
+        $data = $request->except('_token', 'roles', 'avatar');
+
+        if($request->hasFile('avatar')) {
+            $resultUpload = $this->imageUploader->upload('avatar');
+            if($resultUpload['status'] > 0) {
+                $data['avatar'] = $resultUpload['filename'];
+            }
+        }
+
+        if ($this->user->update($data, ['id' => $id]))
         {
             if ($user = $this->user->find($id))
             {
@@ -99,7 +117,7 @@ class UserController extends AdminController
                     $user->roles()->sync($roles);
                 }
             }
-            return redirect()->route('user.edit', $id)->with('success', trans('general.messages.update_success'));
+            return redirect()->route('user.index')->with('success', trans('general.messages.update_success'));
         }
         return redirect()->back()->withInputs()->with('error', trans('general.messages.update_fail'));
     }

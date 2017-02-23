@@ -32,9 +32,10 @@
 						</thead>
 						<tbody>
 							@foreach ($users as $key => $user)
+								<?php if($user->getId() == 1) continue; ?>
 								<tr>
 									<td>{{ $key + 1 }}</td>
-									<td><img width="24" src="/images/profiles/{{ $user->avatar != '' ? 'small_' . $user->avatar : 'lock_thumb.jpg' }}" class="img-circle" alt="Avatar"></td>
+									<td><img width="24" src="{{ parse_image_url($user->getAvatar()) }}" onerror="this.src='/images/profiles/lock_thumb.jpg'" alt="Avatar"></td>
 									<td>{{ $user->name }}</td>
 									<td>{{ $user->nickname }}</td>
 									<td>{{ $user->email }}</td>

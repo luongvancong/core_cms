@@ -9,8 +9,8 @@
 			<form class="form-horizontal" method="post" action="{{ url('/admin/users') }}" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="email" class="col-sm-3 control-label">{{ trans('form.avatar') }}</label>
-					<div class="col-sm-6 text-center">
-						<button class="btn btn-warning btn-sm"><i class="fa fa-refresh"></i>	{{ trans('form.btn.upload') }}</button>
+					<div class="col-sm-6">
+						<input type="file" name="avatar" class="form-control">
 					</div>
 				</div>
 				<div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
@@ -83,7 +83,7 @@
 					</div>
 				</div>
 				{!! csrf_field() !!}
-				<input type="file" name="avatar" id="avatar">
+
 			</form>
 		</div>
 	</div>

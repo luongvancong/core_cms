@@ -56,13 +56,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return removeTitle($this->name);
     }
 
-    public function getImage($type = 'sm_')
+    public function getAvatar()
     {
-        if(is_file(PATH_UPLOAD_USER_AVATAR . $type . $this->avatar)) {
-            return PATH_USER_AVATAR . $type . $this->avatar;
-        }
-
-        return '/images/grey.gif';
+        return $this->avatar;
     }
 
     public function getPhone()

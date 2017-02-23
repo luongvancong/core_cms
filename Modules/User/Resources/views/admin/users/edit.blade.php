@@ -10,8 +10,8 @@
 				<div class="form-group">
 					<label for="email" class="col-sm-3 control-label">{{ trans('form.avatar') }}</label>
 					<div class="col-sm-6 text-center">
-						<p><img src="/images/profiles/{{ 'lock_thumb.jpg' }}" class="img-circle" alt="Avatar"></p>
-						<button class="btn btn-warning btn-sm"><i class="fa fa-refresh"></i>	{{ trans('form.btn.change') }}</button>
+						<p><img height="90" src="{{ parse_image_url($user->getAvatar()) }}" onerror="this.src='/images/profiles/lock_thumb.jpg'" alt="Avatar"></p>
+						<input type="file" name="avatar" class="form-control">
 					</div>
 				</div>
 				<div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
@@ -81,7 +81,6 @@
 					</div>
 				</div>
 				{!! csrf_field() !!}
-				<input type="file" name="avatar" id="avatar">
 			</form>
 		</div>
 	</div>
