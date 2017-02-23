@@ -9,7 +9,7 @@ Route::group(['prefix' => 'admin/post', 'middleware' => ['web', 'admin', 'acl'],
     Route::get('/{postId}/edit', ['as' => 'admin.post.edit', 'permissions' => 'post.view' ,'uses' => 'PostController@getEdit']);
     Route::post('/{postId}/edit', ['permissions' => 'post.edit', 'uses' => 'PostController@postEdit']);
 
-    Route::get('/{postId}/active', ['as' => 'admin.post.active', 'PostController@getActive']);
+    Route::get('/{postId}/active', ['as' => 'admin.post.active', 'uses' => 'PostController@getActive']);
 
     Route::get('/{postId}/delete', ['as' => 'admin.post.delete', 'permissions' => 'post.delete' ,'uses' => 'PostController@getDelete']);
 

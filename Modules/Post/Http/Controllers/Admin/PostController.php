@@ -149,6 +149,18 @@ class PostController extends AdminController
         return $data;
     }
 
+    public function getActive($id)
+    {
+        $post = $this->post->getById($id);
+        $post->active = !$post->active;
+        $post->save();
+
+        return response()->json([
+            'status' => $post->active,
+            'code'   => 1
+        ]);
+    }
+
 
     public function ajaxEditable(Request $request)
     {
@@ -165,4 +177,6 @@ class PostController extends AdminController
 
         return response()->json(['code' => 0]);
     }
+
+
 }
