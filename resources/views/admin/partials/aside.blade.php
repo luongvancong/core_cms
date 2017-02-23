@@ -8,7 +8,7 @@
             @foreach(admin_sidebar() as $item)
                 @if(isset($item['items']))
                     @if(isset($item['permission']) && Entrust::can($item['permission']) || Entrust::hasRole('root'))
-                        <li class="sub-menu">
+                        <li data-order="{{ array_get($item, 'order') }}" class="sub-menu">
                             <a href="javascript:;" class="{{ isset($item['pattern_active']) ? (Request::is($item['pattern_active']) ? 'active': '') : '' }}">
                                 <i class="{{ array_get($item, 'icon') }}"></i>
                                 <span>{{ array_get($item, 'title') }}</span>
@@ -27,7 +27,7 @@
                         && Entrust::can($item['permission'])
                         && array_get($item, 'active') == 1
                         || Entrust::hasRole('root') && array_get($item, 'active') == 1)
-                    <li>
+                    <li data-order="{{ array_get($item, 'order') }}">
                         <a class="{{ isset($item['pattern_active']) ? (Request::is($item['pattern_active']) ? 'active': '') : '' }}" href="{{ array_get($item, 'url') }}">
                             <i class="{{ array_get($item, 'icon') }}"></i>
                             <span>{{ array_get($item, 'title') }}</span>

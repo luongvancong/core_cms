@@ -7,6 +7,7 @@ return [
     'pattern_active' => 'admin/users*',
     'permission' => ['user.view'],
     'active' => 1,
+    'order' => 10000,
     'role' => [],
     'items' => [
         [

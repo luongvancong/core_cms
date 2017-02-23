@@ -6,6 +6,7 @@ return [
     'pattern_active' => 'admin/settings*', // Biểu thức xác định trạng thái menu sidebar active
     'permission' => ['config.view'],
     'active' => 1,
+    'order' => 11000,
     'items' => [
         [
             'title' => 'Thông tin website',

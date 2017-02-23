@@ -7,6 +7,11 @@ if(! function_exists('admin_sidebar')) {
      * @return array
      */
     function admin_sidebar() {
-        return config('admin.nav');
+        $sidebar = config('admin.nav');
+        uasort($sidebar, function($a, $b) {
+            return array_get($a, 'order') < array_get($b, 'order');
+        });
+
+        return $sidebar;
     }
 }

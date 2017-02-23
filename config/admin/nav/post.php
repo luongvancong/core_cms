@@ -6,6 +6,7 @@ return [
     'url' => '/admin/post/index',
     'pattern_active' => 'admin/post*',
     'icon' => 'fa fa-newspaper-o',
+    'order' => 10000,
     'permission' => ['post.view'],
     'items' => [
         [
