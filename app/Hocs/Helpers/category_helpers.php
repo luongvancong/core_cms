@@ -74,25 +74,12 @@ if( !function_exists('category_get_by_id_from_list') ) {
 }
 
 
-if( !function_exists('category_getOneChildThietKeByParentId') ) {
-    function category_getOneChildThietKeByParentId($parentId) {
-        return categoryRepository()->getOneChildThietKeByParentId($parentId);
-    }
-}
+
 
 
 if( ! function_exists('category_get_all_childs') ) {
     function category_get_all_childs($parentId, $categories) {
-        $childs = array();
-        foreach($categories as $category) {
-            if($category->parent_id == $parentId) {
-                $childs[] = $category->getId();
-                _debug($parentId . '::' .$category->parent_id);
-                category_get_all_childs($category->getId(), $categories);
-            }
-        }
-
-        return $childs;
+        return categoryRepository()->getChildRecursive()->keys()->toArray();
     }
 }
 
@@ -128,9 +115,9 @@ if( ! function_exists('category_get_root_parent_by_id') ) {
 if( ! function_exists('category_get_type_options') ) {
     function category_get_type_options() {
         return [
-            Nht\Hocs\Categories\Category::NORMAL   => 'Nội thất chi tiết',
-            Nht\Hocs\Categories\Category::DESIGN   => 'Thiết kế trọn bộ',
-            Nht\Hocs\Categories\Category::ADVISORY => 'Tư vấn thiết kế'
+            Nht\Hocs\Categories\Category::TYPE_POST    => 'Tin tức',
+            Nht\Hocs\Categories\Category::TYPE_PRODUCT => 'Sản phẩm',
+            Nht\Hocs\Categories\Category::TYPE_STATIC  => 'Trang tĩnh'
         ];
     }
 }

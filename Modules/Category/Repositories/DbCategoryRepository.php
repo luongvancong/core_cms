@@ -161,8 +161,6 @@ class DbCategoryRepository extends BaseRepository implements CategoryRepository
 		// Nếu id cha mà trong list id con thì ko cho update
 		$parentId = (int) array_get($data, 'parent_id');
 
-		_debug($parentId == $id);
-
 		// Không thể chọn nó làm cha của chính nó
 		if($parentId == $id) {
 			throw new CategoryCanNotBeParentItSelftException("It can't be parent of it self", 1);
