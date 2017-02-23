@@ -13,7 +13,7 @@
         "elasticsearch/elasticsearch": "~1.0",
         "google/apiclient": "1.0.*@beta",
         "roumen/sitemap": "2.5.*",
-        "laravel/socialite": "^3.0@dev",
+        "laravel/socialite": "^2.0@dev",
         "maatwebsite/excel": "~2.1.0",
         "doctrine/dbal": "2.5.*",
         "tunggunner/open-graph": "1.*",
