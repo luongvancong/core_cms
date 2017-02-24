@@ -2,7 +2,7 @@
 
 define('BASE_PATH', realpath(rtrim($_SERVER['DOCUMENT_ROOT'], '/') . '/..') . '/');
 
-require_once BASE_PATH . 'libs/Image.php';
+require_once BASEPATH . 'libraries/Image.php';
 
 class Uploader extends CI_Controller {
 
@@ -80,6 +80,7 @@ class Uploader extends CI_Controller {
 		$resultUpload = $image->uploadMulti('userfile', $config['upload_path'] . '/', array(), 'no-resize');
 		// $resultUpload = array();
 		// print_r($resultUpload);die;
+
 		$result = ['result' => array()];
 		foreach($resultUpload['file_name'] as $file_name => $f) {
 
