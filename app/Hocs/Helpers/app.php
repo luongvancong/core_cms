@@ -48,10 +48,11 @@ if( ! function_exists('gallery_init') ) {
      * @param  str $controlName
      * @return str
      */
-    function gallery_init($imgId, $controlName) {
+    function gallery_init($imgId, $controlName, $defaultValueControl = null) {
         return view('resource::admin/gallery/control', [
             'imgId'       => $imgId,
-            'controlName' => $controlName
+            'controlName' => $controlName,
+            'defaultValueControl' => $defaultValueControl
         ]);
     }
 }
