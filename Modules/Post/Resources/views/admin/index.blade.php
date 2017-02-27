@@ -27,7 +27,7 @@
 				<tr>
 					<th>ID</th>
 					<th>Tiêu đề</th>
-					<th>Slug</th>
+					<th>Danh mục</th>
 					<th>Hình ảnh</th>
 					<th width="30">Atv</th>
 					<th width="30">Edit</th>
@@ -39,10 +39,15 @@
 					<tr>
 						<td width="30">{{ $post->getId() }}</td>
 						<td>
-							<a href="" class="editable" data-name="title" data-pk="{{ $post->getId() }}" data-type="text">{{ $post->getTitle() }}</a>
+							<p>
+								Tiêu đề: <a href="" class="editable" data-name="title" data-pk="{{ $post->getId() }}" data-type="text">{{ $post->getTitle() }}</a>
+							</p>
+							<p>
+								Slug: <a href="" class="editable" data-name="slug" data-pk="{{ $post->getId() }}" data-type="text">{{ $post->getSlug() }}</a>
+							</p>
 						</td>
 						<td>
-							<a href="" class="editable" data-name="slug" data-pk="{{ $post->getId() }}" data-type="text">{{ $post->getSlug() }}</a>
+							{{ $post->category ? $post->category->getName() : '--' }}
 						</td>
 						<td width="100">
 							<img src="{{ $post->getImage('md_') }}" height="50">
