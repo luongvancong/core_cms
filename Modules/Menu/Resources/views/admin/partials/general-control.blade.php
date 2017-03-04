@@ -8,7 +8,8 @@
     </select>
 </div>
 
-<div class="form-group">
-    <label class="control-label">Nhãn</label>
+<div class="form-group {{ hasValidator('label') }}">
+    <label class="control-label"><b class="text-danger">*</b> Nhãn</label>
     <input type="text" name="label" value="{{ old('label', $menu->getLabel()) }}" class="form-control">
+    {!! alertError('label') !!}
 </div>

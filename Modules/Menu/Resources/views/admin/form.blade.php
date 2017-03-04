@@ -23,6 +23,7 @@
             @endif
 
             <div class="form-group">
+                {!! csrf_field() !!}
                 <button type="submit" class="btn btn-sm btn-primary">{{ trans('form.btn.update') }}</button>
             </div>
         </div>

@@ -2,9 +2,12 @@
 
 namespace Modules\Menu\Repositories;
 
+use Modules\Category\Repositories\CategoryTrait;
 use Nht\Hocs\Core\BaseRepository;
 
 class DbMenuRepository extends BaseRepository implements MenuRepository {
+
+    use CategoryTrait;
 
     public function __construct(Menu $model)
     {

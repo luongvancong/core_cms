@@ -13,4 +13,6 @@ Route::group(['middleware' => ['web', 'admin', 'acl'], 'prefix' => 'admin/menu',
     Route::get('/{id}/delete', ['as' => 'admin.menu.delete', 'uses' => 'MenuController@getDelete']);
 
     Route::get('/{id}/active', ['as' => 'admin.menu.active', 'uses' => 'MenuController@getActive']);
+
+    Route::get('/ajax/search-post', ['as' => 'admin.menu.ajax.searchPost', 'uses' => 'MenuController@ajaxSearchPost']);
 });

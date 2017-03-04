@@ -6,7 +6,8 @@
 
 @include('menu::admin/partials/general-control')
 
-<div class="form-group">
-    <label class="control-label">Đường dẫn</label>
-    <input type="text" name="q" class="form-control" placeholder="http://">
+<div class="form-group {{ hasValidator('url') }}">
+    <label class="control-label"><b class="text-danger">*</b> Đường dẫn</label>
+    <input type="text" name="url" class="form-control" placeholder="http://">
+    {!! alertError('url') !!}
 </div>

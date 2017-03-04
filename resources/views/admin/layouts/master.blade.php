@@ -72,6 +72,12 @@
 
     <link rel="stylesheet" type="text/css" href="/css/gallery.css">
 
+
+    <!-- Jquery token input -->
+    <link href="/bower_components/jquery-tokeninput/styles/token-input-facebook.css" rel="stylesheet" >
+	<link href="/bower_components/jquery-tokeninput/styles/token-input.css" rel="stylesheet" >
+    <script type="text/javascript" src="/bower_components/jquery-tokeninput/src/jquery.tokeninput.js"></script>
+
 </head>
 <body>
 <section id="container">
