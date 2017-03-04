@@ -24,7 +24,7 @@ class Category extends Model
 	 *
 	 * @var string
 	 */
-	public $table   = 'categories';
+	public $table = 'categories';
 
 	protected $guarded = ['id'];
 

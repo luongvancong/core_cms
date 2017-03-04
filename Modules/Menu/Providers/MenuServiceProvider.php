@@ -32,7 +32,7 @@ class MenuServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('Modules\Menu\Repositories\MenuRepository', 'Modules\Menu\Repositories\DbMenuRepository');
     }
 
     /**

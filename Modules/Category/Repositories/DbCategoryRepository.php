@@ -25,16 +25,18 @@ class DbCategoryRepository extends BaseRepository implements CategoryRepository
 	 * @param  array   $conditions[] Mảng điều kiện
 	 * @return array
 	 */
-	public function getAllCategories($filter = array(), $sort = array())
+	public function getAllCategories($filter = array(), $sort = array(), array $with = array(), $sortable = true)
 	{
-		$this->tempData = [];
-		$this->data = new Collection();
-
 		// Sort
 		$defaultSort = empty($sort) ? ['created_at' => 'ASC'] : array();
 		$sort = array_merge($defaultSort, $sort);
 
 		$data = $this->model->whereRaw(1);
+
+		// With relationship
+		foreach($with as $relation) {
+			$data->with($relation);
+		}
 
 		$name = array_get($filter, 'name');
 		$active = array_get($filter, 'active', 'all');
@@ -63,55 +65,27 @@ class DbCategoryRepository extends BaseRepository implements CategoryRepository
 		}
 
 		$_data = $data->get();
-		$data = [];
 
-		foreach($_data as $c) {
-			if($c->parent_id == 0) {
-				$data[0][$c->id] = $c->toArray();
-			}
-
-			foreach($_data as $cc) {
-				if($c->id == $cc->parent_id) {
-					$data[$c->id][$cc->id] = $cc->toArray();
-				}
-			}
+		// Sortable
+		if($sortable === true) {
+			$sortable = new \Nht\Hocs\Sortable\Sortable($_data);
+			return $sortable->getData();
 		}
 
-		$this->sort($data, 0);
-
-		// Convert to collection
-		foreach($this->tempData as $category) {
-			$c = new Category();
-			$c->forceFill($category);
-			$this->data->push($c);
-		}
-
-		return $this->data;
+		return $_data;
 	}
-
 
 	/**
-	 * Hàm đệ quy để lấy ra danh mục
-	 * @param  [type]  $data   [description]
-	 * @param  integer $parent [description]
-	 * @param  boolean $list   [description]
-	 * @return [type]          [description]
-	 */
-	public function sort($data, $parent = 0, $level = 0)
-	{
-		// Lặp qua mảng dữ liệu, đệ quy lần lượt để ghép cha và con lại gần nhau hơn
-		if(array_key_exists($parent, $data)) {
-			// Nếu nó có con, cháu, chắt thì tăng level lên
-			$level ++;
-			foreach ($data[$parent] as $key => $category) {
-				if ($category['parent_id'] == $parent) {
-					$category['level'] = $level;
-					$this->tempData[] = $category;
-					$this->sort($data, $category['id'], $level);
-				}
-			}
-		}
+     * Get categories which sorted
+     * @param  array  $filter
+     * @param  array  $sort
+     * @param  array  $with
+     * @return \Illuminate\Support\Collection
+     */
+	public function getSortedCategories($filter = array(), $sort = array(), array $with = array()) {
+		return $this->getAllCategories($filter, $sort, $with, true);
 	}
+
 
 	/**
 	 * Lấy ra danh mục theo slug
@@ -140,12 +114,6 @@ class DbCategoryRepository extends BaseRepository implements CategoryRepository
 		return $category->save();
 	}
 
-
-	public function getOneChildThietKeByParentId($parentId) {
-		return $this->model->where('parent_id', $parentId)->where('type', Category::DESIGN)->first();
-	}
-
-
 	public function getChildsById($id, $take = 20) {
 		return $this->model->where('parent_id', $id)
 							->orderBy('updated_at', 'DESC')
@@ -166,6 +134,7 @@ class DbCategoryRepository extends BaseRepository implements CategoryRepository
 			throw new CategoryCanNotBeParentItSelftException("It can't be parent of it self", 1);
 		}
 
+		// Con nó không thể làm cha của nó
 		if(in_array($parentId, $childIds)) {
 			throw new SafeUpdateException("Child of category can't be the parent of category", 1);
 		}

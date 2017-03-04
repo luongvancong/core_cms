@@ -17,12 +17,13 @@ class DbPostCategoryRepository extends DbCategoryRepository implements PostCateg
      * Override parent
      * @param  array  $filter
      * @param  array  $sort
+     * @param  array $with
      * @return \Illuminate\Support\Collection
      */
-    public function getAllCategories($filter = array(), $sort = array()) {
+    public function getAllCategories($filter = array(), $sort = array(), array $with = array(), $sortable = true) {
         $defaultFilter = ['type' => Category::TYPE_POST];
         $filter = array_merge($defaultFilter, $filter);
-        return parent::getAllCategories($filter, $sort);
+        return parent::getAllCategories($filter, $sort, $with, $sortable);
     }
 
     /**

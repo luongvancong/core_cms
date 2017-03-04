@@ -6,9 +6,13 @@ use Illuminate\Support\Collection;
 
 interface CategoryRepository
 {
+    /**
+     * Get by slug
+     * @param  string $slug
+     * @return \Modules\Category\Repositories\Category or null
+     */
 	public function getCategoryBySlug($slug);
 
-    public function getOneChildThietKeByParentId($parentId);
 
     /**
      * Get childs
@@ -35,4 +39,24 @@ interface CategoryRepository
      * @return \Illuminate\Support\Collection
      */
     public function getChildRecursive($parentId, Collection $categories);
+
+
+    /**
+     * Get categories
+     * @param  array  $filter
+     * @param  array  $sort
+     * @param  array  $with
+     * @param  boolean $sortable
+     * @return \Illuminate\Support\Collection
+     */
+    public function getAllCategories($filter = array(), $sort = array(), array $with = array(), $sortable = true);
+
+    /**
+     * Get categories which sorted
+     * @param  array  $filter
+     * @param  array  $sort
+     * @param  array  $with
+     * @return \Illuminate\Support\Collection
+     */
+    public function getSortedCategories($filter = array(), $sort = array(), array $with = array());
 }

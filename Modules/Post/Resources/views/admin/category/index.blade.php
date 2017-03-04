@@ -20,6 +20,7 @@
 							<tr>
 								<th>ID</th>
 								<th>Tên</th>
+								<th>Posts</th>
 								<th>Sửa</th>
 								<th>Xóa</th>
 							</tr>
@@ -29,6 +30,7 @@
 								<tr>
 									<td width="50">{{ $category->getId() }}</td>
 									<td><?php for($i = 0; $i < $category->level; $i ++) echo '--'; ?>{{ $category->getName() }}</td>
+									<td>{{ $category->posts->count() }}</td>
 									<td width="30"><a href="{{ route('admin.post_category.edit', $category->getId()) }}" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a></td>
 									<td width="30">
 										{!! makeDeleteButton(route('admin.post_category.delete', $category->getId())) !!}

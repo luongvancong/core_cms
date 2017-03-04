@@ -23,7 +23,7 @@ class PostCategoryController extends AdminController
 	 */
 	public function getIndex(Request $request)
 	{
-		$categories = $this->category->getAllCategories();
+		$categories = $this->category->getAllCategories([], [], ['posts']);
 		return view('post::admin/category/index', compact('categories'));
 	}
 
