@@ -68,7 +68,9 @@
         ?>
         </div>
         <div class="col-sm-2">
-            <button id="submit" type="submit" class="btn btn-sm btn-primary">Cập nhật</button>
+            @if($menus->count())
+                <button id="submit" type="submit" class="btn btn-sm btn-primary">Cập nhật</button>
+            @endif
         </div>
     </div>
 </div>
