@@ -20,6 +20,8 @@
                 @include('menu::admin/partials/post')
             @elseif($type == Modules\Menu\Repositories\Menu::TYPE_POST_CATEGORY)
                 @include('menu::admin/partials/post-category')
+            @elseif($type == Modules\Menu\Repositories\Menu::TYPE_PAGE)
+                @include('menu::admin/partials/page')
             @endif
 
             <div class="form-group">

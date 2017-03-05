@@ -6,8 +6,25 @@
 
 @include('menu::admin/partials/general-control')
 
-<div class="form-group">
-    <label class="control-label">Danh mục</label>
-    <input type="text" name="q" class="form-control" placeholder="Tìm một danh mục">
+<div class="form-group {{ hasValidator('object_id') }}">
+    <label class="control-label"><b class="text-danger">*</b> Danh mục</label>
+    <select class="form-control" name="object_id">
+        <option value="">Chọn một danh mục</option>
+        @foreach($postCategories as $item)
+            <option value="{{ $item->getId() }}" {{ $menu->getObjectId() == $item->getId() ? 'selected' : '' }}><?php for($i = 0; $i < $item->level; $i ++) echo '--'; ?>{{ $item->getName() }}</option>
+        @endforeach
+    </select>
+    {!! alertError('object_id') !!}
 </div>
 
+@section('scripts')
+<script type="text/javascript">
+    $(function() {
+        $('#keyword').tokenInput('{{ route('admin.menu.ajax.searchPostCategory') }}', {
+            method: 'GET',
+            queryParam: 'q',
+            tokenLimit: 1
+        });
+    });
+</script>
+@endsection

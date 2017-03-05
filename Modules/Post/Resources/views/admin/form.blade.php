@@ -33,7 +33,7 @@
         <div class="form-group">
             <label class="control-label col-sm-3"></label>
             <div class="col-sm-6">
-                <div class="pos-images" style="background: url({{ $post->getImage('md_') }}) center center; background-size: cover; height: 80px; width: 80px; display: block;"></div>
+                <div class="pos-images" style="background: url({{ $post->presenter()->getImage('md_') }}) center center; background-size: cover; height: 80px; width: 80px; display: block;"></div>
             </div>
         </div>
     @endif

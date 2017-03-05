@@ -16,7 +16,7 @@
                 <?php
 					$btnClass = $btnClassArray[array_rand($btnClassArray)];
 				?>
-                <div class="col-sm-2">
+                <div class="col-sm-2 mg-bt-20">
                     <a style="display: block;" class="btn {{ $btnClass }} {{ isset($item['pattern_active']) ? (Request::is($item['pattern_active']) ? 'active': '') : '' }}" href="{{ array_get($item, 'url') }}">
                         <i class="{{ array_get($item, 'icon') }} fa-3x pull-left"></i>
                         <span>{{ array_get($item, 'title') }}</span>

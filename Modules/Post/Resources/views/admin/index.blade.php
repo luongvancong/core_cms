@@ -50,7 +50,7 @@
 							{{ $post->category ? $post->category->getName() : '--' }}
 						</td>
 						<td width="100">
-							<img src="{{ $post->getImage('md_') }}" height="50">
+							<img src="{{ $post->presenter()->getImage('md_') }}" height="50">
 						</td>
 						<td class="text-center">{!! makeActiveButton(route('admin.post.active', [$post->getId()]), $post->active) !!}</td>
 						<td class="text-center">{!! makeEditButton(route('admin.post.edit', [$post->getId()])) !!}</td>

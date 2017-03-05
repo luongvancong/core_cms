@@ -16,4 +16,8 @@ class Presenter {
     public function getUrl() {
         return route('page.detail', [$this->model->getId(), $this->model->getSlug()]);
     }
+
+    public function getImage($type = 'sm_') {
+        return parse_image_url($type . $this->model->image);
+    }
 }

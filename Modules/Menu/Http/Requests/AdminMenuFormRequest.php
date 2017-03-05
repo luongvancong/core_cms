@@ -35,6 +35,10 @@ class AdminMenuFormRequest extends Request
                 $rules['url'] = 'required';
                 break;
 
+            case Menu::TYPE_POST:
+            case Menu::TYPE_POST_CATEGORY:
+                $rules['object_id'] = 'required';
+
             default:
                 # code...
                 break;

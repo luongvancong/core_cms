@@ -78,6 +78,8 @@
 	<link href="/bower_components/jquery-tokeninput/styles/token-input.css" rel="stylesheet" >
     <script type="text/javascript" src="/bower_components/jquery-tokeninput/src/jquery.tokeninput.js"></script>
 
+    <!-- Nested sortable -->
+    <script type="text/javascript" src="/js/jquery.mjs.nestedSortable.js"></script>
 </head>
 <body>
 <section id="container">

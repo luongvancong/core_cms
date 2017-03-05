@@ -24,10 +24,6 @@ class Page extends Model {
 		return $this->slug ? $this->slug : removeTitle($this->getTitle());
 	}
 
-	public function getUrl() {
-		return route('page.detail', [$this->getId(), $this->getSlug()]);
-	}
-
 	public function getTeaser() {
 		return $this->teaser;
 	}
@@ -47,8 +43,8 @@ class Page extends Model {
 		return $this->image ? true : false;
 	}
 
-	public function getImage($type = 'sm_') {
-		return parse_image_url($type . $this->image);
+	public function getImage() {
+		return $this->image;
 	}
 
 	public function getImageAlt()
@@ -69,5 +65,10 @@ class Page extends Model {
 	public function getMetaDescription()
 	{
 		return $this->meta_description;
+	}
+
+	public function presenter()
+	{
+		return new Presenter($this);
 	}
 }

@@ -10,6 +10,6 @@ class Presenter {
 
     public function getUrl()
     {
-        return '';
+        return route('post.category.post', [$this->model->getId(), $this->model->getSlug()]);
     }
 }
