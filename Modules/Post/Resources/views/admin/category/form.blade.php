@@ -27,6 +27,28 @@
         </div>
     </div>
 
+    @if($category->background)
+    <div class="form-group">
+        <div class="col-sm-6 col-sm-offset-3">
+            <img src="{{ $category->presenter()->getImage('md_') }}" height="90">
+        </div>
+    </div>
+    @endif
+
+    <div class="form-group">
+        <label for="email" class="col-sm-3 control-label">Ảnh minh họa</label>
+        <div class="col-sm-6">
+            {!! gallery_init('category-image', 'background', $category->background) !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="col-sm-3 control-label">Mô tả ngắn</label>
+        <div class="col-sm-6">
+            <textarea class="form-control" name="short_description">{{ old('short_description', $category->getShortDescription()) }}</textarea>
+        </div>
+    </div>
+
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-6">
         <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> {{ trans('form.btn.update') }}</button>

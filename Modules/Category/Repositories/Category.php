@@ -52,9 +52,9 @@ class Category extends Model
 		return (int) $this->parent_id;
 	}
 
-	public function getImage($type = 'md_')
+	public function getImage()
 	{
-		return PATH_IMAGE_CATEGORY . $type . $this->background;
+		return $this->background;
 	}
 
 	public function getImageAlt()
@@ -67,9 +67,9 @@ class Category extends Model
 		return $this->background ? true : false;
 	}
 
-	public function getImageHomePage($type = 'md_')
+	public function getImageHomePage()
 	{
-		return PATH_IMAGE_CATEGORY . $type . $this->background_homepage;
+		return $this->background_homepage;
 	}
 
 	public function getUrl()

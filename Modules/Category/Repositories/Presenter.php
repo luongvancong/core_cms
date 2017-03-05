@@ -18,4 +18,14 @@ class Presenter {
     {
         return ;
     }
+
+    public function getImage($type = 'md_')
+    {
+        return parse_image_url($type . $this->model->background);
+    }
+
+    public function getImageHomePage($type = 'md_')
+    {
+        return parse_image_url($type . $this->model->background_homepage);
+    }
 }
