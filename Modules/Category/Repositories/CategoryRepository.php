@@ -59,4 +59,11 @@ interface CategoryRepository
      * @return \Illuminate\Support\Collection
      */
     public function getSortedCategories($filter = array(), $sort = array(), array $with = array());
+
+
+    /**
+     * Optimize categories
+     * @return void
+     */
+    public function optimizeCategories();
 }

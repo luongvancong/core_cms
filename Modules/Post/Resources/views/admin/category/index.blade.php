@@ -5,7 +5,10 @@
 		<header class="panel-heading">
 			<h4>
 				Danh sách nhóm tin
-				<a href="{{ route('admin.post_category.create') }}" class="btn btn-xs btn-primary pull-right"><i class="fa fa-plus"></i> {{ trans('form.btn.create') }}</a>
+				<div class="pull-right">
+					<a href="{{ route('admin.post_category.optimize') }}" class="btn btn-xs btn-danger"><i class="fa fa-plus"></i> Optimize</a>
+					<a href="{{ route('admin.post_category.create') }}" class="btn btn-xs btn-primary"><i class="fa fa-plus"></i> {{ trans('form.btn.create') }}</a>
+				</div>
 			</h4>
 		</header>
 		<div class="panel-body">

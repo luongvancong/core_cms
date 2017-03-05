@@ -109,6 +109,11 @@ abstract class BaseRepository
 		return new $this->model;
 	}
 
+	public function getModel()
+	{
+		return $this->model;
+	}
+
 	public function count() {
 		return $this->model->count();
 	}

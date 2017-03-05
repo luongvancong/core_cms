@@ -123,4 +123,52 @@ class DbCategoryRepository extends BaseRepository implements CategoryRepository
 							->take($take)
 							->get();
 	}
+
+
+	public function optimizeCategories()
+	{
+		$categories = $this->getAllCategories();
+        foreach($categories as $item) {
+            $item->level = $item->level;
+            if($item->getParentId() > 0) {
+                $this->getModel()
+                     ->where('id', $item->getParentId())
+                     ->update(['has_child' => 1]);
+            }
+
+            $this->getModel()
+                 ->where('id', $item->getId())
+                 ->update(['level' => $item->level]);
+        }
+	}
+
+
+	public function create($data)
+	{
+		$model = parent::create($data);
+
+		$this->optimizeCategories();
+
+		return $model;
+	}
+
+
+	public function update($data, $cond = array())
+	{
+		$result = parent::update($data, $cond);
+
+		$this->optimizeCategories();
+
+		return $result;
+	}
+
+
+	public function delete($id)
+	{
+		$result = parent::delete($id);
+
+		$this->optimizeCategories();
+
+		return $result;
+	}
 }

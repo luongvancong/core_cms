@@ -28,7 +28,11 @@ trait CategoryTrait {
             throw new SafeUpdateException("Child of category can't be the parent of category", 1);
         }
 
-        return parent::update($data, ['id' => $id]);
+        $result = parent::update($data, ['id' => $id]);
+
+        $this->optimizeCategories();
+
+        return $result;
     }
 
 

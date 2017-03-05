@@ -34,4 +34,6 @@ Route::group(['prefix' => 'admin/post-category', 'middleware' => ['web', 'admin'
     Route::post('/{id}/edit', ['permissions' => 'post_category.edit', 'uses' => 'PostCategoryController@postEdit']);
 
     Route::get('/{id}/delete', ['as' => 'admin.post_category.delete', 'permissions' => 'post_category.delete' ,'uses' => 'PostCategoryController@getDelete']);
+
+    Route::get('/optimize', ['as' => 'admin.post_category.optimize', 'permissions' => 'post_category.edit', 'uses' => 'PostCategoryController@getOptimize']);
 });

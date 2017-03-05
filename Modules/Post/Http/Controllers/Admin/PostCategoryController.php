@@ -72,12 +72,17 @@ class PostCategoryController extends AdminController
 	}
 
 	public function getDelete($id) {
-		$category = $this->category->getById($id);
-
-		if($category->delete()) {
+		if($this->category->delete($id)) {
 			return redirect()->back()->with('success', trans('general.messages.delete_success'));
 		}
 
 		return redirect()->back()->with('success', trans('general.messages.delete_fail'));
+	}
+
+
+	public function getOptimize()
+	{
+		$this->category->optimizeCategories();
+        return redirect()->back()->with('success', trans('general.messages.update_success'));
 	}
 }
