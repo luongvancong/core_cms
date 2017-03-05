@@ -15,7 +15,7 @@
 					<div class="controls col-sm-6 text-center">
 						<div class="fileupload fileupload-new" data-provides="fileupload">
 							<div class="fileupload-new thumbnail" style="width: 185px; height: 150px;">
-								<img src="{{ $website->getLogo() }}" alt="{{ $website->name }}" />
+								<img src="{{ $website->presenter()->getLogo() }}" alt="{{ $website->name }}" />
 							</div>
 							<div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
 							<div>

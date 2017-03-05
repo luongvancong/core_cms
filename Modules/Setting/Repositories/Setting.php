@@ -22,4 +22,9 @@ class Setting extends Model
 	{
 		return $this->logo;
 	}
+
+	public function presenter()
+	{
+		return new Presenter($this);
+	}
 }
