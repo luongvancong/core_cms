@@ -59,7 +59,7 @@ class DbPostRepository extends BaseRepository implements PostRepository
 			$query->orderBy($key, $value);
 		}
 
-		return $paginate ? $query->paginate($perPage) : $query->get();
+		return $paginate ? $query->paginate($perPage) : $query->take($perPage)->get();
 	}
 
 
