@@ -220,4 +220,31 @@ class MenuController extends AdminController {
 
         return response()->json(['code' => 0]);
     }
+
+
+    /**
+     * Optmize menu
+     * @return void
+     */
+    public function doOptimize()
+    {
+        $menus = $this->menu->get();
+        foreach($menus as $item) {
+            $item->level = $item->level;
+            if($item->getParentId() > 0) {
+                \DB::table('menus')->where('id', $item->getParentId())
+                                   ->update(['has_child' => 1]);
+            }
+
+            \DB::table('menus')->where('id', $item->getId())
+                               ->update(['level' => $item->level]);
+        }
+    }
+
+
+    public function getOptimize(Request $request)
+    {
+        $this->doOptimize();
+        return redirect()->route('admin.menu.index')->with('success', trans('general.messages.update_success'));
+    }
 }

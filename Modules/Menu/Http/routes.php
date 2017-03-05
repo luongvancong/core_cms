@@ -14,6 +14,9 @@ Route::group(['middleware' => ['web', 'admin', 'acl'], 'prefix' => 'admin/menu',
 
     Route::get('/{id}/active', ['as' => 'admin.menu.active', 'uses' => 'MenuController@getActive']);
 
+    // Optimize
+    Route::get('/optimize', ['as' => 'admin.menu.optimize', 'uses' => 'MenuController@getOptimize']);
+
     // Thiết kế menu
     Route::get('/design', ['as' => 'admin.menu.design', 'uses' => 'MenuController@getDesign']);
     Route::post('/design', 'MenuController@postDesign');

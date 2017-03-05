@@ -6,7 +6,8 @@
     <div class="panel-heading">
         <h3>
            Menu
-           <a class="pull-right btn-xs btn-primary" href="{{ route('admin.menu.create') }}">Thêm mới</a>
+           <a class="pull-right btn btn-xs btn-primary" href="{{ route('admin.menu.create') }}">Thêm mới</a>
+           <a class="pull-right btn btn-xs btn-danger mg-r-10" href="{{ route('admin.menu.optimize') }}">Optimize</a>
        </h3>
     </div>
     <div class="panel-body">
@@ -29,7 +30,7 @@
                 ?>
                 @foreach($menus as $item)
                     @php $no ++ @endphp
-                    <tr id="{{ $item->getId() }}">
+                    <tr id="{{ $item->getId() }}" data-has_child="{{ $item->has_child }}" data-deep="{{ $item->level }}">
                         <td>{{ $no }}</td>
                         <td>{{ $item->getId() }}</td>
                         <td><?php for($i = 0; $i < $item->level; $i ++) echo '--'; ?><a href="" class="editable" data-name="label" data-pk="{{ $item->getId() }}" data-type="text">{{ $item->getLabel() }}</a></td>
