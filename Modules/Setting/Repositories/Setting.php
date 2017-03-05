@@ -18,8 +18,8 @@ class Setting extends Model
 	public $timestamps 	= false;
 
 
-	public function getLogo($type = 'md_')
+	public function getLogo()
 	{
-		return parse_image_url($type . $this->logo);
+		return $this->logo;
 	}
 }

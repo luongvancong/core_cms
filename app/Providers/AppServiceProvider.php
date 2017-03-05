@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $this->app->singleton('Setting', function ($app) {
-            $settingRepository = $this->app->make('Nht\Hocs\Settings\SettingRepository');
+            $settingRepository = $this->app->make('Modules\Setting\Repositories\SettingRepository');
             return new \Nht\Hocs\Core\Metadata\Metadata($settingRepository);
         });
     }

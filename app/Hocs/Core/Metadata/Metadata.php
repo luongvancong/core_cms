@@ -1,8 +1,8 @@
 <?php
 namespace Nht\Hocs\Core\Metadata;
 
-use Nht\Hocs\Settings\Setting;
-use Nht\Hocs\Settings\SettingRepository;
+use Modules\Setting\Repositories\Setting;
+use Modules\Setting\Repositories\SettingRepository;
 
 class Metadata {
 
@@ -17,7 +17,8 @@ class Metadata {
 	}
 
 	public function setTitle($title) {
-		return $this->name = $title;
+		$this->name = $title;
+		return $this;
 	}
 
 	public function getTitle() {
@@ -25,7 +26,8 @@ class Metadata {
 	}
 
 	public function setLogo($logo) {
-		return $this->logo = $logo;
+		$this->logo = $logo;
+		return $this;
 	}
 
 	public function getLogo() {
@@ -33,7 +35,8 @@ class Metadata {
 	}
 
 	public function setAddress($address) {
-		return $this->address = $address;
+		$this->address = $address;
+		return $this;
 	}
 
 	public function getAddress() {
@@ -41,7 +44,8 @@ class Metadata {
 	}
 
 	public function setEmail_1($email) {
-		return $this->email_1 = $email;
+		$this->email_1 = $email;
+		return $this;
 	}
 
 	public function getEmail_1() {
@@ -49,7 +53,8 @@ class Metadata {
 	}
 
 	public function setPhone_1($phone) {
-		return $this->phone_1 = $phone;
+		$this->phone_1 = $phone;
+		return $this;
 	}
 
 	public function getPhone_1() {
@@ -61,7 +66,8 @@ class Metadata {
 	}
 
 	public function setSkype_1($skype) {
-		return $this->skype_1 = $skype;
+		$this->skype_1 = $skype;
+		return $this;
 	}
 
 	public function getSkype_1() {
@@ -69,7 +75,8 @@ class Metadata {
 	}
 
 	public function setShortDescription($description) {
-		return $this->short_description = $description;
+		$this->short_description = $description;
+		return $this;
 	}
 
 	public function getShortDescription() {
@@ -77,7 +84,8 @@ class Metadata {
 	}
 
 	public function setDescription($description) {
-		return $this->description = $description;
+		$this->description = $description;
+		return $this;
 	}
 
 	public function getDescription() {
@@ -85,7 +93,8 @@ class Metadata {
 	}
 
 	public function setContact($contact) {
-		return $this->contact = $contact;
+		$this->contact = $contact;
+		return $this;
 	}
 
 	public function getContact() {
@@ -93,7 +102,8 @@ class Metadata {
 	}
 
 	public function setMetaTitle($meta_title) {
-		return $this->meta_title = $meta_title;
+		$this->meta_title = $meta_title;
+		return $this;
 	}
 
 	public function getMetaTitle() {
@@ -101,7 +111,8 @@ class Metadata {
 	}
 
 	public function setMetaKeyword($meta_keyword) {
-		return $this->meta_keyword = $meta_keyword;
+		$this->meta_keyword = $meta_keyword;
+		return $this;
 	}
 
 	public function getMetaKeyword() {
@@ -109,7 +120,8 @@ class Metadata {
 	}
 
 	public function setMetaDescription($meta_description) {
-		return $this->meta_description = $meta_description;
+		$this->meta_description = $meta_description;
+		return $this;
 	}
 
 	public function getMetaDescription() {
@@ -117,7 +129,8 @@ class Metadata {
 	}
 
 	public function setJsCodes($js_codes) {
-		return $this->js_codes = $js_codes;
+		$this->js_codes = $js_codes;
+		return $this;
 	}
 
 	public function getJsCodes() {
@@ -125,7 +138,8 @@ class Metadata {
 	}
 
 	public function setFacebook($facebook) {
-		return $this->facebook = $facebook;
+		$this->facebook = $facebook;
+		return $this;
 	}
 
 	public function getFacebook() {
@@ -133,7 +147,8 @@ class Metadata {
 	}
 
 	public function setGoogleplus($googleplus) {
-		return $this->googleplus = $googleplus;
+		$this->googleplus = $googleplus;
+		return $this;
 	}
 
 	public function getGoogleplus() {
@@ -141,7 +156,8 @@ class Metadata {
 	}
 
 	public function setTwitter($twitter) {
-		return $this->twitter = $twitter;
+		$this->twitter = $twitter;
+		return $this;
 	}
 
 	public function getTwitter() {
@@ -149,7 +165,8 @@ class Metadata {
 	}
 
 	public function setLinkin($linkin) {
-		return $this->linkin = $linkin;
+		$this->linkin = $linkin;
+		return $this;
 	}
 
 	public function getLinkin() {
@@ -157,7 +174,8 @@ class Metadata {
 	}
 
 	public function setYoutube($youtube) {
-		return $this->youtube = $youtube;
+		$this->youtube = $youtube;
+		return $this;
 	}
 
 	public function getYoutube() {
