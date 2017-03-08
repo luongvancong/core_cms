@@ -31,7 +31,7 @@ class PostController extends AdminController
      */
     public function getIndex(Request $request)
     {
-        $posts = $this->post->getPosts(25, $request->all());
+        $posts = $this->post->getPosts(25, $request->all(), $this->getSortParams($request));
         $categories = $this->category->getAllCategories();
 
         return view('post::admin/index', compact('posts', 'categories'));
@@ -178,5 +178,22 @@ class PostController extends AdminController
         return response()->json(['code' => 0]);
     }
 
+
+
+    /**
+     * Get sort params
+     * @param  Request $request
+     * @return array
+     */
+    public function getSortParams(Request $request)
+    {
+        if($request->get('_action') == 'sort') {
+            return [
+                $request->get('sort_key') => $request->get('sort_value')
+            ];
+        }
+
+        return [];
+    }
 
 }

@@ -25,8 +25,8 @@
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>Tiêu đề</th>
+					<th><a href="{{ build_sort_link(Request::fullUrl(), 'id') }}">ID {!! get_icon_sort(Request::all(), 'id') !!}</a></th>
+					<th><a href="{{ build_sort_link(Request::fullUrl(), 'title') }}">Tiêu đề {!! get_icon_sort(Request::all(), 'title') !!}</a></th>
 					<th>Danh mục</th>
 					<th>Hình ảnh</th>
 					<th>Ngày tạo</th>
@@ -39,7 +39,7 @@
 			<tbody>
 				@foreach ($posts as $post)
 					<tr>
-						<td width="30">{{ $post->getId() }}</td>
+						<td width="50">{{ $post->getId() }}</td>
 						<td>
 							<p>
 								Tiêu đề: <a href="" class="editable" data-name="title" data-pk="{{ $post->getId() }}" data-type="text">{{ $post->getTitle() }}</a>

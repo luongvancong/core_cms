@@ -35,7 +35,7 @@ class DbPostRepository extends BaseRepository implements PostRepository
 			return $value != "";
 		});
 
-		$query = $this->model->with('author', 'category')->orderBy('updated_at', 'DESC');
+		$query = $this->model->with('author', 'category');
 
 		if(empty($sortArray)) $sortArray = ['updated_at' => 'DESC'];
 

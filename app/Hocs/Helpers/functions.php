@@ -732,3 +732,27 @@ if( ! function_exists('build_sort_link') ) {
         return $url . '?' . http_build_query($queryParams);
     }
 }
+
+
+if( ! function_exists('get_icon_sort') ) {
+
+	/**
+	 * Get icon sort
+	 * @param  array  $query
+	 * @return string
+	 */
+	function get_icon_sort(array $query, $key)
+	{
+		$action = array_get($query, '_action');
+		$sortKey = array_get($query, 'sort_key');
+		$sortValue = strtolower(array_get($query, 'sort_value'));
+
+		if($action == 'sort' && $sortKey == $key) {
+			if($sortValue == 'asc') {
+				return '<i class="fa fa-caret-down"></i>';
+			}else{
+				return '<i class="fa fa-caret-up"></i>';
+			}
+		}
+	}
+}
