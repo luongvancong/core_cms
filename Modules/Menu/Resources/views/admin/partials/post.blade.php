@@ -20,6 +20,18 @@
             queryParam: 'q',
             tokenLimit: 1
         });
+
+        @if($menu->getId() > 0 && $menu->getType() == Modules\Menu\Repositories\Menu::TYPE_POST)
+            <?php
+                $post = app('Modules\Post\Repositories\PostRepository')->find($menu->getObjectId());
+            ?>
+            @if($post)
+                $('#keyword').tokenInput('add', {
+                    id: {{ $post->getId() }},
+                    name: '{{ $post->getTitle() }}'
+                });
+            @endif
+        @endif
     });
 </script>
 @endsection

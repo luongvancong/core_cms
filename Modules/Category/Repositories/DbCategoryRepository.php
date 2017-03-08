@@ -125,9 +125,13 @@ class DbCategoryRepository extends BaseRepository implements CategoryRepository
 	}
 
 
-	public function optimizeCategories()
-	{
-		$categories = $this->getAllCategories();
+	/**
+     * Optimize categories
+     * @return void
+     */
+    public function optimizeCategories()
+    {
+        $categories = $this->getAllCategories();
         foreach($categories as $item) {
             $item->level = $item->level;
             if($item->getParentId() > 0) {
@@ -140,7 +144,7 @@ class DbCategoryRepository extends BaseRepository implements CategoryRepository
                  ->where('id', $item->getId())
                  ->update(['level' => $item->level]);
         }
-	}
+    }
 
 
 	public function create($data)

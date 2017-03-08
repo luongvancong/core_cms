@@ -2,10 +2,12 @@
 
 namespace Modules\Menu\Repositories;
 
+use Modules\Category\Repositories\CategoryRepository;
 use Modules\Category\Repositories\CategoryTrait;
+use Modules\Category\Repositories\DbCategoryRepository;
 use Nht\Hocs\Core\BaseRepository;
 
-class DbMenuRepository extends BaseRepository implements MenuRepository {
+class DbMenuRepository extends DbCategoryRepository implements MenuRepository {
 
     use CategoryTrait;
 

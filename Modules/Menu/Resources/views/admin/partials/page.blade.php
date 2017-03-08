@@ -20,6 +20,18 @@
             queryParam: 'q',
             tokenLimit: 1
         });
+
+        @if($menu->getId() > 0 && $menu->getType() == Modules\Menu\Repositories\Menu::TYPE_PAGE)
+            <?php
+                $page = app('Modules\Page\Repositories\PageRepository')->find($menu->getObjectId());
+            ?>
+            @if($page)
+                $('#keyword').tokenInput('add', {
+                    id: {{ $page->getId() }},
+                    name: '{{ $page->getTitle() }}'
+                });
+            @endif
+        @endif
     });
 </script>
 @endsection

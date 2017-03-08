@@ -11,7 +11,7 @@
     <select class="form-control" name="object_id">
         <option value="">Chọn một danh mục</option>
         @foreach($postCategories as $item)
-            <option value="{{ $item->getId() }}" {{ $menu->getObjectId() == $item->getId() ? 'selected' : '' }}><?php for($i = 0; $i < $item->level; $i ++) echo '--'; ?>{{ $item->getName() }}</option>
+            <option value="{{ $item->getId() }}" {{ $menu->getType() == Modules\Menu\Repositories\Menu::TYPE_POST_CATEGORY && $menu->getObjectId() == $item->getId() ? 'selected' : '' }}><?php for($i = 0; $i < $item->level; $i ++) echo '--'; ?>{{ $item->getName() }}</option>
         @endforeach
     </select>
     {!! alertError('object_id') !!}
@@ -25,6 +25,18 @@
             queryParam: 'q',
             tokenLimit: 1
         });
+
+        @if($menu->getId() > 0 && $menu->getType() == Modules\Menu\Repositories\Menu::TYPE_POST_CATEGORY)
+            <?php
+                $postCategory = app('Modules\Post\Repositories\Category\PostCategoryRepository')->find($menu->getObjectId());
+            ?>
+            @if($postCategory)
+                $('#keyword').tokenInput('add', {
+                    id: {{ $postCategory->getId() }},
+                    name: '{{ $postCategory->getName() }}'
+                });
+            @endif
+        @endif
     });
 </script>
 @endsection

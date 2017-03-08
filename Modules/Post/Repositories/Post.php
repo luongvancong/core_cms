@@ -52,6 +52,11 @@ class Post extends Model
 		return $this->category_id;
 	}
 
+	public function getCreatedAt()
+	{
+		return $this->created_at;
+	}
+
 	public function getUpdatedAt() {
 		return $this->updated_at;
 	}

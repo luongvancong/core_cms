@@ -67,7 +67,7 @@ class MenuController extends AdminController {
 
         try {
             if($this->menu->safeUpdate($data, $id, $menus)) {
-                return redirect()->route('admin.menu.index')->with('success', trans('general.messages.delete_success'));
+                return redirect()->route('admin.menu.index')->with('success', trans('general.messages.update_success'));
             }
         }
         catch (\Modules\Category\Exceptions\CategoryCanNotBeParentItSelftException $e) {
@@ -77,7 +77,7 @@ class MenuController extends AdminController {
             return redirect()->back()->withInput()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('admin.menu.index')->with('success', trans('general.messages.delete_fail'));
+        return redirect()->route('admin.menu.index')->with('success', trans('general.messages.update_fail'));
     }
 
     public function getDelete($id)

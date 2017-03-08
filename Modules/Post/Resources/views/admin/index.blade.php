@@ -29,6 +29,8 @@
 					<th>Tiêu đề</th>
 					<th>Danh mục</th>
 					<th>Hình ảnh</th>
+					<th>Ngày tạo</th>
+					<th>Cập nhật lần cuối</th>
 					<th width="30">Atv</th>
 					<th width="30">Edit</th>
 					<th width="30">Del</th>
@@ -52,6 +54,8 @@
 						<td width="100">
 							<img src="{{ $post->presenter()->getImage('md_') }}" height="50">
 						</td>
+						<td>{{ $post->getCreatedAt() }}</td>
+						<td>{{ $post->getUpdatedAt() }}</td>
 						<td class="text-center">{!! makeActiveButton(route('admin.post.active', [$post->getId()]), $post->active) !!}</td>
 						<td class="text-center">{!! makeEditButton(route('admin.post.edit', [$post->getId()])) !!}</td>
 						<td class="text-center">{!! makeDeleteButton(route('admin.post.delete', [$post->getId()])) !!}</td>

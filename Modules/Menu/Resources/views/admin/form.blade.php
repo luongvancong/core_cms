@@ -8,7 +8,13 @@
             </div>
             <div class="list-group">
                 @foreach(Modules\Menu\Repositories\Menu::getTypeOptions() as $key => $value)
-                    <a href="{{ $menu->exist ? 'javascript:;' : route('admin.menu.create', ['type' => $key]) }}" class="list-group-item {{ $type == $key ? 'active' : '' }}">{{ $value }}</a>
+                    <?php
+                        $url = route('admin.menu.create', ['type' => $key]);
+                        if($menu->getId() > 0) {
+                            $url = route('admin.menu.edit', [$menu->getId(), 'type' => $key]);
+                        }
+                    ?>
+                    <a href="{{ $url }}" class="list-group-item {{ $type == $key ? 'active' : '' }}">{{ $value }}</a>
                 @endforeach
             </div>
         </div>
