@@ -347,58 +347,64 @@ function getBreadcrumbItem($name, $url, $active = false, $htmlAttributes = []) {
 	return '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" '. makeAttributes($attributes) .'>'. $link_item .'</li>';
 }
 
-/**
-* Merge Attributes
-*
-* @return array attributes.
-*/
-function mergeAttributes() {
 
-	$args = func_get_args();
+if( ! function_exists('mergeAttributes') ) {
+	/**
+	* Merge Attributes
+	*
+	* @return array attributes.
+	*/
+	function mergeAttributes() {
 
-	$temp_attributes = array();
+		$args = func_get_args();
 
-	$attributes = array();
+		$temp_attributes = array();
 
-	foreach($args as $key => $array_attr) {
-		foreach($array_attr as $name_attr => $value_attr) {
-			if($name_attr == 'class') {
-				$temp_attributes[$name_attr][] = $value_attr;
-			}else{
-				$temp_attributes[$name_attr] = $value_attr;
+		$attributes = array();
+
+		foreach($args as $key => $array_attr) {
+			foreach($array_attr as $name_attr => $value_attr) {
+				if($name_attr == 'class') {
+					$temp_attributes[$name_attr][] = $value_attr;
+				}else{
+					$temp_attributes[$name_attr] = $value_attr;
+				}
 			}
 		}
-	}
 
-	foreach($temp_attributes as $name_attr => $value_attr) {
-		if($name_attr == 'class') {
-			$attributes[$name_attr] = implode(' ', $value_attr);
-		}else{
-			$attributes[$name_attr] = $value_attr;
+		foreach($temp_attributes as $name_attr => $value_attr) {
+			if($name_attr == 'class') {
+				$attributes[$name_attr] = implode(' ', $value_attr);
+			}else{
+				$attributes[$name_attr] = $value_attr;
+			}
 		}
-	}
 
-	return $attributes;
+		return $attributes;
+	}
 }
 
-/**
- * Generate string attributes
- * @param  array $attributes
- * @return string
- */
-function makeAttributes($attributes) {
 
-	$stringAttribute = '';
+if(! function_exists('makeAttributes')) {
+	/**
+	 * Generate string attributes
+	 * @param  array $attributes
+	 * @return string
+	 */
+	function makeAttributes($attributes) {
 
-	if(is_array($attributes)) {
-		foreach($attributes as $key => $value) {
-			$stringAttribute .= "$key=\"$value\" ";
+		$stringAttribute = '';
+
+		if(is_array($attributes)) {
+			foreach($attributes as $key => $value) {
+				$stringAttribute .= "$key=\"$value\" ";
+			}
+		}else{
+			$stringAttribute = @strval($attributes);
 		}
-	}else{
-		$stringAttribute = @strval($attributes);
-	}
 
-	return trim($stringAttribute, ' ');
+		return trim($stringAttribute, ' ');
+	}
 }
 
 
@@ -684,10 +690,10 @@ if( ! function_exists('update_option') ) {
 if( ! function_exists('build_sort_link') ) {
     /**
      * Build sort link for sort
-     * @param $link
      * @param $sortKey
+     * @param $link
      */
-    function build_sort_link($link, $sortKey) {
+    function build_sort_link($sortKey, $link) {
     	if(!filter_var($link, FILTER_VALIDATE_URL)) {
     		throw new Exception($link. " is not valid url", 1);
     	}
@@ -738,10 +744,11 @@ if( ! function_exists('get_icon_sort') ) {
 
 	/**
 	 * Get icon sort
+	 * @param  string $key
 	 * @param  array  $query
 	 * @return string
 	 */
-	function get_icon_sort(array $query, $key)
+	function get_icon_sort($key, array $query)
 	{
 		$action = array_get($query, '_action');
 		$sortKey = array_get($query, 'sort_key');

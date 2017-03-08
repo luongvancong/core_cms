@@ -2,15 +2,15 @@
 
 namespace Nht\Http\Controllers;
 
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Mail;
+use Illuminate\Routing\Controller;
+use Luco\DataGrid\Models\DataGrid;
 
-class TestController extends BaseController
+class TestController extends Controller
 {
     public function index()
     {
+        $dataGrid = new DataGrid();
+        echo $dataGrid->showHeading('ID', 'id', 1);die;
         // $routeCollection = \Route::getRoutes();
 
         // foreach ($routeCollection as $value) {

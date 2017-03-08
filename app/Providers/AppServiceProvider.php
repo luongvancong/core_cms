@@ -33,6 +33,11 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register('Barryvdh\Debugbar\ServiceProvider');
         }
 
+        $this->app->register('Luco\DataGrid\DataGridServiceProvider');
+
+        /**
+         * Metadata
+         */
         $this->app->singleton('Setting', function ($app) {
             $settingRepository = $this->app->make('Modules\Setting\Repositories\SettingRepository');
             return new \Nht\Hocs\Core\Metadata\Metadata($settingRepository);

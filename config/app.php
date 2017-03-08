@@ -168,30 +168,6 @@ return [
 
         Nwidart\Modules\LaravelModulesServiceProvider::class,
 
-        /*
-         * Package Service Providers...
-         */
-        Nht\Providers\AdvertiseServiceProvider::class,
-        Nht\Providers\UserServiceProvider::class,
-        Nht\Providers\RoleServiceProvider::class,
-        Nht\Providers\PermissionServiceProvider::class,
-        Nht\Providers\SettingServiceProvider::class,
-        Nht\Providers\CategoryServiceProvider::class,
-        Nht\Providers\PostServiceProvider::class,
-        Nht\Providers\ProductServiceProvider::class,
-
-        Nht\Providers\PostCategoryServiceProvider::class,
-        Nht\Providers\BannerServiceProvider::class,
-
-        Nht\Providers\TagServiceProvider::class,
-        Nht\Providers\CityServiceProvider::class,
-
-        Nht\Providers\PictureServiceProvider::class,
-        Nht\Providers\PageServiceProvider::class,
-
-        Nht\Providers\CarServiceProvider::class,
-        Nht\Providers\TransporterServiceProvider::class,
-
         Zizaco\Entrust\EntrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
@@ -199,17 +175,11 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         OpenGraph\SocialServiceProvider::class,
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
-
-        Barryvdh\Debugbar\ServiceProvider::class,
-
-        //
 
         /*
          * Application Service Providers...
          */
         Nht\Providers\AppServiceProvider::class,
-        Nht\Providers\AuthServiceProvider::class,
         // Nht\Providers\BroadcastServiceProvider::class,
         Nht\Providers\EventServiceProvider::class,
         Nht\Providers\RouteServiceProvider::class,
@@ -267,12 +237,7 @@ return [
         'ImageIntervention' => Intervention\Image\Facades\Image::class,
         'Socialite'         => Laravel\Socialite\Facades\Socialite::class,
         'Excel'             => Maatwebsite\Excel\Facades\Excel::class,
-        'OpenGraph'         => OpenGraph\Facades\Socials::class,
-
-        'JWTAuth' =>  Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
-
-        'Debugbar' => Barryvdh\Debugbar\Facade::class
+        'OpenGraph'         => OpenGraph\Facades\Socials::class
     ],
 
 ];

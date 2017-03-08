@@ -25,8 +25,8 @@
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
-					<th><a href="{{ build_sort_link(Request::fullUrl(), 'id') }}">ID {!! get_icon_sort(Request::all(), 'id') !!}</a></th>
-					<th><a href="{{ build_sort_link(Request::fullUrl(), 'title') }}">Tiêu đề {!! get_icon_sort(Request::all(), 'title') !!}</a></th>
+					<th><a href="{{ build_sort_link('id', Request::fullUrl()) }}">ID {!! get_icon_sort('id', Request::all()) !!}</a></th>
+					<th><a href="{{ build_sort_link('title', Request::fullUrl()) }}">Tiêu đề {!! get_icon_sort('title', Request::all()) !!}</a></th>
 					<th>Danh mục</th>
 					<th>Hình ảnh</th>
 					<th>Ngày tạo</th>
