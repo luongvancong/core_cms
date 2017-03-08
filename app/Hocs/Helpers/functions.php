@@ -756,3 +756,21 @@ if( ! function_exists('get_icon_sort') ) {
 		}
 	}
 }
+
+
+if( ! function_exists('get_sort_params') ) {
+	/**
+	 * Get sort params
+	 * @param  array  $query
+	 * @return array
+	 */
+	function get_sort_params(array $query) {
+		$sortKey = array_get($query, 'sort_key');
+		$sortValue = strtolower(array_get($query, 'sort_value'));
+		if($sortKey && $sortValue) {
+			return [$sortKey => $sortValue];
+		}
+
+		return [];
+	}
+}
