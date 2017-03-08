@@ -33,8 +33,6 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register('Barryvdh\Debugbar\ServiceProvider');
         }
 
-        $this->app->register('Luco\DataGrid\DataGridServiceProvider');
-
         /**
          * Metadata
          */

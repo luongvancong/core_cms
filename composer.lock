@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1455a4a61309b9bda1dadff5e2de2a12",
-    "content-hash": "d8432d085fd2af9b785d76ee9ec22dbe",
+    "hash": "d79c42e1781a5683fb5165b8ab55ff02",
+    "content-hash": "ca85dd3856276ca3083432844edfaf02",
     "packages": [
         {
             "name": "buzz/laravel-google-captcha",
@@ -1416,50 +1416,6 @@
                 "twitter"
             ],
             "time": "2016-08-17 00:36:58"
-        },
-        {
-            "name": "luco/data_grid",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "Packages/DataGrid",
-                "reference": "c901394c1520c5430656bed7fbb035f56e35ad09",
-                "shasum": null
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "fzaninotto/faker": "^1.6",
-                "phpunit/phpunit": "5.3.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Luco\\DataGrid\\": "src"
-                },
-                "files": [
-                    "src/helpers/helper.php"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Justin Luong",
-                    "email": "cong.itsoft@gmail.com"
-                }
-            ],
-            "description": "Data grid table, bootstrap 3",
-            "keywords": [
-                "data grid",
-                "data grid table",
-                "data table"
-            ],
-            "transport-options": {
-                "symlink": true
-            }
         },
         {
             "name": "maatwebsite/excel",
@@ -3372,16 +3328,16 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "dev-master",
+            "version": "v2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "328d20488cc22aa84d32ec5713e27b01707789dc"
+                "reference": "24e4f0261e352d3fd86d0447791b56ae49398674"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/328d20488cc22aa84d32ec5713e27b01707789dc",
-                "reference": "328d20488cc22aa84d32ec5713e27b01707789dc",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/24e4f0261e352d3fd86d0447791b56ae49398674",
+                "reference": "24e4f0261e352d3fd86d0447791b56ae49398674",
                 "shasum": ""
             },
             "require": {
@@ -3422,7 +3378,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2017-03-08 09:28:16"
+            "time": "2017-01-19 08:19:49"
         },
         {
             "name": "doctrine/instantiator",
@@ -5132,9 +5088,7 @@
     "stability-flags": {
         "zizaco/entrust": 20,
         "intervention/image": 20,
-        "laravel/socialite": 20,
-        "luco/data_grid": 20,
-        "barryvdh/laravel-debugbar": 20
+        "laravel/socialite": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

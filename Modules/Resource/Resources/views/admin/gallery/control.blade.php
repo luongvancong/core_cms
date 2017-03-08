@@ -1,6 +1,6 @@
 <div class="gallery-control">
     <div class="thumnail-container mg-bt-10">
-        <img src="{{ old($controlName) ? parse_image_url('md_' . old($controlName)) : '' }}" class="{{ !old($controlName) ? 'hide' : '' }} img-thumnail" id="{{ $imgId }}">
+        <img src="{{ old($controlName, parse_image_url('sm_' . $defaultValueControl)) ? parse_image_url('sm_' . old($controlName, $defaultValueControl)) : '' }}" class="{{ !old($controlName, $defaultValueControl) ? 'hide' : '' }} img-thumnail" id="{{ $imgId }}">
     </div>
     <input type="hidden" name="{{ $controlName }}" value="{{ old($controlName, $defaultValueControl) }}">
     <span class="act-show-gallery btn btn-xs btn-danger">Chọn ảnh từ gallery</span>
