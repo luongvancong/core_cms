@@ -8,7 +8,7 @@ class Post extends Model
 {
 	protected $primaryKey = 'id';
 
-	public $fillable = ['title', 'content', 'slug', 'category_id', 'user_id', 'active', 'hot'];
+	public $guarded = ['id', '_token'];
 
 	public function getId() {
 		return $this->id;

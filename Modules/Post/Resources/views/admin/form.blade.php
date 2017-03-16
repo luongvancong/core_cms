@@ -22,7 +22,7 @@
             <select class="form-control" name="category_id">
             <option value="">Chọn một danh mục</option>
             @foreach($categories as $item)
-                <option value="{{ $item->getId() }}" {{ $item->getId() == $post->getCategoryId() ? 'selected="selected"' : '' }}><?php for($i = 1; $i < $item->level; $i ++) echo '--'; ?>{{ $item->getName() }}</option>
+                <option value="{{ $item->getId() }}" {{ $item->getId() == old('category_id', $post->getCategoryId()) ? 'selected="selected"' : '' }}><?php for($i = 1; $i < $item->level; $i ++) echo '--'; ?>{{ $item->getName() }}</option>
             @endforeach
             </select>
             {!! alertError('category_id') !!}
@@ -33,7 +33,7 @@
         <label class="control-label col-sm-3">Ảnh minh họa</label>
         <div class="col-sm-6">
             {{-- <input type="file" name="image" class="form-control btn-flat"> --}}
-            {!! gallery_init('post-image', 'image', $post->image) !!}
+            {!! gallery_init('post-image', 'image', old('image', $post->image)) !!}
             <input type="text" name="image_alt" class="form-control" placeholder="Alt">
         </div>
     </div>
