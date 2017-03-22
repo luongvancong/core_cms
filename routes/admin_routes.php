@@ -122,19 +122,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 				Route::post('/ajax/quick-delete-multiple', ['as' => 'admin.products.images.deleteMulti', 'uses' => 'ProductController@ajaxImageQuickDeleteMultiple']);
 			});
 		});
-
-
-		// Tags
-		Route::group(['prefix' => 'tag'], function() {
-			Route::get('/index', ['as' => 'admin.tag.index', 'permissions' => 'tag.view' ,'uses' => 'TagController@index']);
-			Route::get('/create', ['as' => 'admin.tag.create', 'permissions' => 'tag.create' ,'uses' => 'TagController@create']);
-			Route::post('/create', ['permissions' => 'tag.create', 'uses' => 'TagController@store']);
-			Route::get('/{id}/edit', ['as' => 'admin.tag.edit', 'permissions' => 'tag.edit' ,'uses' => 'TagController@edit']);
-			Route::post('/{id}/edit', ['permissions' => 'tag.edit', 'uses' => 'TagController@update']);
-			Route::get('/{id}/delete', ['as' => 'admin.tag.delete', 'permissions' => 'tag.delete' ,'uses' => 'TagController@destroy']);
-
-			Route::get('/ajaxSearchTag', ['as' => 'admin.tag.ajax.search', 'permissions' => 'tag.edit' ,'uses' => 'TagController@ajaxTag']);
-		});
-
 	});
 });
