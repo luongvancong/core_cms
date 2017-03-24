@@ -23,7 +23,7 @@ class TagController extends AdminController {
 
     public function getIndex(Request $request)
     {
-        $tags = $this->tag->get(20, [], [], ['updated_at' => 'DESC']);
+        $tags = $this->tag->get(20, [], $request->all(), ['updated_at' => 'DESC']);
         return view('tag::admin/index', compact('tags'));
     }
 
@@ -65,5 +65,50 @@ class TagController extends AdminController {
         }
 
         return redirect()->route('admin.tag.index')->with('success', trans('general.messages.delete_fail'));
+    }
+
+
+    /**
+     * Ajax editable
+     * @param  Request $request
+     * @return json
+     */
+    public function ajaxEditable(Request $request)
+    {
+        $id    = $request->get('pk');
+        $field = $request->get('name');
+        $value = clean($request->get('value'));
+
+        $item = $this->tag->getById($id);
+        $item->$field = $value;
+
+        if($item->save()) {
+            return response()->json(['code' => 1]);
+        }
+
+        return response()->json(['code' => 0]);
+    }
+
+
+    /**
+     * Ajax get data to input token
+     * @param  Request $request
+     * @return json
+     */
+    public function ajaxInputToken(Request $request)
+    {
+        $q = clean($request->get('q'));
+        $json = [];
+        $tags = $this->tag->get(20, [], ['name' => $q], [], false);
+        foreach($tags as $tag) {
+            $json[] = [
+                'id' => $tag->getId(),
+                'name' => $tag->getName()
+            ];
+
+            $json[] = $tag->getName();
+        }
+
+        return response()->json($json);
     }
 }

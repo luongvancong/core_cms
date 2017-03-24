@@ -21,7 +21,7 @@ class DbTagRepository extends BaseRepository implements TagRepository {
         $name = clean(array_get($filter, 'name'));
 
         if($name) {
-            $query->where('name', 'LIKE', $name);
+            $query->where('name', 'LIKE', '%'. $name . '%');
         }
 
         if(!$sort) $sort = ['created_at' => 'DESC'];

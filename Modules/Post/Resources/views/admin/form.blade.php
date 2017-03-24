@@ -54,6 +54,16 @@
         </div>
     </div>
 
+    <div class="tag-container">
+        <hr>
+        <h5 class="mg-bt-20"><b>Tag</b></h5>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <input type="text" id="tag" placeholder="Nhập tag" name="tag" value="" class="form-control">
+            </div>
+        </div>
+    </div>
+
     <hr>
     <h5 class="mg-bt-20"><b>Phần thông tin Metadata dành cho SEO</b></h5>
 
@@ -82,3 +92,18 @@
         </div>
     </div>
 </form>
+
+<script type="text/javascript">
+    $(function() {
+        // $('#tag').tokenInput('{{ route('admin.tag.ajax.input.token') }}', {
+        //     theme: 'facebook',
+        //     method: 'GET',
+        //     queryParam: 'q',
+        //     tokenLimit: 15
+        // });
+
+        $('#tag').tagsInput({
+            autocomplete_url: '{{ route('admin.tag.ajax.input.token') }}'
+        });
+    });
+</script>

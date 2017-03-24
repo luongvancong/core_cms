@@ -8,7 +8,7 @@ class Post extends Model
 {
 	protected $primaryKey = 'id';
 
-	public $guarded = ['id', '_token'];
+	public $guarded = ['id', '_token', 'tag'];
 
 	public function getId() {
 		return $this->id;
