@@ -2,6 +2,7 @@
 
 namespace Modules\Post\Repositories;
 
+use Illuminate\Http\Request;
 use Nht\Hocs\Tags\Tag;
 
 /**
@@ -40,4 +41,22 @@ interface PostRepository
      * @return Collection
      */
     public function getPostByCategoryId($categoryId, $take = 10);
+
+
+    /**
+     * Attach tags from request
+     * @param  Post    $post
+     * @param  Request $request
+     * @return void
+     */
+    public function attachTagsFromRequest(Post $post, Request $request);
+
+
+    /**
+     * Sync tags from request
+     * @param  Post    $post
+     * @param  Request $request
+     * @return void
+     */
+    public function syncTagsFromRequest(Post $post, Request $request);
 }

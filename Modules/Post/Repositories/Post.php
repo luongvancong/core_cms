@@ -8,7 +8,7 @@ class Post extends Model
 {
 	protected $primaryKey = 'id';
 
-	public $guarded = ['id', '_token'];
+	public $guarded = ['id', '_token', 'tag'];
 
 	public function getId() {
 		return $this->id;
@@ -98,7 +98,7 @@ class Post extends Model
 
 	public function tags()
 	{
-		return $this->belongsToMany('Nht\Hocs\Tags\Tag', 'posts_tags', 'post_id');
+		return $this->belongsToMany('Modules\Tag\Repositories\Tag', 'posts_tags', 'post_id');
 	}
 
 	public function comments() {

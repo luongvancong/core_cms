@@ -19,9 +19,8 @@
 	<link href="/css/admin.css" rel="stylesheet">
 	<link href="/js/iCheck/skins/square/square.css" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('/css/bootstrap-editable/bootstrap-editable.css') }}">
-	<link href="/bower_components/jquery.tagsinput/src/jquery.tagsinput.css" rel="stylesheet" >
-	<link href="/bower_components/jquery-tokeninput/styles/token-input-facebook.css" rel="stylesheet" >
-	<link href="/bower_components/jquery-tokeninput/styles/token-input.css" rel="stylesheet" >
+
+
 	<link href="/js/select2/dist/css/select2.min.css" rel="stylesheet" >
 	<link href="/js/select2/dist/css/select2-bootstrap.min.css" rel="stylesheet" >
 	<link href="/js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
@@ -45,10 +44,8 @@
 	<script src="/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
 	<script src="/js/jquery.nicescroll.js"></script>
 	<script src="/js/jquery.easing.min.js"></script>
-	{{-- <script src="/js/calendar/clndr.js"></script> --}}
 	<script src="/js/underscore-min.js"></script>
-	{{-- <script src="/js/calendar/moment-2.2.1.js"></script> --}}
-	{{-- <script src="/js/evnt.calendar.init.js"></script> --}}
+
 	<script src="/js/gauge/gauge.js"></script>
 	<script src="/js/jquery.customSelect.min.js" ></script>
 	<script src="/js/advanced-datatable/js/jquery.dataTables.js"></script>
@@ -61,17 +58,27 @@
 	<script src="/js/functions.js"></script>
 
 	<script src="{{ asset('/js/jquery.editable/bootstrap-editable.js') }}"></script>
+
+	<!-- Xoxco jquery tags input -->
+	<link href="/bower_components/jquery.tagsinput/src/jquery.tagsinput.css" rel="stylesheet" />
 	<script src="/js/jquery-tags-input/jquery.tagsinput.js"></script>
+
+	<!-- jQuery select2 -->
 	<script src="/js/select2/dist/js/select2.min.js"></script>
+
+	<!-- Monents date time -->
 	<script src="/js/moment/min/moment.min.js"></script>
 	<script src="/js/moment/min/moment-with-locales.min.js"></script>
+
+	<!-- Date time picker -->
 	<script src="/js/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 
+	<!-- Fancy box -->
 	<link rel="stylesheet" type="text/css" href="/js/fancybox-2.15/source/jquery.fancybox.css">
     <script type="text/javascript" src="/js/fancybox-2.15/source/jquery.fancybox.js"></script>
 
+    <!-- Core galerry -->
     <link rel="stylesheet" type="text/css" href="/css/gallery.css">
-
 
     <!-- Jquery token input -->
     <link href="/bower_components/jquery-tokeninput/styles/token-input-facebook.css" rel="stylesheet" >

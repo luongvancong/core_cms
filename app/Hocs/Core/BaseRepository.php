@@ -69,15 +69,15 @@ abstract class BaseRepository
 	 */
 	public function create($attributes)
 	{
-		$object = $this->getInstance();
-		foreach($attributes as $key => $value) {
-			$object->$key = $value;
-		}
-		if($object->save()) {
-			return $object;
-		}
+		// $object = $this->getInstance();
+		// foreach($attributes as $key => $value) {
+		// 	$object->$key = $value;
+		// }
+		// if($object->save()) {
+		// 	return $object;
+		// }
 
-		// return $this->model->create($attributes);
+		return $this->model->create($attributes);
 	}
 
 	/**
