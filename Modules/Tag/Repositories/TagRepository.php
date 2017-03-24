@@ -14,4 +14,11 @@ interface TagRepository {
      * @return mixed
      */
     public function get($perPage = 20, array $with = array(), array $filter = array(), array $sort = array(), $paginate = true);
+
+    /**
+     * Get one tag by name
+     * @param  string $name
+     * @return \Modules\Tag\Repositories\Tag | null
+     */
+    public function getByName($name);
 }

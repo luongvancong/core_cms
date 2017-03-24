@@ -2,6 +2,7 @@
 
 namespace Modules\Post\Repositories;
 
+use Illuminate\Http\Request;
 use Modules\Post\Repositories\Post;
 use Nht\Hocs\Core\BaseRepository;
 
@@ -73,5 +74,52 @@ class DbPostRepository extends BaseRepository implements PostRepository
 
 	public function countAllPosts() {
 		return $this->model->count();
+	}
+
+	public function attachTagsFromRequest(Post $post, Request $request) {
+		$tagList = $request->get('tag');
+        $arrayTagNames = explode(',', $tagList);
+        $tagIds = [];
+        if($arrayTagNames !== false) {
+            foreach($arrayTagNames as $tagName) {
+                $tag = app('Modules\Tag\Repositories\TagRepository')->getByName($tagName);
+                if(!$tag) {
+                	$tag = app('Modules\Tag\Repositories\TagRepository')->create([
+                	    'name' => $tagName,
+                	    'slug' => removeTitle($tagName)
+                	]);
+                }
+
+                $tagIds[] = $tag->getId();
+            }
+        }
+
+        if(!empty($tagIds)) {
+            $post->tags()->attach($tagIds);
+        }
+	}
+
+
+	public function syncTagsFromRequest(Post $post, Request $request) {
+		$tagList = $request->get('tag');
+        $arrayTagNames = explode(',', $tagList);
+        $tagIds = [];
+        if($arrayTagNames !== false) {
+            foreach($arrayTagNames as $tagName) {
+                $tag = app('Modules\Tag\Repositories\TagRepository')->getByName($tagName);
+                if(!$tag) {
+                	$tag = app('Modules\Tag\Repositories\TagRepository')->create([
+                	    'name' => $tagName,
+                	    'slug' => removeTitle($tagName)
+                	]);
+                }
+
+                $tagIds[] = $tag->getId();
+            }
+        }
+
+        if(!empty($tagIds)) {
+            $post->tags()->sync($tagIds);
+        }
 	}
 }

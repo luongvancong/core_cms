@@ -95,15 +95,15 @@
 
 <script type="text/javascript">
     $(function() {
-        // $('#tag').tokenInput('{{ route('admin.tag.ajax.input.token') }}', {
-        //     theme: 'facebook',
-        //     method: 'GET',
-        //     queryParam: 'q',
-        //     tokenLimit: 15
-        // });
-
         $('#tag').tagsInput({
-            autocomplete_url: '{{ route('admin.tag.ajax.input.token') }}'
+            autocomplete_url: '{{ route('admin.tag.ajax.tag.input') }}',
+            defaultText: "Thêm tag"
         });
+
+        @if($post->exists())
+            @foreach($post->tags()->get() as $t)
+                $('#tag').addTag('{{ $t->getName() }}');
+            @endforeach
+        @endif
     });
 </script>

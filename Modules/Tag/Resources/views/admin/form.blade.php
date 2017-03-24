@@ -46,3 +46,13 @@
     </div>
     {!! csrf_field() !!}
 </form>
+
+<script type="text/javascript">
+    $(function() {
+        $('[name="name"]').on('change', function() {
+            var $this = $(this);
+            var $slug = $('[name="slug"]');
+            $slug.value(removeAccents($this.val()));
+        });
+    });
+</script>

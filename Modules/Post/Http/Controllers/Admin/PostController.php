@@ -62,14 +62,8 @@ class PostController extends AdminController
         $data = $this->uploadImage($request, $data);
         $data['user_id'] = $this->auth->getUser()->getId();
 
-        $tagList = $request->get('tag');
-        _debug($tagList);die;
-        $tagIds = explode(',', $tagList);
-
         if( $post = $this->post->create($data) ) {
-            if($tagIds !== false) {
-                $post->tags()->attach($tagIds);
-            }
+            $this->post->attachTagsFromRequest($post, $request);
             return redirect()->route('admin.post.create')->with('success', trans('general.messages.update_success'));
         }
 
@@ -84,11 +78,12 @@ class PostController extends AdminController
 
     public function postEdit($postId, AdminPostFormRequest $request) {
         $post = $this->post->getById($postId);
-        $data = $request->except('_token');
+        $data = $request->except('_token', 'tag');
 
         $data = $this->uploadImage($request, $data);
 
         if( $this->post->update($data, ['id' => $postId]) ) {
+            $this->post->syncTagsFromRequest($post, $request);
             return redirect()->route('admin.post.index')->with('success', trans('general.messages.update_success'));
         }
 

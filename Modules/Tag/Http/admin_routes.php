@@ -17,4 +17,7 @@ Route::group(['prefix' => 'admin/tag', 'middleware' => ['web', 'admin', 'acl'], 
 
     // Ajax input token
     Route::get('/ajax/input-token', ['as' => 'admin.tag.ajax.input.token', 'uses' => 'TagController@ajaxInputToken']);
+
+    // Ajax tag input
+    Route::get('/ajax/tag-input', ['as' => 'admin.tag.ajax.tag.input', 'uses' => 'TagController@ajaxTagInput']);
 });

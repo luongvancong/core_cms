@@ -36,4 +36,8 @@ class DbTagRepository extends BaseRepository implements TagRepository {
 
         return $query->take($perPage)->get();
     }
+
+    public function getByName($name) {
+        return $this->model->where('name', $name)->first();
+    }
 }

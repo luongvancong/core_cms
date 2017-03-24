@@ -132,3 +132,12 @@ try {
 } catch(error) {
    console.log(error);
 }
+
+$(function() {
+   $('img').on('error', function(e) {
+      console.log('gg');
+      var $this = $(this);
+      // console.log(e.currentTarget);
+      $this.attr('src', '/images/no-image.png');
+   });
+});

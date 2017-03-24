@@ -105,7 +105,23 @@ class TagController extends AdminController {
                 'id' => $tag->getId(),
                 'name' => $tag->getName()
             ];
+        }
 
+        return response()->json($json);
+    }
+
+
+    /**
+     * Ajax get data form tag input
+     * @param  Request $request
+     * @return json
+     */
+    public function ajaxTagInput(Request $request)
+    {
+        $q = clean($request->get('q'));
+        $json = [];
+        $tags = $this->tag->get(20, [], ['name' => $q], [], false);
+        foreach($tags as $tag) {
             $json[] = $tag->getName();
         }
 
