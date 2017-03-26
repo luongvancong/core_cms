@@ -9,6 +9,8 @@ class Page extends Model {
 	protected $primaryKey = 'id';
 	protected $table      = "pages";
 
+	protected $guarded = ['id', '_token'];
+
 	const PAGE_ACTIVE   = 1;
 	const PAGE_DEACTIVE = 0;
 
