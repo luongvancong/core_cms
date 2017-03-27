@@ -24,7 +24,7 @@ class AdminPageFormRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required'
+            'title' => 'required|max:190'
         ];
     }
 
@@ -32,6 +32,7 @@ class AdminPageFormRequest extends Request
     public function messages() {
         return [
             'title.required' => 'Vui lòng nhập tiêu đề',
+            'title.max' => 'Tiêu đề tối đa 190 ký tự'
         ];
     }
 }
