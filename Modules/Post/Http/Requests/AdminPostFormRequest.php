@@ -24,8 +24,11 @@ class AdminPostFormRequest extends Request
 	public function rules()
 	{
 		return [
-			'title' => 'required',
-			'category_id' => 'required'
+			'title' => 'required|max:190',
+			'category_id' => 'required',
+			'meta_title' => 'max:190',
+			'meta_keyword' => 'max:255',
+			'meta_description' => 'max:190'
 		];
 	}
 
@@ -33,6 +36,10 @@ class AdminPostFormRequest extends Request
 	{
 		return [
 			'title.required' => 'Vui lòng nhập tiêu đề',
+			'title.max' => 'Tiêu đề không vượt quá 190 ký tự',
+			'meta_title.max' => 'Meta title không vượt quá 190 ký tự',
+			'meta_keyword.max' => 'Meta keyword không vượt quá 255 ký tự',
+			'meta_description.max' => 'Meta Description không vượt quá 255 ký tự',
 			'category_id.required' => 'Vui lòng chọn danh mục'
 		];
 	}
