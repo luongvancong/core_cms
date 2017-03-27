@@ -1,5 +1,19 @@
 .gallery-container {
     .item {
+        &.first-upload {
+            border: 1px solid #ccc;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+            .icon {
+                font-size: 50px;
+                color: #ccc;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
         height: 200px;
         width: 100%;
         display: block;
