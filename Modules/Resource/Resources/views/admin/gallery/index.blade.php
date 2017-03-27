@@ -23,6 +23,11 @@
         <div class="panel-body">
             <div class="gallery-container">
                 <div class="row">
+                    <div class="col-sm-3 item-colsystem mg-bt-20">
+                        <div class="item first-upload" data-toggle="modal" data-target="#modal-upload">
+                            <i class="icon fa fa-upload"></i>
+                        </div>
+                    </div>
                     @foreach($images as $item)
                         <div class="col-sm-3 item-colsystem mg-bt-20">
                             <div class="item">

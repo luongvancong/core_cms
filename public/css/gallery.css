@@ -5,6 +5,20 @@
   overflow: hidden;
   position: relative;
 }
+.gallery-container .item.first-upload {
+  border: 1px solid #ccc;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+}
+.gallery-container .item.first-upload .icon {
+  font-size: 50px;
+  color: #ccc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .gallery-container .item:hover .btn-group {
   display: block;
 }
