@@ -67,22 +67,25 @@
     <hr>
     <h5 class="mg-bt-20"><b>Phần thông tin Metadata dành cho SEO</b></h5>
 
-    <div class="form-group">
+    <div class="form-group {{ hasValidator('meta_title') }}">
         <label for="email" class="col-sm-3 control-label">Meta title</label>
         <div class="col-sm-6 text-center">
             <input type="text" name="meta_title" value="{{ old('meta_title', $post->getMetaTitle()) }}" class="form-control">
+            {!! alertError('meta_title') !!}
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group {{ hasValidator('meta_keyword') }}">
         <label for="email" class="col-sm-3 control-label">Meta keyword</label>
         <div class="col-sm-6 text-center">
             <input type="text" name="meta_keyword" value="{{ old('meta_keyword', $post->getMetaKeyword()) }}" class="form-control">
+            {!! alertError('meta_keyword') !!}
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group {{ hasValidator('meta_description') }}">
         <label for="email" class="col-sm-3 control-label">Meta description</label>
         <div class="col-sm-6 text-center">
             <input type="text" name="meta_description" value="{{ old('meta_description', $post->getMetaDescription()) }}" class="form-control">
+            {!! alertError('meta_description') !!}
         </div>
     </div>
 
