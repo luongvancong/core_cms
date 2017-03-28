@@ -1,0 +1,16 @@
+{
+    "name": "FeedBack",
+    "alias": "feedback",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\FeedBack\\Providers\\FeedBackServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
