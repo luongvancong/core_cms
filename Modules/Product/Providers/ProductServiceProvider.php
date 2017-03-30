@@ -20,8 +20,6 @@ class ProductServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerTranslations();
-        $this->registerConfig();
         $this->registerViews();
     }
 
@@ -32,22 +30,9 @@ class ProductServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
-    }
-
-    /**
-     * Register config.
-     *
-     * @return void
-     */
-    protected function registerConfig()
-    {
-        $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('product.php'),
-        ]);
-        $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'product'
-        );
+        $this->app->singleton('Modules\Product\Repositories\ProductRepository', 'Modules\Product\Repositories\DbProductRepository');
+        $this->app->singleton('Modules\Product\Repositories\Category\ProductCategoryRepository', 'Modules\Product\Repositories\Category\DbProductCategoryRepository');
+        $this->app->singleton('Modules\Product\Repositories\Image\ImageRepository', 'Modules\Product\Repositories\Image\DbImageRepository');
     }
 
     /**
@@ -61,29 +46,9 @@ class ProductServiceProvider extends ServiceProvider
 
         $sourcePath = __DIR__.'/../Resources/views';
 
-        $this->publishes([
-            $sourcePath => $viewPath
-        ]);
-
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/modules/product';
         }, \Config::get('view.paths')), [$sourcePath]), 'product');
-    }
-
-    /**
-     * Register translations.
-     *
-     * @return void
-     */
-    public function registerTranslations()
-    {
-        $langPath = base_path('resources/lang/modules/product');
-
-        if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'product');
-        } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'product');
-        }
     }
 
     /**

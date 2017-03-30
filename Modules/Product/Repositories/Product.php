@@ -20,6 +20,11 @@ class Product extends Model {
         return $this->image;
     }
 
+    public function getImageAlt()
+    {
+        return $this->image_alt;
+    }
+
     public function getName()
     {
         return $this->name;
@@ -100,7 +105,7 @@ class Product extends Model {
 
     public function category()
     {
-
+        return $this->belongsTo('Modules\Product\Repositories\Category\ProductCategory', 'category_id');
     }
 
     public function tags()
@@ -110,6 +115,6 @@ class Product extends Model {
 
     public function images()
     {
-        return $this->hasMany('Nht\Hocs\Products\ProductImage', 'product_id');
+        return $this->hasMany('Modules\Product\Repositories\Image\Image', 'product_id');
     }
 }

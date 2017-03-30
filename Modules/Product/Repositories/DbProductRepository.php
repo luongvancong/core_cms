@@ -2,6 +2,8 @@
 
 namespace Modules\Product\Repositories;
 
+use Nht\Hocs\Core\BaseRepository;
+
 class DbProductRepository extends BaseRepository implements ProductRepository {
 
     /**
@@ -15,6 +17,33 @@ class DbProductRepository extends BaseRepository implements ProductRepository {
     }
 
     public function get($perPage = 20, array $with = array(), array $filter = array(), array $sort = array(), $paginate = true) {
+        $query = $this->model->with($with)->whereRaw(1);
 
+        $id = (int) array_get($filter, 'id');
+        $id_in = (array) array_get($filter, 'id_in');
+        $id_not_in = (array) array_get($filter, 'id_not_in');
+        $categoryId = (int) array_get($filter, 'category_id');
+        $category_in = (array) array_get($filter, 'category_in');
+        $category_not_in = (array) array_get($filter, 'category_not_in');
+        $name = array_get($filter, 'name');
+
+        if($id) $query->where('id', $id);
+        if($id_in) $query->whereIn('id', $id_in);
+        if($id_not_in) $query->whereNotIn('id', $id_not_in);
+        if($categoryId) $query->where('category_id', $categoryId);
+        if($category_in) $query->whereIn('category_id', $category_id);
+        if($category_not_in) $query->whereNotIn('category_id', $category_not_in);
+        if($name) $query->where('name', 'LIKE', '%'. $name .'%');
+
+        if(!$sort) $sort = ['updated_at' => 'DESC'];
+        foreach($sort as $key => $value) {
+            $query->orderBy($key, $value);
+        }
+
+        if($paginate) {
+            return $query->paginate($perPage);
+        }
+
+        return $query->take($perPage)->get();
     }
 }

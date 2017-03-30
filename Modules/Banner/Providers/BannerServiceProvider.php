@@ -20,7 +20,6 @@ class BannerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
     }
@@ -42,9 +41,6 @@ class BannerServiceProvider extends ServiceProvider
      */
     protected function registerConfig()
     {
-        $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('banner.php'),
-        ]);
         $this->mergeConfigFrom(
             __DIR__.'/../Config/config.php', 'banner'
         );
@@ -61,29 +57,9 @@ class BannerServiceProvider extends ServiceProvider
 
         $sourcePath = __DIR__.'/../Resources/views';
 
-        $this->publishes([
-            $sourcePath => $viewPath
-        ]);
-
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/modules/banner';
         }, \Config::get('view.paths')), [$sourcePath]), 'banner');
-    }
-
-    /**
-     * Register translations.
-     *
-     * @return void
-     */
-    public function registerTranslations()
-    {
-        $langPath = base_path('resources/lang/modules/banner');
-
-        if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'banner');
-        } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'banner');
-        }
     }
 
     /**

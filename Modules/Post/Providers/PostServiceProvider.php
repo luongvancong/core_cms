@@ -20,8 +20,6 @@ class PostServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerTranslations();
-        $this->registerConfig();
         $this->registerViews();
     }
 
@@ -37,21 +35,6 @@ class PostServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register config.
-     *
-     * @return void
-     */
-    protected function registerConfig()
-    {
-        $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('post.php'),
-        ]);
-        $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'post'
-        );
-    }
-
-    /**
      * Register views.
      *
      * @return void
@@ -62,29 +45,9 @@ class PostServiceProvider extends ServiceProvider
 
         $sourcePath = __DIR__.'/../Resources/views';
 
-        $this->publishes([
-            $sourcePath => $viewPath
-        ]);
-
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/modules/post';
         }, \Config::get('view.paths')), [$sourcePath]), 'post');
-    }
-
-    /**
-     * Register translations.
-     *
-     * @return void
-     */
-    public function registerTranslations()
-    {
-        $langPath = base_path('resources/lang/modules/post');
-
-        if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'post');
-        } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'post');
-        }
     }
 
     /**

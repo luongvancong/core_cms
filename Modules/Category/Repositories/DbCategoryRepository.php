@@ -19,6 +19,7 @@ class DbCategoryRepository extends BaseRepository implements CategoryRepository
 
 	public function __construct(Category $model, DBM $db) {
 		$this->model    = $model;
+		_debug($model);die;
 		$this->db       = $db;
 	}
 
