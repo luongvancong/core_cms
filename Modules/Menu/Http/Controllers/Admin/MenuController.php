@@ -229,6 +229,9 @@ class MenuController extends AdminController {
     public function doOptimize()
     {
         $menus = $this->menu->get();
+        // Reset has_child to zero
+        \DB::table('menus')->update(['has_child' => 0]);
+
         foreach($menus as $item) {
             $item->level = $item->level;
             if($item->getParentId() > 0) {
