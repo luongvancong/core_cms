@@ -10,6 +10,16 @@ class Product extends Model {
 
     protected $guarded = ['id', '_token'];
 
+    public function setPriceAttribute($value)
+    {
+        $this->attributes['price'] = (int) $value;
+    }
+
+    public function setPromotionPriceAttribute($value)
+    {
+        $this->attributes['promotion_price'] = (int) $value;
+    }
+
     public function getId()
     {
         return $this->id;
@@ -42,12 +52,12 @@ class Product extends Model {
 
     public function getPrice()
     {
-        return $this->price;
+        return (int) $this->price;
     }
 
     public function getPromotionPrice()
     {
-        return $this->promotion_price;
+        return (int) $this->promotion_price;
     }
 
     public function getMetaTitle()
@@ -115,6 +125,6 @@ class Product extends Model {
 
     public function images()
     {
-        return $this->hasMany('Modules\Product\Repositories\Image\Image', 'product_id');
+        return $this->hasMany('Modules\Product\Repositories\Image\ProductImage', 'product_id');
     }
 }

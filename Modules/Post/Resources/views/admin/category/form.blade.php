@@ -27,14 +27,6 @@
         </div>
     </div>
 
-    @if($category->background)
-    <div class="form-group">
-        <div class="col-sm-6 col-sm-offset-3">
-            <img src="{{ $category->presenter()->getImage('md_') }}" height="90">
-        </div>
-    </div>
-    @endif
-
     <div class="form-group">
         <label for="email" class="col-sm-3 control-label">Ảnh minh họa</label>
         <div class="col-sm-6">

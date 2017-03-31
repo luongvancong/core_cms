@@ -4,11 +4,13 @@ namespace Modules\Product\Repositories\Image;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model {
+class ProductImage extends Model {
 
     protected $table = 'product_images';
 
     public $timestamps = false;
+
+    protected $guarded = ['id', '_token'];
 
     public function getId()
     {

@@ -37,7 +37,7 @@ class CategoryController extends AdminController {
         $data = $request->except('_token');
 
         if( $this->category->create($data) ) {
-            return redirect()->back()->with('success', trans('general.messages.create_success'));
+            return redirect()->route('admin.product_category.index')->with('success', trans('general.messages.create_success'));
         }
 
         return redirect()->back()->with('error', trans('general.messages.create_fail'));
@@ -49,7 +49,7 @@ class CategoryController extends AdminController {
         return view('product::admin/category/edit', compact('category', 'categories'));
     }
 
-    public function postEdit($id, AdminPostCategoryFormRequest $request) {
+    public function postEdit($id, AdminProductCategoryFormRequest $request) {
         $id = (int) $id;
         $category = $this->category->getById($id);
         $categories = $this->category->getAllCategories();
@@ -57,31 +57,31 @@ class CategoryController extends AdminController {
 
         try {
             if( $this->category->safeUpdate($data, $id, $categories) ) {
-                return redirect()->route('admin.post_category.index')->with('success', trans('general.messages.update_success'));
+                return redirect()->route('admin.product_category.index')->with('success', trans('general.messages.update_success'));
             }
         }
         catch (\Modules\Category\Exceptions\CategoryCanNotBeParentItSelftException $e) {
-            return redirect()->route('admin.post_category.index')->with('error', $e->getMessage());
+            return redirect()->route('admin.product_category.index')->with('error', $e->getMessage());
         }
         catch (\Modules\Category\Exceptions\SafeUpdateException $e) {
-            return redirect()->route('admin.post_category.index')->with('error', $e->getMessage());
+            return redirect()->route('admin.product_category.index')->with('error', $e->getMessage());
         }
 
-        return redirect()->route('admin.post_category.index')->with('error', trans('general.messages.update_fail'));
+        return redirect()->route('admin.product_category.index')->with('error', trans('general.messages.update_fail'));
     }
 
     public function getDelete($id) {
         if($this->category->delete($id)) {
-            return redirect()->back()->with('success', trans('general.messages.delete_success'));
+            return redirect()->route('admin.product_category.index')->with('success', trans('general.messages.delete_success'));
         }
 
-        return redirect()->back()->with('success', trans('general.messages.delete_fail'));
+        return redirect()->route('admin.product_category.index')->with('success', trans('general.messages.delete_fail'));
     }
 
 
     public function getOptimize()
     {
         $this->category->optimizeCategories();
-        return redirect()->back()->with('success', trans('general.messages.update_success'));
+        return redirect()->route('admin.product_category.index')->with('success', trans('general.messages.update_success'));
     }
 }

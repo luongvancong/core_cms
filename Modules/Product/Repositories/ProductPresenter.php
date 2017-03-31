@@ -18,6 +18,10 @@ class ProductPresenter {
         return formatCurrency($this->model->getPrice());
     }
 
+    public function getPromotionPrice() {
+        return formatCurrency($this->model->getPromotionPrice());
+    }
+
     public function getImage($type = '')
     {
         return parse_image_url($type . $this->model->getImage());

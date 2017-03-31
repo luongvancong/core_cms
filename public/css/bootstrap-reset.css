@@ -412,3 +412,7 @@ ul {
 .well {
     box-shadow: none;
 }
+
+.input-group-addon {
+    padding: 0 12px;
+}

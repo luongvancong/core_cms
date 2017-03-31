@@ -46,4 +46,18 @@ class DbProductRepository extends BaseRepository implements ProductRepository {
 
         return $query->take($perPage)->get();
     }
+
+    public function saveProductImages($product, array $images) {
+        foreach($images as $image) {
+            $product->images()->create([
+                'product_id' => $product->getId(),
+                'image'      => $image
+            ]);
+        }
+    }
+
+
+    public function deleteMultiByIds(array $ids) {
+        return $this->model->whereIn('id', $ids)->delete();
+    }
 }

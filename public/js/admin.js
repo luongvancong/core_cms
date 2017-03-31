@@ -141,3 +141,50 @@ $(function() {
       $this.attr('src', '/images/no-image.png');
    });
 });
+
+/**
+ * Auto fill slug with title,name
+ * @param  string source
+ * @param  string destination
+ * @return void
+ */
+function auto_fill_slug(source, destination) {
+   $(source).on('keyup', function() {
+      var $this = $(this);
+      var slug = strSlug(removeAccents($this.val()));
+      $(destination).val(slug.toLowerCase());
+   });
+}
+
+/**
+ * Tạo slug tự động
+ */
+$(function() {
+   auto_fill_slug('#slug-source', '#slug-target');
+   auto_fill_slug('.slug-source', '.slug-target');
+});
+
+// function auto_format_price(source, destination) {
+//    $(source).on('keyup', function() {
+//       var $this = $(this);
+//       $(destination).text(formatCurrency($this.val()));
+//    });
+// }
+
+// $(function() {
+//    auto_format_price('.price-source', '.price-formatted');
+// });
+
+$.fn.auto_format_price = function() {
+   return this.each(function(e) {
+      var element = $(this);
+      element.on('keyup', function() {
+         var $this = $(this);
+         $(element.data('target')).text(formatCurrency($this.val()));
+      });
+   });
+}
+
+$(function() {
+   $('.price-source').auto_format_price();
+});

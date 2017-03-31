@@ -31,7 +31,7 @@ class ProductController extends AdminController {
     public function index(Request $request)
     {
         $categories = $this->category->getAllCategories();
-        $products = $this->product->get(20, ['category'], $request->all());
+        $products = $this->product->get(20, ['category', 'images'], $request->all());
         return view('product::admin/index', compact('categories', 'products'));
     }
 
@@ -48,9 +48,24 @@ class ProductController extends AdminController {
     }
 
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
     public function store(AdminProductFormRequest $request)
     {
-        # code...
+        $data = $request->except(['_token', 'images', '_image', '_image_homepage']);
+        // _debug($data);die;
+
+        if ($product = $this->product->create($data))
+        {
+            $this->saveProductImages($product, $request);
+            return redirect()->route('admin.product.index')->with('success', trans('general.messages.create_success'));
+        }
+
+        return redirect()->back()->withInputs()->with('error', trans('general.messages.create_fail'));
     }
 
 
@@ -85,5 +100,81 @@ class ProductController extends AdminController {
         }
 
         return redirect()->back()->withInputs()->with('error', trans('general.messages.update_fail'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $product = $this->product->getById($id);
+
+        if ($this->product->delete($id))
+        {
+            return redirect()->route('admin.product.index')->with('success', trans('general.messages.delete_success'));
+        }
+
+        return redirect()->route('admin.product.index')->with('error', trans('general.messages.delete_fail'));
+    }
+
+
+    public function saveProductImages($product, Request $request) {
+        if($request->hasFile('images')) {
+            $resultUpload = $this->image->uploadMulti('images');
+            if($resultUpload['filename']) {
+                $this->product->saveProductImages($product, $resultUpload['filename']);
+            }
+        }
+    }
+
+
+    /**
+     * Xóa nhiều sản phẩm 1 lúc
+     * @param  Request $request
+     * @return json
+     */
+    public function ajaxQuickDeleteMultiple(Request $request)
+    {
+        $ids = $request->get('product_ids');
+
+        if($this->product->deleteMultiByIds($ids)) {
+            return response()->json(['code' => 1]);
+        }
+
+        return response()->json(['code' => 0]);
+    }
+
+    public function ajaxEditable(Request $request)
+    {
+        $id    = $request->get('pk');
+        $field = $request->get('name');
+        $value = $request->get('value');
+
+        if(in_array($field, ['price', 'promotion_price'])) {
+            $value = preg_replace('#\D#', '', $value);
+        }
+
+        return $this->product->update([$field => $value], ['id' => $id]);
+    }
+
+    /**
+     * Toggle active status
+     * @param  int $id
+     * @return json
+     */
+    public function toggleActive($id)
+    {
+        $product = $this->product->getById($id);
+
+        $product->active = ! $product->active;
+        $product->save();
+
+        return response()->json([
+           'code' => 1,
+           'status' => $product->active,
+        ]);
     }
 }

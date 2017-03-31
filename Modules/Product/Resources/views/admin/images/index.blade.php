@@ -5,8 +5,8 @@
         <header class="panel-heading">
             <h4>
                 Ảnh chi tiết sản phẩm
-                <a href="{{ route('admin.product.index') }}" class="pull-right btn btn-default btn-sm mg-l-10">Quay lại</a>
-                <a class="pull-right btn btn-primary btn-sm" href="{{ route('admin.product.images.create', [$product->getId()]) }}">Tạo mới</a>
+                <a href="{{ route('admin.product.index') }}" class="pull-right btn btn-default btn-xs mg-l-10">Quay lại</a>
+                <a class="pull-right btn btn-primary btn-xs" href="{{ route('admin.product.images.create', [$product->getId()]) }}">Tạo mới</a>
             </h4>
             <h5>{{ $product->getName() }}</h5>
         </header>
@@ -35,10 +35,10 @@
                         <tbody>
                             @foreach ($images as $key => $image)
                                 <tr>
-                                    <td width="30"><input type="checkbox" class="_option" name="option_{{ $image->getId() }}" value="{{ $image->getId() }}"></td>
+                                    <td width="30" class="text-center"><input type="checkbox" class="_option" name="option_{{ $image->getId() }}" value="{{ $image->getId() }}"></td>
                                     <td width="50">{{ $image->getId() }}</td>
                                     <td>
-                                        <img height="50" src="{{ $image->getImage('sm_') }}" alt="">
+                                        <img height="50" src="{{ $image->presenter()->getImage('sm_') }}" alt="">
                                     </td>
                                     <td>
                                         <a href="#" class="editable" data-name="image_alt" data-id="{{ $image->getId() }}" data-type="text" data-pk="{{ $image->getId() }}" data-url="{{ route('admin.product.images.editable', [$image->getId()]) }}" data-title="Thay đổi Alt">{{ $image->getImageAlt() }}</a>
@@ -61,8 +61,7 @@
 
 @section('scripts')
 <script>
-      $.fn.editable.defaults.mode = 'inline';
-      $(function() {
+    $(function() {
         $('.editable').editable({
             showbuttons : true,
             params : {
@@ -89,14 +88,15 @@
 
                     if(checkedIds.length) {
                         $.ajax({
-                            url : "{{ route('admin.products.images.deleteMulti') }}",
+                            url : "{{ route('admin.products.images.deleteMulti', $product->getId()) }}",
                             type : "POST",
                             data : {
-                                record_ids : checkedIds
+                                record_ids : checkedIds,
+                                _token: '{{ csrf_token() }}'
                             },
                             success : function(response) {
                                 if(response.code == 1) {
-                                    alert("Xóa thành công");
+                                    toastr.success("Xóa thành công", "Thông báo");
                                     window.location.reload();
                                 }
                             }
@@ -109,6 +109,6 @@
                 $this.val("");
             }
         });
-      });
+    });
    </script>
 @stop

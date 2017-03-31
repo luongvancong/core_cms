@@ -14,7 +14,7 @@
     <div class="form-group {{ hasValidator('name') }}">
         <label for="email" class="col-sm-3 control-label">Tên <b class="text-danger">*</b></label>
         <div class="col-sm-6 text-center">
-            <input type="text" class="form-control" value="{{ Request::old('name', $category->getName()) }}" name="name">
+            <input type="text" id="slug-source" class="form-control" value="{{ Request::old('name', $category->getName()) }}" name="name">
             {!! alertError('name') !!}
         </div>
     </div>
@@ -22,18 +22,10 @@
     <div class="form-group {{ hasValidator('slug') }}">
         <label for="email" class="col-sm-3 control-label">Slug</label>
         <div class="col-sm-6 text-center">
-            <input type="text" class="form-control" value="{{ Request::old('slug', $category->getSlug()) }}" name="slug">
+            <input type="text" id="slug-target" class="form-control" value="{{ Request::old('slug', $category->getSlug()) }}" name="slug">
             {!! alertError('slug') !!}
         </div>
     </div>
-
-    @if($category->background)
-    <div class="form-group">
-        <div class="col-sm-6 col-sm-offset-3">
-            <img src="{{ $category->presenter()->getImage('md_') }}" height="90">
-        </div>
-    </div>
-    @endif
 
     <div class="form-group">
         <label for="email" class="col-sm-3 control-label">Ảnh minh họa</label>

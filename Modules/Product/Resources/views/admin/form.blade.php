@@ -32,7 +32,7 @@
         <div class="form-group {{ hasValidator('name') }}">
             <label for="email" class="col-sm-3 control-label">Tên <b class="text-danger">*</b></label>
             <div class="col-sm-6 text-center">
-                <input type="text" class="form-control" value="{{ Request::old('name', $product->getName()) }}" name="name">
+                <input type="text" class="form-control slug-source" value="{{ Request::old('name', $product->getName()) }}" name="name">
                 {!! alertError('name') !!}
             </div>
         </div>
@@ -40,7 +40,7 @@
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Slug</label>
             <div class="col-sm-6 text-center">
-                <input type="text" class="form-control" value="{{ Request::old('slug', $product->getSlug()) }}" name="slug">
+                <input type="text" class="form-control slug-target" value="{{ Request::old('slug', $product->getSlug()) }}" name="slug">
             </div>
         </div>
 
@@ -54,16 +54,23 @@
 
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Giá</label>
-            <div class="col-sm-6 text-center">
-                <input type="text" class="form-control" value="{{ Request::old('price', $product->getPrice()) }}" name="price">
+            <div class="col-sm-3 text-center">
+                <div class="input-group">
+                    <input type="text" class="form-control price-source" data-target=".price-formatted" value="{{ Request::old('price', $product->getPrice()) }}" name="price">
+                    <span class="input-group-addon price-formatted">{{ $product->presenter()->getPrice() }}</span>
+                </div>
+
                 {!! alertError('price') !!}
             </div>
         </div>
 
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Giá khuyến mãi</label>
-            <div class="col-sm-6 text-center">
-                <input type="text" class="form-control" value="{{ Request::old('promotion_price', $product->getPromotionPrice()) }}" name="promotion_price">
+            <div class="col-sm-3 text-center">
+                <div class="input-group">
+                    <input type="text" class="form-control price-source" data-target=".promotion-price-formatted" value="{{ Request::old('promotion_price', $product->getPromotionPrice()) }}" name="promotion_price">
+                    <span class="input-group-addon promotion-price-formatted">{{ $product->presenter()->getPromotionPrice() }}</span>
+                </div>
             </div>
         </div>
 
