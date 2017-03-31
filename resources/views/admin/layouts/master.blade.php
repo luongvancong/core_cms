@@ -87,6 +87,10 @@
 
     <!-- Nested sortable -->
     <script type="text/javascript" src="/js/jquery.mjs.nestedSortable.js"></script>
+
+    <!-- Toastr -->
+    <script type="text/javascript" src="/js/jQuery-Toastr/toastr.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/js/jQuery-Toastr/toastr.min.css">
 </head>
 <body>
 <section id="container">

@@ -20,8 +20,6 @@ class FeedBackServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerTranslations();
-        $this->registerConfig();
         $this->registerViews();
     }
 
@@ -35,20 +33,6 @@ class FeedBackServiceProvider extends ServiceProvider
         $this->app->singleton('Modules\FeedBack\Repositories\FeedbackRepository', 'Modules\FeedBack\Repositories\DbFeedbackRepository');
     }
 
-    /**
-     * Register config.
-     *
-     * @return void
-     */
-    protected function registerConfig()
-    {
-        $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('feedback.php'),
-        ], 'config');
-        $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'feedback'
-        );
-    }
 
     /**
      * Register views.
@@ -61,30 +45,11 @@ class FeedBackServiceProvider extends ServiceProvider
 
         $sourcePath = __DIR__.'/../Resources/views';
 
-        $this->publishes([
-            $sourcePath => $viewPath
-        ]);
-
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/modules/feedback';
         }, \Config::get('view.paths')), [$sourcePath]), 'feedback');
     }
 
-    /**
-     * Register translations.
-     *
-     * @return void
-     */
-    public function registerTranslations()
-    {
-        $langPath = base_path('resources/lang/modules/feedback');
-
-        if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'feedback');
-        } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'feedback');
-        }
-    }
 
     /**
      * Get the services provided by the provider.

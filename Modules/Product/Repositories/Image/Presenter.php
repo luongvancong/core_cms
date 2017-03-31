@@ -4,14 +4,14 @@ namespace Modules\Product\Repositories\Image;
 
 class Presenter {
 
-    public function __construct(Image $model)
+    public function __construct(ProductImage $model)
     {
-        # code...
+        $this->model = $model;
     }
 
     public function getImage($type = '')
     {
-        # code...
+        return parse_image_url($type . $this->model->getImage());
     }
 
 }

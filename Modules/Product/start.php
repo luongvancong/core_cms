@@ -12,4 +12,7 @@
 |
 */
 
-require __DIR__ . '/Http/routes.php';
+if (!app()->routesAreCached()) {
+    require __DIR__ . '/Http/admin_routes.php';
+    require __DIR__ . '/Http/routes.php';
+}

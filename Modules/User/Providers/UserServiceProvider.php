@@ -44,9 +44,6 @@ class UserServiceProvider extends ServiceProvider
      */
     protected function registerConfig()
     {
-        $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('user.php'),
-        ]);
         $this->mergeConfigFrom(
             __DIR__.'/../Config/config.php', 'user'
         );
@@ -62,10 +59,6 @@ class UserServiceProvider extends ServiceProvider
         $viewPath = base_path('resources/views/modules/user');
 
         $sourcePath = __DIR__.'/../Resources/views';
-
-        $this->publishes([
-            $sourcePath => $viewPath
-        ]);
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/modules/user';

@@ -42,9 +42,6 @@ class SettingServiceProvider extends ServiceProvider
      */
     protected function registerConfig()
     {
-        $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('setting.php'),
-        ]);
         $this->mergeConfigFrom(
             __DIR__.'/../Config/config.php', 'setting'
         );
@@ -60,10 +57,6 @@ class SettingServiceProvider extends ServiceProvider
         $viewPath = base_path('resources/views/modules/setting');
 
         $sourcePath = __DIR__.'/../Resources/views';
-
-        $this->publishes([
-            $sourcePath => $viewPath
-        ]);
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/modules/setting';

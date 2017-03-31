@@ -135,9 +135,52 @@ try {
 
 $(function() {
    $('img').on('error', function(e) {
-      console.log('gg');
+      // console.log('gg');
       var $this = $(this);
       // console.log(e.currentTarget);
       $this.attr('src', '/images/no-image.png');
    });
+});
+
+/**
+ * Auto fill slug with title,name
+ * @param  string source
+ * @param  string destination
+ * @return void
+ */
+function auto_fill_slug(source, destination) {
+   $(source).on('keyup', function() {
+      var $this = $(this);
+      var slug = strSlug(removeAccents($this.val()));
+      $(destination).val(slug.toLowerCase());
+   });
+}
+
+/**
+ * Tạo slug tự động
+ */
+$(function() {
+   auto_fill_slug('#slug-source', '#slug-target');
+   auto_fill_slug('.slug-source', '.slug-target');
+});
+
+/**
+ * Format money hiển thị
+ */
+$.fn.auto_format_price = function() {
+   return this.each(function(e) {
+      var element = $(this);
+
+      // Default
+      $(element.data('target')).text(formatCurrency(element.val()));
+
+      element.on('keyup', function() {
+         var $this = $(this);
+         $(element.data('target')).text(formatCurrency($this.val()));
+      });
+   });
+}
+
+$(function() {
+   $('.price-source').auto_format_price();
 });

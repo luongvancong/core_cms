@@ -209,7 +209,7 @@ class CategoryController extends AdminController
         $value = clean($request->get('value'));
 
         $category = $this->category->getById($id);
-        $category->$field = $value;
+        $category->$field = clean($value);
 
         if($category->save()) {
             return response()->json(['code' => 1]);

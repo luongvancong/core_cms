@@ -20,8 +20,6 @@ class MenuServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerTranslations();
-        $this->registerConfig();
         $this->registerViews();
     }
 
@@ -35,20 +33,6 @@ class MenuServiceProvider extends ServiceProvider
         $this->app->bind('Modules\Menu\Repositories\MenuRepository', 'Modules\Menu\Repositories\DbMenuRepository');
     }
 
-    /**
-     * Register config.
-     *
-     * @return void
-     */
-    protected function registerConfig()
-    {
-        $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('menu.php'),
-        ]);
-        $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'menu'
-        );
-    }
 
     /**
      * Register views.
@@ -61,29 +45,9 @@ class MenuServiceProvider extends ServiceProvider
 
         $sourcePath = __DIR__.'/../Resources/views';
 
-        $this->publishes([
-            $sourcePath => $viewPath
-        ]);
-
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/modules/menu';
         }, \Config::get('view.paths')), [$sourcePath]), 'menu');
-    }
-
-    /**
-     * Register translations.
-     *
-     * @return void
-     */
-    public function registerTranslations()
-    {
-        $langPath = base_path('resources/lang/modules/menu');
-
-        if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'menu');
-        } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'menu');
-        }
     }
 
     /**

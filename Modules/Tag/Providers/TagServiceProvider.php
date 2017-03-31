@@ -42,9 +42,6 @@ class TagServiceProvider extends ServiceProvider
      */
     protected function registerConfig()
     {
-        $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('tag.php'),
-        ], 'config');
         $this->mergeConfigFrom(
             __DIR__.'/../Config/config.php', 'tag'
         );
@@ -60,10 +57,6 @@ class TagServiceProvider extends ServiceProvider
         $viewPath = base_path('resources/views/modules/tag');
 
         $sourcePath = __DIR__.'/../Resources/views';
-
-        $this->publishes([
-            $sourcePath => $viewPath
-        ]);
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/modules/tag';

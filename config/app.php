@@ -174,7 +174,6 @@ return [
         Roumen\Sitemap\SitemapServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        OpenGraph\SocialServiceProvider::class,
 
         /*
          * Application Service Providers...

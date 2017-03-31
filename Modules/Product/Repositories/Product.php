@@ -10,6 +10,16 @@ class Product extends Model {
 
     protected $guarded = ['id', '_token'];
 
+    public function setPriceAttribute($value)
+    {
+        $this->attributes['price'] = (int) $value;
+    }
+
+    public function setPromotionPriceAttribute($value)
+    {
+        $this->attributes['promotion_price'] = (int) $value;
+    }
+
     public function getId()
     {
         return $this->id;
@@ -18,6 +28,11 @@ class Product extends Model {
     public function getImage()
     {
         return $this->image;
+    }
+
+    public function getImageAlt()
+    {
+        return $this->image_alt;
     }
 
     public function getName()
@@ -37,12 +52,12 @@ class Product extends Model {
 
     public function getPrice()
     {
-        return $this->price;
+        return (int) $this->price;
     }
 
     public function getPromotionPrice()
     {
-        return $this->promotion_price;
+        return (int) $this->promotion_price;
     }
 
     public function getMetaTitle()
@@ -93,6 +108,16 @@ class Product extends Model {
         return $this->sort;
     }
 
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+
     public function presenter() {
         return new ProductPresenter($this);
     }
@@ -100,7 +125,7 @@ class Product extends Model {
 
     public function category()
     {
-
+        return $this->belongsTo('Modules\Product\Repositories\Category\ProductCategory', 'category_id');
     }
 
     public function tags()
@@ -110,6 +135,6 @@ class Product extends Model {
 
     public function images()
     {
-        return $this->hasMany('Nht\Hocs\Products\ProductImage', 'product_id');
+        return $this->hasMany('Modules\Product\Repositories\Image\ProductImage', 'product_id');
     }
 }

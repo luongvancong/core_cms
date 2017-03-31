@@ -428,3 +428,7 @@ function fillNoLogo(obj) {
 function product_detail_scroll_to_prices_table(obj) {
     scrollToSelector('#info-prices-table');
 }
+
+function formatCurrency(value) {
+  return number_format(value, 0, '.', '.');
+}
