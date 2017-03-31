@@ -31,7 +31,7 @@ class ProductController extends AdminController {
     public function index(Request $request)
     {
         $categories = $this->category->getAllCategories();
-        $products = $this->product->get(20, ['category', 'images'], $request->all());
+        $products = $this->product->get(20, ['category', 'images'], $request->all(), $this->getSortParams($request));
         return view('product::admin/index', compact('categories', 'products'));
     }
 
@@ -176,5 +176,9 @@ class ProductController extends AdminController {
            'code' => 1,
            'status' => $product->active,
         ]);
+    }
+
+    private function getSortParams(Request $request) {
+        return [$request->get('sort_key') => $request->get('sort_value')];
     }
 }

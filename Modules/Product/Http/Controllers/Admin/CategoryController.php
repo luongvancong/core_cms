@@ -22,7 +22,7 @@ class CategoryController extends AdminController {
      */
     public function getIndex(Request $request)
     {
-        $categories = $this->category->getAllCategories([], [], []);
+        $categories = $this->category->getAllCategories($request->all(), [], []);
         return view('product::admin/category/index', compact('categories'));
     }
 

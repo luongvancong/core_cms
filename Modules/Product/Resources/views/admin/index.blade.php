@@ -34,12 +34,14 @@
 							<tr>
 								<th><input type="checkbox" class="_all_options" name="_all_options"></th>
 								<th>ID</th>
-								<th>Tên sản phẩm</th>
-								<th>Giá</th>
+								<th>Ảnh</th>
+								<th><a href="{{ build_sort_link('name', Request::fullUrl()) }}">Tên {!! get_icon_sort('name', Request::all()) !!}</a></th>
+								<th><a href="{{ build_sort_link('price', Request::fullUrl()) }}">Giá {!! get_icon_sort('price', Request::all()) !!}</a></th>
 								<th>Danh mục</th>
 								<th>Thứ tự</th>
-								<th>Ảnh</th>
 								<th>Quản lý ảnh</th>
+								<th>Ngày tạo</th>
+								<th>Cập nhật lần cuối</th>
 								<th>Atv</th>
 								<th>Sửa</th>
 								<th>Xóa</th>
@@ -50,7 +52,10 @@
 								<tr>
 									<td width="30"><input type="checkbox" class="_option" name="option_{{ $product->getId() }}" value="{{ $product->getId() }}"></td>
 									<td width="50">{{ $product->getId() }}</td>
-									<td width="300">
+									<td>
+										<img height="35" src="{{ $product->presenter()->getImage('sm_') }}" alt="">
+									</td>
+									<td width="250">
 										<div><a href="{{ $product->presenter()->getUrl() }}" title="{{ $product->getName() }}" data-pk="{{ $product->getId() }}" data-type="text" data-name="name" class="editable">{{ $product->getName() }}</a></div>
 										<div style="font-size: 10px; color: #545454;">
 											Slug: <a style="font-size: 10px; color: #545454; font-style: italic; display: inline-block; margin: 10px 0 0 0;" href="#" class="editable" data-pk="{{ $product->getId() }}" data-name="slug" data-type="text">{{ $product->getSlug() }}</a>
@@ -59,16 +64,17 @@
 									<td>
 										<a href="#" class="editable" data-pk="{{ $product->getId() }}" data-name="price" data-type="text">{!! $product->presenter()->getPrice() !!}</a>
 									</td>
-									<td>{{ $product->category ? $product->category->getName() : '--' }}</td>
+									<td>
+										<span style="font-size: 11px;">{{ $product->category ? $product->category->getName() : '--' }}</span>
+									</td>
 									<td>
 										<a href="#" class="editable" data-name="sort" data-id="{{ $product->getId() }}" data-type="text" data-pk="{{ $product->getId() }}" data-title="Thay đổi thứ tự">{{ $product->getSort() }}</a>
 									</td>
 									<td>
-										<img height="35" src="{{ $product->presenter()->getImage('sm_') }}" alt="">
-									</td>
-									<td>
 										<a class="btn btn-info btn-xs" href="{{ route('admin.product.images', $product->getId()) }}">Ảnh SP ({{ $product->images ? $product->images->count() : 0 }})</a>
 									</td>
+									<td><span style="font-size: 10px;">{{ $product->getCreatedAt() }}</span></td>
+									<td><span style="font-size: 10px;">{{ $product->getUpdatedAt() }}</span></td>
 									<td width="30">{!! makeActiveButton(route('admin.product.toggleActive', $product->getId()), $product->active) !!}</td>
 									<td width="30"><a href="{{ route('admin.product.edit', $product->getId()) }}" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a></td>
 									<td width="30">

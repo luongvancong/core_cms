@@ -23,6 +23,7 @@
 							<tr>
 								<th>ID</th>
 								<th>Tên</th>
+								<th>Slug</th>
 								<th>Sản phẩm</th>
 								<th>Sửa</th>
 								<th>Xóa</th>
@@ -32,7 +33,13 @@
 							@foreach ($categories as $key => $category)
 								<tr>
 									<td width="50">{{ $category->getId() }}</td>
-									<td><?php for($i = 0; $i < $category->level; $i ++) echo '--'; ?>{{ $category->getName() }}</td>
+									<td>
+										<?php for($i = 0; $i < $category->level; $i ++) echo '--'; ?>
+										<a href="" class="editable" data-pk="{{ $category->getId() }}" data-name="name" data-type="text">{{ $category->getName() }}</a>
+									</td>
+									<td>
+										<a href="" class="editable" data-pk="{{ $category->getId() }}" data-name="slug" data-type="text">{{ $category->getSlug() }}</a>
+									</td>
 									<td>{{ $category->products()->count() }}</td>
 									<td width="30"><a href="{{ route('admin.product_category.edit', $category->getId()) }}" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a></td>
 									<td width="30">
@@ -46,4 +53,16 @@
 			</div>
 		</div>
 	</section>
+
+	<script type="text/javascript">
+		$(function() {
+			$('.editable').editable({
+	            showbuttons : true,
+	            url: "{{ route('admin.category.ajax.editable') }}",
+	            params : {
+	               _token : '{{ csrf_token() }}'
+	            }
+	        });
+		});
+	</script>
 @stop

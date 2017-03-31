@@ -22,7 +22,7 @@
         @endif
 
         <div class="form-group {{ hasValidator('category_id') }}">
-            <label class="col-sm-3 control-label">Danh mục</label>
+            <label class="col-sm-3 control-label">Danh mục <b class="text-danger">*</b></label>
             <div class="col-sm-6">
                 {!! getCategoriesHtmlSelectOption($categories, old('category_id', $product->category_id), ['class' => 'form-control']) !!}
                 {!! alertError('category_id') !!}
@@ -45,7 +45,7 @@
         </div>
 
         <div class="form-group {{ hasValidator('code') }}">
-            <label for="email" class="col-sm-3 control-label">Mã <b class="text-danger">*</b></label>
+            <label for="email" class="col-sm-3 control-label">Mã</label>
             <div class="col-sm-6 text-center">
                 <input type="text" class="form-control" value="{{ Request::old('code', $product->getCode()) }}" name="code">
                 {!! alertError('code') !!}
