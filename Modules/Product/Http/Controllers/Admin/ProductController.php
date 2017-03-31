@@ -178,7 +178,16 @@ class ProductController extends AdminController {
         ]);
     }
 
+    /**
+     * Build sort params
+     * @param  Request $request
+     * @return array
+     */
     private function getSortParams(Request $request) {
-        return [$request->get('sort_key') => $request->get('sort_value')];
+        if($request->get('_action') == 'sort') {
+            return [$request->get('sort_key') => $request->get('sort_value')];
+        }
+
+        return [];
     }
 }

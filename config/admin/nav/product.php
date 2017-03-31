@@ -2,7 +2,7 @@
 
 return [
     'title' => 'Product',
-    'active' => 1,
+    'active' => 0,
     'url' => '/admin/product',
     'icon' => 'fa fa-product-hunt',
     'pattern_active' => 'admin/product*',
