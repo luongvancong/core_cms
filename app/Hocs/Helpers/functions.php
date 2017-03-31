@@ -710,6 +710,8 @@ if( ! function_exists('build_sort_link') ) {
         $queryParams['_action'] = 'sort';
         $queryParams['sort_key'] = $sortKey;
 
+        if(!isset($parseUrl['port'])) $parseUrl['port'] = 80;
+
         // Domain url
         if(80 !== (int) $parseUrl['port']) {
             $url = $parseUrl['scheme'] . '://' . $parseUrl['host'] . ':' . $parseUrl['port'] . $parseUrl['path'];

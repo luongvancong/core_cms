@@ -39,9 +39,9 @@
 								<th><a href="{{ build_sort_link('price', Request::fullUrl()) }}">Giá {!! get_icon_sort('price', Request::all()) !!}</a></th>
 								<th>Danh mục</th>
 								<th>Thứ tự</th>
-								<th>Quản lý ảnh</th>
+								<th>QL ảnh</th>
 								<th>Ngày tạo</th>
-								<th>Cập nhật lần cuối</th>
+								<th>Lần cuối</th>
 								<th>Atv</th>
 								<th>Sửa</th>
 								<th>Xóa</th>
