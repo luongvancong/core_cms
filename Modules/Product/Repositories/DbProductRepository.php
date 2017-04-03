@@ -26,6 +26,7 @@ class DbProductRepository extends BaseRepository implements ProductRepository {
         $category_in = (array) array_get($filter, 'category_in');
         $category_not_in = (array) array_get($filter, 'category_not_in');
         $name = array_get($filter, 'name');
+        $price_between = (array) array_get($filter, 'price_between');
 
         if($id) $query->where('id', $id);
         if($id_in) $query->whereIn('id', $id_in);
@@ -34,6 +35,7 @@ class DbProductRepository extends BaseRepository implements ProductRepository {
         if($category_in) $query->whereIn('category_id', $category_id);
         if($category_not_in) $query->whereNotIn('category_id', $category_not_in);
         if($name) $query->where('name', 'LIKE', '%'. $name .'%');
+        if($price_between) $query->whereBetween('price', $price_between);
 
         if(!$sort) $sort = ['updated_at' => 'DESC'];
         foreach($sort as $key => $value) {
