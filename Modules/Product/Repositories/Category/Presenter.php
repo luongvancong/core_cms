@@ -8,6 +8,6 @@ class Presenter extends CategoryPresenter {
 
     public function getUrl()
     {
-        # code...
+        return route('product.category.detail', [$this->model->getId(), $this->model->getSlug()]);
     }
 }
