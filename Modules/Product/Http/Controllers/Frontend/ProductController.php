@@ -20,6 +20,7 @@ class ProductController extends FrontendController {
 
     public function __construct(ProductRepository $product, ProductCategoryRepository $productCategory)
     {
+        parent::__construct();
         $this->product = $product;
         $this->productCategory = $productCategory;
     }
