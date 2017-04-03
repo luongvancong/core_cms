@@ -10,4 +10,9 @@ class ProductCategory extends BaseCategory {
     {
         return $this->hasMany('Modules\Product\Repositories\Product', 'category_id');
     }
+
+    public function presenter()
+    {
+        return new Presenter($this);
+    }
 }
