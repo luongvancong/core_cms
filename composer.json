@@ -6,16 +6,8 @@
     "type": "project",
     "repositories": [
         {
-            "type":"package",
-            "package": {
-                "name": "nwidart/laravel-modules",
-                "version":"dev",
-                "source": {
-                    "url": "https://github.com/luongvancong/laravel-modules",
-                    "type": "git",
-                    "reference":"master"
-                }
-            }
+            "type":"vcs",
+            "url": "https://github.com/luongvancong/laravel-modules"
         }
     ],
     "require": {
@@ -39,7 +31,7 @@
         "phpunit/phpunit": "~5.0",
         "barryvdh/laravel-debugbar": "^2.3",
         "phpspec/phpspec": "~2.1",
-        "nwidart/laravel-modules": "@dev"
+        "nwidart/laravel-modules": ">=2.0"
     },
     "autoload": {
         "classmap": [

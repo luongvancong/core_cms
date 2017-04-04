@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "844b86ea55453754b6b3db4f6a15c835",
-    "content-hash": "537a8df629a2c411eb39a3936932daeb",
+    "hash": "0f05f26c70e900e49570ae80b8a9482c",
+    "content-hash": "3e7830362ffa6066dde05af8900ad532",
     "packages": [
         {
             "name": "buzz/laravel-google-captcha",
@@ -3605,14 +3605,63 @@
         },
         {
             "name": "nwidart/laravel-modules",
-            "version": "dev",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/luongvancong/laravel-modules",
-                "reference": "master"
+                "url": "https://github.com/luongvancong/laravel-modules.git",
+                "reference": "94a21821ba46685bb118978b2c16f3b768dc3bc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/luongvancong/laravel-modules/zipball/94a21821ba46685bb118978b2c16f3b768dc3bc1",
+                "reference": "94a21821ba46685bb118978b2c16f3b768dc3bc1",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.1.*|5.2.*|5.3.*|5.4.*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^1.11",
+                "mockery/mockery": "~0.9",
+                "orchestra/testbench": "^3.1|^3.2|^3.3|^3.4",
+                "phpro/grumphp": "^0.9.1",
+                "phpunit/phpunit": "~5.7"
             },
             "type": "library",
-            "time": "2017-03-30 09:30:15"
+            "autoload": {
+                "psr-4": {
+                    "Nwidart\\Modules\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Nwidart\\Modules\\Tests\\": "tests"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Widart",
+                    "email": "n.widart@gmail.com",
+                    "homepage": "https://nicolaswidart.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Module management",
+            "keywords": [
+                "laravel",
+                "module",
+                "modules",
+                "nwidart",
+                "rad"
+            ],
+            "support": {
+                "source": "https://github.com/luongvancong/laravel-modules/tree/2.1.1"
+            },
+            "time": "2017-04-04 07:36:20"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -4951,8 +5000,7 @@
     "stability-flags": {
         "zizaco/entrust": 20,
         "intervention/image": 20,
-        "laravel/socialite": 20,
-        "nwidart/laravel-modules": 20
+        "laravel/socialite": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
