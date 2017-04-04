@@ -166,7 +166,6 @@ return [
         // Module service provider
         // Modules\ModuleServiceProvider::class,
 
-        Nwidart\Modules\LaravelModulesServiceProvider::class,
 
         Zizaco\Entrust\EntrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
