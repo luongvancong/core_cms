@@ -42,8 +42,7 @@
         ],
         "psr-4": {
             "Nht\\": "app/",
-            "Modules\\": "Modules/",
-            "Nwidart\\Modules\\": "vendor/nwidart/laravel-modules/src"
+            "Modules\\": "Modules/"
         }
     },
     "autoload-dev": {
