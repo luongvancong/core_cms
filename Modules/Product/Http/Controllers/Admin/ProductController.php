@@ -7,6 +7,7 @@ use Modules\Product\Http\Requests\AdminProductFormRequest;
 use Modules\Product\Repositories\Category\ProductCategoryRepository;
 use Modules\Product\Repositories\ProductRepository;
 use Nht\Http\Controllers\Admin\AdminController;
+use App;
 
 class ProductController extends AdminController {
 
@@ -21,6 +22,7 @@ class ProductController extends AdminController {
         parent::__construct();
         $this->product = $product;
         $this->category = $category;
+        $this->image = App::make('ImageFactory');
     }
 
     /**
