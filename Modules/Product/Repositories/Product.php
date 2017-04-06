@@ -137,4 +137,15 @@ class Product extends Model {
     {
         return $this->hasMany('Modules\Product\Repositories\Image\ProductImage', 'product_id');
     }
+
+    /**
+     * Một sản phẩm có nhiều giá trị thuộc tính
+     * VD: Một sản phẩm có nhiều màu sắc: xanh, đỏ, tím vàng
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\Relation
+     */
+    public function attribute_values()
+    {
+        return $this->belongsToMany('Modules\Product\Repositories\Attribute\ProductAttributeValue', 'products_attribute_values', 'product_id');
+    }
 }

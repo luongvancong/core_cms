@@ -51,6 +51,19 @@ class ProductController extends AdminController {
 
 
     /**
+     * Nhân bản sản phẩm
+     * @param  integer $id
+     * @return string
+     */
+    public function clone($id)
+    {
+        $product = $this->product->getById($id);
+        $categories = $this->category->getAllCategories();
+        return view('product::admin/create', compact('product', 'categories'));
+    }
+
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  Request  $request

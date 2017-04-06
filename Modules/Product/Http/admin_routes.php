@@ -20,6 +20,14 @@ Route::group(['middleware' => ['web', 'admin', 'acl']], function() {
             'permissions' => 'product.create'
         ]);
 
+        // Nhân bản
+        Route::get('/clone/{id}', [
+            'as'          => 'admin.product.clone',
+            'uses'        => 'ProductController@clone',
+            'permissions' => 'product.create'
+        ]);
+        Route::post('/clone/{id}', 'ProductController@store');
+
         Route::get('{id}/edit',  [
             'as'          => 'admin.product.edit',
             'uses'        => 'ProductController@edit',
@@ -80,5 +88,15 @@ Route::group(['middleware' => ['web', 'admin', 'acl']], function() {
         Route::get('/{id}/delete', ['as' => 'admin.product_category.delete', 'permissions' => 'product_category.delete' ,'uses' => 'CategoryController@getDelete']);
 
         Route::get('/optimize', ['as' => 'admin.product_category.optimize', 'permissions' => 'product_category.edit', 'uses' => 'CategoryController@getOptimize']);
+
+        // Thuộc tính
+        Route::get('/{id}/attributes', ['as' => 'admin.product_attribute.index', 'permissions' => 'product_category.create', 'uses' => 'ProductAttributeController@getIndex']);
+        Route::get('/{id}/attributes/create', ['as' => 'admin.product_attribute.create', 'permissions' => 'product_category.create', 'uses' => 'ProductAttributeController@getCreate']);
+        Route::post('/{id}/attributes/create', 'ProductAttributeController@postCreate');
+
+        Route::get('/{id}/attributes/edit', ['as' => 'admin.product_attribute.edit', 'permissions' => 'product_category.create', 'uses' => 'ProductAttributeController@getEdit']);
+        Route::post('/{id}/attributes/edit', 'ProductAttributeController@postEdit');
+
+        Route::get('/{id}/attributes/delete', ['as' => 'admin.product_attribute.delete', 'permissions' => 'product_category.delete', 'uses' => 'ProductAttributeController@getDelete']);
     });
 });

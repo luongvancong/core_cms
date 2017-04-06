@@ -1,5 +1,5 @@
 <div class="panel-body">
-    <form class="form-horizontal bucket-form" method="post" action enctype="multipart/form-data">
+    <form class="form-horizontal" action="" method="post" action enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         <div class="form-group {{ hasValidator('image') }}">

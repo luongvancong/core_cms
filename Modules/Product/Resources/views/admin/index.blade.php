@@ -39,9 +39,9 @@
 								<th><a href="{{ build_sort_link('price', Request::fullUrl()) }}">Giá {!! get_icon_sort('price', Request::all()) !!}</a></th>
 								<th>Danh mục</th>
 								<th>Thứ tự</th>
-								<th>QL ảnh</th>
 								<th>Ngày tạo</th>
 								<th>Lần cuối</th>
+								<th>Copy</th>
 								<th>Atv</th>
 								<th>Sửa</th>
 								<th>Xóa</th>
@@ -53,7 +53,8 @@
 									<td width="30"><input type="checkbox" class="_option" name="option_{{ $product->getId() }}" value="{{ $product->getId() }}"></td>
 									<td width="50">{{ $product->getId() }}</td>
 									<td>
-										<img height="35" src="{{ $product->presenter()->getImage('sm_') }}" alt="">
+										<img style="display: block;" height="35" src="{{ $product->presenter()->getImage('sm_') }}" alt="">
+										<a style="display: block; font-size: 10px; font-style: italic; color: blue; text-decoration: underline; margin: 5px 0" href="{{ route('admin.product.images', $product->getId()) }}">Ảnh ({{ $product->images ? $product->images->count() : 0 }})</a>
 									</td>
 									<td width="250">
 										<div><a href="{{ $product->presenter()->getUrl() }}" title="{{ $product->getName() }}" data-pk="{{ $product->getId() }}" data-type="text" data-name="name" class="editable">{{ $product->getName() }}</a></div>
@@ -70,14 +71,12 @@
 									<td>
 										<a href="#" class="editable" data-name="sort" data-id="{{ $product->getId() }}" data-type="text" data-pk="{{ $product->getId() }}" data-title="Thay đổi thứ tự">{{ $product->getSort() }}</a>
 									</td>
-									<td>
-										<a class="btn btn-info btn-xs" href="{{ route('admin.product.images', $product->getId()) }}">Ảnh SP ({{ $product->images ? $product->images->count() : 0 }})</a>
-									</td>
 									<td><span style="font-size: 10px;">{{ $product->getCreatedAt() }}</span></td>
 									<td><span style="font-size: 10px;">{{ $product->getUpdatedAt() }}</span></td>
-									<td width="30">{!! makeActiveButton(route('admin.product.toggleActive', $product->getId()), $product->active) !!}</td>
-									<td width="30"><a href="{{ route('admin.product.edit', $product->getId()) }}" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a></td>
-									<td width="30">
+									<td width="25"><a data-toggle="tooltip" data-title="Nhân bản" data-placement="top" href="{{ route('admin.product.clone', $product->getId()) }}" class="bs-tooltip btn btn-xs btn-info"><i class="fa fa-clone"></i></a></td>
+									<td width="25">{!! makeActiveButton(route('admin.product.toggleActive', $product->getId()), $product->active) !!}</td>
+									<td width="25"><a href="{{ route('admin.product.edit', $product->getId()) }}" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a></td>
+									<td width="25">
 										{!! makeDeleteButton(route('admin.product.destroy', $product->getId())) !!}
 									</td>
 								</tr>
