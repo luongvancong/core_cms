@@ -10,6 +10,23 @@ class ProductAttribute extends Model {
 
     public $timestamps = false;
 
+    protected $guarded = ['id', '_token'];
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getCategoryId()
+    {
+        return $this->category_id;
+    }
+
     /**
      * Một thuộc tính có nhiều giá trị
      * @return \Illuminate\Database\Eloquent\Relations\Relation

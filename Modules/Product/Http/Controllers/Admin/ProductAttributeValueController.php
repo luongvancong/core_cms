@@ -8,7 +8,7 @@ use Modules\Product\Repositories\Attribute\ProductAttributeRepository;
 use Modules\Product\Repositories\Category\ProductCategoryRepository;
 use Nht\Http\Controllers\Admin\AdminController;
 
-class ProductAttributeController extends AdminController {
+class ProductAttributeValueController extends AdminController {
 
     public function __construct(ProductCategoryRepository $category, ProductAttributeRepository $attribute)
     {
@@ -17,30 +17,28 @@ class ProductAttributeController extends AdminController {
         $this->attribute = $attribute;
     }
 
-    public function getIndex($categoryId, Request $request)
+    public function getIndex($attrId, Request $request)
     {
-        $category = $this->category->getById($categoryId);
-        $attributes = $this->attribute->getByCategoryId($categoryId, 30, $request->all());
-        return view('product::admin/attribute/index', compact('category', 'attributes'));
+        return view('product::admin/attribute/value/index');
     }
 
-    public function getCreate($categoryId)
+    public function getCreate($attrId)
     {
-        $category = $this->category->getById($categoryId);
+        $category = $this->category->getById($attrId);
         $attribute = $this->attribute->getInstance();
         return view('product::admin/attribute/create', compact('category', 'attribute'));
     }
 
-    public function postCreate($categoryId, AdminProductAttributeFormRequest $request)
+    public function postCreate($attrId, AdminProductAttributeFormRequest $request)
     {
         $data = $request->all();
         $data['name_hash'] = md5($data['name']);
-        $data['category_id'] = $categoryId;
+        $data['category_id'] = $attrId;
 
         if($attribute = $this->attribute->create($data)) {
-            return redirect()->route('admin.product_attribute.index', $categoryId)->with('success', trans('general.messages.update_success'));
+            return redirect()->route('admin.product_attribute.index', $attrId)->with('success', trans('general.messages.update_success'));
         }
 
-        return redirect()->route('admin.product_attribute.index', $categoryId)->with('error', trans('general.messages.update_fail'));
+        return redirect()->route('admin.product_attribute.index', $attrId)->with('error', trans('general.messages.update_fail'));
     }
 }
