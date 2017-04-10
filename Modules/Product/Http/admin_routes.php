@@ -94,10 +94,10 @@ Route::group(['middleware' => ['web', 'admin', 'acl']], function() {
         Route::get('/{id}/attributes/create', ['as' => 'admin.product_attribute.create', 'permissions' => 'product_attribute.create', 'uses' => 'ProductAttributeController@getCreate']);
         Route::post('/{id}/attributes/create', 'ProductAttributeController@postCreate');
 
-        Route::get('/{id}/attributes/edit', ['as' => 'admin.product_attribute.edit', 'permissions' => 'product_attribute.create', 'uses' => 'ProductAttributeController@getEdit']);
-        Route::post('/{id}/attributes/edit', 'ProductAttributeController@postEdit');
+        Route::get('/{id}/attributes/{attrId}/edit', ['as' => 'admin.product_attribute.edit', 'permissions' => 'product_attribute.create', 'uses' => 'ProductAttributeController@getEdit']);
+        Route::post('/{id}/attributes/{attrId}/edit', 'ProductAttributeController@postEdit');
 
-        Route::get('/{id}/attributes/delete', ['as' => 'admin.product_attribute.delete', 'permissions' => 'product_attribute.delete', 'uses' => 'ProductAttributeController@getDelete']);
+        Route::get('/{id}/attributes/{attrId}/delete', ['as' => 'admin.product_attribute.delete', 'permissions' => 'product_attribute.delete', 'uses' => 'ProductAttributeController@getDelete']);
 
         // Giá trị thuộc tính
         Route::group(['prefix' => 'attributes/{attrId}/values'], function() {
@@ -105,8 +105,8 @@ Route::group(['middleware' => ['web', 'admin', 'acl']], function() {
             Route::get('/create', ['as' => 'admin.product_attribute.values.create', 'permissions' => 'product_attribute.create', 'uses' => 'ProductAttributeValueController@getCreate']);
             Route::post('/create', 'ProductAttributeValueController@postCreate');
 
-            Route::get('/{valueId}/edit', ['as' => 'admin.product_attribute.values.edit', 'permissions' => 'product_attribute.create', 'uses' => 'ProductAttributeValueController@getCreate']);
-            Route::post('/{valueId}/edit', 'ProductAttributeValueController@postCreate');
+            Route::get('/{valueId}/edit', ['as' => 'admin.product_attribute.values.edit', 'permissions' => 'product_attribute.create', 'uses' => 'ProductAttributeValueController@getEdit']);
+            Route::post('/{valueId}/edit', 'ProductAttributeValueController@postEdit');
 
             Route::get('/{valueId}/delete', ['as' => 'admin.product_attribute.values.delete', 'permissions' => 'product_attribute.create', 'uses' => 'ProductAttributeValueController@getDelete']);
         });

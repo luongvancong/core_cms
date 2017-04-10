@@ -23,7 +23,11 @@ class AdminProductAttributeFormRequest extends Request {
 
         $exist = DB::table('product_attributes')->where('category_id', $this->id)->where('name_hash', $nameHash)->count();
         if($exist > 0) {
-            $rules['name'] .= '|unique:product_attributes';
+            $rules['name'] .= '|unique:product_attributes,name_hash';
+
+            if($this->attrId > 0) {
+                $rules['name'] .= ','.$this->attrId;
+            }
         }
 
         return $rules;

@@ -43,4 +43,36 @@ class ProductAttributeController extends AdminController {
 
         return redirect()->route('admin.product_attribute.index', $categoryId)->with('error', trans('general.messages.update_fail'));
     }
+
+    public function getEdit($categoryId, $attrId)
+    {
+        $category = $this->category->getById($categoryId);
+        $attribute = $this->attribute->getById($attrId);
+        return view('product::admin/attribute/create', compact('category', 'attribute'));
+    }
+
+    public function postEdit($categoryId, $attrId, AdminProductAttributeFormRequest $request)
+    {
+        $data = $request->except(['_token']);
+        $data['name_hash'] = md5($data['name']);
+        $data['category_id'] = $categoryId;
+
+        if($this->attribute->update($data, ['id' => $attrId]) >= 0) {
+            return redirect()->route('admin.product_attribute.index', $categoryId)->with('success', trans('general.messages.update_success'));
+        }
+
+        return redirect()->route('admin.product_attribute.index', $categoryId)->with('error', trans('general.messages.update_fail'));
+    }
+
+    public function getDelete($categoryId, $attrId)
+    {
+        $category = $this->category->getById($categoryId);
+        $attribute = $this->attribute->getById($attrId);
+
+        if($this->attribute->delete($attrId)) {
+            return redirect()->route('admin.product_attribute.index', $categoryId)->with('success', trans('general.messages.delete_success'));
+        }
+
+        return redirect()->route('admin.product_attribute.index', $categoryId)->with('error', trans('general.messages.delete_fail'));
+    }
 }

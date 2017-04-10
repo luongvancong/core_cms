@@ -24,8 +24,8 @@
                                 <th>ID</th>
                                 <th>Tên</th>
                                 <th>Giá trị</th>
-                                <th>Sửa</th>
-                                <th>Xóa</th>
+                                <th width="30">Sửa</th>
+                                <th width="30">Xóa</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,10 +39,10 @@
                                         <a href="{{ route('admin.product_attribute.values.index', [$attribute->getId()]) }}" class="btn btn-xs btn-info"><span class="badge">{{ $attribute->values()->count() }}</span></a>
                                     </td>
                                     <td width="30">
-                                        {!! makeEditButton(route('admin.product_attribute.delete', $attribute->getId())) !!}
+                                        {!! makeEditButton(route('admin.product_attribute.edit', [$category->getId(), $attribute->getId()])) !!}
                                     </td>
                                     <td width="30">
-                                        {!! makeDeleteButton(route('admin.product_attribute.delete', $attribute->getId())) !!}
+                                        {!! makeDeleteButton(route('admin.product_attribute.delete', [$category->getId(), $attribute->getId()])) !!}
                                     </td>
                                 </tr>
                             @endforeach
