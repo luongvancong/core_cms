@@ -20,12 +20,21 @@ class AdminProductAttributeValueFormRequest extends Request {
 
         $value = $this->get('value');
 
-        $exist = DB::table('product_attribute_values')->where('attribute_id', $this->attrId)->where('value', $value)->count();
-        if($exist > 0) {
-            $rules['value'] .= '|unique:product_attribute_values,value';
-
+        // Kiểm tra giá trị này đã tồn tại chưa, nếu tồn tại rồi mà = giá trị post đi thì bỏ qua
+        // khác thì phải kiểm tra ngay
+        $exist = DB::table('product_attribute_values')->where('attribute_id', $this->attrId)->where('value', $value)->first();
+        if($exist && $exist->value != $value) {
+            $rules['value'] .= '|unique:product_attribute_values,value,'.$this->valueId;
+        }
+        if($exist) {
             if($this->valueId > 0) {
-                $rules['value'] .= ','.$this->valueId;
+                if($exist->value != $value) {
+                    $rules['value'] .= '|unique:product_attribute_values,value,'.$this->valueId;
+                }
+            } else {
+                if($exist->value == $value) {
+                    $rules['value'] .= '|unique:product_attribute_values,value';
+                }
             }
         }
 

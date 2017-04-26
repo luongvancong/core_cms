@@ -21,12 +21,19 @@ class AdminProductAttributeFormRequest extends Request {
         $name = $this->get('name');
         $nameHash = md5($name);
 
-        $exist = DB::table('product_attributes')->where('category_id', $this->id)->where('name_hash', $nameHash)->count();
-        if($exist > 0) {
-            $rules['name'] .= '|unique:product_attributes,name_hash';
-
+        // Kiểm tra xem thuộc tính này đã có chưa
+        // Trường hợp sửa thuộc tính nếu là giá trị mới thì phải kiểm tra unique
+        // Trường hợp thêm mới thì kiểm tra unique luôn
+        $exist = DB::table('product_attributes')->where('category_id', $this->id)->where('name_hash', $nameHash)->first();
+        if($exist) {
             if($this->attrId > 0) {
-                $rules['name'] .= ','.$this->attrId;
+                if($exist->name_hash != $nameHash) {
+                    $rules['name'] .= '|unique:product_attributes,name';
+                }
+            } else {
+                if($exist->name_hash == $nameHash) {
+                    $rules['name'] .= '|unique:product_attributes,name';
+                }
             }
         }
 

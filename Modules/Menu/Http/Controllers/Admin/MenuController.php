@@ -153,9 +153,11 @@ class MenuController extends AdminController {
         $data = $request->get('menu_item');
         parse_str($data, $parsedData);
 
+        $sort = 10001;
         foreach($parsedData['menu_item'] as $id => $parentId) {
+            $sort --;
             // Update parent id for menu
-            Menu::where('id', $id)->update(['parent_id' => (int) $parentId]);
+            Menu::where('id', $id)->update(['parent_id' => (int) $parentId, 'sort' => $sort]);
         }
 
         return response()->json(['code' => 1]);
