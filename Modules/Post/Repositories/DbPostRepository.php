@@ -57,7 +57,11 @@ class DbPostRepository extends BaseRepository implements PostRepository
 		}
 
 		foreach($sortArray as $key => $value) {
-			$query->orderBy($key, $value);
+            if(strtolower($key) == 'rand()') {
+                $query->orderByRaw('RAND()', 'DESC');
+            } else {
+			     $query->orderBy($key, $value);
+            }
 		}
 
 		return $paginate ? $query->paginate($perPage) : $query->take($perPage)->get();

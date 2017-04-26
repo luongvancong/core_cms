@@ -33,6 +33,9 @@ class ProductServiceProvider extends ServiceProvider
         $this->app->singleton('Modules\Product\Repositories\ProductRepository', 'Modules\Product\Repositories\DbProductRepository');
         $this->app->singleton('Modules\Product\Repositories\Category\ProductCategoryRepository', 'Modules\Product\Repositories\Category\DbProductCategoryRepository');
         $this->app->singleton('Modules\Product\Repositories\Image\ImageRepository', 'Modules\Product\Repositories\Image\DbImageRepository');
+
+        $this->app->singleton('Modules\Product\Repositories\Attribute\ProductAttributeRepository', 'Modules\Product\Repositories\Attribute\DbProductAttributeRepository');
+        $this->app->singleton('Modules\Product\Repositories\Attribute\ProductAttributeValueRepository', 'Modules\Product\Repositories\Attribute\DbProductAttributeValueRepository');
     }
 
     /**

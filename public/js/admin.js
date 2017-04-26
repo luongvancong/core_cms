@@ -184,3 +184,8 @@ $.fn.auto_format_price = function() {
 $(function() {
    $('.price-source').auto_format_price();
 });
+
+$(function() {
+   // Tooltip
+   $('[data-toggle="tooltip"]').tooltip();
+});

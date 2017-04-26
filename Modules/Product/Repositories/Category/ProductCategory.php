@@ -15,4 +15,14 @@ class ProductCategory extends BaseCategory {
     {
         return new Presenter($this);
     }
+
+
+    /**
+     * Một danh mục có nhiều thuộc tính
+     * @return \Illuminate\Database\Eloquent\Relations\Relation
+     */
+    public function attributes()
+    {
+        return $this->hasMany('Modules\Product\Repositories\Attribute\ProductAttribute', 'category_id');
+    }
 }

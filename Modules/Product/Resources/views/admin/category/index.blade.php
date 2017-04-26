@@ -25,6 +25,7 @@
 								<th>Tên</th>
 								<th>Slug</th>
 								<th>Sản phẩm</th>
+								<th>Thuộc tính</th>
 								<th>Sửa</th>
 								<th>Xóa</th>
 							</tr>
@@ -41,6 +42,7 @@
 										<a href="" class="editable" data-pk="{{ $category->getId() }}" data-name="slug" data-type="text">{{ $category->getSlug() }}</a>
 									</td>
 									<td>{{ $category->products()->count() }}</td>
+									<td><a href="{{ route('admin.product_attribute.index', $category->getId()) }}" class="btn btn-xs btn-success" data-toggle="tooltip" data-title="Thuộc tính" data-placement="top">{{ $category->attributes()->count() }}</a></td>
 									<td width="30"><a href="{{ route('admin.product_category.edit', $category->getId()) }}" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a></td>
 									<td width="30">
 										{!! makeDeleteButton(route('admin.product_category.delete', $category->getId())) !!}

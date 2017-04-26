@@ -50,7 +50,7 @@
             <select name="position" class="form-control input-sm">
                 <option value="">Chọn vị trí</option>
                 @foreach(Modules\Banner\Repositories\Banner::getPositionList() as $key => $value)
-                <option value="{{ $key }}" {{ old('position', $key == $banner->getPosition()) ? 'selected' : '' }}>{{ $value }}</option>
+                <option value="{{ $key }}" {{ old('position',$banner->getPosition()) == $key  ? 'selected' : '' }}>{{ $value }}</option>
                 @endforeach
             </select>
             {!! alertError('position') !!}
