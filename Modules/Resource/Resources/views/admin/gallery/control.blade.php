@@ -3,11 +3,11 @@
         <img src="{{ old($controlName, parse_image_url('sm_' . $defaultValueControl)) ? parse_image_url('sm_' . old($controlName, $defaultValueControl)) : 'no-image' }}" class="{{ !old($controlName, $defaultValueControl) ? 'hide' : '' }} img-thumnail" id="{{ $imgId }}">
     </div>
     <input type="hidden" name="{{ $controlName }}" value="{{ old($controlName, $defaultValueControl) }}">
-    <span class="act-show-gallery btn btn-xs btn-danger">Chọn ảnh từ gallery</span>
+    <span id="{{ md5($controlName.$imgId.$defaultValueControl) }}" class="act-show-gallery btn btn-xs btn-danger">Chọn ảnh từ gallery</span>
 
     <script type="text/javascript">
         $(function() {
-            $('.act-show-gallery').fancybox({
+            $('#{{ md5($controlName.$imgId.$defaultValueControl) }}').fancybox({
                 type: 'iframe',
                 href: '/admin/resource/gallery/index?control_name={{ $controlName }}&srcSelectorId={{ $imgId }}',
                 afterShow : function() {
