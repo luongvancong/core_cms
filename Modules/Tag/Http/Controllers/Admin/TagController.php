@@ -39,7 +39,7 @@ class TagController extends AdminController {
             return redirect()->route('admin.tag.index')->with('success', trans('general.messages.update_success'));
         }
 
-        return redirect()->route('admin.tag.index')->with('success', trans('general.messages.update_fail'));
+        return redirect()->route('admin.tag.index')->with('error', trans('general.messages.update_fail'));
     }
 
     public function getEdit($id)
@@ -55,7 +55,7 @@ class TagController extends AdminController {
             return redirect()->route('admin.tag.index')->with('success', trans('general.messages.update_success'));
         }
 
-        return redirect()->route('admin.tag.index')->with('success', trans('general.messages.update_fail'));
+        return redirect()->route('admin.tag.index')->with('error', trans('general.messages.update_fail'));
     }
 
     public function getDelete($id)
@@ -64,7 +64,7 @@ class TagController extends AdminController {
             return redirect()->route('admin.tag.index')->with('success', trans('general.messages.delete_success'));
         }
 
-        return redirect()->route('admin.tag.index')->with('success', trans('general.messages.delete_fail'));
+        return redirect()->route('admin.tag.index')->with('error', trans('general.messages.delete_fail'));
     }
 
 

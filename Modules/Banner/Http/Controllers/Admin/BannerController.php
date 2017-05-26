@@ -63,7 +63,7 @@ class BannerController extends AdminController
 			return redirect()->route('admin.banner.index')->with('success', trans('general.messages.create_success'));
 		}
 
-		return redirect()->back()->with('success', trans('general.messages.create_fail'));
+		return redirect()->back()->with('error', trans('general.messages.create_fail'));
 	}
 
 	/**
@@ -98,7 +98,7 @@ class BannerController extends AdminController
 			return redirect()->back()->with('success', trans('general.messages.update_success'));
 		}
 
-		return redirect()->back()->with('success', trans('general.messages.update_fail'));
+		return redirect()->back()->with('error', trans('general.messages.update_fail'));
 	}
 
 	/**
@@ -115,7 +115,7 @@ class BannerController extends AdminController
 			return redirect()->route('admin.banner.index')->with('success', trans('general.messages.delete_success'));
 		}
 
-		return redirect()->back()->with('success', trans('general.messages.delete_fail'));
+		return redirect()->back()->with('error', trans('general.messages.delete_fail'));
 	}
 
 

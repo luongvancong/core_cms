@@ -97,7 +97,7 @@ class PostController extends AdminController
             return redirect()->back()->with('success', trans('general.messages.delete_success'));
         }
 
-        return redirect()->back()->with('success', trans('general.messages.delete_fail'));
+        return redirect()->back()->with('error', trans('general.messages.delete_fail'));
     }
 
 

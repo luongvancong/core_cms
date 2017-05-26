@@ -53,7 +53,7 @@ class PageController extends AdminController {
 			return redirect()->route('admin.page.index')->with('success', 'Cập nhật thành công');
 		}
 
-		return redirect()->route('admin.page.index')->with('success', 'Cập nhật không thành công');
+		return redirect()->route('admin.page.index')->with('error', 'Cập nhật không thành công');
 	}
 
 	public function getEdit($id) {
@@ -77,7 +77,7 @@ class PageController extends AdminController {
 			return redirect()->route('admin.page.index')->with('success', 'Cập nhật thành công');
 		}
 
-		return redirect()->route('admin.page.index')->with('success', 'Cập nhật không thành công');
+		return redirect()->route('admin.page.index')->with('error', 'Cập nhật không thành công');
 	}
 
 	public function getActive($id) {
@@ -101,6 +101,6 @@ class PageController extends AdminController {
 			return redirect()->route('admin.page.index')->with('success', 'Cập nhật thành công');
 		}
 
-		return redirect()->route('admin.page.index')->with('success', 'Cập nhật không thành công');
+		return redirect()->route('admin.page.index')->with('error', 'Cập nhật không thành công');
 	}
 }
