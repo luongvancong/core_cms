@@ -37,7 +37,7 @@ class FeedBackController extends AdminController {
             return redirect()->route('admin.feedback.index')->with('success', trans('general.messages.update_success'));
         }
 
-        return redirect()->route('admin.feedback.index')->with('success', trans('general.messages.update_fail'));
+        return redirect()->route('admin.feedback.index')->with('error', trans('general.messages.update_fail'));
     }
 
     public function getEdit($id)
@@ -53,7 +53,7 @@ class FeedBackController extends AdminController {
             return redirect()->route('admin.feedback.index')->with('success', trans('general.messages.update_success'));
         }
 
-        return redirect()->route('admin.feedback.index')->with('success', trans('general.messages.update_fail'));
+        return redirect()->route('admin.feedback.index')->with('error', trans('general.messages.update_fail'));
     }
 
     public function getDelete($id)
@@ -62,7 +62,7 @@ class FeedBackController extends AdminController {
             return redirect()->route('admin.feedback.index')->with('success', trans('general.messages.delete_success'));
         }
 
-        return redirect()->route('admin.feedback.index')->with('success', trans('general.messages.delete_fail'));
+        return redirect()->route('admin.feedback.index')->with('error', trans('general.messages.delete_fail'));
     }
 
 }

@@ -77,7 +77,7 @@ class MenuController extends AdminController {
             return redirect()->back()->withInput()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('admin.menu.index')->with('success', trans('general.messages.update_fail'));
+        return redirect()->route('admin.menu.index')->with('error', trans('general.messages.update_fail'));
     }
 
     public function getDelete($id)
@@ -87,7 +87,7 @@ class MenuController extends AdminController {
             return redirect()->route('admin.menu.index')->with('success', trans('general.messages.delete_success'));
         }
 
-        return redirect()->route('admin.menu.index')->with('success', trans('general.messages.delete_fail'));
+        return redirect()->route('admin.menu.index')->with('error', trans('general.messages.delete_fail'));
     }
 
 

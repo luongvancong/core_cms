@@ -18,8 +18,6 @@
 	<link href="/css/style-responsive.css" rel="stylesheet"/>
 	<link href="/css/admin.css" rel="stylesheet">
 	<link href="/js/iCheck/skins/square/square.css" rel="stylesheet">
-	<link rel="stylesheet" href="{{ asset('/css/bootstrap-editable/bootstrap-editable.css') }}">
-
 
 	<link href="/js/select2/dist/css/select2.min.css" rel="stylesheet" >
 	<link href="/js/select2/dist/css/select2-bootstrap.min.css" rel="stylesheet" >
@@ -57,6 +55,7 @@
 	<script src="/js/scripts.js"></script>
 	<script src="/js/functions.js"></script>
 
+	<link rel="stylesheet" href="{{ asset('/css/bootstrap-editable/bootstrap-editable.css') }}">
 	<script src="{{ asset('/js/jquery.editable/bootstrap-editable.js') }}"></script>
 
 	<!-- Xoxco jquery tags input -->

@@ -151,7 +151,7 @@ class CategoryController extends AdminController
             return redirect()->route('admin.category.index')->with('success', 'Cập nhật thành công');
         }
 
-        return redirect()->route('admin.category.index')->with('success', 'Cập nhật không thành công');
+        return redirect()->route('admin.category.index')->with('error', 'Cập nhật không thành công');
     }
 
     /**
