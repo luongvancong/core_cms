@@ -4,7 +4,7 @@ namespace Modules\User\Repositories;
 
 use Illuminate\Contracts\Auth\Guard;
 use Modules\User\Repositories\User;
-use Nht\Hocs\Core\BaseRepository;
+use App\Hocs\Core\BaseRepository;
 
 /**
  * Class DbUserRepository.

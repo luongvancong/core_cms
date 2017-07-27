@@ -1,8 +1,8 @@
 <?php
 
-namespace Nht\Hocs\Subscribers;
+namespace App\Hocs\Subscribers;
 
-use Nht\Hocs\Core\BaseRepository;
+use App\Hocs\Core\BaseRepository;
 
 class SubscriberRepository extends BaseRepository {
     public function __construct(Subscriber $model)

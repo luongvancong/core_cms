@@ -1,6 +1,6 @@
 <?php
 
-namespace Nht\Hocs\Cities;
+namespace App\Hocs\Cities;
 
 interface CityRepository
 {

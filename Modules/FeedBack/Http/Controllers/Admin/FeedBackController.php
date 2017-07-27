@@ -4,7 +4,7 @@ namespace Modules\FeedBack\Http\Controllers\Admin;
 
 use Modules\FeedBack\Http\Requests\AdminFeedbackFormRequest;
 use Modules\FeedBack\Repositories\FeedbackRepository;
-use Nht\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 
 class FeedBackController extends AdminController {
 

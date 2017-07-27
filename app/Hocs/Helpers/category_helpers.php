@@ -35,15 +35,15 @@ if( !function_exists('getCategoriesHtmlSelectOption') ) {
 
 
 if( !function_exists('category_product_count') ) {
-    function category_product_count(Nht\Hocs\Categories\Category $category) {
-        return App::make('Nht\Hocs\Products\ProductRepository')->countProductsByCategory($category);
+    function category_product_count(App\Hocs\Categories\Category $category) {
+        return App::make('App\Hocs\Products\ProductRepository')->countProductsByCategory($category);
     }
 }
 
 
 if( !function_exists('categoryRepository') ) {
     function categoryRepository() {
-        return App::make('Nht\Hocs\Categories\CategoryRepository');
+        return App::make('App\Hocs\Categories\CategoryRepository');
     }
 }
 
@@ -115,9 +115,9 @@ if( ! function_exists('category_get_root_parent_by_id') ) {
 if( ! function_exists('category_get_type_options') ) {
     function category_get_type_options() {
         return [
-            Nht\Hocs\Categories\Category::TYPE_POST    => 'Tin tức',
-            Nht\Hocs\Categories\Category::TYPE_PRODUCT => 'Sản phẩm',
-            Nht\Hocs\Categories\Category::TYPE_STATIC  => 'Trang tĩnh'
+            App\Hocs\Categories\Category::TYPE_POST    => 'Tin tức',
+            App\Hocs\Categories\Category::TYPE_PRODUCT => 'Sản phẩm',
+            App\Hocs\Categories\Category::TYPE_STATIC  => 'Trang tĩnh'
         ];
     }
 }

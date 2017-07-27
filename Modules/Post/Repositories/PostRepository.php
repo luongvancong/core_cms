@@ -3,7 +3,7 @@
 namespace Modules\Post\Repositories;
 
 use Illuminate\Http\Request;
-use Nht\Hocs\Tags\Tag;
+use App\Hocs\Tags\Tag;
 
 /**
  * Interface description.

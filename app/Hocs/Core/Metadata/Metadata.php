@@ -1,5 +1,5 @@
 <?php
-namespace Nht\Hocs\Core\Metadata;
+namespace App\Hocs\Core\Metadata;
 
 use Modules\Setting\Repositories\Setting;
 use Modules\Setting\Repositories\SettingRepository;

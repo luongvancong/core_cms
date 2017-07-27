@@ -116,7 +116,7 @@ class Category extends Model
 
 	public function brands()
 	{
-		return $this->belongsToMany('Nht\Hocs\Brands\Brand', 'categories_brands', 'category_id', 'brand_id');
+		return $this->belongsToMany('App\Hocs\Brands\Brand', 'categories_brands', 'category_id', 'brand_id');
 	}
 }
 

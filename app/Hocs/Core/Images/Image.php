@@ -1,4 +1,4 @@
-<?php namespace Nht\Hocs\Core\Images;
+<?php namespace App\Hocs\Core\Images;
 
 use \ImageIntervention as BaseImage;
 use Input;

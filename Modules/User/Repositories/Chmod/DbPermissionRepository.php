@@ -3,7 +3,7 @@
 namespace Modules\User\Repositories\Chmod;
 
 use Modules\User\Repositories\Chmod\Permission;
-use Nht\Hocs\Core\BaseRepository;
+use App\Hocs\Core\BaseRepository;
 
 /**
  * Class description.

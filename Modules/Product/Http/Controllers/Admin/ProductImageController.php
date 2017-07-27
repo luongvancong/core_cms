@@ -5,7 +5,7 @@ namespace Modules\Product\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Modules\Product\Repositories\Image\ProductImage;
 use Modules\Product\Repositories\ProductRepository;
-use Nht\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 
 class ProductImageController extends AdminController {
 

@@ -2,7 +2,7 @@
 
 namespace Modules\Page\Repositories;
 
-use Nht\Hocs\Core\BaseRepository;
+use App\Hocs\Core\BaseRepository;
 
 class DbPageRepository extends BaseRepository implements PageRepository {
 

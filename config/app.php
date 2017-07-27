@@ -177,10 +177,10 @@ return [
         /*
          * Application Service Providers...
          */
-        Nht\Providers\AppServiceProvider::class,
-        // Nht\Providers\BroadcastServiceProvider::class,
-        Nht\Providers\EventServiceProvider::class,
-        Nht\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
 
     ],
 

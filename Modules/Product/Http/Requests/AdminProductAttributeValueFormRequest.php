@@ -2,7 +2,7 @@
 
 namespace Modules\Product\Http\Requests;
 
-use Nht\Http\Requests\Request;
+use App\Http\Requests\Request;
 use DB;
 
 class AdminProductAttributeValueFormRequest extends Request {

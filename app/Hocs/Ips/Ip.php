@@ -1,4 +1,4 @@
-<?php namespace Nht\Hocs\Ips;
+<?php namespace App\Hocs\Ips;
 
 use Illuminate\Database\Eloquent\Model;
 

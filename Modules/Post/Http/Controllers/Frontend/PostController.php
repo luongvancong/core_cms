@@ -4,7 +4,7 @@ namespace Modules\Post\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use Modules\Post\Repositories\PostRepository;
-use Nht\Http\Controllers\FrontendController;
+use App\Http\Controllers\FrontendController;
 
 class PostController extends FrontendController
 {

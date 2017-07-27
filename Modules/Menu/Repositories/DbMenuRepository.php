@@ -5,7 +5,7 @@ namespace Modules\Menu\Repositories;
 use Modules\Category\Repositories\CategoryRepository;
 use Modules\Category\Repositories\CategoryTrait;
 use Modules\Category\Repositories\DbCategoryRepository;
-use Nht\Hocs\Core\BaseRepository;
+use App\Hocs\Core\BaseRepository;
 
 class DbMenuRepository extends DbCategoryRepository implements MenuRepository {
 
@@ -54,7 +54,7 @@ class DbMenuRepository extends DbCategoryRepository implements MenuRepository {
 
         // Sortable
         if($sortable === true) {
-            $sortable = new \Nht\Hocs\Sortable\Sortable($_data);
+            $sortable = new \App\Hocs\Sortable\Sortable($_data);
             return $sortable->getData();
         }
 

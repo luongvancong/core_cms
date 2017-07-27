@@ -1,4 +1,4 @@
-<?php namespace Nht\Hocs\Ips;
+<?php namespace App\Hocs\Ips;
 
 interface IpRepository {
 

@@ -2,7 +2,7 @@
 
 namespace Modules\Product\Repositories\Attribute;
 
-use Nht\Hocs\Core\BaseRepository;
+use App\Hocs\Core\BaseRepository;
 
 class DbProductAttributeValueRepository extends BaseRepository implements ProductAttributeValueRepository {
 

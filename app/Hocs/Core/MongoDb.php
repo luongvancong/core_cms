@@ -1,6 +1,6 @@
 <?php
 
-namespace Nht\Hocs\Core;
+namespace App\Hocs\Core;
 
 /**
  * Class description.

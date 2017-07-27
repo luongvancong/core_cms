@@ -1,6 +1,6 @@
 <?php
 
-namespace Nht\Hocs\Payments;
+namespace App\Hocs\Payments;
 
 class Napas {
 

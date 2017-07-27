@@ -1,6 +1,6 @@
 <?php
 
-namespace Nht\Hocs\Subscribers;
+namespace App\Hocs\Subscribers;
 
 use Illuminate\Database\Eloquent\Model;
 

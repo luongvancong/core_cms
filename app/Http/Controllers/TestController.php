@@ -1,6 +1,6 @@
 <?php
 
-namespace Nht\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Luco\DataGrid\Models\DataGrid;
@@ -27,7 +27,7 @@ class TestController extends Controller
 
     public function payment()
     {
-        $payment = new \Nht\Hocs\Payments\Napas();
+        $payment = new \App\Hocs\Payments\Napas();
         $payment->setReturnUrl('http://sapabuslimousines.com/return');
         $payment->setBackUrl('http://sapabuslimousines.com/return');
         $payment->setAmount(600000);

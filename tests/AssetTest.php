@@ -8,7 +8,7 @@ class AssetTest extends TestCase
 {
     public function test_add_style()
     {
-        $asset = new Nht\Helper\Asset();
+        $asset = new App\Helper\Asset();
         $asset->setVersion('1.1');
         $asset->addStyle('/css/style.css');
         $asset->addScript('/js/style.js');

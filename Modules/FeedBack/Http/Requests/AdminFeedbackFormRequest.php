@@ -2,7 +2,7 @@
 
 namespace Modules\FeedBack\Http\Requests;
 
-use Nht\Http\Requests\Request;
+use App\Http\Requests\Request;
 
 class AdminFeedbackFormRequest extends Request {
 

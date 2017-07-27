@@ -1,6 +1,6 @@
 <?php
 
-namespace Nht\Http;
+namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -24,11 +24,11 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \Nht\Http\Middleware\EncryptCookies::class,
+            \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \Nht\Http\Middleware\VerifyCsrfToken::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
@@ -50,14 +50,14 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \Nht\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
-        'admin' => \Nht\Http\Middleware\AdminAuthentication::class,
-        'acl' => \Nht\Http\Middleware\CheckPermission::class,
-        'check_logged' => \Nht\Http\Middleware\CheckLogged::class,
-        'auction_owner' => \Nht\Http\Middleware\AuctionOwner::class,
-        'ajax.checkLogin' => \Nht\Http\Middleware\AjaxCheckLogin::class,
+        'admin' => \App\Http\Middleware\AdminAuthentication::class,
+        'acl' => \App\Http\Middleware\CheckPermission::class,
+        'check_logged' => \App\Http\Middleware\CheckLogged::class,
+        'auction_owner' => \App\Http\Middleware\AuctionOwner::class,
+        'ajax.checkLogin' => \App\Http\Middleware\AjaxCheckLogin::class,
         'jwt.auth' => 'Tymon\JWTAuth\Middleware\GetUserFromToken',
         'jwt.refresh' => 'Tymon\JWTAuth\Middleware\RefreshToken'
     ];

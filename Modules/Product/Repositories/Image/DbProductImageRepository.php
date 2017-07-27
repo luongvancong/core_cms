@@ -2,7 +2,7 @@
 
 namespace Modules\Product\Repositories\Image;
 
-use Nht\Hocs\Core\BaseRepository;
+use App\Hocs\Core\BaseRepository;
 
 class DbProductImageRepository extends BaseRepository implements ImageRepository {
 

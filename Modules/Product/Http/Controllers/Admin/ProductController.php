@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Modules\Product\Http\Requests\AdminProductFormRequest;
 use Modules\Product\Repositories\Category\ProductCategoryRepository;
 use Modules\Product\Repositories\ProductRepository;
-use Nht\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 use App;
 
 class ProductController extends AdminController {

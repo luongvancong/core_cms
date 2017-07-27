@@ -1,10 +1,10 @@
 <?php
 
-namespace Nht\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Contracts\Auth\Guard as Auth;
 use Modules\User\Repositories\UserRepository;
-use Nht\Http\Controllers\BackendController;
+use App\Http\Controllers\BackendController;
 
 class AdminController extends BackendController {
 

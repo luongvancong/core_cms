@@ -2,7 +2,7 @@
 
 namespace Modules\FeedBack\Repositories;
 
-use Nht\Hocs\Core\BaseRepository;
+use App\Hocs\Core\BaseRepository;
 
 class DbFeedbackRepository extends BaseRepository implements FeedbackRepository {
 

@@ -2,7 +2,7 @@
 
 namespace Modules\Resource\Repositories;
 
-use Nht\Hocs\Core\BaseRepository;
+use App\Hocs\Core\BaseRepository;
 
 class ResourceRepository extends BaseRepository {
     public function __construct(Resource $model)

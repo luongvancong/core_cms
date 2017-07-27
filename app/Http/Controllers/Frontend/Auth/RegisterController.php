@@ -1,10 +1,10 @@
 <?php
 
-namespace Nht\Http\Controllers\Frontend\Auth;
+namespace App\Http\Controllers\Frontend\Auth;
 
-use Nht\User;
+use App\User;
 use Validator;
-use Nht\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller

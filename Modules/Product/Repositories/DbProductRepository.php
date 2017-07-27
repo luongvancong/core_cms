@@ -2,7 +2,7 @@
 
 namespace Modules\Product\Repositories;
 
-use Nht\Hocs\Core\BaseRepository;
+use App\Hocs\Core\BaseRepository;
 
 class DbProductRepository extends BaseRepository implements ProductRepository {
 

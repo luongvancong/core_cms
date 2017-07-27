@@ -1,6 +1,6 @@
-<?php namespace Nht\Hocs\Core\Uploads;
+<?php namespace App\Hocs\Core\Uploads;
 
-use Nht\Hocs\Core\Uploads\Exceptions\UploadFolderDoesNotExistException;
+use App\Hocs\Core\Uploads\Exceptions\UploadFolderDoesNotExistException;
 
 class Uploader {
 

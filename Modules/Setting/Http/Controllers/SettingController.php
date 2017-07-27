@@ -9,7 +9,7 @@ use Modules\Setting\Http\Requests\AdminMetadataFormRequest;
 use Modules\Setting\Http\Requests\AdminSettingFormRequest;
 use Modules\Setting\Http\Requests\AdminSocialFormRequest;
 use Modules\Setting\Repositories\SettingRepository;
-use Nht\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 
 
 class SettingController extends AdminController

@@ -9,7 +9,7 @@ use Modules\Menu\Repositories\MenuRepository;
 use Modules\Page\Repositories\PageRepository;
 use Modules\Post\Repositories\Category\PostCategoryRepository;
 use Modules\Post\Repositories\PostRepository;
-use Nht\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 
 class MenuController extends AdminController {
 

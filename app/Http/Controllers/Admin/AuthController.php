@@ -1,9 +1,9 @@
 <?php
 
-namespace Nht\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin;
 
-use Nht\Http\Controllers\Admin\AdminController;
-use Nht\Http\Requests\AdminLoginFormRequest;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Requests\AdminLoginFormRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 
 /**

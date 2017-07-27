@@ -9,8 +9,8 @@ use Modules\Post\Http\Requests\AdminPostFormRequest;
 use Modules\Post\Repositories\Category\PostCategoryRepository;
 use Modules\Post\Repositories\DbPostRepository;
 use Modules\Post\Repositories\PostRepository;
-use Nht\Http\Controllers\Admin\AdminController;
-use Nht\Http\Requests;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Requests;
 
 class PostController extends AdminController
 {

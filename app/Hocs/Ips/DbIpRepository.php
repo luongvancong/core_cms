@@ -1,7 +1,7 @@
-<?php namespace Nht\Hocs\Ips;
+<?php namespace App\Hocs\Ips;
 
 use Illuminate\Database\DatabaseManager as DB;
-use Nht\Hocs\Core\BaseRepository;
+use App\Hocs\Core\BaseRepository;
 
 class DbIpRepository extends BaseRepository implements IpRepository {
 
