@@ -41,27 +41,6 @@ $app->singleton(
     Nht\Exceptions\Handler::class
 );
 
-// Register a singleton Upload
-$app->singleton('Upload', function() {
-    $config = Config::get('upload');
-    return new Nht\Hocs\Core\Uploads\Upload($config);
-});
-
-$app->singleton('Uploader', function() {
-    $upload = App::make('Upload');
-    return new Nht\Hocs\Core\Uploads\Uploader($upload);
-});
-
-
-// Register a singleton ImageFactory
-$app->singleton('ImageFactory', function() {
-    $upload = App::make('Uploader');
-    $image  = App::make('Nht\Hocs\Core\Images\Image');
-    return new Nht\Hocs\Core\Images\ImageFactory($upload, $image);
-});
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Return The Application

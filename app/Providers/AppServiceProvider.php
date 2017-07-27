@@ -34,6 +34,24 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register('Nwidart\Modules\LaravelModulesServiceProvider');
         }
 
+        // Register a singleton Upload
+        $this->app->singleton('Upload', function() {
+            $config = config('upload');
+            return new \Nht\Hocs\Core\Uploads\Upload($config);
+        });
+
+        $this->app->singleton('Uploader', function() {
+            $upload = app('Upload');
+            return new \Nht\Hocs\Core\Uploads\Uploader($upload);
+        });
+
+        // Register a singleton ImageFactory
+        $this->app->singleton('ImageFactory', function() {
+            $upload = app('Uploader');
+            $image  = app('Nht\Hocs\Core\Images\Image');
+            return new \Nht\Hocs\Core\Images\ImageFactory($upload, $image);
+        });
+
         /**
          * Metadata
          */
