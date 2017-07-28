@@ -4,7 +4,7 @@ namespace Modules\Resource\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Modules\Resource\Repositories\ResourceRepository;
-use Nht\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 use App;
 
 class GalleryController extends AdminController {

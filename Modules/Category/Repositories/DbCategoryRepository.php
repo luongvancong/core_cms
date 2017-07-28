@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 use Modules\Category\Exceptions\CategoryCanNotBeParentItSelftException;
 use Modules\Category\Exceptions\SafeUpdateException;
 use Modules\Category\Repositories\CategoryTrait;
-use Nht\Hocs\Core\BaseRepository;
+use App\Hocs\Core\BaseRepository;
 
 class DbCategoryRepository extends BaseRepository implements CategoryRepository
 {
@@ -71,7 +71,7 @@ class DbCategoryRepository extends BaseRepository implements CategoryRepository
 
 		// Sortable
 		if($sortable === true) {
-			$sortable = new \Nht\Hocs\Sortable\Sortable($_data);
+			$sortable = new \App\Hocs\Sortable\Sortable($_data);
 			return $sortable->getData();
 		}
 

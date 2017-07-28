@@ -5,7 +5,7 @@ namespace Modules\Product\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Modules\Product\Http\Requests\AdminProductCategoryFormRequest;
 use Modules\Product\Repositories\Category\ProductCategoryRepository;
-use Nht\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 
 class CategoryController extends AdminController {
 

@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use Modules\Banner\Http\Requests\AdminBannerFormRequest;
 use Modules\Banner\Repositories\Banner;
 use Modules\Banner\Repositories\BannerRepository;
-use Nht\Http\Controllers\Admin\AdminController;
-use Nht\Http\Controllers\Controller;
-use Nht\Http\Requests;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
 
 
 class BannerController extends AdminController

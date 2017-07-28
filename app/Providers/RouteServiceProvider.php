@@ -1,6 +1,6 @@
 <?php
 
-namespace Nht\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Nht\Http\Controllers';
+    protected $namespace = 'App\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -35,9 +35,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
+        $this->mapAdminRoutes();
+        $this->mapAuthRoutes();
+        $this->mapWebRoutes();
         $this->mapApiRoutes();
 
-        $this->mapWebRoutes();
     }
 
     /**
@@ -72,6 +74,25 @@ class RouteServiceProvider extends ServiceProvider
             'prefix' => 'api',
         ], function ($router) {
             require base_path('routes/api.php');
+        });
+    }
+
+
+    protected function mapAdminRoutes() {
+        Route::group([
+            'middleware' => 'web',
+            'namespace' => $this->namespace
+        ], function ($router) {
+            require base_path('routes/admin_routes.php');
+        });
+    }
+
+    protected function mapAuthRoutes() {
+        Route::group([
+            'middleware' => 'web',
+            'namespace' => $this->namespace
+        ], function ($router) {
+            require base_path('routes/auth_routes.php');
         });
     }
 }

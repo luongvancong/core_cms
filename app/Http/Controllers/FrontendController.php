@@ -1,6 +1,6 @@
 <?php
 
-namespace Nht\Http\Controllers;
+namespace App\Http\Controllers;
 
 use App;
 use Auth, Cookie;

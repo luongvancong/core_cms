@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Modules\Product\Http\Requests\AdminProductAttributeFormRequest;
 use Modules\Product\Repositories\Attribute\ProductAttributeRepository;
 use Modules\Product\Repositories\Category\ProductCategoryRepository;
-use Nht\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 
 class ProductAttributeController extends AdminController {
 

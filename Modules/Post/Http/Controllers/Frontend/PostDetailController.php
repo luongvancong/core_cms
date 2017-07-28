@@ -3,8 +3,8 @@
 namespace Modules\Post\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
-use Nht\Hocs\Posts\PostRepository;
-use Nht\Http\Controllers\FrontendController;
+use App\Hocs\Posts\PostRepository;
+use App\Http\Controllers\FrontendController;
 
 class PostDetailController extends FrontendController
 {

@@ -18,7 +18,7 @@ if( ! function_exists('parse_image_url') ) {
 if( ! function_exists('setting') ) {
     /**
      * Setting metadata
-     * @return Nht\Hocs\Core\Metadata\Metadata
+     * @return App\Hocs\Core\Metadata\Metadata
      */
     function setting() {
         return resolve('Setting');

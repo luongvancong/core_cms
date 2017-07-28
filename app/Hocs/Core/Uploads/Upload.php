@@ -1,4 +1,4 @@
-<?php namespace Nht\Hocs\Core\Uploads;
+<?php namespace App\Hocs\Core\Uploads;
 
 use Request;
 

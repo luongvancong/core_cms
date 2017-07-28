@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Category\Repositories\Category;
 use Modules\Category\Repositories\CategoryRepository;
-use Nht\Http\Controllers\Admin\AdminController;
-use Nht\Http\Requests;
-use Nht\Http\Requests\AdminCategoryRequest;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Requests;
+use App\Http\Requests\AdminCategoryRequest;
 
 class CategoryController extends AdminController
 {

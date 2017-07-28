@@ -1,9 +1,9 @@
 <?php
 
-namespace Nht\Hocs\Cities;
+namespace App\Hocs\Cities;
 
-use Nht\Hocs\Core\BaseRepository;
-use Nht\Hocs\Cities\City;
+use App\Hocs\Core\BaseRepository;
+use App\Hocs\Cities\City;
 use Illuminate\Database\DatabaseManager as DBM;
 
 class DbCityRepository extends BaseRepository implements CityRepository

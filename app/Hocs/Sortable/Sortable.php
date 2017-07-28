@@ -1,6 +1,6 @@
 <?php
 
-namespace Nht\Hocs\Sortable;
+namespace App\Hocs\Sortable;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;

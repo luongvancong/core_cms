@@ -102,7 +102,7 @@ class Post extends Model
 	}
 
 	public function comments() {
-		return $this->hasMany('Nht\Hocs\Posts\PostComment', 'post_id');
+		return $this->hasMany('App\Hocs\Posts\PostComment', 'post_id');
 	}
 
 	public function author()

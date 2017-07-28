@@ -1,10 +1,10 @@
 <?php
 
-namespace Nht\Http\Controllers\Frontend\Post;
+namespace App\Http\Controllers\Frontend\Post;
 
 use Illuminate\Http\Request;
-use Nht\Hocs\Posts\PostRepository;
-use Nht\Http\Controllers\FrontendController;
+use App\Hocs\Posts\PostRepository;
+use App\Http\Controllers\FrontendController;
 
 class PostCategoryController extends FrontendController
 {

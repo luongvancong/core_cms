@@ -2,7 +2,7 @@
 
 namespace Modules\Category\Http\Requests;
 
-use Nht\Http\Requests\Request;
+use App\Http\Requests\Request;
 
 class AdminCategoryRequest extends Request
 {

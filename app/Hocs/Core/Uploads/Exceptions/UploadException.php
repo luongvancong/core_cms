@@ -1,4 +1,4 @@
-<?php namespace Nht\Hocs\Core\Uploads\Exceptions;
+<?php namespace App\Hocs\Core\Uploads\Exceptions;
 
 class UploadException extends \Exception
 {

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Input;
 use Modules\Page\Http\Requests\AdminPageFormRequest;
 use Modules\Page\Repositories\PageRepository;
-use Nht\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 use Redirect;
 use Response;
 use Str;

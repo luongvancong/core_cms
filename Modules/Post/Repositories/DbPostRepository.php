@@ -4,7 +4,7 @@ namespace Modules\Post\Repositories;
 
 use Illuminate\Http\Request;
 use Modules\Post\Repositories\Post;
-use Nht\Hocs\Core\BaseRepository;
+use App\Hocs\Core\BaseRepository;
 
 /**
  * Class DbUserRepository.

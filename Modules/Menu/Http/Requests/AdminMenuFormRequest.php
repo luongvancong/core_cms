@@ -3,7 +3,7 @@
 namespace Modules\Menu\Http\Requests;
 
 use Modules\Menu\Repositories\Menu;
-use Nht\Http\Requests\Request;
+use App\Http\Requests\Request;
 
 class AdminMenuFormRequest extends Request
 {

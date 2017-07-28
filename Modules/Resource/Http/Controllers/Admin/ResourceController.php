@@ -4,7 +4,7 @@ namespace Modules\Resource\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Modules\Resource\Repositories\ResourceRepository;
-use Nht\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 
 use App;
 
@@ -12,14 +12,14 @@ class ResourceController extends AdminController {
 
     /**
      * [$uploader description]
-     * @var \Nht\Hocs\Core\Uploads\Uploader
+     * @var \App\Hocs\Core\Uploads\Uploader
      */
     protected $uploader;
 
 
     /**
      * [$imageUploader description]
-     * @var \Nht\Hocs\Core\Images\ImageFactory
+     * @var \App\Hocs\Core\Images\ImageFactory
      */
     protected $imageUploader;
 

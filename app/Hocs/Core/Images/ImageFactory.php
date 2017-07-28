@@ -1,6 +1,6 @@
-<?php namespace Nht\Hocs\Core\Images;
+<?php namespace App\Hocs\Core\Images;
 
-use Nht\Hocs\Core\Uploads\Uploader;
+use App\Hocs\Core\Uploads\Uploader;
 
 class ImageFactory {
 

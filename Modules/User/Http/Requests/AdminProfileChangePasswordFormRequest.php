@@ -2,7 +2,7 @@
 
 namespace Modules\User\Http\Requests;
 
-use Nht\Http\Requests\Request;
+use App\Http\Requests\Request;
 
 class AdminProfileChangePasswordFormRequest extends Request
 {

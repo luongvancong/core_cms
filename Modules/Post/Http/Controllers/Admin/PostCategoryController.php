@@ -5,8 +5,8 @@ namespace Modules\Post\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Modules\Post\Http\Requests\AdminPostCategoryFormRequest;
 use Modules\Post\Repositories\Category\PostCategoryRepository;
-use Nht\Http\Controllers\Admin\AdminController;
-use Nht\Http\Requests;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Requests;
 
 class PostCategoryController extends AdminController
 {

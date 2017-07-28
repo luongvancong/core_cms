@@ -5,7 +5,7 @@ namespace Modules\User\Http\Controllers\Admin;
 use Modules\User\Http\Requests\AdminPermissionFormRequest;
 use Modules\User\Repositories\Chmod\PermissionRepository;
 use Modules\User\Repositories\Chmod\RoleRepository;
-use Nht\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 
 class PermissionController extends AdminController
 {

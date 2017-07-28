@@ -1,6 +1,6 @@
 <?php
 
-namespace Nht\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -37,19 +37,19 @@ class AppServiceProvider extends ServiceProvider
         // Register a singleton Upload
         $this->app->singleton('Upload', function() {
             $config = config('upload');
-            return new \Nht\Hocs\Core\Uploads\Upload($config);
+            return new \App\Hocs\Core\Uploads\Upload($config);
         });
 
         $this->app->singleton('Uploader', function() {
             $upload = app('Upload');
-            return new \Nht\Hocs\Core\Uploads\Uploader($upload);
+            return new \App\Hocs\Core\Uploads\Uploader($upload);
         });
 
         // Register a singleton ImageFactory
         $this->app->singleton('ImageFactory', function() {
             $upload = app('Uploader');
-            $image  = app('Nht\Hocs\Core\Images\Image');
-            return new \Nht\Hocs\Core\Images\ImageFactory($upload, $image);
+            $image  = app('App\Hocs\Core\Images\Image');
+            return new \App\Hocs\Core\Images\ImageFactory($upload, $image);
         });
 
         /**
@@ -57,7 +57,7 @@ class AppServiceProvider extends ServiceProvider
          */
         $this->app->singleton('Setting', function ($app) {
             $settingRepository = $this->app->make('Modules\Setting\Repositories\SettingRepository');
-            return new \Nht\Hocs\Core\Metadata\Metadata($settingRepository);
+            return new \App\Hocs\Core\Metadata\Metadata($settingRepository);
         });
     }
 }

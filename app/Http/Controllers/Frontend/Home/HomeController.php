@@ -1,9 +1,9 @@
 <?php
 
-namespace Nht\Http\Controllers\Frontend\Home;
+namespace App\Http\Controllers\Frontend\Home;
 
 use Illuminate\Http\Request;
-use Nht\Http\Controllers\FrontendController;
+use App\Http\Controllers\FrontendController;
 
 class HomeController extends FrontendController
 {

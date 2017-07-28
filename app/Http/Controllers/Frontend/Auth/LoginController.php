@@ -1,8 +1,8 @@
 <?php
 
-namespace Nht\Http\Controllers\Frontend\Auth;
+namespace App\Http\Controllers\Frontend\Auth;
 
-use Nht\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {

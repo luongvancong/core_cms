@@ -1,6 +1,6 @@
 <?php
 
-namespace Nht\Hocs\Core;
+namespace App\Hocs\Core;
 
 use Illuminate\Pagination\BootstrapThreePresenter;
 // use Illuminate\Contracts\Pagination\Presenter;

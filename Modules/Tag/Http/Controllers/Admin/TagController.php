@@ -5,7 +5,7 @@ namespace Modules\Tag\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Modules\Tag\Http\Requests\AdminTagFormRequest;
 use Modules\Tag\Repositories\TagRepository;
-use Nht\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 
 class TagController extends AdminController {
 

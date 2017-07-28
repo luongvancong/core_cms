@@ -1,8 +1,8 @@
 <?php
 
-namespace Nht\Hocs\Core;
+namespace App\Hocs\Core;
 
-use Nht\Http\Requests\Request;
+use App\Http\Requests\Request;
 
 /**
  * An abstract class for repository.

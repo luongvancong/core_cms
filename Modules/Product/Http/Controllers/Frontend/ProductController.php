@@ -4,7 +4,7 @@ namespace Modules\Product\Http\Controllers\Frontend;
 
 use Modules\Product\Repositories\Category\ProductCategoryRepository;
 use Modules\Product\Repositories\ProductRepository;
-use Nht\Http\Controllers\FrontendController;
+use App\Http\Controllers\FrontendController;
 
 class ProductController extends FrontendController {
 

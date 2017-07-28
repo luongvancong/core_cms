@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Modules\User\Http\Requests\AdminUserFormRequest;
 use Modules\User\Repositories\Chmod\RoleRepository;
 use Modules\User\Repositories\UserRepository;
-use Nht\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 use App;
 
 /**

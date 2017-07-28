@@ -41,7 +41,7 @@
             "app/Hocs/Helpers/helper.php"
         ],
         "psr-4": {
-            "Nht\\": "app/",
+            "App\\": "app/",
             "Modules\\": "Modules/"
         }
     },

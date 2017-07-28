@@ -1,9 +1,9 @@
 <?php
 
-namespace Nht\Http\Middleware;
+namespace App\Http\Middleware;
 
 use Closure;
-use Nht\Hocs\Users\UserRepository;
+use App\Hocs\Users\UserRepository;
 
 class CheckLogged
 {

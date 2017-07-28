@@ -2,7 +2,7 @@
 
 namespace Modules\Setting\Repositories;
 
-use Nht\Hocs\Core\BaseRepository;
+use App\Hocs\Core\BaseRepository;
 
 
 /**
