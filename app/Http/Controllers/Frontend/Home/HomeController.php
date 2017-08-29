@@ -26,6 +26,8 @@ class HomeController extends FrontendController
      */
     public function getIndex()
     {
+        setting()->meta_title = "Your first blog";
+        setting()->meta_description = "Hope you happy with amazing core framework";
         return view('welcome');
     }
 }
