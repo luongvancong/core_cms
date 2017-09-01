@@ -26,6 +26,7 @@ class DbSettingRepository extends BaseRepository implements SettingRepository
 
     public function getByKey($key, array $default = array())
     {
-        return $this->model->where('key', $key)->firstOrNew($default);
+        $row = $this->model->where('key', $key)->first();
+        return $row ? $row : new Setting($default);
     }
 }
