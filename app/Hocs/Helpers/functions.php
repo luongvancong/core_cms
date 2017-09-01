@@ -275,7 +275,7 @@ function url_add_params(array $params = array(), $url = null) {
     $query = isset($parseUrl['query']) ? $parseUrl['query'] : "";
     if($query) {
         parse_str($query, $parseQuery);
-        $params = array_merge($params, $parseQuery);
+        $params = array_merge($parseQuery, $params);
     }
 
     ksort($params);
