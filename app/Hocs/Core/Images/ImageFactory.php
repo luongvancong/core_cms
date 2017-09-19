@@ -83,4 +83,46 @@ class ImageFactory {
 
         return $arrayResult;
     }
+
+
+    public function uploadFromUrl($url, array $arrayThumbs = array(), $action = 'resize')
+    {
+        if (empty($arrayThumbs))
+        {
+            $arrayThumbs = config('image.thumbs');
+        }
+
+        $return = [
+            'status'   => 0,
+            'size'     => 0,
+            'filename' => '',
+            'path'     => '',
+            'thumbs'   => []
+        ];
+
+        $resultUpload = $this->upload->uploadFromUrl($url);
+        if($resultUpload['code'] == 200) {
+            $fileName = $resultUpload['filename'];
+            $thumbs = [];
+
+            $pathUpload = $this->upload->getUploadFolderPathToDay() . '/';
+
+            if($action == 'resize')
+            {
+                $thumbs = $this->image->resize($pathUpload . $fileName, $pathUpload, $arrayThumbs);
+            }
+            else if ($action == 'crop')
+            {
+                $thumbs = $this->image->crop($pathUpload . $fileName, $pathUpload, $arrayThumbs);
+            }
+
+            $return['status']   = 1;
+            $return['thumbs']   = $thumbs;
+            $return['filename'] = $fileName;
+            $return['path']     = $pathUpload . $fileName;
+            $return['size']     = filesize($pathUpload . $fileName);
+        }
+
+        return $return;
+    }
 }

@@ -9,20 +9,25 @@ class TestController extends Controller
 {
     public function index()
     {
-        $dataGrid = new DataGrid();
-        echo $dataGrid->showHeading('ID', 'id', 1);die;
-        // $routeCollection = \Route::getRoutes();
+        // $upload = app('ImageFactory');
+        // $url = 'http://giadinh.mediacdn.vn/2017/d2-1502073563231.jpg';
+        // $resultUpload = $upload->uploadFromUrl($url);
+        // _debug($resultUpload);
+        die;
+        // $dataGrid = new DataGrid();
+        // echo $dataGrid->showHeading('ID', 'id', 1);die;
+        // // $routeCollection = \Route::getRoutes();
 
-        // foreach ($routeCollection as $value) {
-        //     echo $value->getPath(). "\n";
-        // }
-        // die;
-        // print_r(config('admin.nav'));die;
-        $now = time();
-        $after = time() + (30*60);
-        var_dump(date('Y-m-d H:i:s', $now));
-        var_dump(date('Y-m-d H:i:s', $after));
-        // return view('frontend/email/order');
+        // // foreach ($routeCollection as $value) {
+        // //     echo $value->getPath(). "\n";
+        // // }
+        // // die;
+        // // print_r(config('admin.nav'));die;
+        // $now = time();
+        // $after = time() + (30*60);
+        // var_dump(date('Y-m-d H:i:s', $now));
+        // var_dump(date('Y-m-d H:i:s', $after));
+        // // return view('frontend/email/order');
     }
 
     public function payment()
