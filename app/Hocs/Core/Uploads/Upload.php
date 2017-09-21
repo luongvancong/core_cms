@@ -1,5 +1,6 @@
 <?php namespace App\Hocs\Core\Uploads;
 
+use App\Exceptions\MimeNotExistException;
 use Request;
 
 class Upload {
@@ -84,6 +85,53 @@ class Upload {
 		}
 
 		return $arrayResult;
+	}
+
+
+	public function uploadFromUrl($url, $pathUpload)
+	{
+		// Clean path upload
+		$pathUpload = rtrim($pathUpload, '/');
+		$pathUpload = rtrim($pathUpload, '//');
+
+		$contentFile = file_get_contents($url);
+		$tempFilePath = public_path().'/uploads/temp.txt';
+		file_put_contents($tempFilePath, $contentFile);
+		$mimes = array_flip(config('mime'));
+		$fileMime = mime_content_type($tempFilePath);
+
+		if(!array_key_exists($fileMime, $mimes)) {
+			throw new MimeNotExistException("Mime not exist in config/mime.php", 1);
+		}
+
+		// Get extension
+		$extension = $mimes[$fileMime];
+
+		// New file name
+		$filename = md5($url).'.'.$extension;
+		$ipClient = Request::server('REMOTE_ADDR');
+		if(!$ipClient) $ipClient = time() . rand(111111,999999) . rand(111111,999999);
+
+		$frefix = date("Y_m_d").'___'.time().'___';
+		$nFilename = str_replace('.', '--', $filename);
+		$nFilename = removeTitle($nFilename);
+		$filenameMd5 = $frefix . md5($nFilename . $ipClient);
+		$newFileName = $filenameMd5 . '.' . $extension;
+
+		// Write content to new file
+		$newFilePath = $pathUpload.'/'.$newFileName;
+		file_put_contents($newFilePath, $contentFile);
+
+		unlink($tempFilePath);
+
+		if(is_readable($newFilePath)) {
+			return [
+				'code' => 200,
+				'filename' => $newFileName
+			];
+		}
+
+		return ['code' => 0];
 	}
 
 

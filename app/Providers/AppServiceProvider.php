@@ -31,8 +31,9 @@ class AppServiceProvider extends ServiceProvider
         if($this->app->environment('local') && config('app.debug') == true)
         {
             $this->app->register('Barryvdh\Debugbar\ServiceProvider');
-            $this->app->register('Nwidart\Modules\LaravelModulesServiceProvider');
         }
+
+        $this->app->register('Nwidart\Modules\LaravelModulesServiceProvider');
 
         // Register a singleton Upload
         $this->app->singleton('Upload', function() {

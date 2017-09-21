@@ -265,26 +265,31 @@ function pagination($items, $total, $perPage, $currentPage = null, $options = ar
  * @param  array  $params [key => value]
  * @return query string
  */
-function url_add_params(array $params) {
-	$array_url_params = array();
+function url_add_params(array $params = array(), $url = null) {
+	if(is_null($url)) {
+        $url = url()->full();
+    }
 
-	foreach($_GET as  $key => $value) {
-		$array_url_params[$key] = $value;
-	}
+    $parseUrl = parse_url($url);
 
-	if(!empty($params)) {
-		foreach($params as $k => $v) {
-			$array_url_params[$k] = $v;
-		}
-	}
+    $query = isset($parseUrl['query']) ? $parseUrl['query'] : "";
+    if($query) {
+        parse_str($query, $parseQuery);
+        $params = array_merge($parseQuery, $params);
+    }
 
-	$url_current = $_SERVER['REQUEST_URI'];
+    ksort($params);
 
-	if($pos = strpos($_SERVER['REQUEST_URI'], '?')) {
-		$url_current = substr($_SERVER['REQUEST_URI'], 0, $pos);
-	}
+    $urlReturn = [
+        isset($parseUrl['scheme']) ? $parseUrl['scheme'] : 'http',
+        '://',
+        $parseUrl['host'],
+        isset($parseUrl['path']) ? $parseUrl['path'] : '',
+        '?',
+        urldecode(http_build_query($params))
+    ];
 
-	return $url_current . '?' . urldecode(http_build_query($array_url_params));
+    return implode('', $urlReturn);
 }
 
 function addConditionsFilter($array, $key, $value){

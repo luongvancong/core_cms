@@ -24,4 +24,9 @@ class Metadata {
 	{
 		return array_get($this->attributes, $key);
 	}
+
+	public function toArray()
+	{
+		return $this->attributes;
+	}
 }

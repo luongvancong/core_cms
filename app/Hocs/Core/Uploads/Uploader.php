@@ -26,6 +26,15 @@ class Uploader {
         return $this->upload->uploadMulti($fileControl, $pathUpload);
     }
 
+
+    public function uploadFromUrl($url)
+    {
+        $pathUpload = $this->getUploadFolderPathToDay();
+        $this->createPathIfNotExist();
+
+        return $this->upload->uploadFromUrl($url, $pathUpload);
+    }
+
     public function getUploadFolderPathToDay() {
         $pathUpload = $this->upload->getUploadFolderPath().'/'. date('Y').'/'.date('m').'/'.date('d');
         return $pathUpload;

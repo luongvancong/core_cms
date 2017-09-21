@@ -17,6 +17,8 @@ class Setting extends Model
 	*/
 	public $timestamps 	= false;
 
+	protected $guarded = ['id'];
+
 
 	public function getLogo()
 	{
@@ -26,5 +28,11 @@ class Setting extends Model
 	public function presenter()
 	{
 		return new Presenter($this);
+	}
+
+	public function renderControl($attributes = [])
+	{
+		$setting = $this;
+		return view('setting::control', compact('setting'));
 	}
 }
