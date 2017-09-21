@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Luco\DataGrid\Models\DataGrid;
+use Modules\Post\Repositories\Post;
 
 class TestController extends Controller
 {
     public function index()
     {
+
+        // $content = Post::find(1)->content;
+        // echo 1;die;
+        // preg_match_all('#img#', $content, $matches);
+        // dd($matches);
         // $upload = app('ImageFactory');
         // $url = 'http://giadinh.mediacdn.vn/2017/d2-1502073563231.jpg';
         // $resultUpload = $upload->uploadFromUrl($url);
