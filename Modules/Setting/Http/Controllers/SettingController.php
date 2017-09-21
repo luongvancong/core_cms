@@ -75,6 +75,7 @@ class SettingController extends AdminController
             $this->setting->getByKey('meta_title', ['key' => 'meta_title', 'type' => 'textarea', 'label' => 'Meta title']),
             $this->setting->getByKey('meta_keyword', ['key' => 'meta_keyword', 'type' => 'textarea', 'label' => 'Meta keyword']),
             $this->setting->getByKey('meta_description', ['key' => 'meta_description', 'type' => 'textarea', 'label' => 'Meta description']),
+            $this->setting->getByKey('meta_image', ['key' => 'meta_image', 'type' => 'file', 'label' => 'Meta image'])
         ];
 
         return view('setting::metadata', compact('settings'));
