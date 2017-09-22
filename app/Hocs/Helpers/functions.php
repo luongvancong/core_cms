@@ -760,7 +760,6 @@ if( ! function_exists('get_icon_sort') ) {
 		$action = array_get($query, '_action');
 		$sortKey = array_get($query, 'sort_key');
 		$sortValue = strtolower(array_get($query, 'sort_value'));
-
 		if($action == 'sort' && $sortKey == $key) {
 			if($sortValue == 'asc') {
 				return '<i class="fa fa-caret-down"></i>';
@@ -768,6 +767,20 @@ if( ! function_exists('get_icon_sort') ) {
 				return '<i class="fa fa-caret-up"></i>';
 			}
 		}
+	}
+}
+
+
+if( ! function_exists('get_sort_link') ) {
+	/**
+	 * Get sort link
+	 * @param  string $key
+	 * @param  string $link
+	 * @param  array  $query
+	 * @return string
+	 */
+	function get_sort_link($key, $link, array $query) {
+		return sprintf('<a href="'.build_sort_link($key, $link).'">Id %s</a>', get_icon_sort($key, $query));
 	}
 }
 

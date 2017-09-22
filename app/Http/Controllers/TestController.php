@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use BlackBear\DataGrid\Table;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Luco\DataGrid\Models\DataGrid;
+use Illuminate\Support\Collection;
 use Modules\Post\Repositories\Post;
 
 class TestController extends Controller
@@ -78,5 +80,31 @@ class TestController extends Controller
             'X-Mailer: PHP/' . phpversion();
 
         mail($to, $subject, $message, $headers);
+    }
+
+    public function dataGrid(Request $request)
+    {
+        $faker = \Faker\Factory::create();
+        $dataSource = new Collection();
+        for($i = 0; $i < 30; $i ++) {
+            $dataSource->push([
+                'id' => $faker->ean8,
+                'name' => $faker->name,
+                'phone' => $faker->phoneNumber,
+                'email' => $faker->email
+            ]);
+        }
+
+        $dataGrid = new Table($dataSource);
+        $dataGrid->addColumn('id', 'ID')->sortable()->view(function($item, $key) {
+            return '<b>'. $item[$key] .'</b>';
+        });
+        $dataGrid->addColumn('name', 'Name');
+        $dataGrid->addColumn('phone', 'Phone');
+        $dataGrid->addColumn('email', 'Email')->view(function($item, $key) {
+            return sprintf('<small>%s</small>', $item[$key]);
+        });
+
+        return view('tests/data-grid', ['tableContent' => $dataGrid->render()]);
     }
 }
