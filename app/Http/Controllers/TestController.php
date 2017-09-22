@@ -100,7 +100,9 @@ class TestController extends Controller
             return '<b>'. $item[$key] .'</b>';
         });
         $dataGrid->addColumn('name', 'Name');
-        $dataGrid->addColumn('phone', 'Phone');
+        $dataGrid->addColumn('phone', 'Phone')->view(function($item, $key) {
+            return sprintf('Phone: %s', $item[$key]);
+        });
         $dataGrid->addColumn('email', 'Email')->view(function($item, $key) {
             return sprintf('<small>%s</small>', $item[$key]);
         });
