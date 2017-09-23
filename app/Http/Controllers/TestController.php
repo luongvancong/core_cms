@@ -96,16 +96,11 @@ class TestController extends Controller
         }
 
         $dataGrid = new Table($dataSource);
-        $dataGrid->addColumn('id', 'ID')->sortable()->view(function($item, $key) {
-            return '<b>'. $item[$key] .'</b>';
-        });
+        $dataGrid->addColumn('id', 'ID');
         $dataGrid->addColumn('name', 'Name');
-        $dataGrid->addColumn('phone', 'Phone')->view(function($item, $key) {
-            return sprintf('Phone: %s', $item[$key]);
-        });
-        $dataGrid->addColumn('email', 'Email')->view(function($item, $key) {
-            return sprintf('<small>%s</small>', $item[$key]);
-        });
+        $dataGrid->addColumn('phone', 'Phone');
+        $dataGrid->addColumn('email', 'Email');
+        $dataGrid->addColumn('', 'Shit');
 
         return view('tests/data-grid', ['tableContent' => $dataGrid->render()]);
     }
