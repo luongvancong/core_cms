@@ -189,3 +189,9 @@ $(function() {
    // Tooltip
    $('[data-toggle="tooltip"]').tooltip();
 });
+
+$(function() {
+   $( ".datepicker" ).datepicker({
+      dateFormat: "dd/mm/yy"
+   })
+});
