@@ -104,15 +104,7 @@ class Sortable {
         $_data = $this->getOriginalData();
         $data = [];
         foreach($_data as $c) {
-            if($c->parent_id == 0) {
-                $data[0][$c->id] = $c;
-            }
-
-            foreach($_data as $cc) {
-                if($c->id == $cc->parent_id) {
-                    $data[$c->id][$cc->id] = $cc;
-                }
-            }
+            $data[$c->parent_id][$c->id] = $c;
         }
 
         return $data;
