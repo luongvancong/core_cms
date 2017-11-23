@@ -21,6 +21,7 @@ class TestController extends Controller
         // $url = 'http://giadinh.mediacdn.vn/2017/d2-1502073563231.jpg';
         // $resultUpload = $upload->uploadFromUrl($url);
         // _debug($resultUpload);
+        echo \Hash::make(12345678);
         die;
         // $dataGrid = new DataGrid();
         // echo $dataGrid->showHeading('ID', 'id', 1);die;

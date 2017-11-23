@@ -69,6 +69,11 @@ class Page extends Model {
 		return $this->meta_description;
 	}
 
+	public function getCreatedAt()
+	{
+		return $this->created_at;
+	}
+
 	public function presenter()
 	{
 		return new Presenter($this);

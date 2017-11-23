@@ -48,6 +48,6 @@ class DbPageRepository extends BaseRepository implements PageRepository {
 
 	public function getBySlug($slug)
 	{
-		return $this->model->where('pag_slug', $slug)->first();
+		return $this->model->where('slug', $slug)->first();
 	}
 }
