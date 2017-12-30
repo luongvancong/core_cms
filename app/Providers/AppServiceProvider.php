@@ -4,8 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-use Validator;
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -15,10 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Validator::extend('bigger', function($attribute, $value, $parameters)
-        {
-            return $value >= $parameters[0];
-        });
+        //
     }
 
     /**
