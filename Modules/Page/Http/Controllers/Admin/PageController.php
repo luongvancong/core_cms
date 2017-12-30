@@ -49,6 +49,8 @@ class PageController extends AdminController {
 			}
 		}
 
+		$data['slug'] = $data['slug'] ? $data['slug'] : removeTitle($data['title']);
+
 		if($this->page->create($data)) {
 			return redirect()->route('admin.page.index')->with('success', 'Cập nhật thành công');
 		}
@@ -72,6 +74,8 @@ class PageController extends AdminController {
 				$data['image'] = $resultUpload['filename'];
 			}
 		}
+
+		$data['slug'] = $data['slug'] ? $data['slug'] : removeTitle($data['title']);
 
 		if($this->page->update($data, ['id' => $id])) {
 			return redirect()->route('admin.page.index')->with('success', 'Cập nhật thành công');

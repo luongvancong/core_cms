@@ -8,6 +8,13 @@
         {
             "type":"vcs",
             "url": "https://github.com/luongvancong/laravel-modules"
+        },
+        {
+            "type": "path",
+            "url": "packages/*",
+            "options": {
+                "symlink": true
+            }
         }
     ],
     "require": {
@@ -24,7 +31,8 @@
         "buzz/laravel-google-captcha": "^1.3",
         "guzzlehttp/guzzle": "^6.2",
         "swiftmailer/swiftmailer": "^5.4",
-        "nwidart/laravel-modules": ">=2.0"
+        "nwidart/laravel-modules": ">=2.0",
+        "blackbear/data-grid": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -68,5 +76,6 @@
     },
     "config": {
         "preferred-install": "dist"
-    }
+    },
+    "minimum-stability": "dev"
 }

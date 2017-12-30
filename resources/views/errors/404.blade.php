@@ -23,8 +23,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="footer">
 		<p>&copy; 2013 Glossy-404. All Rights Reserved | Design by  <a href="http://w3layouts.com/">W3Layouts</a></p>
     </div>
-
-    <a href="http://goo.gl/CWa1dH"><img src="https://masoffer.r.worldssl.net/stg/images/2016/08/29/ipadPACaR.jpg"/></a>
   </div>
 </body>
 </html>
