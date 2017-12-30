@@ -21,7 +21,7 @@ class TestController extends Controller
         // $url = 'http://giadinh.mediacdn.vn/2017/d2-1502073563231.jpg';
         // $resultUpload = $upload->uploadFromUrl($url);
         // _debug($resultUpload);
-        echo \Hash::make(12345678);
+        // echo \Hash::make(12345678);
         die;
         // $dataGrid = new DataGrid();
         // echo $dataGrid->showHeading('ID', 'id', 1);die;
@@ -97,7 +97,9 @@ class TestController extends Controller
         }
 
         $dataGrid = new Table($dataSource);
-        $dataGrid->addColumn('id', 'ID');
+        $dataGrid->addColumn('id', 'ID')->sortable()->view(function($item) {
+            return $item['id']."123";
+        }) ;
         $dataGrid->addColumn('name', 'Name');
         $dataGrid->addColumn('phone', 'Phone');
         $dataGrid->addColumn('email', 'Email');
