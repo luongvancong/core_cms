@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use BlackBear\DataGrid\Table;
+use BlackBear\DataGrid\DataTable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Collection;
@@ -92,18 +92,51 @@ class TestController extends Controller
                 'id' => $faker->ean8,
                 'name' => $faker->name,
                 'phone' => $faker->phoneNumber,
-                'email' => $faker->email
+                'email' => $faker->email,
+                'birthday' => $faker->dateTimeThisCentury->format('Y-m-d'),
+                'created_at' => $faker->time(),
+                'update_at' => $faker->time()
             ]);
         }
 
-        $dataGrid = new Table($dataSource);
-        $dataGrid->addColumn('id', 'ID')->sortable()->view(function($item) {
-            return $item['id']."123";
-        }) ;
-        $dataGrid->addColumn('name', 'Name');
-        $dataGrid->addColumn('phone', 'Phone');
-        $dataGrid->addColumn('email', 'Email');
-        $dataGrid->addColumn('', 'Shit');
+        $dataGrid = new DataTable([
+            'visibleColumns' => ['id', 'name', 'phone', 'email', 'birthday'],
+            'columnHeaders' => ['id' => 'ID', 'name' => 'Name'],
+            'sortColumns' => ['id', 'name'],
+            'showCheckbox' => true,
+            'showEditDelete' => true,
+            'currentUrl' => url()->full(),
+            'dataSource' => $dataSource,
+            'renderRowAttribute' => function($item) {
+                return [
+                    'data-id' => $item['id']
+                ];
+            },
+            'renderColumnAttribute' => function($item, $column) {
+                switch($column) {
+                    case 'id':
+                        return ['data-field' => 'id', 'data-id' => $item['id']];
+                    case 'email':
+                        return ['data-field' => 'email'];
+                    case 'name':
+                        return 'data-field="name" data-id="'.$item['id'].'"';
+                }
+            },
+            'renderEditUrl' => function($item) {
+                return url('/'.$item['id'].'/edit');
+            },
+            'renderDeleteUrl' => function($item) {
+                return url('/'.$item['id'].'/delete');
+            },
+            'renderColumnContent' => function($item, $column) {
+                switch($column) {
+                    case 'id':
+                        return '<i>'.$item['id'].'</i>';
+                    case 'email':
+                        return '<a href="mailto:'.$item['email'].'">'.$item['email'].'</a>';
+                }
+            }
+        ]);
 
         return view('tests/data-grid', ['tableContent' => $dataGrid->render()]);
     }
