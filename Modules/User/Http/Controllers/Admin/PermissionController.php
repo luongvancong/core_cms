@@ -27,7 +27,7 @@ class PermissionController extends AdminController
      */
     public function index()
     {
-        $permissions = $this->perm->getAllWithPaginate();
+        $permissions = $this->perm->getAllWithPaginate([], 200);
         return view('user::admin/permissions/index', compact('permissions'));
     }
 
