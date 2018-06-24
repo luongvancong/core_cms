@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if($this->app->environment('local') && config('app.debug') == true)
+        if($this->app->environment() !== 'production' && config('app.debug') == true)
         {
             $this->app->register('Barryvdh\Debugbar\ServiceProvider');
         }
@@ -55,5 +55,9 @@ class AppServiceProvider extends ServiceProvider
             $settingRepository = $this->app->make('Modules\Setting\Repositories\SettingRepository');
             return new \App\Hocs\Core\Metadata\Metadata($settingRepository);
         });
+
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
     }
 }
