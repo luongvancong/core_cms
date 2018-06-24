@@ -34,14 +34,14 @@ class AdminAuthentication
      */
     public function handle($request, Closure $next)
     {
-        if($this->user->isSuperAdmin()) {
-            return $next($request);
-        }
-
-        if (! $this->user->isAdmin()) {
+        if(!$this->user->isLogged()) {
             return redirect()->guest('admin/login');
         }
 
-        return $next($request);
+        if($request->user()->isRoot() || $request->user()->isAdmin()) {
+            return $next($request);
+        }
+
+        return abort(403);
     }
 }

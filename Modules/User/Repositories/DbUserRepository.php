@@ -48,7 +48,7 @@ class DbUserRepository extends BaseRepository implements UserRepository
 	}
 
 	public function isSuperAdmin() {
-		return $this->isLogged() && $this->getCurrentUser()->hasRole('superadmin');
+		return $this->isAdmin();
 	}
 
 	public function createUserFromSocialite($user) {

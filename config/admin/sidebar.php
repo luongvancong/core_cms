@@ -11,7 +11,7 @@ return [
         'title' => 'Cấu hình',
         'icon' => 'fa fa-cog',
         'pattern_active' => 'admin/settings*', // Biểu thức xác định trạng thái menu sidebar active
-        'permission' => ['config.view'],
+        'permission' => ['setting.view'],
         'active' => 1,
         'order' => 11000,
         'items' => [
