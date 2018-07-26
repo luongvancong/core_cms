@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Requests\AdminLoginFormRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Http\Request;
 
 /**
  * Class description.
@@ -22,14 +23,14 @@ class AuthController extends AdminController
 	 * Get login view
 	 * @return View
 	 */
-	public function login()
+	public function login(Request $request)
 	{
 		// Nếu chưa đăng nhập thì phải đăng nhập
         if ( !$this->auth->check() ) {
             return view('admin.login');
         } else {
             // Nếu là admin thì mời vào
-            if ($this->logger->isSuperAdmin()) {
+            if ($request->user()->isAdmin() || $request->user()->isRoot()) {
                 return redirect($this->redirectPath());
             } else {
                 // Không phải thì lượn
