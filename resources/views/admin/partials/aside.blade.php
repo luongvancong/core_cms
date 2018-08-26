@@ -7,7 +7,7 @@
 
             @foreach(admin_sidebar() as $item)
                 @if(isset($item['items']))
-                    @if(isset($item['permission']) && Entrust::can($item['permission']) || Entrust::hasRole('root') && array_get($item, 'active') == 1)
+                    @if(Entrust::hasRole('root') || isset($item['permission']) && Entrust::can($item['permission']) && array_get($item, 'active') == 1)
                         <li data-order="{{ array_get($item, 'order') }}" data-can="{{ Entrust::can($item['permission']) }}" data-root="{{ Entrust::hasRole('root') }}" data-active="{{ array_get($item, 'active') }}" class="sub-menu">
                             <a href="javascript:;" class="{{ isset($item['pattern_active']) ? (Request::is($item['pattern_active']) ? 'active': '') : '' }}">
                                 <i class="{{ array_get($item, 'icon') }}"></i>
@@ -23,16 +23,13 @@
                         </li>
                     @endif
                 @else
-                    @if(isset($item['permission'])
-                        && Entrust::can($item['permission'])
-                        && array_get($item, 'active') == 1
-                        || Entrust::hasRole('root') && array_get($item, 'active') == 1)
-                    <li data-order="{{ array_get($item, 'order') }}" data-can="{{ Entrust::can($item['permission']) }}" data-active="{{ array_get($item, 'active') }}">
-                        <a class="{{ isset($item['pattern_active']) ? (Request::is($item['pattern_active']) ? 'active': '') : '' }}" href="{{ array_get($item, 'url') }}">
-                            <i class="{{ array_get($item, 'icon') }}"></i>
-                            <span>{{ array_get($item, 'title') }}</span>
-                        </a>
-                    </li>
+                    @if(Entrust::hasRole('root') || isset($item['permission']) && Entrust::can($item['permission']) && array_get($item, 'active') == 1)
+                        <li data-order="{{ array_get($item, 'order') }}" data-can="{{ Entrust::can($item['permission']) }}" data-active="{{ array_get($item, 'active') }}">
+                            <a class="{{ isset($item['pattern_active']) ? (Request::is($item['pattern_active']) ? 'active': '') : '' }}" href="{{ array_get($item, 'url') }}">
+                                <i class="{{ array_get($item, 'icon') }}"></i>
+                                <span>{{ array_get($item, 'title') }}</span>
+                            </a>
+                        </li>
                     @endif
                 @endif
             @endforeach

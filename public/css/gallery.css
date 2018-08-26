@@ -1,5 +1,5 @@
 .gallery-container .item {
-  height: 200px;
+  height: 110px;
   width: 100%;
   display: block;
   overflow: hidden;
@@ -32,7 +32,15 @@
   display: none;
   position: absolute;
   top: 35%;
-  left: 40%;
+  left: 25%;
+}
+@media only screen and (min-width: 1300px) {
+  .gallery-container .item .btn-group {
+    left: 40%;
+  }
+}
+.gallery-container .item .btn-group .btn {
+  padding: 1px 4px;
 }
 .gallery-control .thumnail-container {
   max-height: 100px;

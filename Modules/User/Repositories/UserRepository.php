@@ -14,6 +14,7 @@ interface UserRepository
 	public function getCurrentUser();
 	public function isLogged();
 	public function isAdmin();
+    public function isSuperAdmin();
 
     /**
      * Create user from socialite

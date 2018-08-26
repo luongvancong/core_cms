@@ -74,4 +74,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->shop_id;
     }
 
+    public function isRoot() {
+        return $this->hasRole('root');
+    }
+
+    public function isAdmin() {
+        return $this->hasRole('admin');
+    }
+
 }

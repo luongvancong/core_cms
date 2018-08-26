@@ -23,15 +23,15 @@
         <div class="panel-body">
             <div class="gallery-container">
                 <div class="row">
-                    <div class="col-sm-3 item-colsystem mg-bt-20">
+                    <div class="col-sm-2 item-colsystem mg-bt-20">
                         <div class="item first-upload" data-toggle="modal" data-target="#modal-upload">
                             <i class="icon fa fa-upload"></i>
                         </div>
                     </div>
                     @foreach($images as $item)
-                        <div class="col-sm-3 item-colsystem mg-bt-20">
+                        <div class="col-sm-2 item-colsystem mg-bt-20">
                             <div class="item">
-                                <img class="img" src="{{ parse_image_url($item['name']) }}">
+                                <img class="img" src="{{ parse_image_url('md_'.$item['name']) }}">
                                 <div class="btn-group">
                                     <span data-image="{{ $item->name }}" data-image_uri="{{ parse_image_url('md_' . $item->name) }}" class="act-select-image btn btn-sm btn-primary" title="Chọn ảnh"><i class="fa fa-hand-o-up"></i></span>
                                     <span data-image="{{ $item->name }}" data-action="delete" class="btn btn-danger btn-sm act-delete-image" title="Xóa"><i class="fa fa-trash"></i></span>
@@ -108,12 +108,13 @@ $(function() {
 
     Dropzone.autoDiscover = false;
     var myAwesomeDropzone = new Dropzone("#my-awesome-dropzone", {
-        url: "{{ route('admin.gallery.upload') }}?_token={{ csrf_token() }}",
-        maxFilesize: 1,
-        maxFiles: 1,
+        url: "{{ route('admin.gallery.uploads') }}?_token={{ csrf_token() }}",
+        maxFilesize: 300,
+        maxFiles: 25,
         addRemoveLinks: true,
-        uploadMultiple: false,
+        uploadMultiple: true,
         acceptedFiles: "image/*",
+        parallelUploads: 25,
         dictDefaultMessage: "Choose a image file from computer",
         dictInvalidFileType: "Allow file *.jpg, *.jpeg",
         dictFileTooBig : "Max upload file size is 1MB, this file very big",
