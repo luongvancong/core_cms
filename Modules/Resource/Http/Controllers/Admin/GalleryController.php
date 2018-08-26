@@ -14,11 +14,26 @@ class GalleryController extends AdminController {
      * @var \Modules\Resource\Repositories\ResourceRepository
      */
     protected $resource;
+    /**
+     * @var App\Hocs\Core\Images\ImageFactory
+     */
+    private $imageUploader;
+
+    /**
+     * @var App\Hocs\Core\Uploads\Uploader
+     */
+    private $uploader;
+
+    /**
+     * @var App\Hocs\Core\Uploads\Upload
+     */
+    private $upload;
 
     public function __construct(ResourceRepository $resource)
     {
         parent::__construct();
         $this->resource = $resource;
+        $this->upload = App::make('Upload');
         $this->uploader = App::make('Uploader');
         $this->imageUploader = App::make('ImageFactory');
     }
@@ -82,5 +97,34 @@ class GalleryController extends AdminController {
         }
 
         return response()->json(['code' => 0]);
+    }
+
+    public function ajaxUploadImages(Request $request)
+    {
+        $resultUpload = $this->imageUploader->uploadMulti('file', config('image.array_resize_image'), 'resize');
+
+        foreach($resultUpload['filename'] as $filename) {
+            $data = [];
+            $extension = $this->upload->getExtension($filename);
+            $filePath = $this->uploader->getUploadFolderPathToDay().'/'.$filename;
+            if(in_array($extension, array('gif', 'png', 'jpg', 'bmp', 'jpeg'))) {
+                $data['name'] = $filename;
+                $data['extension'] = $extension;
+                $data['size'] = filesize($filePath);
+                list($width, $height) = getimagesize($filePath);
+                $data['width'] = $width;
+                $data['height'] = $height;
+            } else {
+                $data['name'] = $filename;
+                $data['extension'] = $extension;
+                $data['size'] = filesize($filePath);
+            }
+
+            if($data) {
+                $this->resource->create($data);
+            }
+        }
+
+        return response()->json(['code' => 1]);
     }
 }

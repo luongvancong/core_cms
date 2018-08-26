@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Ho_Chi_Minh',
 
     /*
     |--------------------------------------------------------------------------
@@ -236,8 +236,7 @@ return [
         'Xss'               => Mews\Purifier\Facades\Purifier::class,
         'ImageIntervention' => Intervention\Image\Facades\Image::class,
         'Socialite'         => Laravel\Socialite\Facades\Socialite::class,
-        'Excel'             => Maatwebsite\Excel\Facades\Excel::class,
-        'OpenGraph'         => OpenGraph\Facades\Socials::class
+        'Excel'             => Maatwebsite\Excel\Facades\Excel::class
     ],
 
 ];
