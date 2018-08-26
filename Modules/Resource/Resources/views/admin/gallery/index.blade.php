@@ -41,7 +41,7 @@
                         </div>
                     @endforeach
                     <div class="col-xs-12">
-                        <div class="pull-right">{!! $images->links() !!}</div>
+                        <div class="pull-right">{!! $images->appends($_GET)->links() !!}</div>
                     </div>
                 </div>
             </div>
