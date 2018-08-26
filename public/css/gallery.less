@@ -14,7 +14,7 @@
                 transform: translate(-50%, -50%);
             }
         }
-        height: 200px;
+        height: 110px;
         width: 100%;
         display: block;
         overflow: hidden;
@@ -34,7 +34,13 @@
             display: none;
             position: absolute;
             top: 35%;
-            left: 40%;
+            left: 25%;
+            @media only screen and (min-width: 1300px) {
+                left: 40%;
+            }
+            .btn {
+                padding: 1px 4px;
+            }
         }
     }
 }

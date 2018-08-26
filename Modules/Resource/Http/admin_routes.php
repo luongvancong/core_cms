@@ -23,5 +23,6 @@ Route::group(['prefix' => 'admin/resource', 'middleware' => ['web', 'admin', 'ac
         Route::get('index', ['as' => 'admin.gallery.index', 'uses' => 'GalleryController@getIndex']);
         Route::post('delete', ['as' => 'admin.gallery.delete', 'uses' => 'GalleryController@getDelete']);
         Route::post('/ajax/upload-image', ['as' => 'admin.gallery.upload', 'uses' => 'GalleryController@ajaxUploadImage']);
+        Route::post('/ajax/upload-images', ['as' => 'admin.gallery.uploads', 'uses' => 'GalleryController@ajaxUploadImages']);
     });
 });
