@@ -1,5 +1,5 @@
 {
-    "name": "nwidart/feedback",
+    "name": "nwidart/testimonial",
     "description": "",
     "authors": [
         {
@@ -9,7 +9,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Modules\\FeedBack\\": ""
+            "Modules\\Testimonial\\": ""
         }
     }
 }

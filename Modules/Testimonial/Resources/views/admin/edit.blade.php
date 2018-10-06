@@ -3,10 +3,10 @@
 @section('main-content')
     <div class="panel">
         <div class="panel-heading">
-            <h3>Edit feedback</h3>
+            <h3>Edit Testimonial</h3>
         </div>
         <div class="panel-body">
-            @include('feedback::admin/form');
+            @include('testimonial::admin/form');
         </div>
     </div>
 @stop

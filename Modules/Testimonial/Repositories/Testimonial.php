@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\FeedBack\Repositories;
+namespace Modules\Testimonial\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Feedback extends Model {
+class Testimonial extends Model {
 
-    protected $table = 'feedbacks';
+    protected $table = 'testimonials';
 
     protected $guarded = ['id', '_token'];
 

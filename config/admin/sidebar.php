@@ -72,13 +72,13 @@ return [
         'role' => []
     ],
     "feedback" => [
-        'title' => 'Feedback',
+        'title' => 'Testimonial',
         'active' => 1,
-        'url' => '/admin/feedback/index',
+        'url' => '/admin/testimonial/index',
         'icon' => 'fa fa-file-image-o',
-        'pattern_active' => 'admin/feedback*',
+        'pattern_active' => 'admin/testimonial*',
         'order' => 0,
-        'permission' => ['feedback.view'],
+        'permission' => ['testimonial.view'],
         'role' => []
     ],
     "menu" => [

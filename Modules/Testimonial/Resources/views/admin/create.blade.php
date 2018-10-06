@@ -4,14 +4,14 @@
     <div class="panel">
         <div class="panel-heading">
             <h3>
-                Thêm feedback
+                Thêm Testimonial
                 <div class="pull-right">
-                    <a href="{{ route('admin.feedback.index') }}" class="btn btn-xs btn-default">Quay lại</a>
+                    <a href="{{ route('admin.testimonial.index') }}" class="btn btn-xs btn-default">Quay lại</a>
                 </div>
             </h3>
         </div>
         <div class="panel-body">
-            @include('feedback::admin/form');
+            @include('testimonial::admin/form');
         </div>
     </div>
 @stop

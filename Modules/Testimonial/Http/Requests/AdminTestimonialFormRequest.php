@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\FeedBack\Http\Requests;
+namespace Modules\Testimonial\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class AdminFeedbackFormRequest extends Request {
+class AdminTestimonialFormRequest extends Request {
 
     public function authorize()
     {
