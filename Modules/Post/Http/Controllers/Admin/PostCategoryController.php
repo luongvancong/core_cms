@@ -3,6 +3,7 @@
 namespace Modules\Post\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Modules\Post\Http\Requests\AdminPostCategoryFormRequest;
 use Modules\Post\Repositories\Category\PostCategoryRepository;
 use App\Http\Controllers\Admin\AdminController;
@@ -10,7 +11,9 @@ use App\Http\Requests;
 
 class PostCategoryController extends AdminController
 {
-	public function __construct(PostCategoryRepository $category)
+    private $category;
+
+    public function __construct(PostCategoryRepository $category)
 	{
 		parent::__construct();
 		$this->category = $category;
@@ -19,7 +22,7 @@ class PostCategoryController extends AdminController
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return Response
+	 * @return View
 	 */
 	public function getIndex(Request $request)
 	{

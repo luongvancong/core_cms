@@ -5,6 +5,7 @@ namespace Modules\Tag\Repositories;
 use App\Hocs\Core\BaseRepository;
 
 class DbTagRepository extends BaseRepository implements TagRepository {
+    protected $model;
 
     /**
      * Tag
