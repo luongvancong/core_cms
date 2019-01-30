@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\FeedBack\Repositories;
+namespace Modules\Testimonial\Repositories;
 
-interface FeedbackRepository {
+interface TestimonialRepository {
 
     /**
      * Get FeedBack

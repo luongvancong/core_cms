@@ -1,15 +1,15 @@
 <?php
 
-namespace Modules\FeedBack\Repositories;
+namespace Modules\Testimonial\Repositories;
 
 class Presenter {
 
     /**
-     * @var \Modules\FeedBack\Repositories\Feedback
+     * @var \Modules\Testimonial\Repositories\Testimonial
      */
     protected $model;
 
-    public function __construct(Feedback $model)
+    public function __construct(Testimonial $model)
     {
         $this->model = $model;
     }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\FeedBack\Providers;
+namespace Modules\Testimonial\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class FeedBackServiceProvider extends ServiceProvider
+class TestimonialServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -30,7 +30,7 @@ class FeedBackServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('Modules\FeedBack\Repositories\FeedbackRepository', 'Modules\FeedBack\Repositories\DbFeedbackRepository');
+        $this->app->singleton('Modules\Testimonial\Repositories\TestimonialRepository', 'Modules\Testimonial\Repositories\DbTestimonialRepository');
     }
 
 
@@ -41,13 +41,13 @@ class FeedBackServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $viewPath = base_path('resources/views/modules/feedback');
+        $viewPath = base_path('resources/views/modules/testimonial');
 
         $sourcePath = __DIR__.'/../Resources/views';
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/feedback';
-        }, \Config::get('view.paths')), [$sourcePath]), 'feedback');
+            return $path . '/modules/testimonial';
+        }, \Config::get('view.paths')), [$sourcePath]), 'testimonial');
     }
 
 

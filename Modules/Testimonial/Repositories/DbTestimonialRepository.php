@@ -1,17 +1,17 @@
 <?php
 
-namespace Modules\FeedBack\Repositories;
+namespace Modules\Testimonial\Repositories;
 
 use App\Hocs\Core\BaseRepository;
 
-class DbFeedbackRepository extends BaseRepository implements FeedbackRepository {
+class DbTestimonialRepository extends BaseRepository implements TestimonialRepository {
 
     /**
-     * @var \Modules\FeedBack\Repositories\Feedback
+     * @var \Modules\Testimonial\Repositories\Testimonial
      */
     protected $model;
 
-    public function __construct(Feedback $model)
+    public function __construct(Testimonial $model)
     {
         $this->model = $model;
     }

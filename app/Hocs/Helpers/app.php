@@ -3,7 +3,7 @@
 if( ! function_exists('parse_image_url') ) {
     /**
      * Lấy url của ảnh
-     * @param  str $image
+     * @param  string $image
      * @return url
      */
     function parse_image_url($image) {
