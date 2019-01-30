@@ -41,18 +41,23 @@
 									</label>
 								</div>
 							</li>
+
 							<li class="row">
-								@foreach($permissions->chunk(4) as $part)
-									<ul class="list-unstyled col-sm-3">
-									@foreach ($part as $perm)
-										<li>
-											<label class="tooltips noselect" for="perm_{{ $perm->id }}" data-placement="top" data-toggle="tooltip" data-original-title="{{ $perm->description }}">
-												<input class="checkbox-child" type="checkbox" id="perm_{{ $perm->id }}" name="perms[]" value="{{ $perm->id }}"> {{ $perm->display_name }}
-												<p class="text-muted">{{ $perm->name }}</p>
-											</label>
-										</li>
-									@endforeach
-									</ul>
+								@foreach($groupPermissions as $key => $items)
+									<div class="col-sm-12">
+										<div style="font-weight: bold;text-transform: capitalize">{{ $key }}</div>
+										<ul class="list-unstyled">
+											@foreach($items as $perm)
+												<li>
+													<label class="tooltips noselect" for="perm_{{ $perm->id }}" data-placement="top" data-toggle="tooltip" data-original-title="{{ $perm->description }}">
+														<input class="checkbox-child" type="checkbox" id="perm_{{ $perm->id }}" name="perms[]" value="{{ $perm->id }}"> {{ $perm->display_name }}
+														<p class="text-muted">{{ $perm->name }}</p>
+													</label>
+												</li>
+											@endforeach
+										</ul>
+										<hr>
+									</div>
 								@endforeach
 							</li>
 
