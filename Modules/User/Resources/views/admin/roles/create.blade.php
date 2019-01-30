@@ -10,7 +10,7 @@
 				<div class="form-group {{ $errors->has('display_name') ? 'has-error' : '' }}">
 					<label for="display_name" class="col-sm-3 control-label">{{ trans('form.role_name') }} <b class="text-danger">*</b></label>
 					<div class="col-sm-6">
-						<input type="display_name" class="form-control" id="display_name" name="display_name" placeholder="{{ trans('form.role_name') }}" value="{{ Request::old('display_name') }}" />
+						<input type="text" class="form-control" id="display_name" name="display_name" placeholder="{{ trans('form.role_name') }}" value="{{ Request::old('display_name') }}" />
 						<i class="help-inline text-muted">Ex: Nhân viên</i>
 						{!! $errors->first('display_name', '<span class="help-inline text-danger">:message</span>') !!}
 					</div>
