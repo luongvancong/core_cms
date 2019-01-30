@@ -2,6 +2,7 @@
 
 namespace Modules\User\Http\Controllers\Admin;
 
+use Illuminate\Support\Collection;
 use Modules\User\Http\Requests\AdminRoleFormRequest;
 use Modules\User\Repositories\Chmod\PermissionRepository;
 use Modules\User\Repositories\Chmod\RoleRepository;
@@ -23,7 +24,7 @@ class RoleController extends AdminController
     /**
     * Display a listing of the resource.
     *
-    * @return Response
+    * @return mixed
     */
     public function index()
     {
@@ -34,19 +35,33 @@ class RoleController extends AdminController
     /**
     * Show the form for creating a new resource.
     *
-    * @return Response
+    * @return mixed
     */
     public function create()
     {
         $permissions = $this->perm->getAll();
         $permissions = $permissions->sortBy('name');
-        return view('user::admin/roles/create', compact('permissions'));
+        $temp = new Collection();
+        foreach($permissions as $item) {
+            $t = new Collection();
+            $groupName = substr($item->name, 0, strpos($item->name, '.'));
+            foreach($permissions as $item1) {
+                $groupName1 = substr($item1->name, 0, strpos($item1->name, '.'));
+                if($groupName == $groupName1) {
+                    $t->push($item1);
+                }
+            }
+            $temp->put($groupName, $t);
+        }
+
+        $groupPermissions = new Collection($temp);
+        return view('user::admin/roles/create', compact('permissions', 'groupPermissions'));
     }
 
     /**
     * Store a newly created resource in storage.
     *
-    * @return Response
+    * @return mixed
     */
     public function store(AdminRoleFormRequest $request)
     {
@@ -63,7 +78,7 @@ class RoleController extends AdminController
     * Show the form for editing the specified resource.
     *
     * @param  int  $id
-    * @return Response
+    * @return mixed
     */
     public function edit($id)
     {
@@ -71,7 +86,23 @@ class RoleController extends AdminController
         $permissions = $this->perm->getAll();
         $permissions = $permissions->sortBy('name');
         $role_permissions = array_pluck($role->perms, 'id');
-        return view('user::admin/roles/edit', compact('role', 'permissions', 'role_permissions'));
+
+        $temp = new Collection();
+        foreach($permissions as $item) {
+            $t = new Collection();
+            $groupName = substr($item->name, 0, strpos($item->name, '.'));
+            foreach($permissions as $item1) {
+                $groupName1 = substr($item1->name, 0, strpos($item1->name, '.'));
+                if($groupName == $groupName1) {
+                    $t->push($item1);
+                }
+            }
+            $temp->put($groupName, $t);
+        }
+
+        $groupPermissions = new Collection($temp);
+
+        return view('user::admin/roles/edit', compact('role', 'permissions', 'role_permissions', 'groupPermissions'));
     }
 
     /**

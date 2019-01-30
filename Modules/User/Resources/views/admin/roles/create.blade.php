@@ -10,7 +10,7 @@
 				<div class="form-group {{ $errors->has('display_name') ? 'has-error' : '' }}">
 					<label for="display_name" class="col-sm-3 control-label">{{ trans('form.role_name') }} <b class="text-danger">*</b></label>
 					<div class="col-sm-6">
-						<input type="display_name" class="form-control" id="display_name" name="display_name" placeholder="{{ trans('form.role_name') }}" value="{{ Request::old('display_name') }}" />
+						<input type="text" class="form-control" id="display_name" name="display_name" placeholder="{{ trans('form.role_name') }}" value="{{ Request::old('display_name') }}" />
 						<i class="help-inline text-muted">Ex: Nhân viên</i>
 						{!! $errors->first('display_name', '<span class="help-inline text-danger">:message</span>') !!}
 					</div>
@@ -41,18 +41,23 @@
 									</label>
 								</div>
 							</li>
+
 							<li class="row">
-								@foreach($permissions->chunk(4) as $part)
-									<ul class="list-unstyled col-sm-3">
-									@foreach ($part as $perm)
-										<li>
-											<label class="tooltips noselect" for="perm_{{ $perm->id }}" data-placement="top" data-toggle="tooltip" data-original-title="{{ $perm->description }}">
-												<input class="checkbox-child" type="checkbox" id="perm_{{ $perm->id }}" name="perms[]" value="{{ $perm->id }}"> {{ $perm->display_name }}
-												<p class="text-muted">{{ $perm->name }}</p>
-											</label>
-										</li>
-									@endforeach
-									</ul>
+								@foreach($groupPermissions as $key => $items)
+									<div class="col-sm-12">
+										<div style="font-weight: bold;text-transform: capitalize">{{ $key }}</div>
+										<ul class="list-unstyled">
+											@foreach($items as $perm)
+												<li>
+													<label class="tooltips noselect" for="perm_{{ $perm->id }}" data-placement="top" data-toggle="tooltip" data-original-title="{{ $perm->description }}">
+														<input class="checkbox-child" type="checkbox" id="perm_{{ $perm->id }}" name="perms[]" value="{{ $perm->id }}"> {{ $perm->display_name }}
+														<p class="text-muted">{{ $perm->name }}</p>
+													</label>
+												</li>
+											@endforeach
+										</ul>
+										<hr>
+									</div>
 								@endforeach
 							</li>
 
