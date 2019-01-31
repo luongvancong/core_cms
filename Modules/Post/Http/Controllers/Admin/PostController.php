@@ -61,7 +61,7 @@ class PostController extends AdminController
         $data = $request->except(['_token', 'tag']);
         $data = $this->uploadImage($request, $data);
         $data['user_id'] = $this->auth->getUser()->getId();
-
+        if(!$data['slug']) $data['slug'] = removeTitle($data['title']);
         if( $post = $this->post->create($data) ) {
             $this->post->attachTagsFromRequest($post, $request);
             return redirect()->route('admin.post.create')->with('success', trans('general.messages.update_success'));
@@ -79,7 +79,7 @@ class PostController extends AdminController
     public function postEdit($postId, AdminPostFormRequest $request) {
         $post = $this->post->getById($postId);
         $data = $request->except('_token', 'tag');
-
+        if(!$data['slug']) $data['slug'] = removeTitle($data['title']);
         $data = $this->uploadImage($request, $data);
 
         if( $this->post->update($data, ['id' => $postId]) ) {
