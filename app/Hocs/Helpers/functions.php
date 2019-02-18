@@ -3,7 +3,7 @@
  * Make Delete Button
  *
  * @param  url $link
- * @return html
+ * @return string
  */
 function makeDeleteButton($link) {
 	return '<a class="btn btn-xs btn-danger btn-delete-action" href="'. $link .'"><i class="fa fa-trash-o"></i></a>';
@@ -14,7 +14,7 @@ function makeDeleteButton($link) {
  * Make Edit button
  *
  * @param  url $link
- * @return html
+ * @return string
  */
 function makeEditButton($link) {
 	return '<a class="btn btn-xs btn-default" href="'. $link .'"><i class="fa fa-pencil"></i></a>';
@@ -26,7 +26,7 @@ function makeEditButton($link) {
  *
  * @param  url $link
  * @param  integer $currentActiveValue
- * @return html
+ * @return string
  */
 function makeActiveButton($link, $currentActiveValue) {
 	$classActive = $currentActiveValue == 1 ? 'fa-check-square' : 'fa-square-o';
@@ -40,7 +40,7 @@ function makeActiveButton($link, $currentActiveValue) {
  * @param  string $dateStr  Chuá»—i Ä‘á»‹nh dáº¡ng ngÃ y thÃ¡ng
  * @param  string $hour     Chuá»—i Ä‘á»‹nh dáº¡ng giá»::phÃºt::giÃ¢y ná»‘i vÃ o Ä‘á»ƒ láº¥y time chÃ­nh xÃ¡c
  *
- * @return unixtimestamp
+ * @return integer
  */
 function convertDateToTime($dateStr, $hour = '00:00:00') {
 	$dateStr = str_replace('/', '-', $dateStr);
@@ -52,7 +52,7 @@ function convertDateToTime($dateStr, $hour = '00:00:00') {
  * Tao chu khong dau & thay the dau cach bang dau -
  * @param  [type] $string     [description]
  * @param  string $keyReplace [description]
- * @return [type]             [description]
+ * @return string
  */
 function removeTitle($string, $keyReplace = "/"){
 	$string = removeAccent($string);
@@ -71,8 +71,8 @@ function removeTitle($string, $keyReplace = "/"){
 
 /**
  * Remove tieng viet thanh khong dau
- * @param  [type] $string [description]
- * @return [type]         [description]
+ * @param  $string
+ * @return string
  */
 function removeAccent($string) {
 	$marTViet = array(
@@ -122,7 +122,7 @@ function removeAccent($string) {
  * @param  array  $sortArray
  * @example http://example.com => http://example.com?name=desc&age=asc
  *
- * @return url
+ * @return string
  */
 function createLinkSort($field, $url = null) {
 
@@ -166,7 +166,7 @@ function isUrl($url) {
 
 /*
 * $key - Field data need validate
-* @return true|false
+* @return boolean
 */
 function hasError($key) {
 	$errors = Session::get('errors');
@@ -177,7 +177,7 @@ function hasError($key) {
 }
 /*
 * $key - Field data need validate
-* @return Nếu có lỗi thì add class has-error, ngược lại
+* @return string
 */
 function hasValidator($key) {
 	$status = '';
@@ -263,7 +263,7 @@ function pagination($items, $total, $perPage, $currentPage = null, $options = ar
 /**
  * Add params to url
  * @param  array  $params [key => value]
- * @return query string
+ * @return string
  */
 function url_add_params(array $params = array(), $url = null) {
 	if(is_null($url)) {
@@ -334,7 +334,7 @@ function firstLetterUpperCase($string) {
  * @param  string  $name
  * @param  string  $url
  * @param  boolean $active
- * @return html
+ * @return string
  */
 function getBreadcrumbItem($name, $url, $active = false, $htmlAttributes = []) {
 	$class_active = $active ? 'active' : 'normal';
@@ -357,7 +357,7 @@ if( ! function_exists('mergeAttributes') ) {
 	/**
 	* Merge Attributes
 	*
-	* @return array attributes.
+	* @return array
 	*/
 	function mergeAttributes() {
 
@@ -445,8 +445,8 @@ function getHttpCode($resourceUrl) {
 
 /**
  * Generate keywords
- * @param  str $string
- * @return str
+ * @param  string $string
+ * @return string
  */
 function generateKeywords($string) {
 	$stringExplode = explode(' ', $string);
@@ -537,7 +537,7 @@ if ( !function_exists('change_date') ) {
 if( ! function_exists('get_client_ip') ) {
 	/**
 	 * Get client ip
-	 * @return ip
+	 * @return string
 	 */
 	function get_client_ip() {
 		if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
@@ -561,8 +561,8 @@ if( ! function_exists('get_client_ip') ) {
 
 /**
  * Default upload file to google bucket
- * @param  str $path
- * @return str
+ * @param  string $path
+ * @return string
  */
 function uploadFileToGoogleBucket($filePath, $pathBucket) {
 	$configuration = array(
@@ -697,6 +697,7 @@ if( ! function_exists('build_sort_link') ) {
      * Build sort link for sort
      * @param $sortKey
      * @param $link
+     * @return string
      */
     function build_sort_link($sortKey, $link) {
     	if(!filter_var($link, FILTER_VALIDATE_URL)) {
