@@ -13,7 +13,7 @@ function makeDeleteButton($link) {
 /**
  * Make Edit button
  *
- * @param  url $link
+ * @param  string $link
  * @return string
  */
 function makeEditButton($link) {
@@ -24,7 +24,7 @@ function makeEditButton($link) {
 /**
  * Make active button
  *
- * @param  url $link
+ * @param  string $link
  * @param  integer $currentActiveValue
  * @return string
  */
@@ -170,7 +170,7 @@ function isUrl($url) {
 */
 function hasError($key) {
 	$errors = Session::get('errors');
-	if (count($errors) && $errors->has($key)) {
+	if (@count($errors) && $errors->has($key)) {
 	  return true;
 	}
 	return false;
