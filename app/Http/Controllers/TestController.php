@@ -150,32 +150,60 @@ class TestController extends Controller
         $item->name = "cong";
         $item->age = 60;
         $item->content = "Lorem";
+        $dataOption = [
+            "" => "Chon",
+            'male' => "Male",
+            'female' => "Female"
+        ];
+        $dataOptionGroup = [
+            "Swedish Cars" => [
+                "volvo" => "Volvo",
+                "saab" => "Saab"
+            ],
+            "German Cars" => [
+                "mercedes" => "Mercedes",
+                "audi" => "Audi"
+            ]
+        ];
+        $dataOptionMulti = [
+            "" => "Chon",
+            1 => "01",
+            2 => "02"
+        ];
         $content = [
-            $f->row("Name", $c->input('text', 'name', "", ['data-id' => 1, 'class' => 'input-sm'])),
-            $f->row("Teaser", $c->input('textarea', 'age', 30, ['data-id' => 1, 'class' => 'input-sm'])),
-            $f->row("Content", $c->input('editor', 'content', 'Content', ['data-id' => 1, 'class' => 'input-sm'])),
-            $f->row("Gender", $c->select('gender', "",
-                [
-                    "" => "Chon",
-                    'male' => "Male",
-                    'female' => "Female"
-                ],
+            $f->row("Name", $c->text('name', "", ['data-id' => 1, 'class' => 'input-sm']), true),
+            $f->row("Addr", $c->textarea('text', 'addr')),
+            $f->row("Teaser", $c->textarea('age', "", ['data-id' => 1, 'class' => 'input-sm']), true),
+            $f->row("Content", $c->editor('content', '', ['data-id' => 1, 'class' => 'input-sm'])),
+            $f->row("Gender", $c->select('gender',$dataOption, "",
                 [
                     'id' => 'content'
                 ]
             )),
-            $f->row("Checkbox", $c->checkbox("Checkbox", 'checkbox', 1)
-                                .$c->checkbox("Checkbox1", 'checkbox1')),
-            $f->row("Option", $c->radio('Option', 'option', 1)
-                            .$c->radio("Option1", 'option1'))
+            $f->row("Checkbox", $c->checkbox("Checkbox", 'checkbox', 1, old('checkbox'))
+                                .$c->space().$c->checkbox("Checkbox1", 'checkbox', 2, old('checkbox'))
+                                .$c->error('checkbox')),
+            $f->row("Option", $c->radio('Option', 'option', 1, old('option'))
+                            .$c->space().$c->radio("Option1", 'option', 2, old('option'))
+                            .$c->error("option")),
+            $f->row("Select group", $c->selectGroup("group", $dataOptionGroup)),
+            $f->row("Select multi", $c->selectMulti("multi[]", $dataOptionMulti, old('multi', []))),
+            $f->row("Name", $c->input('text', 'name', "", ['data-id' => 1, 'class' => 'input-sm']), true),
+            $f->row("Teaser", $c->input('textarea', 'age', "", ['data-id' => 1, 'class' => 'input-sm']), true),
+            $f->row("Content", $c->input('editor', 'content', '', ['data-id' => 1, 'class' => 'input-sm'])),
         ];
         return view('tests/component', compact('content'));
     }
 
     public function submitComponent(Request $request) {
+//        dd($request->all());
         $request->validate([
             'name' => 'required|email',
-            "gender" => "required"
+            "gender" => "required",
+            "checkbox" => "email",
+            "age" => "required",
+            "multi" => 'email',
+            'option' => 'email'
         ]);
     }
 }
