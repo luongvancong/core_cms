@@ -2,7 +2,7 @@
 /**
  * Make Delete Button
  *
- * @param  url $link
+ * @param  string $link
  * @return string
  */
 function makeDeleteButton($link) {
@@ -35,7 +35,7 @@ function makeActiveButton($link, $currentActiveValue) {
 
 
 /**
- * Convert date sang unixtimestamp
+ * Convert date sang integer
  *
  * @param  string $dateStr  Chuá»—i Ä‘á»‹nh dáº¡ng ngÃ y thÃ¡ng
  * @param  string $hour     Chuá»—i Ä‘á»‹nh dáº¡ng giá»::phÃºt::giÃ¢y ná»‘i vÃ o Ä‘á»ƒ láº¥y time chÃ­nh xÃ¡c
@@ -396,10 +396,8 @@ if(! function_exists('makeAttributes')) {
 	 * @param  array $attributes
 	 * @return string
 	 */
-	function makeAttributes($attributes) {
-
+	function makeAttributes(array $attributes) {
 		$stringAttribute = '';
-
 		if(is_array($attributes)) {
 			foreach($attributes as $key => $value) {
 				$stringAttribute .= "$key=\"$value\" ";

@@ -15,3 +15,5 @@ Route::get('/', ['as' => 'index', 'uses' => 'Frontend\Home\HomeController@getInd
 Route::get('/test', 'TestController@index');
 
 Route::get('/test/data-grid', 'TestController@dataGrid');
+Route::get('/test/component', 'TestController@testComponent');
+Route::post('/test/component', 'TestController@submitComponent');

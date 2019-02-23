@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use BlackBear\DataGrid\DataTable;
+use BlackBear\HtmlComponent\Component;
+use BlackBear\HtmlComponent\Form;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Collection;
@@ -139,5 +141,41 @@ class TestController extends Controller
         ]);
 
         return view('tests/data-grid', ['tableContent' => $dataGrid->render()]);
+    }
+
+    public function testComponent() {
+        $c = new Component();
+        $f = new Form();
+        $item = new \stdClass;
+        $item->name = "cong";
+        $item->age = 60;
+        $item->content = "Lorem";
+        $content = [
+            $f->row("Name", $c->input('text', 'name', "", ['data-id' => 1, 'class' => 'input-sm'])),
+            $f->row("Teaser", $c->input('textarea', 'age', 30, ['data-id' => 1, 'class' => 'input-sm'])),
+            $f->row("Content", $c->input('editor', 'content', 'Content', ['data-id' => 1, 'class' => 'input-sm'])),
+            $f->row("Gender", $c->select('gender', "",
+                [
+                    "" => "Chon",
+                    'male' => "Male",
+                    'female' => "Female"
+                ],
+                [
+                    'id' => 'content'
+                ]
+            )),
+            $f->row("Checkbox", $c->checkbox("Checkbox", 'checkbox', 1)
+                                .$c->checkbox("Checkbox1", 'checkbox1')),
+            $f->row("Option", $c->radio('Option', 'option', 1)
+                            .$c->radio("Option1", 'option1'))
+        ];
+        return view('tests/component', compact('content'));
+    }
+
+    public function submitComponent(Request $request) {
+        $request->validate([
+            'name' => 'required|email',
+            "gender" => "required"
+        ]);
     }
 }
