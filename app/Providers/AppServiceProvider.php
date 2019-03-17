@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Helper\Asset;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -54,6 +55,12 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('Setting', function ($app) {
             $settingRepository = $this->app->make('Modules\Setting\Repositories\SettingRepository');
             return new \App\Hocs\Core\Metadata\Metadata($settingRepository);
+        });
+
+        $this->app->singleton('Asset', function ($app) {
+            $settingRepository = $this->app->make('Modules\Setting\Repositories\SettingRepository');
+            $item = $settingRepository->getByKey('static_vers');
+            return new Asset($item->value);
         });
 
         if ($this->app->environment() !== 'production') {

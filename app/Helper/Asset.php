@@ -10,6 +10,11 @@ class Asset {
 
     protected $scripts = [];
 
+    public function __construct($version = null)
+    {
+        $this->version = $version;
+    }
+
     public function addStyle($url, $version = null)
     {
         $this->styles[] = [

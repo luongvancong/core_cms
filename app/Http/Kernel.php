@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Asset;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -30,6 +31,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            Asset::class
         ],
 
         'api' => [
@@ -55,10 +57,6 @@ class Kernel extends HttpKernel
 
         'admin' => \App\Http\Middleware\AdminAuthentication::class,
         'acl' => \App\Http\Middleware\CheckPermission::class,
-        'check_logged' => \App\Http\Middleware\CheckLogged::class,
-        'auction_owner' => \App\Http\Middleware\AuctionOwner::class,
-        'ajax.checkLogin' => \App\Http\Middleware\AjaxCheckLogin::class,
-        'jwt.auth' => 'Tymon\JWTAuth\Middleware\GetUserFromToken',
-        'jwt.refresh' => 'Tymon\JWTAuth\Middleware\RefreshToken'
+        'check_logged' => \App\Http\Middleware\CheckLogged::class
     ];
 }

@@ -10,5 +10,7 @@ namespace Modules\Setting\Repositories;
 
 interface SettingRepository
 {
-	//
+    public function getAllActive();
+
+    public function getByKey($key, array $default = array());
 }

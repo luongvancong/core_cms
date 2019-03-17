@@ -27,6 +27,9 @@
     <meta property="fb:admins" content="100001247771720" />
     <meta property="fb:app_id" content="442754092739471" />
 
+    {{-- $_assets From Middleware/Asset --}}
+    {!! $__assets !!}
+
     @yield('styles')
 </head>
 
