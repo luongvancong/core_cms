@@ -19,6 +19,9 @@ class Component
             case 'text':
                 $template = '<input type="text" %s />'.$this->error($name);
                 return sprintf($template, $this->makeAttributes($attr));
+            case 'password':
+                $template = '<input type="password" %s />'.$this->error($name);
+                return sprintf($template, $this->makeAttributes($attr));
             case 'textarea':
             case 'editor':
                 $value = array_get($attr, 'value', '');

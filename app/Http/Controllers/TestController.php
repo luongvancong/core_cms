@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use BlackBear\DataGrid\DataTable;
 use BlackBear\HtmlComponent\Component;
 use BlackBear\HtmlComponent\Form;
+use BlackBear\HtmlComponent\FormItem;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Collection;
@@ -170,28 +171,38 @@ class TestController extends Controller
             1 => "01",
             2 => "02"
         ];
-        $content = [
-            $f->row("Name", $c->text('name', "", ['data-id' => 1, 'class' => 'input-sm']), true),
-            $f->row("Addr", $c->textarea('text', 'addr')),
-            $f->row("Teaser", $c->textarea('age', "", ['data-id' => 1, 'class' => 'input-sm']), true),
-            $f->row("Content", $c->editor('content', '', ['data-id' => 1, 'class' => 'input-sm'])),
-            $f->row("Gender", $c->select('gender',$dataOption, "",
-                [
-                    'id' => 'content'
-                ]
-            )),
-            $f->row("Checkbox", $c->checkbox("Checkbox", 'checkbox', 1, old('checkbox'))
-                                .$c->space().$c->checkbox("Checkbox1", 'checkbox', 2, old('checkbox'))
-                                .$c->error('checkbox')),
-            $f->row("Option", $c->radio('Option', 'option', 1, old('option'))
-                            .$c->space().$c->radio("Option1", 'option', 2, old('option'))
-                            .$c->error("option")),
-            $f->row("Select group", $c->selectGroup("group", $dataOptionGroup)),
-            $f->row("Select multi", $c->selectMulti("multi[]", $dataOptionMulti, old('multi', []))),
-            $f->row("Name", $c->input('text', 'name', "", ['data-id' => 1, 'class' => 'input-sm']), true),
-            $f->row("Teaser", $c->input('textarea', 'age', "", ['data-id' => 1, 'class' => 'input-sm']), true),
-            $f->row("Content", $c->input('editor', 'content', '', ['data-id' => 1, 'class' => 'input-sm'])),
-        ];
+
+        $f->setItems([
+            new FormItem([
+                'label' => "Form Item",
+                'content' => $c->input('text', 'text_name'),
+                'required' => true
+            ]),
+            new FormItem([
+                'label' => "Password",
+                'content' => $c->input('password', 'text_pass'),
+                'required' => true
+            ]),
+            new FormItem([
+                'label' => "Option",
+                'content' => $c->radio('Option', 'option', 1, old('option'))
+                    .$c->space().$c->radio("Option1", 'option', 2, old('option'))
+                    .$c->error("option")
+            ]),
+            new FormItem([
+                'label' => "Select",
+                'content' => $c->select('city', $dataOption, 'male')
+            ]),
+            new FormItem([
+                'label' => "Textarea",
+                'content' => $c->input('textarea', 'textarea', "", ['rows' => 5])
+            ]),
+            new FormItem([
+                'label' => "Content",
+                'content' => $c->input('editor', 'content')
+            ]),
+        ]);
+        $content = $f->render();
         return view('tests/component', compact('content'));
     }
 
