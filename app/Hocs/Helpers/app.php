@@ -4,7 +4,7 @@ if( ! function_exists('parse_image_url') ) {
     /**
      * Lấy url của ảnh
      * @param  string $image
-     * @return url
+     * @return string
      */
     function parse_image_url($image) {
         $explode = explode('___', $image);
@@ -28,8 +28,8 @@ if( ! function_exists('setting') ) {
 if( ! function_exists('get_image_folder') ) {
     /**
      * Lấy tên folder chứa ảnh theo tên ảnh
-     * @param  str $image
-     * @return str
+     * @param  string $image
+     * @return string
      */
     function get_image_folder($image) {
         $explode = explode('___', $image);
@@ -44,9 +44,9 @@ if( ! function_exists('get_image_folder') ) {
 if( ! function_exists('gallery_init') ) {
     /**
      * Tạo control chọn ảnh gallery
-     * @param  str $imgId
-     * @param  str $controlName
-     * @return str
+     * @param  string $imgId
+     * @param  string $controlName
+     * @return string
      */
     function gallery_init($imgId, $controlName, $defaultValueControl = null) {
         return view('resource::admin/gallery/control', [
@@ -54,5 +54,16 @@ if( ! function_exists('gallery_init') ) {
             'controlName' => $controlName,
             'defaultValueControl' => $defaultValueControl
         ]);
+    }
+}
+
+if( ! function_exists('enqueue_asset')) {
+    /**
+     * Add css, javascript with version to website
+     * See more: \App\Helper\Asset, Middleware\Asset, AppServiceProvider
+     * @return \App\Helper\Asset
+     */
+    function enqueue_asset() {
+        return app('Asset');
     }
 }

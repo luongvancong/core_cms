@@ -15,6 +15,9 @@ use Modules\Setting\Repositories\SettingRepository;
 
 class SettingController extends AdminController
 {
+    /**
+     * @var SettingRepository
+     */
     protected $setting;
 
     public function __construct(SettingRepository $setting)
@@ -47,6 +50,7 @@ class SettingController extends AdminController
             $this->setting->getByKey('yahoo_1', ['key' => 'yahoo_1', 'type' => 'text', 'label' => 'Yahoo 1']),
             $this->setting->getByKey('yahoo_2', ['key' => 'yahoo_2', 'type' => 'text', 'label' => 'Yahoo 2']),
             $this->setting->getByKey('slogan', ['key' => 'slogan', 'type' => 'text', 'label' => 'Slogan']),
+            $this->setting->getByKey('static_vers', ['key' => 'static_vers', 'type' => 'text', 'label' => 'Css/Js version']),
         ];
 
         return view('setting::website', compact('settings'));

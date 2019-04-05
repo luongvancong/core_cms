@@ -5899,3 +5899,9 @@ div.tagsinput span.tag {
 .form-control {
   border-radius: initial;
 }
+select[multiple] {
+  height: auto;
+}
+.form-group .control-label {
+  font-weight: 600;
+}

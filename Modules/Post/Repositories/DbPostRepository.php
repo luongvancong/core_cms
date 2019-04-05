@@ -110,15 +110,17 @@ class DbPostRepository extends BaseRepository implements PostRepository
         $tagIds = [];
         if($arrayTagNames !== false) {
             foreach($arrayTagNames as $tagName) {
-                $tag = app('Modules\Tag\Repositories\TagRepository')->getByName($tagName);
-                if(!$tag) {
-                	$tag = app('Modules\Tag\Repositories\TagRepository')->create([
-                	    'name' => $tagName,
-                	    'slug' => removeTitle($tagName)
-                	]);
-                }
+            	if($tagName) {
+	                $tag = app('Modules\Tag\Repositories\TagRepository')->getByName($tagName);
+	                if(!$tag) {
+	                	$tag = app('Modules\Tag\Repositories\TagRepository')->create([
+	                	    'name' => $tagName,
+	                	    'slug' => removeTitle($tagName)
+	                	]);
+	                }
 
-                $tagIds[] = $tag->getId();
+	                $tagIds[] = $tag->getId();
+	            }
             }
         }
 
