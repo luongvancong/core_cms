@@ -39,4 +39,11 @@ class DbPermissionRepository extends BaseRepository implements PermissionReposit
         return $query->orderBy('name', 'ASC')->paginate($pageSize);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 }

@@ -31,4 +31,12 @@ class DbTestimonialRepository extends BaseRepository implements TestimonialRepos
 
         return $query->take($perPage)->get();
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 }

@@ -6,7 +6,9 @@ use App\Hocs\Core\BaseRepository;
 
 class DbBannerRepository extends BaseRepository implements BannerRepository {
 
-	public function __construct(Banner $model)
+    protected $model;
+
+    public function __construct(Banner $model)
 	{
 		$this->model = $model;
 	}
@@ -28,4 +30,11 @@ class DbBannerRepository extends BaseRepository implements BannerRepository {
 		return $query->paginate($perPage);
 	}
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 }

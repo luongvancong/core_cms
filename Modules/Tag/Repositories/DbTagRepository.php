@@ -41,4 +41,12 @@ class DbTagRepository extends BaseRepository implements TagRepository {
     public function getByName($name) {
         return $this->model->where('name', $name)->first();
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 }

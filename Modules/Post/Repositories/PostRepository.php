@@ -4,6 +4,7 @@ namespace Modules\Post\Repositories;
 
 use Illuminate\Http\Request;
 use App\Hocs\Tags\Tag;
+use Illuminate\Pagination\Paginator;
 
 /**
  * Interface description.

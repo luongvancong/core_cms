@@ -175,4 +175,12 @@ class DbCategoryRepository extends BaseRepository implements CategoryRepository
 
 		return $result;
 	}
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 }

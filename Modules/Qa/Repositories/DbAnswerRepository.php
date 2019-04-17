@@ -6,6 +6,8 @@ use App\Hocs\Core\BaseRepository;
 
 class DbAnswerRepository extends BaseRepository implements AnswerRepository {
 
+    protected $model;
+
     public function __construct(Answer $model)
     {
         $this->model = $model;
@@ -41,5 +43,13 @@ class DbAnswerRepository extends BaseRepository implements AnswerRepository {
         }
 
         return $query->take($perPage)->get();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
     }
 }

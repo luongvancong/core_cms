@@ -16,7 +16,6 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Ảnh</th>
                     <th>Tiêu đề</th>
                     <th>Slug</th>
                     <th width="30">Atv</th>
@@ -28,7 +27,6 @@
                 @foreach($pages as $page)
                     <tr>
                         <td width="30">{{ $page->getId() }}</td>
-                        <td><img src="{{ $page->presenter()->getImage('sm_') }}" height="25"></td>
                         <td>
                             <a href="{{ route('page.detail', [$page->getId(),  $page->getSlug()]) }}">{{ $page->getTitle() }}</a>
                         </td>

@@ -6,7 +6,9 @@ use App\Hocs\Core\BaseRepository;
 
 class DbPageRepository extends BaseRepository implements PageRepository {
 
-	public function __construct(Page $model) {
+    protected $model;
+
+    public function __construct(Page $model) {
 		$this->model = $model;
 	}
 
@@ -50,4 +52,12 @@ class DbPageRepository extends BaseRepository implements PageRepository {
 	{
 		return $this->model->where('slug', $slug)->first();
 	}
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 }

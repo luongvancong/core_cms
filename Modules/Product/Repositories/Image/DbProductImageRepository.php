@@ -16,4 +16,12 @@ class DbProductImageRepository extends BaseRepository implements ImageRepository
     {
         $this->model = $model;
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 }
