@@ -5,6 +5,8 @@ namespace App\Hocs\Subscribers;
 use App\Hocs\Core\BaseRepository;
 
 class SubscriberRepository extends BaseRepository {
+    protected $model;
+
     public function __construct(Subscriber $model)
     {
         $this->model = $model;
@@ -27,5 +29,13 @@ class SubscriberRepository extends BaseRepository {
         }
 
         return $query->paginate($perPage);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
     }
 }

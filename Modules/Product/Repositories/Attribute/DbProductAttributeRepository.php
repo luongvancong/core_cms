@@ -41,4 +41,12 @@ class DbProductAttributeRepository extends BaseRepository implements ProductAttr
         $filter['category_id'] = $categoryId;
         return $this->get($perPage, [], $filter, $sort, $paginate);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 }

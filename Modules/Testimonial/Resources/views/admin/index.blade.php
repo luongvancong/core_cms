@@ -15,9 +15,8 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Avatar</th>
                         <th>Nghề nghiệp</th>
-                        <th>Bình luận</th>
+                        <th width="300px">Bình luận</th>
                         <th>Ngày tạo</th>
                         <th>Cập nhật</th>
                         <th>Edit</th>
@@ -28,11 +27,8 @@
                     @foreach($testimonials as $item)
                         <tr>
                             <td>{{ $item->getId() }}</td>
-                            <td>
-                                <img src="{{ $item->presenter()->getAvatar('sm_') }}" height="90">
-                            </td>
                             <td>{{ $item->getProfession() }}</td>
-                            <td>{{ $item->getComment() }}</td>
+                            <td><div class="truncate-3line-text">{{ $item->getComment() }}</div></td>
                             <td>{{ $item->getCreatedAt() }}</td>
                             <td>{{ $item->getUpdatedAt() }}</td>
                             <td width="30">{!! makeEditButton(route('admin.testimonial.edit', $item->getId())) !!}</td>

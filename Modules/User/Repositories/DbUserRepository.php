@@ -76,4 +76,12 @@ class DbUserRepository extends BaseRepository implements UserRepository
 	public function countAllUsers() {
 		return $this->model->count();
 	}
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 }

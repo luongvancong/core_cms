@@ -8,6 +8,18 @@
 
 		<div class="panel-body">
 			<form class="form-horizontal" method="POST">
+				<div class="form-group {{ $errors->has('group_id') ? 'has-error' : '' }}">
+					<label for="display_name" class="col-sm-3 control-label">Group <b class="text-danger">*</b></label>
+					<div class="col-sm-6">
+						<select name="group_id" class="form-control">
+							<option value="">--Select--</option>
+							@foreach($groups as $item)
+								<option value="{{ $item->id }}" {{ $item->id == old('group_id') ? 'selected' : '' }}>{{ $item->name }}</option>
+							@endforeach
+						</select>
+						{!! $errors->first('group_id', '<span class="help-inline text-danger">:message</span>') !!}
+					</div>
+				</div>
 				<div class="form-group {{ $errors->has('display_name') ? 'has-error' : '' }}">
 					<label for="display_name" class="col-sm-3 control-label">{{ trans('form.perm_name') }} <b class="text-danger">*</b></label>
 					<div class="col-sm-6">

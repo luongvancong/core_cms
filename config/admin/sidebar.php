@@ -58,6 +58,11 @@ return [
                 'title' => 'Permission',
                 'url' => '/admin/users/permissions',
                 'pattern_active' => 'admin/users/permissions*'
+            ],
+            [
+                'title' => 'Permission Group',
+                'url' => '/admin/users/permission-groups',
+                'pattern_active' => 'admin/users/permission-groups*'
             ]
         ]
     ],

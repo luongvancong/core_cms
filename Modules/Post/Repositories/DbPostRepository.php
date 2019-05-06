@@ -20,7 +20,6 @@ class DbPostRepository extends BaseRepository implements PostRepository
 		$this->model = $model;
 	}
 
-
 	public function getRelatePosts($post, $take = 10) {
 
 	}
@@ -70,9 +69,9 @@ class DbPostRepository extends BaseRepository implements PostRepository
 
 	public function getPostByCategoryId($categoryId, $take = 10) {
 		return $this->model->where('category_id', $categoryId)
-							->orderBy('updated_at', 'DESC')
-							->take($take)
-							->get();
+            ->orderBy('updated_at', 'DESC')
+            ->take($take)
+            ->get();
 	}
 
 
@@ -83,6 +82,9 @@ class DbPostRepository extends BaseRepository implements PostRepository
 	public function attachTagsFromRequest(Post $post, Request $request) {
 		$tagList = $request->get('tag');
         $arrayTagNames = explode(',', $tagList);
+        foreach($arrayTagNames as $k => $tagName) {
+            if(!$tagName) unset($arrayTagNames[$k]);
+        }
         $tagIds = [];
         if($arrayTagNames !== false) {
             foreach($arrayTagNames as $tagName) {
@@ -107,6 +109,9 @@ class DbPostRepository extends BaseRepository implements PostRepository
 	public function syncTagsFromRequest(Post $post, Request $request) {
 		$tagList = $request->get('tag');
         $arrayTagNames = explode(',', $tagList);
+        foreach($arrayTagNames as $k => $tagName) {
+            if(!$tagName) unset($arrayTagNames[$k]);
+        }
         $tagIds = [];
         if($arrayTagNames !== false) {
             foreach($arrayTagNames as $tagName) {
@@ -128,4 +133,12 @@ class DbPostRepository extends BaseRepository implements PostRepository
             $post->tags()->sync($tagIds);
         }
 	}
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 }

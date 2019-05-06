@@ -62,4 +62,12 @@ class DbProductRepository extends BaseRepository implements ProductRepository {
     public function deleteMultiByIds(array $ids) {
         return $this->model->whereIn('id', $ids)->delete();
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 }

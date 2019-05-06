@@ -130,3 +130,42 @@ Route::group(['prefix' => 'admin/users/permissions', 'middleware' => ['web', 'ad
         'permissions' => 'permission.destroy',
     ]);
 });
+
+/* Permission Group */
+Route::group(['prefix' => 'admin/users/permission-groups', 'middleware' => ['web', 'admin', 'acl'], 'namespace' => 'Modules\User\Http\Controllers\Admin'], function() {
+    Route::get('/', [
+        'as'          => 'permission-group.index',
+        'uses'        => 'PermissionGroupController@index',
+        'permissions' => 'permission-group.view',
+    ]);
+
+    Route::get('create', [
+        'as'          => 'permission-group.create',
+        'uses'        => 'PermissionGroupController@create',
+        'permissions' => 'permission-group.create',
+    ]);
+
+    Route::post('/create', [
+        'as'          => 'permission-group.store',
+        'uses'        => 'PermissionGroupController@store',
+        'permissions' => 'permission-group.store',
+    ]);
+
+    Route::get('{permission}/edit', [
+        'as'          => 'permission-group.edit',
+        'uses'        => 'PermissionGroupController@edit',
+        'permissions' => 'permission-group.edit',
+    ]);
+
+    Route::post('{permission}/edit', [
+        'as'          => 'permission-group.update',
+        'uses'        => 'PermissionGroupController@update',
+        'permissions' => 'permission-group.update',
+    ]);
+
+    Route::get('{permission}/delete', [
+        'as'          => 'permission-group.destroy',
+        'uses'        => 'PermissionGroupController@destroy',
+        'permissions' => 'permission-group.destroy',
+    ]);
+});

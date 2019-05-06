@@ -193,3 +193,9 @@ ul.dropdown-menu.ng-valid.ng-valid-date-disabled {
     border-radius: 5px;
     padding: 0 5px;
 }
+.truncate-3line-text {
+ display: -webkit-box;
+ -webkit-box-orient: vertical;
+ -webkit-line-clamp: 3;
+ overflow: hidden;
+}

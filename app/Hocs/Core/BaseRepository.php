@@ -2,8 +2,6 @@
 
 namespace App\Hocs\Core;
 
-use App\Http\Requests\Request;
-
 /**
  * An abstract class for repository.
  *
@@ -11,13 +9,18 @@ use App\Http\Requests\Request;
  */
 abstract class BaseRepository
 {
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    abstract public function getModel();
+
 	/**
 	 * Get all items of model
-	 * @return Illuminate\Support\Collection Model collections
+	 * @return \Illuminate\Support\Collection
 	 */
 	public function getAll()
 	{
-		return $this->model->all();
+		return $this->getModel()->all();
 	}
 
 	/**
@@ -27,7 +30,7 @@ abstract class BaseRepository
 	 */
 	public function getById($id)
 	{
-		return $this->model->findOrFail($id);
+		return $this->getModel()->findOrFail($id);
 	}
 
 	/**
@@ -37,14 +40,14 @@ abstract class BaseRepository
 	 */
 	public function find($id)
 	{
-		return $this->model->find($id);
+		return $this->getModel()->find($id);
 	}
 
 	/**
 	 * Get items with filter & paginate
 	 * @param  array  $filter
 	 * @param  integer $pageSize
-	 * @return Illuminate\Support\Collection Model collections
+	 * @return \Illuminate\Support\Collection
 	 */
 	public function getAllWithPaginate($filter = [], $pageSize = 20)
 	{
@@ -57,9 +60,9 @@ abstract class BaseRepository
 					unset($filter[$key]);
 				}
 			}
-			return $this->model->where($filter)->paginate($pageSize);
+			return $this->getModel()->where($filter)->paginate($pageSize);
 		}
-		return $this->model->paginate($pageSize);
+		return $this->getModel()->paginate($pageSize);
 	}
 
 	/**
@@ -69,19 +72,11 @@ abstract class BaseRepository
 	 */
 	public function create($attributes)
 	{
-		// $object = $this->getInstance();
-		// foreach($attributes as $key => $value) {
-		// 	$object->$key = $value;
-		// }
-		// if($object->save()) {
-		// 	return $object;
-		// }
-
-		return $this->model->create($attributes);
+		return $this->getModel()->create($attributes);
 	}
 
 	/**
-	 * Update an exitst model
+	 * Update an exist model
 	 * @param  array $attributes
 	 * @param  array $condition
 	 * @return Bool
@@ -90,9 +85,9 @@ abstract class BaseRepository
 	{
 		if ( ! empty($condition))
 		{
-			return $this->model->where($condition)->update($attributes);
+			return $this->getModel()->where($condition)->update($attributes);
 		}
-		return $this->model->update($attributes);
+		return $this->getModel()->update($attributes);
 	}
 
 	/**
@@ -106,27 +101,23 @@ abstract class BaseRepository
 	}
 
 	public function getInstance() {
-		return new $this->model;
-	}
-
-	public function getModel()
-	{
-		return $this->model;
+	    $model = $this->getModel();
+		return new $model;
 	}
 
 	public function count() {
-		return $this->model->count();
+		return $this->getModel()->count();
 	}
 
 	public function insert($data) {
-		return $this->model->insert($data);
+		return $this->getModel()->insert($data);
 	}
 
 	public function _getByIds(array $ids) {
-		return $this->model->whereIn($this->model->getKeyName(), $ids)->get();
+		return $this->getModel()->whereIn($this->getModel()->getKeyName(), $ids)->get();
 	}
 
 	public function countByIds(array $ids) {
-		return $this->model->whereIn($this->model->getKeyName(), $ids)->count();
+		return $this->getModel()->whereIn($this->getModel()->getKeyName(), $ids)->count();
 	}
 }

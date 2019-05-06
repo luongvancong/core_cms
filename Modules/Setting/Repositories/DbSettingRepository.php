@@ -29,4 +29,12 @@ class DbSettingRepository extends BaseRepository implements SettingRepository
         $row = $this->model->where('key', $key)->first();
         return $row ? $row : new Setting($default);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 }

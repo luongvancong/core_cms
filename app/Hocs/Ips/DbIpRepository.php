@@ -5,7 +5,9 @@ use App\Hocs\Core\BaseRepository;
 
 class DbIpRepository extends BaseRepository implements IpRepository {
 
-	public function __construct(Ip $model, DB $db) {
+    protected $model;
+
+    public function __construct(Ip $model, DB $db) {
 		$this->model = $model;
 		$this->db = $db;
 	}
@@ -29,4 +31,12 @@ class DbIpRepository extends BaseRepository implements IpRepository {
 
 		return false;
 	}
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 }

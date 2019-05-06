@@ -28,7 +28,6 @@
 					<th><a href="{{ build_sort_link('id', Request::fullUrl()) }}">ID {!! get_icon_sort('id', Request::all()) !!}</a></th>
 					<th><a href="{{ build_sort_link('title', Request::fullUrl()) }}">Tiêu đề {!! get_icon_sort('title', Request::all()) !!}</a></th>
 					<th>Danh mục</th>
-					<th>Hình ảnh</th>
 					<th>Ngày tạo</th>
 					<th>Cập nhật lần cuối</th>
 					<th width="30">Atv</th>
@@ -50,9 +49,6 @@
 						</td>
 						<td>
 							{{ $post->category ? $post->category->getName() : '--' }}
-						</td>
-						<td width="100">
-							<img src="{{ $post->presenter()->getImage('md_') }}" height="50">
 						</td>
 						<td>{{ $post->getCreatedAt() }}</td>
 						<td>{{ $post->getUpdatedAt() }}</td>

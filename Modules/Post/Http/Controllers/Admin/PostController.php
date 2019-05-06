@@ -5,6 +5,7 @@ namespace Modules\Post\Http\Controllers\Admin;
 use App, Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\View\View;
 use Modules\Post\Http\Requests\AdminPostFormRequest;
 use Modules\Post\Repositories\Category\PostCategoryRepository;
 use Modules\Post\Repositories\DbPostRepository;
@@ -14,6 +15,11 @@ use App\Http\Requests;
 
 class PostController extends AdminController
 {
+    protected $post;
+    protected $category;
+    protected $configThumbs;
+    protected $image;
+
     public function __construct(PostRepository $post, PostCategoryRepository $category)
     {
         parent::__construct();
@@ -27,7 +33,7 @@ class PostController extends AdminController
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return View
      */
     public function getIndex(Request $request)
     {

@@ -5,6 +5,9 @@ namespace Modules\Resource\Repositories;
 use App\Hocs\Core\BaseRepository;
 
 class ResourceRepository extends BaseRepository {
+
+    private $model;
+
     public function __construct(Resource $model)
     {
         $this->model = $model;
@@ -37,5 +40,13 @@ class ResourceRepository extends BaseRepository {
     public function getByName($name)
     {
         return $this->model->where('name', '=', $name)->first();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
     }
 }
