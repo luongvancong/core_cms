@@ -90,6 +90,11 @@ class DataTable {
                 }
             }
         }
+
+        // Override heading if want to sort
+        foreach($this->sortColumns as $column) {
+            $this->headings[$column] = get_sort_link($this->columnHeaders[$column], $column, $this->currentUrl, []);
+        }
     }
 
 	public function render()
