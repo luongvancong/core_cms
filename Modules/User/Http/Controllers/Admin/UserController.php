@@ -39,7 +39,6 @@ class UserController extends AdminController
     public function index(Request $request)
     {
         $filter = $request->all();
-        $filter['per_page'] = 1;
         $users = $this->user->filter($filter);
         return view('user::admin/users/index', compact('users'));
     }
