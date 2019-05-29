@@ -3,6 +3,7 @@
 namespace Modules\Product\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Modules\Product\Repositories\Image\ProductImage;
 use Modules\Product\Repositories\ProductRepository;
 use App\Http\Controllers\Admin\AdminController;
@@ -14,6 +15,7 @@ class ProductImageController extends AdminController {
      * @var \Modules\Product\Repositories\Product
      */
     protected $product;
+    protected $image;
 
     public function __construct(ProductRepository $product)
     {
@@ -24,7 +26,7 @@ class ProductImageController extends AdminController {
 
     /**
      * Images listing
-     * @return [type] [description]
+     * @return View
      */
     public function index($productId)
     {
@@ -35,9 +37,9 @@ class ProductImageController extends AdminController {
 
 
     /**
-     * Upload multipe images
-     * @param  [type] $productId [description]
-     * @return [type]            [description]
+     * Upload multiple images
+     * @param  int $productId [description]
+     * @return View
      */
     public function create($productId)
     {
@@ -48,7 +50,9 @@ class ProductImageController extends AdminController {
 
     /**
      * Do upload multiple
-     * @param string $value [description]
+     * @param string $productId
+     * @param Request $request
+     * @return mixed
      */
     public function store($productId, Request $request)
     {
@@ -60,8 +64,12 @@ class ProductImageController extends AdminController {
     public function saveProductImages($product, Request $request) {
         if($request->hasFile('images')) {
             $resultUpload = $this->image->uploadMulti('images');
-            if($resultUpload['filename']) {
-                $this->product->saveProductImages($product, $resultUpload['filename']);
+            $filenames = [];
+            foreach($resultUpload as $item) {
+                $filenames[] = $item['new_name'];
+            }
+            if($filenames) {
+                $this->product->saveProductImages($product, $filenames);
             }
         }
     }

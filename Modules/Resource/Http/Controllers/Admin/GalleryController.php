@@ -103,14 +103,37 @@ class GalleryController extends AdminController {
     {
         $resultUpload = $this->imageUploader->uploadMulti('file', config('image.array_resize_image'), 'resize');
 
-        foreach($resultUpload['filename'] as $filename) {
+//        foreach($resultUpload['filename'] as $filename) {
+//            $data = [];
+//            $extension = $this->upload->getExtension($filename);
+//            $filePath = $this->uploader->getUploadFolderPathToDay().'/'.$filename;
+//            if(in_array($extension, array('gif', 'png', 'jpg', 'bmp', 'jpeg'))) {
+//                $data['name'] = $filename;
+//                $data['extension'] = $extension;
+//                $data['size'] = filesize($filePath);
+//                list($width, $height) = getimagesize($filePath);
+//                $data['width'] = $width;
+//                $data['height'] = $height;
+//            } else {
+//                $data['name'] = $filename;
+//                $data['extension'] = $extension;
+//                $data['size'] = filesize($filePath);
+//            }
+//
+//            if($data) {
+//                $this->resource->create($data);
+//            }
+//        }
+
+        foreach($resultUpload as $fileItem) {
             $data = [];
-            $extension = $this->upload->getExtension($filename);
-            $filePath = $this->uploader->getUploadFolderPathToDay().'/'.$filename;
+            $extension = $fileItem['extension'];
+            $filename = $fileItem['new_name'];
+            $filePath = rtrim($fileItem['path_upload'],'/').'/'.$fileItem['new_name'];
             if(in_array($extension, array('gif', 'png', 'jpg', 'bmp', 'jpeg'))) {
                 $data['name'] = $filename;
                 $data['extension'] = $extension;
-                $data['size'] = filesize($filePath);
+                $data['size'] = $fileItem['size'];
                 list($width, $height) = getimagesize($filePath);
                 $data['width'] = $width;
                 $data['height'] = $height;

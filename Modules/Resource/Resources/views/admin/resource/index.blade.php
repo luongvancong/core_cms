@@ -13,14 +13,16 @@
         <div class="panel-body">
             <table class="table table-stripped">
                 <thead>
-                    <th>ID</th>
-                    <th>Ảnh đại diện</th>
-                    <th>Alt</th>
-                    <th>Tên</th>
-                    <th>Size</th>
-                    <th>Width</th>
-                    <th>Height</th>
-                    <th>Xóa</th>
+                    <tr>
+                        <th>ID</th>
+                        <th>Ảnh đại diện</th>
+                        <th>Alt</th>
+                        <th>Tên</th>
+                        <th>Size</th>
+                        <th>Width</th>
+                        <th>Height</th>
+                        <th>Xóa</th>
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach($resources as $item)
@@ -37,7 +39,7 @@
                                 <a href="" class="editable" data-name="alt" data-pk="{{ $item->getId() }}" data-type="text">{{ $item->getAlt() }}</a>
                             </td>
                             <td>{{ substr($item->getName(), 0, 20) . '....'. $item->getExtension() }}</td>
-                            <td>{{ $item->getSize()/1000/1000 }} MB</td>
+                            <td>{{ number_format($item->getSize()/1000/1000, 3) }} MB</td>
                             <td>{{ $item->getWidth() }}</td>
                             <td>{{ $item->getHeight() }}</td>
 
