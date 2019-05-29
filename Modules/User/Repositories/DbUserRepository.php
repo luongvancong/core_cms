@@ -84,4 +84,30 @@ class DbUserRepository extends BaseRepository implements UserRepository
     {
         return $this->model;
     }
+
+
+    public function filter(array $filter)
+    {
+        $name = array_get($filter, 'name');
+        $email = array_get($filter, 'email');
+        $phone = array_get($filter, 'phone');
+        $order = array_get($filter, 'sort');
+        $perPage = (int) array_get($filter, 'per_page', 25);
+        $query = $this->model->whereRaw(1);
+        if($name) {
+            $query->where('name', 'LIKE', '%'.$name.'%');
+        }
+        if($email) {
+            $query->where('email', 'LIKE', '%'.$email.'%');
+        }
+        if($phone) {
+            $query->where('phone', 'LIKE', '%'.$phone.'%');
+        }
+        if(is_array($order)) {
+            foreach($order as $key => $value) {
+                $query->orderBy($key, $value);
+            }
+        }
+        return $query->paginate($perPage);
+    }
 }

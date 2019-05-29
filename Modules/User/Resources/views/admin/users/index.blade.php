@@ -32,7 +32,6 @@
 						</thead>
 						<tbody>
 							@foreach ($users as $key => $user)
-								<?php if($user->getId() == 1) continue; ?>
 								<tr>
 									<td>{{ $key + 1 }}</td>
 									<td><img width="24" src="{{ parse_image_url($user->getAvatar()) }}" onerror="this.src='/images/profiles/lock_thumb.jpg'" alt="Avatar"></td>
@@ -51,13 +50,9 @@
 									<td>
 										@if($user->id != 1)
 											<a href="{{ route('user.edit', $user->id) }}" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a>
-										@endif
-									</td>
-									<td>
-										@if($user->id != 1)
 											<a href="{{ route('user.destroy', $user->id) }}" class="btn btn-xs btn-danger btn-delete-action"><i class="fa fa-trash-o"></i></a>
-									</td>
 										@endif
+									</td>
 								</tr>
 							@endforeach
 						</tbody>
