@@ -5,6 +5,8 @@ if( ! function_exists('build_sort_link') ) {
      * Build sort link for sort
      * @param $sortKey
      * @param $link
+     * @throws Exception
+     * @return string
      */
     function build_sort_link($sortKey, $link) {
     	if(!filter_var($link, FILTER_VALIDATE_URL)) {
@@ -85,9 +87,13 @@ if( ! function_exists('get_sort_link') ) {
 	 * @param  string $key
 	 * @param  string $link
 	 * @param  array  $query
+     * @throws Exception
 	 * @return string
 	 */
 	function get_sort_link($label, $key, $link, array $query) {
-		return sprintf('<a href="'.build_sort_link($key, $link).'">%s %s</a>', $label, get_icon_sort($key, $query));
+	    $format = '<a href="'.build_sort_link($key, $link).'">{{label}} {{icon}}</a>';
+	    $formatted = str_replace('{{label}}', $label, $format);
+	    $formatted = str_replace('{{icon}}', get_icon_sort($key, $query), $formatted);
+		return $formatted;
 	}
 }
