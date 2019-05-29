@@ -60,25 +60,23 @@ class ImageFactory {
             $arrayThumbs = config('image.thumbs');
         }
 
-        $arrayResult = [
-            'filename' => array(),
-            'thumbs'   => array()
-        ];
+        $arrayResult = [];
 
         $pathUpload = $this->upload->getUploadFolderPathToDay() . '/';
 
-        $resulUpload = $this->upload->uploadMulti($fileControl, $pathUpload);
+        $resultUpload = $this->upload->uploadMulti($fileControl, $pathUpload);
 
-
-        foreach($resulUpload as $k => $fileName) {
+        foreach($resultUpload as $k => $item) {
+            $fileName = $item['new_name'];
+            $pathUpload = $item['path_upload'];
             $thumbs = array();
             if($action == 'resize') {
                 $thumbs = $this->image->resize($pathUpload . $fileName, $pathUpload, $arrayThumbs);
             } else if ($action == 'crop') {
                 $thumbs = $this->image->crop($pathUpload . $fileName, $pathUpload, $arrayThumbs);
             }
-            $arrayResult['filename'][] = $fileName;
-            $arrayResult['thumbs'][] = $thumbs;
+            $item['thumbs'] = $thumbs;
+            $arrayResult[] = $item;
         }
 
         return $arrayResult;

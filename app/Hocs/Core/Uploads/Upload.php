@@ -1,6 +1,11 @@
 <?php namespace App\Hocs\Core\Uploads;
 
 use App\Exceptions\MimeNotExistException;
+use App\Hocs\Core\Uploads\Exceptions\FileTypeIsNotAllowedException;
+use App\Hocs\Core\Uploads\Exceptions\NoFileSelectedException;
+use App\Hocs\Core\Uploads\Exceptions\UploadException;
+use App\Hocs\Core\Uploads\Exceptions\UploadMaxFileSizeException;
+use App\Hocs\Core\Uploads\Exceptions\UploadPathDoesNotExistException;
 use Request;
 
 class Upload {
@@ -22,8 +27,8 @@ class Upload {
 	 * Upload file
 	 *
 	 * @param  string $fileControl
-	 * @param  path $pathUpload
-	 *
+	 * @param  string $pathUpload
+	 * @throws NoFileSelectedException|UploadException|FileTypeIsNotAllowedException|UploadMaxFileSizeException|UploadPathDoesNotExistException
 	 * @return string|null
 	 */
 	public function upload($fileControl, $pathUpload) {
@@ -64,23 +69,30 @@ class Upload {
 
 	/**
 	 * Upload multiple
-	 * @param  [type] $fileControl [description]
-	 * @param  [type] $pathUpload  [description]
-	 * @param  array  $arrayResize [description]
-	 * @param  string $action      [description]
-	 * @return [type]              [description]
+	 * @param  string $fileControl Name of input file
+	 * @param  string $pathUpload  Path upload
+	 * @return array
 	 */
 	public function uploadMulti($fileControl, $pathUpload) {
 		$arrayResult = array();
 		$pathUpload = rtrim($pathUpload, '/') . '/';
 		foreach ($_FILES[$fileControl]["error"] as $key => $error) {
-		   if ($error == UPLOAD_ERR_OK
-		   	&& in_array($this->getExtension($_FILES[$fileControl]["name"][$key]), $this->getExtensions())) {
-				$tmp_name = $_FILES[$fileControl]["tmp_name"][$key];
-				$name     = $this->generateNewFileName($_FILES[$fileControl]["name"][$key]);
-				move_uploaded_file($tmp_name, $pathUpload . $name);
+		    $extension = $this->getExtension($_FILES[$fileControl]["name"][$key]);
 
-				$arrayResult[] = $name;
+		    if ($error == UPLOAD_ERR_OK
+		   	&& in_array($extension, $this->getExtensions())) {
+				$tmp_name = $_FILES[$fileControl]["tmp_name"][$key];
+				$originalName = $_FILES[$fileControl]["name"][$key];
+				$newName = $this->generateNewFileName($originalName);
+				$newFilePath = $pathUpload . $newName;
+				move_uploaded_file($tmp_name, $newFilePath);
+				$arrayResult[] = [
+				    'original_name' => $originalName,
+                    'new_name' => $newName,
+                    'size' => filesize($newFilePath),
+                    'extension' => $extension,
+                    'path_upload' => $pathUpload
+                ];
 		   }
 		}
 
@@ -154,13 +166,13 @@ class Upload {
 	 * @return string
 	 */
 	public function generateNewFileName($filename) {
-		$ipClient = Request::server('REMOTE_ADDR');
+		$ipClient = get_client_ip();
 		if(!$ipClient) $ipClient = time() . rand(111111,999999) . rand(111111,999999);
 
-		$frefix = date("Y_m_d").'___'.time().'___';
+		$prefix = date("Y_m_d").'___'.time().'___';
 		$nFilename = str_replace('.', '--', $filename);
 		$nFilename = removeTitle($nFilename);
-		$filenameMd5 = $frefix . md5($nFilename . $ipClient);
+		$filenameMd5 = $prefix . md5($nFilename . $ipClient);
 		return $filenameMd5 . '.' . $this->getExtension($filename);
 	}
 
@@ -186,8 +198,8 @@ class Upload {
 
 	/**
 	 * Kiem tra extension
-	 * @param  [type] $filename [description]
-	 * @return [true | false]           [description]
+	 * @param  string $filename [description]
+	 * @return bool
 	 */
 	protected function checkExtension($filename) {
 		$extension = $this->getExtension($filename);
@@ -202,8 +214,8 @@ class Upload {
 
 	/**
 	 * Kiem tra dung luong upload cho phep
-	 * @param  [type] $filename [description]
-	 * @return [true | false]           [description]
+	 * @param  string $filename [description]
+	 * @return bool
 	 */
 	protected function checkFilesizeLimit($filename) {
 		if(filesize($filename) / 1024 > $this->fileSize){
