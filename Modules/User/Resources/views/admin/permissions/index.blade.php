@@ -32,7 +32,7 @@
                             <th class="sorting" aria-sort="descending">{{ trans('form.perm_name') }}</th>
                             <th class="sorting" aria-sort="descending">{{ trans('form.perm_key') }}</th>
                             <th>Mô tả</th>
-                            <th colspan="2" align="center">{{ trans('table.actions') }}</th>
+                            <th width="60" align="center">{{ trans('table.actions') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -48,8 +48,6 @@
                                        class="btn btn-xs btn-default">
                                         <i class="fa fa-pencil"></i>
                                     </a>
-                                </td>
-                                <td>
                                     <a href="{{ route('permission.destroy', $permission->id) }}"
                                        class="btn btn-xs btn-danger btn-delete-action">
                                         <i class="fa fa-trash-o"></i>

@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => 'info@sapalimousine.vn',
-        'name' => 'Info Sapabuslimousine',
+        'address' => 'cong.itsoft@gmail.com',
+        'name' => 'Justin Luong',
     ],
 
     /*
