@@ -34,7 +34,7 @@
 					<div class="col-sm-12">
 						<ul class="perm-list list-inline checkbox-list">
 							<li class="row">
-								<div class="col-sm-12 list-unstyled">
+								<div class="col-sm-12">
 									<label for="checkbox_all" class="text-danger noselect">
 										<input type="checkbox" id="checkbox_all" class="checkbox_all"> {{ trans('form.all') }}
 										<p class="text-muted">All</p>
@@ -45,10 +45,10 @@
 							<li class="row">
 								@foreach($groupPermissions as $key => $items)
 									<div class="col-sm-12">
-										<div style="font-weight: bold;text-transform: capitalize">{{ $key }}</div>
-										<ul class="list-unstyled">
+										<div style="font-weight: bold;text-transform: capitalize" class="permission-block-head">{{ $key }}</div>
+										<ul class="list-unstyled permission-list">
 											@foreach($items as $perm)
-												<li>
+												<li class="permission-item">
 													<label class="tooltips noselect" for="perm_{{ $perm->id }}" data-placement="top" data-toggle="tooltip" data-original-title="{{ $perm->description }}">
 														<input class="checkbox-child" type="checkbox" id="perm_{{ $perm->id }}" name="perms[]" value="{{ $perm->id }}"> {{ $perm->display_name }}
 														<p class="text-muted">{{ $perm->name }}</p>
