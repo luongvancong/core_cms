@@ -25,6 +25,7 @@ class AdminUserFormRequest extends Request
     {
         $rules = [
             'email'    => 'required|email',
+            'username' => 'required|unique:users,username,'.auth()->user()->id,
             'nickname' => 'required',
             'name'     => 'required',
             'phone'    => 'required',

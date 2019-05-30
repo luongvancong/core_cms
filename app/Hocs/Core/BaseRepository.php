@@ -2,6 +2,8 @@
 
 namespace App\Hocs\Core;
 
+use Illuminate\Database\Eloquent\Model;
+
 /**
  * An abstract class for repository.
  *
@@ -92,7 +94,10 @@ abstract class BaseRepository
 
 	/**
 	 * Delete an exist model
-	 * @return Bool
+     *
+     * @param $id
+     * @throws \Exception
+	 * @return bool
 	 */
 	public function delete($id)
 	{

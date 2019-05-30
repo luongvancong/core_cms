@@ -16,8 +16,12 @@ use App;
  */
 class UserController extends AdminController
 {
+    /**
+     * @var UserRepository
+     */
     protected $user;
     protected $role;
+    private $imageUploader;
 
     public function __construct(UserRepository $user, RoleRepository $role)
     {
@@ -29,21 +33,21 @@ class UserController extends AdminController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
+     * @param Request $request
+     * @return mixed
      */
     public function index(Request $request)
     {
-      $email = $request->get('email');
-      $phone = $request->get('phone');
-      $users = $this->user->getAllWithPaginate(['email' => $email, 'phone' => $phone]);
+        $filter = $request->all();
+        $filter['sort'] = ['created_at' => "DESC"];
+        $users = $this->user->filter($filter);
         return view('user::admin/users/index', compact('users'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return mixed
      */
     public function create()
     {
@@ -53,24 +57,23 @@ class UserController extends AdminController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
+     * @param AdminUserFormRequest $request
+     * @return mixed
      */
     public function store(AdminUserFormRequest $request)
     {
-        $formData             = $request->except(['_token', 'roles', 'avatar']);
+        $formData = $request->except(['_token', 'roles', 'avatar']);
         $formData['password'] = bcrypt($formData['password']);
 
-        if($request->hasFile('avatar')) {
+        if ($request->hasFile('avatar')) {
             $resultUpload = $this->imageUploader->upload('avatar');
-            if($resultUpload['status'] > 0) {
+            if ($resultUpload['status'] > 0) {
                 $formData['avatar'] = $resultUpload['filename'];
             }
         }
 
-        if ($newUser = $this->user->create($formData))
-        {
-            $roles = (array) $request->get('roles');
+        if ($newUser = $this->user->create($formData)) {
+            $roles = (array)$request->get('roles');
             $newUser->roles()->sync($roles);
             return redirect()->route('user.index')->with('success', trans('general.messages.create_success'));
         }
@@ -80,8 +83,8 @@ class UserController extends AdminController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param  int $id
+     * @return mixed
      */
     public function edit($id)
     {
@@ -94,26 +97,25 @@ class UserController extends AdminController
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param  int $id
+     * @param AdminUserFormRequest $request
+     * @return mixed
      */
     public function update($id, AdminUserFormRequest $request)
     {
         $data = $request->except('_token', 'roles', 'avatar');
 
-        if($request->hasFile('avatar')) {
+        if ($request->hasFile('avatar')) {
             $resultUpload = $this->imageUploader->upload('avatar');
-            if($resultUpload['status'] > 0) {
+            if ($resultUpload['status'] > 0) {
                 $data['avatar'] = $resultUpload['filename'];
             }
         }
 
-        if ($this->user->update($data, ['id' => $id]))
-        {
-            if ($user = $this->user->find($id))
-            {
-                $roles = (array) $request->get('roles');
-                if($roles) {
+        if ($this->user->update($data, ['id' => $id])) {
+            if ($user = $this->user->find($id)) {
+                $roles = (array)$request->get('roles');
+                if ($roles) {
                     $user->roles()->sync($roles);
                 }
             }
@@ -125,13 +127,12 @@ class UserController extends AdminController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param  int $id
+     * @return mixed
      */
     public function destroy($id)
     {
-        if ($this->user->delete($id))
-        {
+        if ($this->user->delete($id)) {
             return redirect()->route('user.index')->with('success', trans('general.messages.delete_success'));
         }
         return redirect()->route('user.index')->with('error', trans('general.messages.delete_fail'));

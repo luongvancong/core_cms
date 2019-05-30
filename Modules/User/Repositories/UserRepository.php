@@ -30,4 +30,6 @@ interface UserRepository
      */
     public function countAllUsers();
 
+    public function filter(array $filter);
+
 }

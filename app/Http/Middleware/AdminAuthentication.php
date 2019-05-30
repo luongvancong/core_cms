@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Modules\User\Repositories\User;
 use Modules\User\Repositories\UserRepository;
 
 class AdminAuthentication

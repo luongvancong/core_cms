@@ -24,7 +24,7 @@ class AdminLoginFormRequest extends Request
     public function rules()
     {
         return [
-            'email' => 'required|email',
+            'email' => 'required',
             'password' => 'required'
         ];
     }
@@ -33,7 +33,6 @@ class AdminLoginFormRequest extends Request
     {
     	return [
 			'email.required'    => trans('admin/validation.email_required'),
-			'email.email'       => trans('admin/validation.email_not_email'),
 			'password.required' => trans('admin/validation.pwd_required')
     	];
     }

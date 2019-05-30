@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 /**
  * Class description.
  *
- * @author	AlvinTran
+ * @author	Justin Luong
  */
 class AuthController extends AdminController
 {
@@ -21,7 +21,8 @@ class AuthController extends AdminController
 
 	/**
 	 * Get login view
-	 * @return View
+     * @param Request $request
+	 * @return mixed
 	 */
 	public function login(Request $request)
 	{
@@ -41,7 +42,7 @@ class AuthController extends AdminController
 
 	/**
 	 * Get logout
-	 * @return Redirect
+	 * @return mixed
 	 */
 	public function logout()
 	{
@@ -52,7 +53,7 @@ class AuthController extends AdminController
 	/**
 	 * Authentication login admin
 	 * @param  AdminLoginFormRequest $request
-	 * @return Redirect
+	 * @return mixed
 	 */
 	public function authenticate(AdminLoginFormRequest $request)
 	{
@@ -60,14 +61,13 @@ class AuthController extends AdminController
 			return redirect()->intended($this->redirectPath());
 		}
 
-
 		$countLoginFails = 0;
 		return back()->withInput()->with(['message' => 'Sai thông tin đăng nhập!', 'countLoginFails' => $countLoginFails]);
 	}
 
 	/**
 	 * View dashboard
-	 * @return View
+	 * @return mixed
 	 */
 	public function dashboard()
 	{
@@ -106,12 +106,20 @@ class AuthController extends AdminController
 
    /**
     * Get the needed authorization credentials from the request.
+    * Support login via email or username
     *
     * @param  AdminLoginFormRequest  $request
     * @return array
     */
    protected function getCredentials(AdminLoginFormRequest $request)
    {
-      return $request->only($this->loginUsername(), 'password');
+       $credentials = ['password' => $request->get('password')];
+       $email = $request->get('email');
+       if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+           $credentials['email'] = $email;
+       } else {
+           $credentials['username'] = $email;
+       }
+      return $credentials;
    }
 }

@@ -25,6 +25,7 @@
 								<th class="sorting" aria-sort="descending">{{ trans('form.name') }}</th>
 								<th>{{ trans('form.nickname') }}</th>
 								<th>{{ trans('form.email') }}</th>
+								<th>Username</th>
 								<th>{{ trans('form.phone') }}</th>
 								<th>{{ trans('table.role_column') }}</th>
 								<th colspan="2" align="center">{{ trans('table.actions') }}</th>
@@ -32,13 +33,13 @@
 						</thead>
 						<tbody>
 							@foreach ($users as $key => $user)
-								<?php if($user->getId() == 1) continue; ?>
 								<tr>
 									<td>{{ $key + 1 }}</td>
 									<td><img width="24" src="{{ parse_image_url($user->getAvatar()) }}" onerror="this.src='/images/profiles/lock_thumb.jpg'" alt="Avatar"></td>
 									<td>{{ $user->name }}</td>
 									<td>{{ $user->nickname }}</td>
 									<td>{{ $user->email }}</td>
+									<td>{{ $user->username }}</td>
 									<td>{{ $user->phone }}</td>
 									<td>
 										@foreach ($user->roles as $ind => $role)
@@ -51,13 +52,9 @@
 									<td>
 										@if($user->id != 1)
 											<a href="{{ route('user.edit', $user->id) }}" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a>
-										@endif
-									</td>
-									<td>
-										@if($user->id != 1)
 											<a href="{{ route('user.destroy', $user->id) }}" class="btn btn-xs btn-danger btn-delete-action"><i class="fa fa-trash-o"></i></a>
-									</td>
 										@endif
+									</td>
 								</tr>
 							@endforeach
 						</tbody>
