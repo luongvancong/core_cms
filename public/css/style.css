@@ -5905,3 +5905,16 @@ select[multiple] {
 .form-group .control-label {
   font-weight: 600;
 }
+.permission-list {
+  overflow: hidden;
+  padding-left: 0;
+}
+.permission-item {
+  display: inline-block;
+  width: 180px;
+}
+.permission-block-head {
+  font-size: 15px;
+  margin-bottom: 5px;
+  color: #9896da;
+}
