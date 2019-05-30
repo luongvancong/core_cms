@@ -20,6 +20,13 @@
 				   	{!! $errors->first('email', '<span class="help-inline text-danger">:message</span>') !!}
 					</div>
 				</div>
+				<div class="form-group {{ $errors->has('username') ? 'has-error' : '' }}">
+					<label for="username" class="col-sm-3 control-label">Username <b class="text-danger">*</b></label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="username" name="username" placeholder="Username" value="{{ Request::old('username') }}" />
+						{!! $errors->first('username', '<span class="help-inline text-danger">:message</span>') !!}
+					</div>
+				</div>
 				<div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
 					<label for="password" class="col-sm-3 control-label">{{ trans('form.password') }} <b class="text-danger">*</b></label>
 					<div class="col-sm-6">

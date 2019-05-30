@@ -33,12 +33,13 @@ class UserController extends AdminController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
+     * @param Request $request
+     * @return mixed
      */
     public function index(Request $request)
     {
         $filter = $request->all();
+        $filter['sort'] = ['created_at' => "DESC"];
         $users = $this->user->filter($filter);
         return view('user::admin/users/index', compact('users'));
     }
@@ -46,7 +47,7 @@ class UserController extends AdminController
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return mixed
      */
     public function create()
     {
@@ -56,8 +57,8 @@ class UserController extends AdminController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
+     * @param AdminUserFormRequest $request
+     * @return mixed
      */
     public function store(AdminUserFormRequest $request)
     {
@@ -83,7 +84,7 @@ class UserController extends AdminController
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return Response
+     * @return mixed
      */
     public function edit($id)
     {
@@ -97,7 +98,8 @@ class UserController extends AdminController
      * Update the specified resource in storage.
      *
      * @param  int $id
-     * @return Response
+     * @param AdminUserFormRequest $request
+     * @return mixed
      */
     public function update($id, AdminUserFormRequest $request)
     {
@@ -126,7 +128,7 @@ class UserController extends AdminController
      * Remove the specified resource from storage.
      *
      * @param  int $id
-     * @return Response
+     * @return mixed
      */
     public function destroy($id)
     {

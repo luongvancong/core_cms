@@ -25,6 +25,7 @@
 								<th class="sorting" aria-sort="descending">{{ trans('form.name') }}</th>
 								<th>{{ trans('form.nickname') }}</th>
 								<th>{{ trans('form.email') }}</th>
+								<th>Username</th>
 								<th>{{ trans('form.phone') }}</th>
 								<th>{{ trans('table.role_column') }}</th>
 								<th colspan="2" align="center">{{ trans('table.actions') }}</th>
@@ -38,6 +39,7 @@
 									<td>{{ $user->name }}</td>
 									<td>{{ $user->nickname }}</td>
 									<td>{{ $user->email }}</td>
+									<td>{{ $user->username }}</td>
 									<td>{{ $user->phone }}</td>
 									<td>
 										@foreach ($user->roles as $ind => $role)
