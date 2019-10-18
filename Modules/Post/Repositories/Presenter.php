@@ -38,6 +38,6 @@ class Presenter {
     }
 
     public function getImage($type = 'sm_') {
-        return parse_image_url($type . $this->model->getImage());
+        return parse_file_url($type . $this->model->getImage());
     }
 }

@@ -17,6 +17,6 @@ class Presenter {
 
     public function getLogo($type = 'md_')
     {
-        return parse_image_url($type . $this->model->getLogo());
+        return parse_file_url($type . $this->model->getLogo());
     }
 }

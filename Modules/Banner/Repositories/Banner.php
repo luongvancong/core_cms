@@ -64,7 +64,7 @@ class Banner extends Model
 
 	public function getImage($value='')
 	{
-		return parse_image_url($this->image);
+		return parse_file_url($this->image);
 	}
 
 	public function getImageAlt()

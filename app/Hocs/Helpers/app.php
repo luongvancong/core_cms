@@ -1,12 +1,12 @@
 <?php
 
-if( ! function_exists('parse_image_url') ) {
+if( ! function_exists('parse_file_url') ) {
     /**
      * Lấy url của ảnh
      * @param  string $image
      * @return string
      */
-    function parse_image_url($image) {
+    function parse_file_url($image) {
         $explode = explode('___', $image);
         if(isset($explode[1])) {
             return '/'. config('upload.upload_folder') .'/' . date('Y/m/d', $explode[1]) . '/' . $image;
