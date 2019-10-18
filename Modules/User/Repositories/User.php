@@ -2,16 +2,12 @@
 
 namespace Modules\User\Repositories;
 
-use Zizaco\Entrust\Traits\EntrustUserTrait;
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+class User extends Authenticatable
 {
-    use Authenticatable, CanResetPassword, EntrustUserTrait;
+    use Notifiable;
 
     /**
      * The database table used by the model.
@@ -75,11 +71,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     public function isRoot() {
-        return $this->hasRole('root');
+        return true;
     }
 
     public function isAdmin() {
-        return $this->hasRole('admin');
+        return true;
     }
 
 }

@@ -1,0 +1,56 @@
+version: '3'
+services:
+  app:
+    container_name: laravel-6-app
+    image: php:7.3.10-apache-customize
+    volumes:
+      - ./:/var/www/html
+      - ./docker-data/php/apache2.conf:/etc/apache2/apache2.conf
+      - ./docker-data/php/http-vhosts.conf:/etc/apache2/http-vhosts.conf
+      - ./docker-data/php/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./docker-data/php/php.ini:/usr/local/etc/php/php.ini
+    networks:
+      laravel_6_network:
+        ipv4_address: 10.3.0.10
+
+#  nginx:
+#    container_name: laravel-6-nginx
+#    image: nginx:1.17.4-alpine
+#    volumes:
+#      - ./:/var/www
+#      - ./docker-data/nginx/conf.d:/etc/nginx/conf.d/
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#    networks:
+#      - laravel_6_network
+
+  mysql:
+    container_name: laravel-6-mysql
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ./docker-data/mysql:/var/lib/mysql/
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      laravel_6_network:
+        ipv4_address: 10.3.0.2
+
+  phpmyadmin:
+    container_name: laravel-6-phpmyadmin
+    image: phpmyadmin/phpmyadmin:4.8
+    restart: always
+    environment:
+      PMA_HOSTS: laravel-6-mysql
+    networks:
+      laravel_6_network:
+        ipv4_address: 10.3.0.3
+
+networks:
+  laravel_6_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.3.0.0/16

@@ -7,6 +7,7 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
+define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@
 | loading any of our classes later on. It feels great to relax.
 |
 */
+
 require __DIR__.'/../vendor/autoload.php';
 
 /*
@@ -34,11 +36,6 @@ require __DIR__.'/../vendor/autoload.php';
 */
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
-
-
-// Custom helpers
-// require __DIR__ . '/../app/Hocs/Helpers/helper.php';
-
 
 /*
 |--------------------------------------------------------------------------

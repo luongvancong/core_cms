@@ -12,7 +12,7 @@
 				$btnClassArray = ['btn-primary', 'btn-success', 'btn-info', 'btn-danger', 'btn-warning', 'btn-default'];
 			?>
 			@foreach(admin_sidebar() as $item)
-                @if(isset($item['permission']) && Entrust::can($item['permission']) && array_get($item, 'active') == 1 || Entrust::hasRole('root') && array_get($item, 'active') == 1)
+                {{--@if(isset($item['permission']) && Entrust::can($item['permission']) && array_get($item, 'active') == 1 || Entrust::hasRole('root') && array_get($item, 'active') == 1)--}}
                 <?php
 					$btnClass = $btnClassArray[array_rand($btnClassArray)];
 				?>
@@ -23,7 +23,7 @@
                         <span class="clearfix"></span>
                     </a>
                 </div>
-                @endif
+                {{--@endif--}}
             @endforeach
             </div>
 		</div>

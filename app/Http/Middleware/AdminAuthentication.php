@@ -39,7 +39,7 @@ class AdminAuthentication
             return redirect()->guest('admin/login');
         }
 
-        if($request->user()->isRoot() || $request->user()->isAdmin()) {
+        if($request->user()->isAdmin() || $request->user()->isRoot())  {
             return $next($request);
         }
 
