@@ -41,6 +41,8 @@ class Sortable {
      *
      * Lần đầu chạy không nên chọn optimize vì lúc này trường has_child chưa được cập nhật
      *
+     * @param Collection $originalData
+     * @param bool $optimize
      */
     public function __construct(Collection $originalData, $optimize = false)
     {

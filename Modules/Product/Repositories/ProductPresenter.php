@@ -24,7 +24,7 @@ class ProductPresenter {
 
     public function getImage($type = '')
     {
-        return parse_image_url($type . $this->model->getImage());
+        return parse_file_url($type . $this->model->getImage());
     }
 
     public function getUrl()

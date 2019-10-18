@@ -1,5 +1,7 @@
 <?php
 
+use Modules\Category\Repositories\Category;
+
 if( !function_exists('getCategoriesHtmlSelectOption') ) {
     function getCategoriesHtmlSelectOption($categories, $selectedId = null, $args = array()) {
         $defaultArgs = [
@@ -115,9 +117,9 @@ if( ! function_exists('category_get_root_parent_by_id') ) {
 if( ! function_exists('category_get_type_options') ) {
     function category_get_type_options() {
         return [
-            App\Hocs\Categories\Category::TYPE_POST    => 'Tin tức',
-            App\Hocs\Categories\Category::TYPE_PRODUCT => 'Sản phẩm',
-            App\Hocs\Categories\Category::TYPE_STATIC  => 'Trang tĩnh'
+            Category::TYPE_POST    => 'Tin tức',
+            Category::TYPE_PRODUCT => 'Sản phẩm',
+            Category::TYPE_STATIC  => 'Trang tĩnh'
         ];
     }
 }

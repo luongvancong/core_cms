@@ -16,6 +16,6 @@ class Presenter {
 
     public function getAvatar($type = '')
     {
-        return parse_image_url($type . $this->model->getAvatar());
+        return parse_file_url($type . $this->model->getAvatar());
     }
 }

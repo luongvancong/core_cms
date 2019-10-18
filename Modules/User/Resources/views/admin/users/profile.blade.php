@@ -10,7 +10,7 @@
                 <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">{{ trans('form.avatar') }}</label>
                     <div class="col-sm-6 text-center">
-                        <p><img height="90" src="{{ parse_image_url($user->getAvatar()) }}" onerror="this.src='/images/profiles/lock_thumb.jpg'" alt="Avatar"></p>
+                        <p><img height="90" src="{{ parse_file_url($user->getAvatar()) }}" onerror="this.src='/images/profiles/lock_thumb.jpg'" alt="Avatar"></p>
                         <input type="file" name="avatar" class="form-control">
                     </div>
                 </div>

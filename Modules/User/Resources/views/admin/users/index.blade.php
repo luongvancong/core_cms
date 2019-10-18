@@ -35,7 +35,7 @@
 							@foreach ($users as $key => $user)
 								<tr>
 									<td>{{ $key + 1 }}</td>
-									<td><img width="24" src="{{ parse_image_url($user->getAvatar()) }}" onerror="this.src='/images/profiles/lock_thumb.jpg'" alt="Avatar"></td>
+									<td><img width="24" src="{{ parse_file_url($user->getAvatar()) }}" onerror="this.src='/images/profiles/lock_thumb.jpg'" alt="Avatar"></td>
 									<td>{{ $user->name }}</td>
 									<td>{{ $user->nickname }}</td>
 									<td>{{ $user->email }}</td>

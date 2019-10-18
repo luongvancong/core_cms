@@ -30,7 +30,7 @@
                             <td>{{ $item->getId() }}</td>
                             <td>
                                 @if(in_array($item->getExtension(), ['jpg', 'jpeg', 'png', 'bmp', 'gif']))
-                                    <img src="{{ parse_image_url($item->getName()) }}" height="50">
+                                    <img src="{{ parse_file_url($item->getName()) }}" height="50">
                                 @else
                                     <i class="fa fa-cubes fa-4x"></i>
                                 @endif

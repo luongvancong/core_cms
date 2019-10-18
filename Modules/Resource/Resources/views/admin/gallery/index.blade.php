@@ -31,11 +31,11 @@
                     @foreach($images as $item)
                         <div class="col-sm-2 item-colsystem mg-bt-20">
                             <div class="item">
-                                <img class="img" src="{{ parse_image_url('md_'.$item['name']) }}">
+                                <img class="img" src="{{ parse_file_url('md_'.$item['name']) }}">
                                 <div class="btn-group">
-                                    <span data-image="{{ $item->name }}" data-image_uri="{{ parse_image_url('md_' . $item->name) }}" class="act-select-image btn btn-sm btn-primary" title="Chọn ảnh"><i class="fa fa-hand-o-up"></i></span>
+                                    <span data-image="{{ $item->name }}" data-image_uri="{{ parse_file_url('md_' . $item->name) }}" class="act-select-image btn btn-sm btn-primary" title="Chọn ảnh"><i class="fa fa-hand-o-up"></i></span>
                                     <span data-image="{{ $item->name }}" data-action="delete" class="btn btn-danger btn-sm act-delete-image" title="Xóa"><i class="fa fa-trash"></i></span>
-                                    <a href="{{ parse_image_url($item->name) }}" class="_fancybox btn btn-sm btn-default" title="Phóng to"><i class="fa fa-search"></i></a>
+                                    <a href="{{ parse_file_url($item->name) }}" class="_fancybox btn btn-sm btn-default" title="Phóng to"><i class="fa fa-search"></i></a>
                                 </div>
                             </div>
                         </div>

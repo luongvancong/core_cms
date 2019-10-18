@@ -76,9 +76,9 @@ class SettingController extends AdminController
     {
         // Chọn cấu hình phù hợp cho form
         $settings = [
-            $this->setting->getByKey('meta_title', ['key' => 'meta_title', 'type' => 'textarea', 'label' => 'Meta title']),
-            $this->setting->getByKey('meta_keyword', ['key' => 'meta_keyword', 'type' => 'textarea', 'label' => 'Meta keyword']),
-            $this->setting->getByKey('meta_description', ['key' => 'meta_description', 'type' => 'textarea', 'label' => 'Meta description']),
+            $this->setting->getByKey('meta_title', ['key' => 'meta_title', 'type' => 'text', 'label' => 'Meta title']),
+            $this->setting->getByKey('meta_keyword', ['key' => 'meta_keyword', 'type' => 'text', 'label' => 'Meta keyword']),
+            $this->setting->getByKey('meta_description', ['key' => 'meta_description', 'type' => 'text', 'label' => 'Meta description']),
         ];
 
         return view('setting::metadata', compact('settings'));
