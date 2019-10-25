@@ -2,13 +2,17 @@
 
 namespace Modules\User\Repositories\Chmod;
 
-use Zizaco\Entrust\EntrustPermission;
+use Illuminate\Database\Eloquent\Model;
+use Modules\User\Repositories\User;
 
-class Permission extends EntrustPermission
+class Permission extends Model
 {
    protected $guarded = ['_token'];
+   protected $fillable = [
+       'name', 'display_name', 'description'
+   ];
 
-   public function group() {
-       return $this->belongsTo(PermissionGroup::class, 'group_id');
+   public function users() {
+       return $this->belongsToMany(User::class, 'users_permissions', 'permission_id', 'user_id');
    }
 }

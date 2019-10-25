@@ -4,10 +4,12 @@ namespace Modules\User\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Modules\User\Http\Requests\AdminUserFormRequest;
-use Modules\User\Repositories\Chmod\RoleRepository;
+use Modules\User\Repositories\Chmod\DbPermissionRepository;
+use Modules\User\Repositories\Chmod\PermissionRepository;
+use Modules\User\Repositories\DbUserRepository;
 use Modules\User\Repositories\UserRepository;
 use App\Http\Controllers\Admin\AdminController;
-use App;
+use Modules\User\Utils\PermissionUtil;
 
 /**
  * Class description.
@@ -17,17 +19,25 @@ use App;
 class UserController extends AdminController
 {
     /**
-     * @var UserRepository
+     * @var DbUserRepository
      */
     protected $user;
-    protected $role;
+
+    /**
+     * @var \App\Hocs\Core\Images\ImageFactory
+     */
     private $imageUploader;
 
-    public function __construct(UserRepository $user, RoleRepository $role)
+    /**
+     * @var DbPermissionRepository
+     */
+    private $permissionRepository;
+
+    public function __construct(UserRepository $user, PermissionRepository $permissionRepository)
     {
         $this->user = $user;
-        $this->role = $role;
-        $this->imageUploader = App::make('ImageFactory');
+        $this->permissionRepository = $permissionRepository;
+        $this->imageUploader = app('ImageFactory');
         parent::__construct();
     }
 
@@ -51,8 +61,9 @@ class UserController extends AdminController
      */
     public function create()
     {
-        $roles = $this->role->getAll();
-        return view('user::admin/users/create', compact('roles'));
+        $permissions = $this->permissionRepository->getAll();
+        $permissionGroups = PermissionUtil::groupPermissions($permissions);
+        return view('user::admin/users/create', compact('permissionGroups'));
     }
 
     /**
@@ -62,7 +73,7 @@ class UserController extends AdminController
      */
     public function store(AdminUserFormRequest $request)
     {
-        $formData = $request->except(['_token', 'roles', 'avatar']);
+        $formData = $request->except(['_token', 'permissions', 'avatar']);
         $formData['password'] = bcrypt($formData['password']);
 
         if ($request->hasFile('avatar')) {
@@ -72,12 +83,20 @@ class UserController extends AdminController
             }
         }
 
-        if ($newUser = $this->user->create($formData)) {
-            $roles = (array)$request->get('roles');
-            $newUser->roles()->sync($roles);
-            return redirect()->route('user.index')->with('success', trans('general.messages.create_success'));
+        $newUser = $this->user->create($formData);
+
+        if ($permissions = (array) $request->get('permissions', [])) {
+            $dataToInsertPermissions = [];
+            foreach ($permissions as $permId) {
+                $dataToInsertPermissions[$permId] = [
+                    'created_by' => $request->user()->id,
+                    'updated_by' => $request->user()->id
+                ];
+            }
+            $newUser->permissions()->sync($dataToInsertPermissions);
         }
-        return redirect()->back()->withInputs()->with('error', trans('general.messages.create_fail'));
+
+        return redirect()->route('user.index')->with('success', trans('general.messages.create_success'));
     }
 
     /**
@@ -89,9 +108,10 @@ class UserController extends AdminController
     public function edit($id)
     {
         $user = $this->user->getById($id);
-        $roles = $this->role->getAll();
-        $user_roles = array_pluck($user->roles, 'id');
-        return view('user::admin/users/edit', compact('user', 'roles', 'user_roles'));
+        $oldPermissions = $user->permissions()->get();
+        $permissions = $this->permissionRepository->getAll();
+        $permissionGroups = PermissionUtil::groupPermissions($permissions);
+        return view('user::admin/users/edit', compact('user', 'permissionGroups', 'oldPermissions'));
     }
 
     /**
@@ -103,7 +123,8 @@ class UserController extends AdminController
      */
     public function update($id, AdminUserFormRequest $request)
     {
-        $data = $request->except('_token', 'roles', 'avatar');
+        $user = $this->user->find($id);
+        $data = $request->except('_token', 'permissions', 'avatar');
 
         if ($request->hasFile('avatar')) {
             $resultUpload = $this->imageUploader->upload('avatar');
@@ -112,24 +133,21 @@ class UserController extends AdminController
             }
         }
 
-        if ($this->user->update($data, ['id' => $id])) {
-            if ($user = $this->user->find($id)) {
-                $roles = (array)$request->get('roles');
-                if ($roles) {
-                    $user->roles()->sync($roles);
-                }
+        $this->user->update($data, ['id' => $id]);
+
+        if ($permissions = (array) $request->get('permissions', [])) {
+            $dataToInsertPermissions = [];
+            foreach ($permissions as $permId) {
+                $dataToInsertPermissions[$permId] = [
+                    'updated_by' => $request->user()->id
+                ];
             }
-            return redirect()->route('user.index')->with('success', trans('general.messages.update_success'));
+            $user->permissions()->sync($dataToInsertPermissions);
         }
-        return redirect()->back()->withInputs()->with('error', trans('general.messages.update_fail'));
+
+        return redirect()->route('user.index')->with('success', trans('general.messages.update_success'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return mixed
-     */
     public function destroy($id)
     {
         if ($this->user->delete($id)) {

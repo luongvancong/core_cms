@@ -47,22 +47,11 @@ return [
                 'title' => 'Users',
                 'url' => '/admin/users',
                 'pattern_active' => 'admin/users'
-
-            ],
-            [
-                'title' => 'Role',
-                'url' => '/admin/users/roles',
-                'pattern_active' => 'admin/users/roles*'
             ],
             [
                 'title' => 'Permission',
                 'url' => '/admin/users/permissions',
                 'pattern_active' => 'admin/users/permissions*'
-            ],
-            [
-                'title' => 'Permission Group',
-                'url' => '/admin/users/permission-groups',
-                'pattern_active' => 'admin/users/permission-groups*'
             ]
         ]
     ],

@@ -37,3 +37,27 @@ div.tagsinput {
 ul.token-input-list {
 	width: 100% !important;
 }
+
+.permission-group-name {
+	text-transform: capitalize;
+	font-weight: bold;
+	font-size: 16px;
+	border-bottom: 1px solid #ccc;
+}
+
+.permission-list {
+	overflow: hidden;
+	padding-left: 0;
+}
+.permission-item {
+	display: inline-block;
+	margin-right: 15px;
+}
+.permission-block-head {
+	font-size: 15px;
+	margin-bottom: 5px;
+	color: #9896da;
+}
+.permission-group {
+	padding-bottom: 15px;
+}

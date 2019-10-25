@@ -22,13 +22,13 @@ Route::group(['prefix' => 'admin/users', 'middleware' => ['web', 'admin', 'acl']
         'permissions' => 'user.store',
     ]);
 
-    Route::get('{users}/edit', [
+    Route::get('{id}/edit', [
         'as' => 'user.edit',
         'uses' => 'UserController@edit',
         'permissions' => 'user.edit',
     ]);
 
-    Route::post('{user}/edit', [
+    Route::post('{id}/edit', [
         'as' => 'user.update',
         'uses' => 'UserController@update',
         'permissions' => 'user.update',

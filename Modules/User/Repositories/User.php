@@ -4,6 +4,7 @@ namespace Modules\User\Repositories;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Modules\User\Repositories\Chmod\Permission;
 
 class User extends Authenticatable
 {
@@ -24,6 +25,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
     public function getName()
     {
@@ -76,6 +87,10 @@ class User extends Authenticatable
 
     public function isAdmin() {
         return true;
+    }
+
+    public function permissions() {
+        return $this->belongsToMany(Permission::class, 'users_permissions', 'user_id', 'permission_id');
     }
 
 }

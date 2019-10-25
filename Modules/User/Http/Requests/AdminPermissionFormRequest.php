@@ -24,7 +24,6 @@ class AdminPermissionFormRequest extends Request
     public function rules()
     {
         return [
-            'group_id' => 'required',
             'name' => 'required',
             'display_name' => 'required'
         ];
