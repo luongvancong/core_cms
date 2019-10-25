@@ -1,4 +1,6 @@
 *
-!/nginx/*
+!nginx/
+!php/
+!nginx/*
 !php/*
 !.gitignore
