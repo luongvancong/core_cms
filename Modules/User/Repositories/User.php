@@ -82,15 +82,21 @@ class User extends Authenticatable
     }
 
     public function isRoot() {
-        return true;
+        return $this->can(config("permission.root"));
     }
 
-    public function isAdmin() {
-        return true;
+    /**
+     * @param $permKey
+     * @return bool
+     */
+    public function havePermission($permKey) {
+        return $this->permissions()
+            ->where('permission_name', $permKey)
+            ->first() ? true : false;
     }
 
     public function permissions() {
-        return $this->belongsToMany(Permission::class, 'users_permissions', 'user_id', 'permission_id');
+        return $this->belongsToMany(Permission::class, 'users_permissions', 'user_id','permission_name');
     }
 
 }

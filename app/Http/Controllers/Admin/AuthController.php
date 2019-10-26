@@ -29,13 +29,7 @@ class AuthController extends AdminController
         if ( !$this->auth->check() ) {
             return view('admin.login');
         } else {
-            // Nếu là admin thì mời vào
-            if ($request->user()->isAdmin() || $request->user()->isRoot()) {
-                return redirect($this->redirectPath());
-            } else {
-                // Không phải thì lượn
-                return abort('403');
-            }
+            return redirect($this->redirectPath());
         }
 	}
 

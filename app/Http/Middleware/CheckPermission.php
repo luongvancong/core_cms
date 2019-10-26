@@ -15,7 +15,7 @@ class CheckPermission
      */
     public function handle($request, Closure $next)
     {
-        if ($this->userHasAccessTo($request) || $request->user()->isRoot() || $request->user()->getId() == 1)
+        if ($this->userHasAccessTo($request))
         {
             view()->share('currentUser', $request->user());
             return $next($request);

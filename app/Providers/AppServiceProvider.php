@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Helper\Asset;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -56,6 +57,8 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment() !== 'production') {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
         }
+
+        $this->definePermissions();
     }
 
     /**
@@ -66,5 +69,20 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
+    }
+
+    public function definePermissions() {
+        $permissions = config('permission');
+        foreach ($permissions as $alias => $name) {
+            Gate::define($alias, function ($user) use ($name) {
+                if (!is_array($name)) $name = [$name];
+                foreach ($name as $_name) {
+                    if ($user->havePermission($_name)) {
+                        return true;
+                    }
+                }
+                return false;
+            });
+        }
     }
 }
