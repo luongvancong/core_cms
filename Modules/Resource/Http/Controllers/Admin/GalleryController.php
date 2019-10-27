@@ -44,7 +44,7 @@ class GalleryController extends AdminController {
             'extensions' => array('jpg', 'jpeg', 'png', 'bmp', 'gif')
         ];
 
-        $images = $this->resource->getResources(100, $filter);
+        $images = $this->resource->getResources(20, $filter);
 
         return view('resource::admin/gallery/index', compact('images'));
     }

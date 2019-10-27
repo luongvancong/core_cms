@@ -35,14 +35,10 @@ class AdminAuthentication
      */
     public function handle($request, Closure $next)
     {
-        if(!$this->user->isLogged()) {
+        if(!auth()->check()) {
             return redirect()->guest('admin/login');
         }
 
-        if($request->user()->isRoot() || $request->user()->isAdmin()) {
-            return $next($request);
-        }
-
-        return abort(403);
+        return $next($request);
     }
 }

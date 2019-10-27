@@ -12,9 +12,6 @@ interface UserRepository
 	public function getByEmail($email);
 	public function getActivedUser($pageSize);
 	public function getCurrentUser();
-	public function isLogged();
-	public function isAdmin();
-    public function isSuperAdmin();
 
     /**
      * Create user from socialite

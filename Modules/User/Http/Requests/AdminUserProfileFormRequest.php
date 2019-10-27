@@ -4,7 +4,7 @@ namespace Modules\User\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class AdminPermissionGroupFormRequest extends Request
+class AdminUserProfileFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,15 +23,11 @@ class AdminPermissionGroupFormRequest extends Request
      */
     public function rules()
     {
-        return [
-            'name' => 'required'
+        $rules = [
+            'nickname' => 'required',
+            'name'     => 'required',
         ];
-    }
 
-    public function messages()
-    {
-        return [
-            'name.required' => trans('admin/validation.perm_name_required')
-        ];
+        return $rules;
     }
 }

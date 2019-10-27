@@ -46,4 +46,14 @@ class DbPermissionRepository extends BaseRepository implements PermissionReposit
     {
         return $this->model;
     }
+
+    public function getByName($name)
+    {
+        return $this->model->where('name', $name)->first();
+    }
+
+    public function deleteByName($name)
+    {
+        return $this->model->where('name', $name)->delete();
+    }
 }
