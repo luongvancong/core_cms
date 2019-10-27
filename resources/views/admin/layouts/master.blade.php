@@ -59,7 +59,7 @@
 	<script src="{{ asset('/js/jquery.editable/bootstrap-editable.js') }}"></script>
 
 	<!-- Xoxco jquery tags input -->
-	<link href="/bower_components/jquery.tagsinput/src/jquery.tagsinput.css" rel="stylesheet" />
+	<link href="/js/jquery-tags-input/jquery.tagsinput.css" rel="stylesheet" />
 	<script src="/js/jquery-tags-input/jquery.tagsinput.js"></script>
 
 	<!-- jQuery select2 -->
@@ -80,9 +80,9 @@
     <link rel="stylesheet" type="text/css" href="/css/gallery.css">
 
     <!-- Jquery token input -->
-    <link href="/bower_components/jquery-tokeninput/styles/token-input-facebook.css" rel="stylesheet" >
-	<link href="/bower_components/jquery-tokeninput/styles/token-input.css" rel="stylesheet" >
-    <script type="text/javascript" src="/bower_components/jquery-tokeninput/src/jquery.tokeninput.js"></script>
+    <link href="/js/jquery-tokeninput/styles/token-input-facebook.css" rel="stylesheet" >
+	<link href="/js/jquery-tokeninput/styles/token-input.css" rel="stylesheet" >
+    <script type="text/javascript" src="/js/jquery-tokeninput/src/jquery.tokeninput.js"></script>
 
     <!-- Nested sortable -->
     <script type="text/javascript" src="/js/jquery.mjs.nestedSortable.js"></script>

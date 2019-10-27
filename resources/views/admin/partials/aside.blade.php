@@ -7,8 +7,8 @@
 
             @foreach(admin_sidebar() as $item)
                 @if(isset($item['items']))
-                    @if(Entrust::hasRole('root') || isset($item['permission']) && Entrust::can($item['permission']) && array_get($item, 'active') == 1)
-                        <li data-order="{{ array_get($item, 'order') }}" data-can="{{ Entrust::can($item['permission']) }}" data-root="{{ Entrust::hasRole('root') }}" data-active="{{ array_get($item, 'active') }}" class="sub-menu">
+                    @if(auth()->user()->can("root:root") || isset($item['permission']) && auth()->user()->can($item['permission']) && array_get($item, 'active') == 1)
+                        <li data-order="{{ array_get($item, 'order') }}" data-can="" data-root="" data-active="{{ array_get($item, 'active') }}" class="sub-menu">
                             <a href="javascript:;" class="{{ isset($item['pattern_active']) ? (Request::is($item['pattern_active']) ? 'active': '') : '' }}">
                                 <i class="{{ array_get($item, 'icon') }}"></i>
                                 <span>{{ array_get($item, 'title') }}</span>
@@ -23,8 +23,8 @@
                         </li>
                     @endif
                 @else
-                    @if(Entrust::hasRole('root') || isset($item['permission']) && Entrust::can($item['permission']) && array_get($item, 'active') == 1)
-                        <li data-order="{{ array_get($item, 'order') }}" data-can="{{ Entrust::can($item['permission']) }}" data-active="{{ array_get($item, 'active') }}">
+                    @if(auth()->user()->can('root:root') || isset($item['permission']) && auth()->user()->can($item['permission']) && array_get($item, 'active') == 1)
+                        <li data-order="{{ array_get($item, 'order') }}" data-can="" data-active="{{ array_get($item, 'active') }}">
                             <a class="{{ isset($item['pattern_active']) ? (Request::is($item['pattern_active']) ? 'active': '') : '' }}" href="{{ array_get($item, 'url') }}">
                                 <i class="{{ array_get($item, 'icon') }}"></i>
                                 <span>{{ array_get($item, 'title') }}</span>

@@ -15,7 +15,7 @@ class CheckPermission
      */
     public function handle($request, Closure $next)
     {
-        if ($this->userHasAccessTo($request) || $request->user()->hasRole('root') || $request->user()->getId() == 1)
+        if ($this->userHasAccessTo($request))
         {
             view()->share('currentUser', $request->user());
             return $next($request);
@@ -25,14 +25,15 @@ class CheckPermission
 
     public function userHasAccessTo($request)
     {
+        $user = $request->user();
+        if ($user->can("root:root")) {
+            return true;
+        }
+
         $action = $request->route()->getAction();
 
-        $roles = isset($action['roles']) ? explode('|', $action['roles']) : null;
         $permissions = isset($action['permissions']) ? explode('|', $action['permissions']) : null;
 
-        // Nếu không set quyền thì cứ vào thoải mái
-        if(is_null($permissions)) return true;
-
-        return $request->user()->ability($roles, $permissions);
+        return $user->can($permissions);
     }
 }

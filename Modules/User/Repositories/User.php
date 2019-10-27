@@ -2,16 +2,13 @@
 
 namespace Modules\User\Repositories;
 
-use Zizaco\Entrust\Traits\EntrustUserTrait;
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Modules\User\Repositories\Chmod\Permission;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+class User extends Authenticatable
 {
-    use Authenticatable, CanResetPassword, EntrustUserTrait;
+    use Notifiable;
 
     /**
      * The database table used by the model.
@@ -28,6 +25,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
     public function getName()
     {
@@ -75,11 +82,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     public function isRoot() {
-        return $this->hasRole('root');
+        return $this->can(config("permission.root"));
     }
 
-    public function isAdmin() {
-        return $this->hasRole('admin');
+    /**
+     * @param $permKey
+     * @return bool
+     */
+    public function havePermission($permKey) {
+        return $this->permissions()
+            ->where('permission_name', $permKey)
+            ->first() ? true : false;
+    }
+
+    public function permissions() {
+        return $this->belongsToMany(Permission::class, 'users_permissions', 'user_id','permission_name');
     }
 
 }

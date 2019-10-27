@@ -46,6 +46,7 @@ class ResourceController extends AdminController {
 
     public function getCreate(Request $request)
     {
+        $resource = $this->resource->getInstance();
         return view('resource::admin/resource/create', compact('resource'));
     }
 

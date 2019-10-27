@@ -25,14 +25,12 @@ class AdminUserFormRequest extends Request
     {
         $rules = [
             'email'    => 'required|email',
-            'username' => 'required|unique:users,username,'.auth()->user()->id,
+            'username' => 'required|unique:users,username,'.$this->id,
             'nickname' => 'required',
             'name'     => 'required',
-            'phone'    => 'required',
-            'address'  => 'required'
         ];
 
-        if ($this->is('admin/users')) {
+        if ($this->is('admin/users/create')) {
             $rules['email'] .= '|unique:users';
         }
 

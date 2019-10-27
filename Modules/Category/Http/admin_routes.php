@@ -1,7 +1,7 @@
 <?php
 
 Route::group(['prefix' => 'admin/categories', 'middleware' => ['web', 'admin', 'acl'], 'namespace' => 'Modules\Category\Http\Controllers\Admin'], function() {
-      Route::get('/', ['as' => 'admin.category.index', 'permissions' => 'category.view' ,'uses' => 'CategoryController@index']);
+      Route::get('/', ['as' => 'admin.category.index', 'permissions' => 'category:view' ,'uses' => 'CategoryController@index']);
 
       Route::get('/create', ['as' => 'admin.category.create', 'uses' => 'CategoryController@create']);
       Route::post('/create', 'CategoryController@store');
