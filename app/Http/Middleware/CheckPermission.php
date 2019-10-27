@@ -25,13 +25,15 @@ class CheckPermission
 
     public function userHasAccessTo($request)
     {
+        $user = $request->user();
+        if ($user->can("root:root")) {
+            return true;
+        }
+
         $action = $request->route()->getAction();
 
         $permissions = isset($action['permissions']) ? explode('|', $action['permissions']) : null;
 
-        // Nếu không set quyền thì cứ vào thoải mái
-        if(is_null($permissions)) return true;
-
-        return $request->user()->can($permissions);
+        return $user->can($permissions);
     }
 }

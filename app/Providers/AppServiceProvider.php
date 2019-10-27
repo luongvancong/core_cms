@@ -72,14 +72,11 @@ class AppServiceProvider extends ServiceProvider
     }
 
     public function definePermissions() {
-        $permissions = config('permission');
-        foreach ($permissions as $alias => $name) {
-            Gate::define($alias, function ($user) use ($name) {
-                if (!is_array($name)) $name = [$name];
-                foreach ($name as $_name) {
-                    if ($user->havePermission($_name)) {
-                        return true;
-                    }
+        $permissions = config('permissions');
+        foreach ($permissions as $item) {
+            Gate::define($item['name'], function ($user) use ($item) {
+                if ($user->havePermission($item['name'])) {
+                    return true;
                 }
                 return false;
             });

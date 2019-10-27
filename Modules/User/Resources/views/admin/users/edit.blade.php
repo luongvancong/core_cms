@@ -67,18 +67,18 @@
 									<input type="checkbox" id="checkbox_all" class="checkbox_all"> Chọn tất cả
 								</label>
 							</div>
-							@foreach ($permissionGroups as $groupName => $groupItems)
+							@foreach ($permissionGroups as $groupName => $permissionItems)
 								<div class="permission-group">
 									<div class="permission-group-name">{{ $groupName }}</div>
-									@foreach ($groupItems as $item)
+									@foreach ($permissionItems as $item)
 										<div class="permission-item">
-											<label class="tooltips noselect" for="role_{{ $item->id }}" data-placement="top" data-toggle="tooltip" data-original-title="{{ $item->description }}">
+											<label class="tooltips noselect" for="role_{{ $item->name }}" data-placement="top" data-toggle="tooltip" data-original-title="{{ $item->description }}">
 												<input class="checkbox-child"
 													   type="checkbox"
-													   id="role_{{ $item->id }}"
+													   id="role_{{ $item->name }}"
 													   name="permissions[]"
-													   <?php echo $oldPermissions->search(function ($value, $k) use($item) { return $value->id === $item->id; }) !== false ? "checked": "" ?>
-													   value="{{ $item->id }}" /> {{ $item->display_name }}
+													   <?php echo $oldPermissions->search(function ($value, $k) use($item) { return $value->name === $item->name; }) !== false ? "checked": "" ?>
+													   value="{{ $item->name }}" /> {{ $item->display_name }}
 												<p class="text-muted">{{ $item->name }}</p>
 											</label>
 										</div>
