@@ -9,6 +9,8 @@
 return [
     ["name" => "root:root", "display_name" => "Full Access", "description" => "Full Access"],
 
+    ['name' => "dashboard:view", "display_name" => "View dashboard", "description" => "View dashboard"],
+
     ['name' => "user:view", "display_name" => "View users", "description" => "View users"],
     ['name' => "user:create", "display_name" => "Create users", "description" => "Create users"],
     ['name' => "user:edit", "display_name" => "Update users", "description" => "Update users"],

@@ -47,22 +47,22 @@ class PermissionController extends AdminController
         return redirect()->route('permission.index')->with('success', trans('general.messages.create_success'));
     }
 
-    public function edit($id)
+    public function edit($name)
     {
-        $permission = $this->perm->getById($id);
+        $permission = $this->perm->getByName($name);
         return view('user::admin/permissions/edit', compact('permission'));
     }
 
-    public function update($id, AdminPermissionFormRequest $request)
+    public function update($name, AdminPermissionFormRequest $request)
     {
-        $this->perm->update($request->except('_token'), ['id' => $id]);
+        $this->perm->update($request->except('_token'), ['name' => $name]);
         return redirect()->route('permission.index')->with('success', trans('general.messages.update_success'));
     }
 
 
-    public function destroy($id)
+    public function destroy($name)
     {
-        $this->perm->delete($id);
+        $this->perm->deleteByName($name);
         return redirect()->route('permission.index')->with('success', trans('general.messages.delete_success'));
     }
 }

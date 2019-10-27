@@ -9,5 +9,6 @@ namespace Modules\User\Repositories\Chmod;
  */
 interface PermissionRepository
 {
-	//
+	public function getByName($name);
+	public function deleteByName($name);
 }

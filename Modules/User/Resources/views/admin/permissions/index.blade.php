@@ -36,11 +36,11 @@
                                 <td>{{ $permission->name }}</td>
                                 <td>{{ $permission->description }}</td>
                                 <td>
-                                    <a href="{{ route('permission.edit', $permission->id) }}"
+                                    <a href="{{ route('permission.edit', $permission->name) }}"
                                        class="btn btn-xs btn-default">
                                         <i class="fa fa-pencil"></i>
                                     </a>
-                                    <a href="{{ route('permission.destroy', $permission->id) }}"
+                                    <a href="{{ route('permission.destroy', $permission->name) }}"
                                        class="btn btn-xs btn-danger btn-delete-action">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
