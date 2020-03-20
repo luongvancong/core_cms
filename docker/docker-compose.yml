@@ -14,7 +14,7 @@ services:
    - core_cms_lampp_net
  
  apache:
-  image: php:7.2.5-dev
+  image: justinluong/php:7.2.5
   restart: always
   volumes:
    - ${SOURCE_CODE_DIR}:/var/www/html
