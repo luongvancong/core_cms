@@ -77,7 +77,12 @@
 									@foreach ($groupItems as $item)
 										<div class="permission-item">
 											<label class="tooltips noselect" for="role_{{ $item->id }}" data-placement="top" data-toggle="tooltip" data-original-title="{{ $item->description }}">
-												<input class="checkbox-child" type="checkbox" id="role_{{ $item->id }}" name="permissions[]" value="{{ $item->id }}"> {{ $item->display_name }}
+												<input class="checkbox-child"
+													   type="checkbox"
+													   id="role_{{ $item->id }}"
+													   name="permissions[]"
+													   {{ in_array($item->id, (array) old('permissions', [])) ? 'checked': '' }}
+													   value="{{ $item->id }}"> {{ $item->display_name }}
 												<p class="text-muted">{{ $item->name }}</p>
 											</label>
 										</div>
