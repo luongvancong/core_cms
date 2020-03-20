@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Helper\Asset;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
-use Modules\User\Repositories\Chmod\Permission;
 use Modules\User\Repositories\User;
 use URL;
 

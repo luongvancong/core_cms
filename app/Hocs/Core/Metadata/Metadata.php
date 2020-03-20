@@ -1,7 +1,6 @@
 <?php
 namespace App\Hocs\Core\Metadata;
 
-use Modules\Setting\Repositories\Setting;
 use Modules\Setting\Repositories\SettingRepository;
 
 class Metadata {

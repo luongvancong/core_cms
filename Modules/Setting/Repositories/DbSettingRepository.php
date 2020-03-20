@@ -21,12 +21,12 @@ class DbSettingRepository extends BaseRepository implements SettingRepository
 
     public function getAllActive()
     {
-        return $this->model->where('active', 1)->get();
+        return $this->model->newQuery()->where('active', 1)->get();
     }
 
     public function getByKey($key, array $default = array())
     {
-        $row = $this->model->where('key', $key)->first();
+        $row = $this->model->newQuery()->where('key', $key)->first();
         return $row ? $row : new Setting($default);
     }
 
