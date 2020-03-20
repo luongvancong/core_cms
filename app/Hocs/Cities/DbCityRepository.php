@@ -8,6 +8,8 @@ use Illuminate\Database\DatabaseManager as DBM;
 
 class DbCityRepository extends BaseRepository implements CityRepository
 {
+    private $model;
+
     public function __construct(City $model)
     {
         $this->model = $model;
@@ -28,5 +30,13 @@ class DbCityRepository extends BaseRepository implements CityRepository
 
     public function getByName($name) {
         return $this->model->where('cit_name', $name)->first();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getModel()
+    {
+        return $this->model;
     }
 }

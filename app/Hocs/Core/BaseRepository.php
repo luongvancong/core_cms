@@ -111,18 +111,18 @@ abstract class BaseRepository
 	}
 
 	public function count() {
-		return $this->getModel()->count();
+		return $this->getModel()->newQuery()->count();
 	}
 
 	public function insert($data) {
-		return $this->getModel()->insert($data);
+		return $this->getModel()->newQuery()->insert($data);
 	}
 
 	public function _getByIds(array $ids) {
-		return $this->getModel()->whereIn($this->getModel()->getKeyName(), $ids)->get();
+		return $this->getModel()->newQuery()->whereIn($this->getModel()->getKeyName(), $ids)->get();
 	}
 
 	public function countByIds(array $ids) {
-		return $this->getModel()->whereIn($this->getModel()->getKeyName(), $ids)->count();
+		return $this->getModel()->newQuery()->whereIn($this->getModel()->getKeyName(), $ids)->count();
 	}
 }
