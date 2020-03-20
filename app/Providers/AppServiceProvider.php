@@ -5,6 +5,9 @@ namespace App\Providers;
 use App\Helper\Asset;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Modules\User\Repositories\Chmod\Permission;
+use Modules\User\Repositories\User;
+use URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -58,7 +61,10 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
         }
 
-        $this->definePermissions();
+        # For develop with localhost:port
+        if (env('APP_ENV') !== 'production') {
+            URL::forceRootUrl(env('APP_URL'));
+        }
     }
 
     /**
@@ -68,17 +74,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        $this->definePermissions();
     }
 
     public function definePermissions() {
-        $permissions = config('permissions');
+        $permissions = Permission::all();
         foreach ($permissions as $item) {
-            Gate::define($item['name'], function ($user) use ($item) {
-                if ($user->havePermission($item['name'])) {
-                    return true;
-                }
-                return false;
+            Gate::define($item['name'], function (User $user) use ($item) {
+                return $user->havePermission($item['name']);
             });
         }
     }

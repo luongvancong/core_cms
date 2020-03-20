@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/phpinfo', function() {
+    dd(bcrypt('12345678'));
     phpinfo();
 });
 

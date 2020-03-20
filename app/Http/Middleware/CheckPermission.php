@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
+use Modules\User\Repositories\User;
 
 class CheckPermission
 {
@@ -23,8 +25,9 @@ class CheckPermission
         return response()->view('errors/403');
     }
 
-    public function userHasAccessTo($request)
+    public function userHasAccessTo(Request $request)
     {
+        /* @var User $user */
         $user = $request->user();
         if ($user->can("root:root")) {
             return true;
@@ -32,8 +35,23 @@ class CheckPermission
 
         $action = $request->route()->getAction();
 
-        $permissions = isset($action['permissions']) ? explode('|', $action['permissions']) : null;
+        $permissions = [];
 
-        return $user->can($permissions);
+        if (is_string($action['permissions'])) {
+            if (strpos($action['permissions'], '|') !== false) {
+                $permissions = explode('|', $action['permissions']);
+            }
+        } else {
+            $permissions = (array) $action['permissions'];
+        }
+
+        $permissions = (array) $permissions;
+
+        // If permissions is an empty array $user->can() always return true
+        if ($permissions) {
+            return $user->can($permissions);
+        }
+
+        return false;
     }
 }

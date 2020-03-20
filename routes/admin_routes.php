@@ -32,7 +32,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 		Route::get('dashboard', [
 			'as'          => 'dashboard',
 			'uses'        => 'AuthController@dashboard',
-			'permissions' => 'dashboard:view'
+			'permissions' => ['dashboard:view']
 		]);
 	});
 });
