@@ -65,6 +65,8 @@ class AppServiceProvider extends ServiceProvider
         if (env('APP_ENV') !== 'production') {
             URL::forceRootUrl(env('APP_URL'));
         }
+
+        $this->definePermissions();
     }
 
     /**
@@ -74,11 +76,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->definePermissions();
+
     }
 
     public function definePermissions() {
-        $permissions = Permission::all();
+        $permissions = config('permissions');
         foreach ($permissions as $item) {
             Gate::define($item['name'], function (User $user) use ($item) {
                 return $user->havePermission($item['name']);
