@@ -38,17 +38,15 @@ class SyncPermissionFromConfigToDb extends Command
      */
     public function handle()
     {
-        $permissions = config('permissions');
         $this->info("Start sync");
-        foreach ($permissions as $item) {
-            $exist = Permission::where('name', $item['name'])->first();
-            if (!$exist) {
-                Permission::insert($item);
-                $this->info("Permission {$item['name']} created");
-            } else {
-                $this->warn("Permission {$item['name']} existed");
-            }
+        $defaultPermissions = config('permissions');
+
+        foreach ($defaultPermissions as $perm) {
+            Permission::updateOrCreate([
+                'name' => $perm['name']
+            ], $perm);
         }
+
         $this->info("Finish sync");
     }
 }

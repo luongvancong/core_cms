@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\AdminLoginFormRequest;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 
 /**
@@ -13,7 +12,6 @@ use Illuminate\Http\Request;
  */
 class AuthController extends AdminController
 {
-	use ThrottlesLogins;
 
 	protected $loginPath = '/admin/login';
 	protected $redirectPath = '/admin/dashboard';
