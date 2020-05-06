@@ -91,12 +91,12 @@ class User extends Authenticatable
      */
     public function havePermission($permKey) {
         return $this->permissions()
-            ->where('permission_name', $permKey)
+            ->where('permission', $permKey)
             ->first() ? true : false;
     }
 
     public function permissions() {
-        return $this->belongsToMany(Permission::class, 'users_permissions', 'user_id','permission_name');
+        return $this->belongsToMany(Permission::class, 'users_permissions', 'user_id','permission');
     }
 
 }
