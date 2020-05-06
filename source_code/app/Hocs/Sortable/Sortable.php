@@ -116,7 +116,7 @@ class Sortable {
      * Hàm đệ quy để lấy ra danh mục
      * @param  [type]  $data
      * @param  integer $parent
-     * @param  boolean $list
+     * @param  integer $level
      * @param  boolean $optimize
      * @return void
      */

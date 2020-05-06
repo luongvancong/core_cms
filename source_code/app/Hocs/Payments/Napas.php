@@ -217,6 +217,5 @@ class Napas {
         $params = $this->getParams();
         $url = self::URL_PAYMENT . '?' . http_build_query($params);
         return urldecode($url);
-        return $url;
     }
 }

@@ -127,7 +127,7 @@ class Upload {
 		$frefix = date("Y_m_d").'___'.time().'___';
 		$nFilename = str_replace('.', '--', $filename);
 		$nFilename = removeTitle($nFilename);
-		$filenameMd5 = $frefix . md5($nFilename . $ipClient);
+		$filenameMd5 = $frefix . $nFilename . md5($nFilename . $ipClient);
 		$newFileName = $filenameMd5 . '.' . $extension;
 
 		// Write content to new file
@@ -172,7 +172,7 @@ class Upload {
 		$prefix = date("Y_m_d").'___'.time().'___';
 		$nFilename = str_replace('.', '--', $filename);
 		$nFilename = removeTitle($nFilename);
-		$filenameMd5 = $prefix . md5($nFilename . $ipClient);
+		$filenameMd5 = $prefix . $nFilename . md5($nFilename . $ipClient);
 		return $filenameMd5 . '.' . $this->getExtension($filename);
 	}
 

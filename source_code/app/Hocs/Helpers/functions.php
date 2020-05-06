@@ -118,10 +118,11 @@ function removeAccent($string) {
 /**
  * Tao link sort
  *
- * @param  url $url
- * @param  array  $sortArray
+ * @param  string $field
+ * @param  string|null $url
  * @example http://example.com => http://example.com?name=desc&age=asc
  *
+ * @throws \Exception
  * @return string
  */
 function createLinkSort($field, $url = null) {
@@ -223,7 +224,8 @@ function format_number($number, $sufix = ''){
  * Format currency
  *
  * @param  double|float|integer $number
- *
+ * @param  string $prefix
+ * @param  string $sufix
  * @return string
  */
 function formatCurrency($number, $prefix = '', $sufix = '') {
@@ -231,6 +233,7 @@ function formatCurrency($number, $prefix = '', $sufix = '') {
 }
 
 /**
+ * @param mixed $data
  * Debug function
  */
 function _debug($data) {
@@ -253,16 +256,11 @@ function _debug($data) {
 	echo '</pre>';
 }
 
-function pagination($items, $total, $perPage, $currentPage = null, $options = array(), $url = null) {
-	$paginator =  new \Illuminate\Pagination\LengthAwarePaginator($items, $total, $perPage, $currentPage, $options);
-	$paginator->setPath($url);
-	$bootstrapPaginator = new \Illuminate\Pagination\BootstrapThreePresenter($paginator->appends($_GET));
-	return '<div id="custom-pagination" class="custom-pagination">' . $bootstrapPaginator->render() . '</div>';
-}
-
 /**
  * Add params to url
- * @param  array  $params [key => value]
+ * @param array  $params [key => value]
+ * @param string $url
+ *
  * @return string
  */
 function url_add_params(array $params = array(), $url = null) {
@@ -334,6 +332,8 @@ function firstLetterUpperCase($string) {
  * @param  string  $name
  * @param  string  $url
  * @param  boolean $active
+ * @param  array $htmlAttributes
+ *
  * @return string
  */
 function getBreadcrumbItem($name, $url, $active = false, $htmlAttributes = []) {
@@ -556,48 +556,6 @@ if( ! function_exists('get_client_ip') ) {
 }
 
 
-
-/**
- * Default upload file to google bucket
- * @param  string $path
- * @return string
- */
-function uploadFileToGoogleBucket($filePath, $pathBucket) {
-	$configuration = array(
-		'login'   => 'static-giaca-org@search-1068.iam.gserviceaccount.com',
-		'key'     => file_get_contents(public_path() . '/Search-ab72c04030aa.p12'),
-		'scope'   => 'https://www.googleapis.com/auth/devstorage.full_control',
-		'project' => 'search-1068',
-		'bucket'  => 'static.giaca.org'
-    );
-
-    # Making Credential for API
-    $credentials = new Google_Auth_AssertionCredentials($configuration['login'], $configuration['scope'], $configuration['key']);
-
-    # Creating Client &amp; Applying Credentials
-    $client = new Google_Client();
-    $client->setAssertionCredentials($credentials);
-    if ($client->getAuth()->isAccessTokenExpired()) {
-        $client->getAuth()->refreshTokenWithAssertion();
-    }
-
-    # Starting Webmaster Tools Service
-    $storage = new Google_Service_Storage($client);
-
-    $object = new Google_Service_Storage_StorageObject();
-    $object->setName($pathBucket); # Object Name or "Path"
-
-    $storage->objects->insert(
-        $configuration['bucket'],
-		$object,
-		array(
-            'uploadType' => 'media',
-           	'data' => file_get_contents($filePath),
-            'mimeType' => \File::mimeType($filePath),
-           	'predefinedAcl' => 'publicRead'
-        ));
-}
-
 if ( ! function_exists('combinations') ) {
 	function combinations($arrays, $i = 0) {
 	    if (!isset($arrays[$i])) {
@@ -695,10 +653,12 @@ if( ! function_exists('build_sort_link') ) {
      * Build sort link for sort
      * @param $sortKey
      * @param $link
+     *
+     * @throws Exception
      * @return string
      */
     function build_sort_link($sortKey, $link) {
-    	if(!filter_var($link, FILTER_VALIDATE_URL)) {
+    	if(! isUrl($link)) {
     		throw new Exception($link. " is not valid url", 1);
     	}
 
@@ -776,6 +736,8 @@ if( ! function_exists('get_sort_link') ) {
 	 * @param  string $key
 	 * @param  string $link
 	 * @param  array  $query
+     *
+     * @throws Exception
 	 * @return string
 	 */
 	function get_sort_link($key, $link, array $query) {
